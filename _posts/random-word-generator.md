@@ -12,10 +12,10 @@ mermaid: false
 
 <html lang="en-US">
     <head>
-        <title>Redirecting...</title>
         <meta charset="UTF-8" http-equiv="Refresh" content="0; url='https://github.com/antoniopelusi/RandomWordGenerator'"/>
     </head>
     <body>
+        <p>A random word generator app for Android.</p>
         <p>If you are not redirected automatically, follow this <a href='https://github.com/antoniopelusi/RandomWordGenerator'>link</a>.</p>
     </body>
 </html>
