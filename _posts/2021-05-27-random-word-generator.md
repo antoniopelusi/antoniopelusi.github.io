@@ -14,7 +14,7 @@ mermaid: false
 
 A random word generator app for Android.
 
----
+&nbsp;
 
 [GithubLink]: https://github.com/antoniopelusi/RandomWordGenerator
 If you are not redirected automatically, follow this [**link**][GithubLink].
