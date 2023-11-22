@@ -10,12 +10,9 @@ comments: false
 mermaid: false
 ---
 
-<html lang="en-US">
-    <head>
-        <meta charset="UTF-8" http-equiv="Refresh" content="0; url='https://github.com/antoniopelusi/RandomWordGenerator'"/>
-    </head>
-    <body>
-        <p>A random word generator app for Android.</p>
-        <p>If you are not redirected automatically, follow this <a href='https://github.com/antoniopelusi/RandomWordGenerator'>link</a>.</p>
-    </body>
-</html>
+<meta charset="UTF-8" http-equiv="Refresh" content="0; url='https://github.com/antoniopelusi/RandomWordGenerator'"/>
+
+A random word generator app for Android.
+---
+[GithubLink]: https://github.com/antoniopelusi/RandomWordGenerator
+If you are not redirected automatically, follow this [**link**][GithubLink].
