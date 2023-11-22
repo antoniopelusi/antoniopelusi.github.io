@@ -13,6 +13,8 @@ mermaid: false
 <meta charset="UTF-8" http-equiv="Refresh" content="0; url='https://github.com/antoniopelusi/RandomWordGenerator'"/>
 
 A random word generator app for Android.
+
 ---
+
 [GithubLink]: https://github.com/antoniopelusi/RandomWordGenerator
 If you are not redirected automatically, follow this [**link**][GithubLink].
