@@ -54,7 +54,7 @@ jobs:
         uses: anishathalye/proof-html@v2
         with:
           directory: ./_site/posts
-          ignore_url_re: .*
+          ignore_url_re: ^*
           check_favicon: false
           enforce_https: false
 
