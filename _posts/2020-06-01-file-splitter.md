@@ -12,7 +12,4 @@ mermaid: false
 
 [GithubLink]: https://github.com/antoniopelusi/File-Splitter
 
-A simple tool for split, zip, and encrypt files.
-
-> Click [here][GithubLink] to open the project repository.
-{: .prompt-info }
+[A simple tool for split, zip, and encrypt files.][GithubLink]

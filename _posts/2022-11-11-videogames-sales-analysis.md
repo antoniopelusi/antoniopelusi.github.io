@@ -12,7 +12,4 @@ mermaid: false
 
 [GithubLink]: https://github.com/antoniopelusi/videogames-sales-analysis
 
-Exploratory analysis and correlation between sales of video games and consoles in the world.
-
-> Click [here][GithubLink] to open the project repository.
-{: .prompt-info }
+[Exploratory analysis and correlation between sales of video games and consoles in the world.][GithubLink]

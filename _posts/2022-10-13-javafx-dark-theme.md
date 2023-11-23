@@ -12,7 +12,4 @@ mermaid: false
 
 [GithubLink]: https://github.com/antoniopelusi/JavaFX-Dark-Theme
 
-A complete CSS stylesheet to set a dark theme in your JavaFX UI.
-
-> Click [here][GithubLink] to open the project repository.
-{: .prompt-info }
+[A complete CSS stylesheet to set a dark theme in your JavaFX UI.][GithubLink]

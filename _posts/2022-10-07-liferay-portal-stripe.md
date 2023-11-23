@@ -12,7 +12,4 @@ mermaid: false
 
 [GithubLink]: https://github.com/antoniopelusi/liferay-portal-stripe
 
-Stripe implementation in Liferay Portal Framework.
-
-> Click [here][GithubLink] to open the project repository.
-{: .prompt-info }
+[Stripe implementation in Liferay Portal Framework.][GithubLink]

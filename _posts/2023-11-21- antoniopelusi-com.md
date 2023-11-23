@@ -12,7 +12,4 @@ mermaid: false
 
 [GithubLink]: https://github.com/antoniopelusi/antoniopelusi.com
 
-Personal website made with Jekyll.
-
-> Click [here][GithubLink] to open the project repository.
-{: .prompt-info }
+[Personal website made with Jekyll.][GithubLink]

@@ -12,7 +12,4 @@ mermaid: false
 
 [GithubLink]: https://github.com/antoniopelusi/GamerAlley
 
-A videogames-based social network made with Django.
-
-> Click [here][GithubLink] to open the project repository.
-{: .prompt-info }
+[A videogames-based social network made with Django.][GithubLink]
