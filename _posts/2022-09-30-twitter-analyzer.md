@@ -1,7 +1,7 @@
 ---
 title: 🐦 Twitter Analyzer
-author: Antonio Pelusi
-date: 2022:09:30 10:20:00 +0800
+author: antoniopelusi
+date: 2022-09-30 10:20:00 +0800
 categories: [University projects]
 tags: [<span style="color:#af7219">●</span> Java, <span style="color:#543e7c">●</span> CSS]
 pin: false

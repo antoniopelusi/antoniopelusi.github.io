@@ -1,7 +1,7 @@
 ---
 title: 🚿 Water consumption ML
-author: Antonio Pelusi
-date: 2023:09:28 00:12:00 +0800
+author: antoniopelusi
+date: 2023-09-28 00:12:00 +0800
 categories: [Hackathon projects]
 tags: [<span style="color:#3573a6">●</span> Python, <span style="color:#da5b0c">●</span> Jupyter Notebook]
 pin: false

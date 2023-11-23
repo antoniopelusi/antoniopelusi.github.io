@@ -1,7 +1,7 @@
 ---
 title: 🪓 File Splitter
-author: Antonio Pelusi
-date: 2020:06:01 08:34:00 +0800
+author: antoniopelusi
+date: 2020-06-01 08:34:00 +0800
 categories: [University projects]
 tags: [<span style="color:#af7219">●</span> Java]
 pin: false

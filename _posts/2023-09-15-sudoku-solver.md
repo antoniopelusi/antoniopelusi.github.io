@@ -1,7 +1,7 @@
 ---
 title: ✏️ Sudoku Solver
-author: Antonio Pelusi
-date: 2023:09:15 22:15:00 +0800
+author: antoniopelusi
+date: 2023-09-15 22:15:00 +0800
 categories: [Personal projects]
 tags: [<span style="color:#3573a6">●</span> Python]
 pin: false

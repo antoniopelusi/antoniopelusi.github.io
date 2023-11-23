@@ -1,7 +1,7 @@
 ---
 title: 🌘 JavaFX Dark Theme
-author: Antonio Pelusi
-date: 2022:10:13 10:34:00 +0800
+author: antoniopelusi
+date: 2022-10-13 10:34:00 +0800
 categories: [Personal projects]
 tags: [<span style="color:#543e7c">●</span> CSS]
 pin: false
