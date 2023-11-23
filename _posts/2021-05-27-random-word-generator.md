@@ -3,7 +3,7 @@ title: 📃 Random Word Generator
 author: Antonio Pelusi
 date: 2021-05-27 11:33:00 +0800
 categories: [Personal projects]
-tags: [<span style="color:#af7219">●</span> java]
+tags: [<span style="color:#af7219">●</span> Java]
 pin: false
 math: false
 comments: false
