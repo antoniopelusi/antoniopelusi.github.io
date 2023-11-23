@@ -10,8 +10,6 @@ comments: false
 mermaid: false
 ---
 
-<meta charset="UTF-8" http-equiv="Refresh" content="0; url='https://github.com/antoniopelusi/youtube-classification'"/>
-
 [GithubLink]: https://github.com/antoniopelusi/youtube-classification
 
 [Multiclass classification of Youtube videos using text mining.][GithubLink]

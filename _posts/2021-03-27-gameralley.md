@@ -10,8 +10,6 @@ comments: false
 mermaid: false
 ---
 
-<meta charset="UTF-8" http-equiv="Refresh" content="0; url='https://github.com/antoniopelusi/GamerAlley'"/>
-
 [GithubLink]: https://github.com/antoniopelusi/GamerAlley
 
 [A videogames-based social network written in Django.][GithubLink]

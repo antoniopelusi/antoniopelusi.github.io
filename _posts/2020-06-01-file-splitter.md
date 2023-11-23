@@ -10,8 +10,8 @@ comments: false
 mermaid: false
 ---
 
-<meta charset="UTF-8" http-equiv="Refresh" content="0; url='https://github.com/antoniopelusi/File-Splitter'"/>
-
 [GithubLink]: https://github.com/antoniopelusi/File-Splitter
 
-[A simple tool for split, zip, and encrypt files.][GithubLink]
+A simple tool for split, zip, and encrypt files.
+
+> Click [here][GithubLink] to open the project repository.

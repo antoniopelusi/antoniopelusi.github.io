@@ -10,8 +10,6 @@ comments: false
 mermaid: false
 ---
 
-<meta charset="UTF-8" http-equiv="Refresh" content="0; url='https://github.com/antoniopelusi/Twitter-Analyzer'"/>
-
 [GithubLink]: https://github.com/antoniopelusi/Twitter-Analyzer
 
 [A Twitter Scraper developed for the Software Project exam at Unimore Computer Science degree.][GithubLink]

@@ -10,8 +10,6 @@ comments: false
 mermaid: false
 ---
 
-<meta charset="UTF-8" http-equiv="Refresh" content="0; url='https://github.com/antoniopelusi/water-consumption-ml'"/>
-
 [GithubLink]: https://github.com/antoniopelusi/water-consumption-ml
 
 [Water Consumption Machine Learning model made during the Green and Digital Trasformation Hackathon, Mantua, Italy.][GithubLink]

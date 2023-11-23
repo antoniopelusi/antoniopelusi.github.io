@@ -10,8 +10,6 @@ comments: false
 mermaid: false
 ---
 
-<meta charset="UTF-8" http-equiv="Refresh" content="0; url='https://github.com/antoniopelusi/JavaFX-Dark-Theme'"/>
-
 [GithubLink]: https://github.com/antoniopelusi/JavaFX-Dark-Theme
 
 [A complete CSS stylesheet to set a dark theme in your JavaFX UI.][GithubLink]
