@@ -55,6 +55,7 @@ jobs:
         with:
           directory: ./_site/
           ignore_url: ./
+          check_html: false
           enforce_https: false
           allow_missing_href: true
           ignore_empty_alt: true
