@@ -4,7 +4,7 @@ author: antoniopelusi
 date: 2023-10-09 11:50:00 +0800
 categories: [Personal projects]
 tags: [<span style="color:#a97bff">●</span> Kotlin]
-pin: false
+pin: true
 math: false
 comments: false
 mermaid: false
