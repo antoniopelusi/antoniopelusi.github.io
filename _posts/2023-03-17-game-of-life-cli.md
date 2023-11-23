@@ -12,4 +12,7 @@ mermaid: false
 
 [GithubLink]: https://github.com/antoniopelusi/game-of-life-CLI
 
-[Game of Life is a cellular automaton devised by the British mathematician John Horton Conway in 1970. It is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input.][GithubLink]
+Game of Life is a cellular automaton devised by the British mathematician John Horton Conway in 1970. It is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input.
+
+> Click [here][GithubLink] to open the project repository.
+{: .prompt-info }

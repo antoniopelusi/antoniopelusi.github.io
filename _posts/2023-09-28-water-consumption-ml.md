@@ -12,4 +12,7 @@ mermaid: false
 
 [GithubLink]: https://github.com/antoniopelusi/water-consumption-ml
 
-[Water Consumption Machine Learning model made during the Green and Digital Trasformation Hackathon, Mantua, Italy.][GithubLink]
+Water Consumption Machine Learning model made during the Green and Digital Trasformation Hackathon, Mantua, Italy.
+
+> Click [here][GithubLink] to open the project repository.
+{: .prompt-info }

@@ -12,4 +12,7 @@ mermaid: false
 
 [GithubLink]: https://github.com/antoniopelusi/RandomWordGenerator
 
-[A random word generator app for Android.][GithubLink]
+A random word generator app for Android.
+
+> Click [here][GithubLink] to open the project repository.
+{: .prompt-info }

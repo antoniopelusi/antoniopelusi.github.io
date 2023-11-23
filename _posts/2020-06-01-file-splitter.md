@@ -15,3 +15,4 @@ mermaid: false
 A simple tool for split, zip, and encrypt files.
 
 > Click [here][GithubLink] to open the project repository.
+{: .prompt-info }
