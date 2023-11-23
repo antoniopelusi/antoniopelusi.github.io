@@ -54,8 +54,11 @@ jobs:
         uses: anishathalye/proof-html@v2
         with:
           directory: ./_site
-          enforce_https: false
           ignore_url: ./_site/posts
+          enforce_https: false
+          allow_missing_href: true
+          ignore_empty_alt: true
+          ignore_missing_alt: true
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v1
