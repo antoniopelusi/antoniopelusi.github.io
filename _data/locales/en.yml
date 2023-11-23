@@ -23,7 +23,7 @@ search:
   no_results: Oops! No results found.
 
 panel:
-  lastmod: Last projects
+  lastmod: Last Modified
   trending_tags: Trending tags
   toc: Contents
 
