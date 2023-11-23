@@ -1,6 +1,6 @@
 ---
 title: 🗺️ OpenStreetMap Neo4j
-author: Antonio Pelusi 
+author: Antonio Pelusi
 date: 2022:11:18 23:47:00 +0800
 categories: [University projects]
 tags: [<span style="color:#3573a6">●</span> Python]

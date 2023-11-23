@@ -1,6 +1,6 @@
 ---
 title: 📺 Youtube classification
-author: Antonio Pelusi 
+author: Antonio Pelusi
 date: 2022:12:06 07:23:00 +0800
 categories: [University projects]
 tags: [<span style="color:#3573a6">●</span> Python, <span style="color:#da5b0c">●</span> Jupyter Notebook]

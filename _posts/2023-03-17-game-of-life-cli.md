@@ -1,6 +1,6 @@
 ---
 title: 👾 Game Of Life CLI
-author: Antonio Pelusi 
+author: Antonio Pelusi
 date: 2023:03:17 21:56:00 +0800
 categories: [Personal projects]
 tags: [<span style="color:#3573a6">●</span> Python, <span style="color:#89e051">●</span> Shell]
