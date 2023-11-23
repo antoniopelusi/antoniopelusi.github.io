@@ -25,7 +25,7 @@ refactor: true
 
 <!-- Get default posts -->
 
-{% assign default_beg = offset | minus: pinned.size %}
+<!-- {% assign default_beg = offset | minus: pinned.size %}
 
 {% if default_beg < 0 %}
   {% assign default_beg = 0 %}
@@ -38,7 +38,7 @@ refactor: true
   {% for i in (default_beg..default_end) %}
     {% assign posts = posts | push: default[i] %}
   {% endfor %}
-{% endif %}
+{% endif %} -->
 
 <div id="post-list" class="flex-grow-1 px-xl-1">
   {% for post in posts %}
