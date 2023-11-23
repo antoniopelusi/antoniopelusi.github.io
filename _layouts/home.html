@@ -25,20 +25,7 @@ refactor: true
 
 <!-- Get default posts -->
 
-<!-- {% assign default_beg = offset | minus: pinned.size %}
 
-{% if default_beg < 0 %}
-  {% assign default_beg = 0 %}
-{% endif %}
-
-{% assign default_num = paginator.posts | size | minus: pinned_num %}
-{% assign default_end = default_beg | plus: default_num | minus: 1 %}
-
-{% if default_num > 0 %}
-  {% for i in (default_beg..default_end) %}
-    {% assign posts = posts | push: default[i] %}
-  {% endfor %}
-{% endif %} -->
 
 <div id="post-list" class="flex-grow-1 px-xl-1">
   {% for post in posts %}
