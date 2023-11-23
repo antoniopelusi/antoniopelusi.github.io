@@ -53,13 +53,9 @@ jobs:
       - name: Test site
         uses: anishathalye/proof-html@v2
         with:
-          directory: ./_site/
-          ignore_url: ./
-          check_html: false
+          directory: ./_site
+          ignore_url_re: .*
           enforce_https: false
-          allow_missing_href: true
-          ignore_empty_alt: true
-          ignore_missing_alt: true
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v1
