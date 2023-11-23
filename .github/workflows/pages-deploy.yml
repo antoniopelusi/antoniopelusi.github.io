@@ -56,6 +56,13 @@ jobs:
         #     \-\-disable-external=true \
         #     \-\-ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
 
+      - name: Test site
+        uses: anishathalye/proof-html@v2
+        with:
+          directory: ./_site
+          enforce_https: false
+          allow_missing_href: true
+
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v1
         with:
