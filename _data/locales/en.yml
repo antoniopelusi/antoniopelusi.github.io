@@ -13,7 +13,7 @@ tabs:
   home: Home
   categories: Categories
   tags: Tags
-  archives: Archives
+  archives: Projects
   about: About
 
 # the text displayed in the search bar & search results
@@ -24,7 +24,7 @@ search:
 
 panel:
   lastmod: Recently Updated
-  trending_tags: Trending Tags
+  trending_tags: Tags
   toc: Contents
 
 copyright:
@@ -40,7 +40,7 @@ copyright:
     Except where otherwise noted, the blog posts on this site are licensed
     under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.
 
-meta: ":(){ :|:& };:"
+meta: ":(){:|:&};:"
 
 not_found:
   statment: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.
