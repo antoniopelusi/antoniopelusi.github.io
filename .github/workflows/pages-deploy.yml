@@ -51,10 +51,11 @@ jobs:
           JEKYLL_ENV: "production"
 
       - name: Test site
-        run: |
-          bundle exec htmlproofer _site \
-          \-\-disable-external=true \
-          \-\-ignore-urls "_site/"
+        uses: anishathalye/proof-html@v2
+        with:
+          directory: .
+          enforce_https: false
+          ignore_url: ./_site/posts
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v1
