@@ -53,8 +53,8 @@ jobs:
       - name: Test site
         uses: anishathalye/proof-html@v2
         with:
-          directory: ./_site
-          ignore_url: ./_site/posts
+          directory: /_site/
+          ignore_url: /_site/posts/
           enforce_https: false
           allow_missing_href: true
           ignore_empty_alt: true
