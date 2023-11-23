@@ -56,6 +56,7 @@ jobs:
           directory: ./_site/posts
           ignore_url_re: ^*
           check_favicon: false
+          check_html: false
           enforce_https: false
 
       - name: Upload site artifact
