@@ -13,7 +13,7 @@ tabs:
   home: Home
   categories: Categories
   tags: Tags
-  archives: Projects
+  archives: Archives
   about: About
 
 # the text displayed in the search bar & search results
@@ -23,7 +23,7 @@ search:
   no_results: Oops! No results found.
 
 panel:
-  lastmod: Recently Updated
+  lastmod: Last projects
   trending_tags: Tags
   toc: Contents
 
