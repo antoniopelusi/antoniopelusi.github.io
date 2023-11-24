@@ -5,7 +5,7 @@ order: 4
 ---
 
 <div>
-  <h2><img src="/assets/img/hi.gif" width="20" alt=""> Hi, I am Antonio Pelusi</h2>
+  <h2><img src="/assets/img/hi.gif" width="20" height="20" alt=""> Hi, I am Antonio Pelusi</h2>
 
   <p>   🎓  Master's Degree in Computer Science at <a href="https://www.unimore.it/">Unimore</a>, Modena (IT)</p>
 
