@@ -12,7 +12,7 @@ order: 4
 
 🎸 Guitar player
 
-🌱  Browse my projects [**here**](https://www.antoniopelusi.com/archives/)!
+🌱  Browse my projects [**here**](https://www.antoniopelusi.com/archives/)
 
 ---
 
