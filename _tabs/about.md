@@ -4,17 +4,15 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-<div>
-  <h2><img src="/assets/img/hi.gif" width="20" alt=""> Hi, I am Antonio Pelusi</h2>
+## ![](/assets/img/hi.gif) Hi, I am Antonio Pelusi
 
-  <p>   🎓  Master's Degree in Computer Science at <a href="https://www.unimore.it/">Unimore</a>, Modena (IT)</p>
+🎓 Master's Degree in Computer Science at [Unimore](https://www.unimore.it/), Modena, Italy
 
-  <p>   🕹️  Videogames enthusiast</p>
+🕹️ Videogames enthusiast
 
-  <p>   🎸  Guitar player</p>
+🎸 Guitar player
 
-  <p>   🌱  Browse my projects <a href="https://www.antoniopelusi.com/archives/">here</a>!</p>
-</div>
+🌱  Browse my projects [**here**](https://www.antoniopelusi.com/archives/)!
 
 ---
 

@@ -3,18 +3,6 @@ layout: default
 refactor: true
 ---
 
-<div>
-  <h2><img src="/assets/img/hi.gif" width="20" alt=""> Hi, I am Antonio Pelusi</h2>
-
-  <p>   🎓  Master's Degree in Computer Science at <a href="https://www.unimore.it/">Unimore</a>, Modena (IT)</p>
-
-  <p>   🕹️  Videogames enthusiast</p>
-
-  <p>   🎸  Guitar player</p>
-
-  <p>   🌱  Browse my projects <a href="https://www.antoniopelusi.com/archives/">here</a>!</p>
-</div>
-
 {% include lang.html %}
 
 {% assign pinned = site.posts | where: 'pin', 'true' %}
@@ -34,6 +22,20 @@ refactor: true
 {% else %}
   {% assign pinned_num = 0 %}
 {% endif %}
+
+## ![](/assets/img/hi.gif) Hi, I am Antonio Pelusi
+
+🎓 Master's Degree in Computer Science at [Unimore](https://www.unimore.it/), Modena, Italy
+
+🕹️ Videogames enthusiast
+
+🎸 Guitar player
+
+🌱 Browse my projects [**here**](https://www.antoniopelusi.com/archives/)
+
+📚 Click [**here**](https://www.antoniopelusi.com/about/) to know more about me!
+
+---
 
 <div id="post-list" class="flex-grow-1 px-xl-1">
   {% for post in posts %}
