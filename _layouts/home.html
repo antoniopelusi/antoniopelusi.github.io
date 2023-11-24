@@ -23,9 +23,6 @@ refactor: true
   {% assign pinned_num = 0 %}
 {% endif %}
 
-<!-- Get default posts -->
-
-
 
 <div id="post-list" class="flex-grow-1 px-xl-1">
   {% for post in posts %}
@@ -99,7 +96,3 @@ refactor: true
   {% endfor %}
 </div>
 <!-- #post-list -->
-
-{% if paginator.total_pages > 1 %}
-  {% include post-paginator.html %}
-{% endif %}
