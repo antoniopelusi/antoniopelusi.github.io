@@ -46,7 +46,6 @@ order: 4
 ## 🔧 Work experiences
 - [**Liferay**](https://www.liferay.com/): [Stripe](https://stripe.com/) integration into [Liferay Portal](https://github.com/liferay/liferay-portal).
 Find more [here](https://www.antoniopelusi.com/posts/liferay-portal/)
-
 - [**Random Power**](https://www.randompower.eu/): Research on Differential Privacy algorithms
 
 ---
