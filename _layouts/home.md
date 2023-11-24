@@ -3,6 +3,20 @@ layout: default
 refactor: true
 ---
 
+## ![](/assets/img/hi.gif) Hi, I am Antonio Pelusi
+
+🎓 Master's Degree in Computer Science at [Unimore](https://www.unimore.it/), Modena, Italy
+
+🕹️ Videogames enthusiast
+
+🎸 Guitar player
+
+🌱 Browse my projects [**here**](https://www.antoniopelusi.com/archives/)
+
+📚 Click [**here**](https://www.antoniopelusi.com/about/) to know more about me!
+
+---
+
 {% include lang.html %}
 
 {% assign pinned = site.posts | where: 'pin', 'true' %}
@@ -22,20 +36,6 @@ refactor: true
 {% else %}
   {% assign pinned_num = 0 %}
 {% endif %}
-
-## ![](/assets/img/hi.gif) Hi, I am Antonio Pelusi
-
-🎓 Master's Degree in Computer Science at [Unimore](https://www.unimore.it/), Modena, Italy
-
-🕹️ Videogames enthusiast
-
-🎸 Guitar player
-
-🌱 Browse my projects [**here**](https://www.antoniopelusi.com/archives/)
-
-📚 Click [**here**](https://www.antoniopelusi.com/about/) to know more about me!
-
----
 
 <div id="post-list" class="flex-grow-1 px-xl-1">
   {% for post in posts %}
