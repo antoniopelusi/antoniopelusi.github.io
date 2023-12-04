@@ -10,6 +10,6 @@ comments: false
 mermaid: false
 ---
 
-[GithubLink]: https://github.com/antoniopelusi/antoniopelusi.com
+<script async defer src="https://buttons.github.io/buttons.js"></script>
 
-[Personal website made with Jekyll.][GithubLink]
+<a class="github-button" href="https://github.com/antoniopelusi/antoniopelusi.com" data-color-scheme="no-preference: dark; light: light; dark: dark;" data-size="large" aria-label="Repository"></a>
