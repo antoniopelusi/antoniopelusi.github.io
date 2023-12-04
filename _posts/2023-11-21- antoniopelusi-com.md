@@ -12,4 +12,4 @@ mermaid: false
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-<a class="github-button" href="https://github.com/antoniopelusi/antoniopelusi.com" data-color-scheme="no-preference: dark; light: light; dark: dark;" data-size="large" aria-label="Repository"></a>
+<a class="github-button" href="https://github.com/antoniopelusi/antoniopelusi.com" data-color-scheme="no-preference: dark;" data-size="large" aria-label="Repository">Repository</a>
