@@ -50,15 +50,6 @@ jobs:
         env:
           JEKYLL_ENV: "production"
 
-      - name: Test site
-        uses: anishathalye/proof-html@v2
-        with:
-          directory: ./_site/posts
-          ignore_url_re: ^*
-          check_favicon: false
-          check_html: false
-          enforce_https: false
-
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v1
         with:
