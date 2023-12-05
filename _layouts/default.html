@@ -79,10 +79,9 @@ layout: compress
     <script type="module">
       import { followingDotCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
     
-      new fairyDustCursor();
+      new followingDotCursor();
       window.addEventListener("load", (event) => {
-      new cursoreffects.ghostCursor();
-      });
+      new cursoreffects.followingDotCursor({ color: ["#323232a6"] });      });
     </script>
 
     {% include js-selector.html %}
