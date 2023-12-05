@@ -76,7 +76,14 @@ layout: compress
 
     <!-- JavaScripts -->
 
-    <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+    <script type="module">
+      import { fairyDustCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
+    
+      new fairyDustCursor();
+      window.addEventListener("load", (event) => {
+      new cursoreffects.ghostCursor();
+      });
+    </script>
 
     {% include js-selector.html %}
 
@@ -85,5 +92,6 @@ layout: compress
     {% endif %}
 
     {% include_cached search-loader.html %}
+    
   </body>
 </html>
