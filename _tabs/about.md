@@ -26,8 +26,8 @@ order: 4
 ---
 
 ## 📚 Fields of study
-- Software developement
-- Mobile developement
+- Software development
+- Mobile development
 - Cybersecurity
 - Cryptography
 - Data Analytics
