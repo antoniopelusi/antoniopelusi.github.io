@@ -4,7 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-## ✨ Hi, I am Antonio Pelusi
+## [✨](http://www.staggeringbeauty.com/) Hi, I am Antonio Pelusi
 
 🎓 Master's Degree in Computer Science at [Unimore](https://www.unimore.it/), Modena, Italy
 
@@ -28,6 +28,7 @@ order: 4
 ## 📚 Fields of study
 - Software development
 - Mobile development
+- High Performance Computing
 - Cybersecurity
 - Cryptography
 - Data Analytics
@@ -49,6 +50,7 @@ Find more [here](https://www.antoniopelusi.com/posts/liferay-portal/)
 ---
 
 ## 🏷️ Programming languages
+<<<<<<< HEAD
 - <span style="color:#555555">●</span> C
 - <span style="color:#f34b7f">●</span> C++
 - <span style="color:#178701">●</span> C#
@@ -67,6 +69,25 @@ Find more [here](https://www.antoniopelusi.com/posts/liferay-portal/)
 - <span style="color:#3178c6">●</span> TypeScript
 - <span style="color:#6f1515">●</span> Ruby
 - <span style="color:#89e051">●</span> Shell
+=======
+- C
+- C++
+- CUDA
+- Java
+- Kotlin
+- Python
+- Perl
+- LISP
+- COBOL
+- HTML
+- Markdown
+- CSS
+- SCSS
+- JavaScript
+- Ruby
+- Databases (relational, graph based, document based)
+- Shell
+>>>>>>> 3d1c23611698ebba37994ee8ffa3309d2d32b71f
 
 ---
 
