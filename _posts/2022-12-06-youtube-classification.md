@@ -13,3 +13,4 @@ mermaid: false
 [GithubLink]: https://github.com/antoniopelusi/youtube-classification
 
 [Multiclass classification of Youtube videos using text mining.][GithubLink]
+{: .prompt-info }

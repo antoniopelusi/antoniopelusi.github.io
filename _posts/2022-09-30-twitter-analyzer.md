@@ -13,3 +13,4 @@ mermaid: false
 [GithubLink]: https://github.com/antoniopelusi/Twitter-Analyzer
 
 [A Twitter Scraper developed for the Software Project exam at Unimore Computer Science degree.][GithubLink]
+{: .prompt-info }

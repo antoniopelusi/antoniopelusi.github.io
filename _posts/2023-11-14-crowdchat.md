@@ -13,3 +13,4 @@ mermaid: false
 [GithubLink]: https://github.com/antoniopelusi/CrowdChat
 
 [A Client Server group chat that use the Java RMI interface.][GithubLink]
+{: .prompt-info }

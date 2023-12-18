@@ -13,3 +13,4 @@ mermaid: false
 [GithubLink]: https://github.com/antoniopelusi/File-Splitter
 
 [A simple tool for split, zip, and encrypt files.][GithubLink]
+{: .prompt-info }

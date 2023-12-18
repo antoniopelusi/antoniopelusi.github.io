@@ -13,3 +13,4 @@ mermaid: false
 [GithubLink]: https://github.com/antoniopelusi/liferay-portal-stripe
 
 [Stripe implementation in Liferay Portal Framework.][GithubLink]
+{: .prompt-info }

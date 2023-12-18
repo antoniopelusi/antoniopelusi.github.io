@@ -13,3 +13,4 @@ mermaid: false
 [GithubLink]: https://github.com/antoniopelusi/GamerAlley
 
 [A videogames-based social network made with Django.][GithubLink]
+{: .prompt-info }

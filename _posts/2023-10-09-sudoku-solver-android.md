@@ -13,3 +13,4 @@ mermaid: false
 [GithubLink]: https://github.com/antoniopelusi/sudoku-solver-android
 
 [A simple solver sudoku app for android devices.][GithubLink]
+{: .prompt-info }

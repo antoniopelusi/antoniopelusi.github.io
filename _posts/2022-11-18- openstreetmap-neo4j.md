@@ -13,3 +13,4 @@ mermaid: false
 [GithubLink]: https://github.com/antoniopelusi/openstreetmap-neo4j
 
 [App that implement different graph operation on Neo4j database that contain Open Street Map nodes.][GithubLink]
+{: .prompt-info }

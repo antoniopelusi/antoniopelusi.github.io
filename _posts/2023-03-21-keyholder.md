@@ -13,3 +13,4 @@ mermaid: false
 [GithubLink]: https://github.com/antoniopelusi/KeyHolder
 
 [Offline password manager.][GithubLink]
+{: .prompt-info }
