@@ -4,7 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-## [✨](http://www.staggeringbeauty.com/) Hi, I am Antonio Pelusi
+## ✨ Hi, I am Antonio Pelusi
 
 🎓 Master's Degree in Computer Science at [Unimore](https://www.unimore.it/), Modena, Italy
 
