@@ -12,5 +12,5 @@ mermaid: false
 
 [GithubLink]: https://github.com/antoniopelusi/Sudoku-Solver
 
-[Sudoku Solver based on recursive backtracking.][GithubLink]
+> [Sudoku Solver based on recursive backtracking.][GithubLink]
 {: .prompt-info }

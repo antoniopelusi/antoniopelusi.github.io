@@ -12,5 +12,5 @@ mermaid: false
 
 [GithubLink]: https://github.com/antoniopelusi/antoniopelusi.com
 
-[Personal website made with Jekyll.][GithubLink]
+> [Personal website made with Jekyll.][GithubLink]
 {: .prompt-info }

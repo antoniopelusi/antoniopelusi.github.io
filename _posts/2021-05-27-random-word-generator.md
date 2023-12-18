@@ -12,5 +12,5 @@ mermaid: false
 
 [GithubLink]: https://github.com/antoniopelusi/RandomWordGenerator
 
-[A random word generator app for Android.][GithubLink]
+> [A random word generator app for Android.][GithubLink]
 {: .prompt-info }
