@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - master
+
     paths-ignore:
       - .gitignore
       - README.md
@@ -31,9 +31,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          # submodules: true
-          # If using the 'assets' git submodule from Chirpy Starter, uncomment above
-          # (See: https://github.com/cotes2020/chirpy-starter/tree/main/assets)
 
       - name: Setup Pages
         id: pages
@@ -49,6 +46,15 @@ jobs:
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: "production"
+
+      - name: Test site
+        uses: anishathalye/proof-html@v2
+        with:
+          directory: ./_site/posts
+          #ignore_url_re: ^*
+          #check_favicon: false
+          #check_html: false
+          #enforce_https: false
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v1
