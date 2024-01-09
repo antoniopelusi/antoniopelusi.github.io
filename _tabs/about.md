@@ -52,22 +52,39 @@ Find more [here](https://www.antoniopelusi.com/posts/liferay-portal/)
 ## 🏷️ Programming languages
 
 <span style="color:#555555">●</span> C
+
 <span style="color:#f34b7f">●</span> C++
+
 <span style="color:#178701">●</span> C#
+
 <span style="color:#3b4e3a">●</span> Cuda
+
 <span style="color:#af7219">●</span> Java
+
 <span style="color:#a97bff">●</span> Kotlin
+
 <span style="color:#3573a6">●</span> Python
+
 <span style="color:#da5b0c">●</span> Jupyter Notebook
+
 <span style="color:#0398c3">●</span> Perl
+
 <span style="color:#3fb68c">●</span> LISP
+
 <span style="color:#9e6a04">●</span> COBOL
+
 <span style="color:#e44c27">●</span> HTML
+
 <span style="color:#543e7c">●</span> CSS
+
 <span style="color:#c6538c">●</span> SCSS
+
 <span style="color:#f1e15a">●</span> JavaScript
+
 <span style="color:#3178c6">●</span> TypeScript
+
 <span style="color:#6f1515">●</span> Ruby
+
 <span style="color:#89e051">●</span> Shell
 
 ---
