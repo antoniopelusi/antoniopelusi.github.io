@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - master
+
     paths-ignore:
       - .gitignore
       - README.md
@@ -42,7 +42,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3
+          ruby-version: 3.2
           bundler-cache: true
 
       - name: Build site
@@ -50,6 +50,9 @@ jobs:
         env:
           JEKYLL_ENV: "production"
 
+        - name: Test site
+          uses: anishathalye/proof-html@v2
+        
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v1
         with:
