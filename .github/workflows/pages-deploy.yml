@@ -56,7 +56,7 @@ jobs:
           directory: ./_site
           ignore_url_re: ^*
           check_favicon: false
-          #check_html: false
+          check_html: false
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v1
