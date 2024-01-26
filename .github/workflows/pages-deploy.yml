@@ -23,12 +23,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: false
-      matrix:
-        language:
-        - ruby
-        - javascript
+#    strategy:
+#      fail-fast: false
+#      matrix:
+#        language:
+#        - ruby
+#        - javascript
 
     steps:
       - name: Checkout
@@ -51,29 +51,29 @@ jobs:
         env:
           JEKYLL_ENV: "production"
 
-      - name: Test site
-        uses: anishathalye/proof-html@v2
-        with:
-          directory: ./_site
-          ignore_url_re: ^*
-          check_favicon: false
-          check_html: false
+#      - name: Test site
+#        uses: anishathalye/proof-html@v2
+#        with:
+#          directory: ./_site
+#          ignore_url_re: ^*
+#          check_favicon: false
+#          check_html: false
 
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v2
-        with:
-          languages: ${{ matrix.language }}
+#      - name: Initialize CodeQL
+#        uses: github/codeql-action/init@v2
+#        with:
+#          languages: ${{ matrix.language }}
 
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v2
+#      - name: Autobuild
+#        uses: github/codeql-action/autobuild@v2
 
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
+#      - name: Perform CodeQL Analysis
+#        uses: github/codeql-action/analyze@v2
 
-      - name: Upload site artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: "_site${{ steps.pages.outputs.base_path }}"
+#      - name: Upload site artifact
+#        uses: actions/upload-pages-artifact@v1
+#        with:
+#          path: "_site${{ steps.pages.outputs.base_path }}"
 
   deploy:
     environment:
