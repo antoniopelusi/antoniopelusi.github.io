@@ -70,10 +70,10 @@ jobs:
 #      - name: Perform CodeQL Analysis
 #        uses: github/codeql-action/analyze@v2
 
-#      - name: Upload site artifact
-#        uses: actions/upload-pages-artifact@v1
-#        with:
-#          path: "_site${{ steps.pages.outputs.base_path }}"
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: "_site${{ steps.pages.outputs.base_path }}"
 
   deploy:
     environment:
