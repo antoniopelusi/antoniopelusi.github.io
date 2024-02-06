@@ -1,5 +1,5 @@
 ---
-layout: compress
+layout: default
 icon: fas fa-info-circle
 order: 4
 ---
