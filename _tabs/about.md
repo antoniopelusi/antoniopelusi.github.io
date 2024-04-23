@@ -14,14 +14,16 @@ order: 4
 
 🌱  Browse my projects [**here**](https://www.antoniopelusi.com/archives/)
 
+📜 View my resume [**here**](https://drive.google.com/file/d/1QaucTh5GLyc2mATlXj_HgU22GSyG5Cgd/view?usp=sharing)
+
 ---
 
 ## 📖 Education
 - Scientific High School
 - Bachelor's Degree in Computer Science at <a href="https://www.unimore.it/">Unimore</a>
-- Master's Degree in Computer Science at <a href="https://www.unimore.it/">Unimore</a>
 - Post Graduate Degree: [CBI.Attract](https://attract-eu.com/)
-- Master in Blockchain: [MasterZ](https://www.masterzblockchain.com/)
+- Blockchain Training Program: [MasterZ](https://www.masterzblockchain.com/)
+- Master's Degree in Computer Science at <a href="https://www.unimore.it/">Unimore</a>
 
 ---
 
