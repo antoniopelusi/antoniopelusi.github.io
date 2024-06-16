@@ -4,7 +4,7 @@ author: antoniopelusi
 date: 2024-06-13 15:00:00 +0800
 categories: [Personal projects]
 tags: [<span style="color:#555555">●</span> C, <span style="color:#42781a">●</span> Makefile]
-pin: false
+pin: true
 math: false
 comments: false
 mermaid: false
