@@ -51,13 +51,11 @@ Find more [here](https://www.antoniopelusi.com/posts/liferay-portal/)
 
 ---
 
-## 🏷️ Programming languages
+## 🔖 Main Programming languages
 
 <span style="color:#555555">●</span> C
 <br>
 <span style="color:#f34b7f">●</span> C++
-<br>
-<span style="color:#178701">●</span> C#
 <br>
 <span style="color:#3b4e3a">●</span> Cuda
 <br>
@@ -67,6 +65,18 @@ Find more [here](https://www.antoniopelusi.com/posts/liferay-portal/)
 <br>
 <span style="color:#3573a6">●</span> Python
 <br>
+<span style="color:#e44c27">●</span> HTML
+<br>
+<span style="color:#543e7c">●</span> CSS
+<br>
+<span style="color:#f1e15a">●</span> JavaScript
+<br>
+
+---
+
+## 🏷️ Secondary Programming languages
+<span style="color:#178701">●</span> C#
+<br>
 <span style="color:#da5b0c">●</span> Jupyter Notebook
 <br>
 <span style="color:#0398c3">●</span> Perl
@@ -75,13 +85,7 @@ Find more [here](https://www.antoniopelusi.com/posts/liferay-portal/)
 <br>
 <span style="color:#9e6a04">●</span> COBOL
 <br>
-<span style="color:#e44c27">●</span> HTML
-<br>
-<span style="color:#543e7c">●</span> CSS
-<br>
 <span style="color:#c6538c">●</span> SCSS
-<br>
-<span style="color:#f1e15a">●</span> JavaScript
 <br>
 <span style="color:#3178c6">●</span> TypeScript
 <br>
@@ -103,6 +107,7 @@ Find more [here](https://www.antoniopelusi.com/posts/liferay-portal/)
 ## ⚙️ Back-end frameworks
 - Django
 - Jekyll
+- Raylib
 
 ---
 
