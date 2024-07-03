@@ -4,29 +4,36 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-## ✨ Hi, I am Antonio Pelusi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf_viewer.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <title>Antonio Pelusi</title>
+</head>
+<body>
 
-🎓 Master's Degree in Computer Science at [Unimore](https://www.unimore.it/), Modena, Italy
+<!-- Main Content -->
+<section>
+    <h2>✨ Hi, I am Antonio Pelusi</h2>
+    <p>🎓 Master's Degree in Computer Science at <a href="https://www.unimore.it/" target="_blank">Unimore</a>, Modena, Italy</p>
+    <p>🕹️ Videogames enthusiast</p>
+    <p>🎸 Guitar player</p>
+    <p>🌱  Browse my projects <a href="https://www.antoniopelusi.com/archives/" target="_blank"><strong>here</strong></a></p>
+</section>
 
-🕹️ Videogames enthusiast
+<hr>
 
-🎸 Guitar player
-
-🌱  Browse my projects [**here**](https://www.antoniopelusi.com/archives/)
-
----
-
-## 📜 Resume
-
-<center>
-<div id="pdf-container" style="width: 100%; height: 100vh;"></div>
-</center>
-
-<!-- Include il CSS di pdf.js -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf_viewer.min.css"/>
-
-<!-- Include il JS di pdf.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+<!-- Resume Section -->
+<section>
+    <h2>📜 Resume</h2>
+    <center>
+        <div id="pdf-container" style="width: 100%; height: 100vh;"></div>
+    </center>
+</section>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -42,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // Carica il PDF
     pdfjsLib.getDocument(url).promise.then(function(pdfDoc) {
         // Visualizza tutte le pagine
-        console.log("test");
         for (var pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
             (function(pageNum) {
                 pdfDoc.getPage(pageNum).then(function(page) {
@@ -65,18 +71,21 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
----
+<hr>
 
-## 📞 Contact me
+<!-- Contact Section -->
+<section>
+    <h2>📞 Contact me</h2>
+    <p><i class="fas fa-envelope" aria-hidden="true"></i> <strong>Email</strong>: <a href="mailto:antoniopelusi2000@gmail.com">antoniopelusi2000@gmail.com</a></p>
+    <p><i class="fab fa-linkedin" aria-hidden="true"></i> <strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/antoniopelusi/" target="_blank">@antoniopelusi</a></p>
+    <p><i class="fab fa-twitter" aria-hidden="true"></i> <strong>Twitter</strong>: <a href="https://twitter.com/antopelusi" target="_blank">@antopelusi</a></p>
+    <p><i class="fab fa-github" aria-hidden="true"></i> <strong>GitHub</strong>: <a href="https://github.com/antoniopelusi" target="_blank">@antoniopelusi</a></p>
+</section>
 
-<i class="fas fa-envelope" aria-hidden="true"></i> **Email**: [antoniopelusi2000@gmail.com](mailto:antoniopelusi2000@gmail.com")
+<hr>
 
-<i class="fab fa-linkedin" aria-hidden="true"></i> **LinkedIn**: [@antoniopelusi](https://www.linkedin.com/in/antoniopelusi/)
-
-<i class="fab fa-twitter" aria-hidden="true"></i> **Twitter**: [@antopelusi](https://twitter.com/antopelusi)
-
-<i class="fab fa-github" aria-hidden="true"></i> **GitHub**: [@antoniopelusi](https://github.com/antoniopelusi)
-
+<!-- SVG Section -->
+<section>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
      viewBox="-250 200 1300 600" style="margin-left:auto; margin-right:auto; display:block;">
     <defs>
@@ -203,5 +212,7 @@ document.addEventListener("DOMContentLoaded", function() {
         </g>
     </g>
 </svg>
-
+</section>
+</body>
+</html>
 
