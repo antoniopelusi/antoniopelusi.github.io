@@ -14,10 +14,17 @@ order: 4
 
 🌱  Browse my projects [**here**](https://www.antoniopelusi.com/archives/)
 
-📜 View my resume [**here**](https://drive.google.com/file/d/1QaucTh5GLyc2mATlXj_HgU22GSyG5Cgd/view?usp=sharing)
+<!--📜 View my resume [**here**](https://drive.google.com/file/d/1QaucTh5GLyc2mATlXj_HgU22GSyG5Cgd/view?usp=sharing)-->
 
 ---
 
+## 📜 Resume
+
+<center>
+<iframe src="https://drive.google.com/file/d/1QaucTh5GLyc2mATlXj_HgU22GSyG5Cgd/view?usp=sharing" width="400px" height="300px"></iframe>
+</center>
+
+<!--
 ## 📖 Education
 - Scientific High School
 - Bachelor's Degree in Computer Science at <a href="https://www.unimore.it/">Unimore</a>
@@ -120,7 +127,7 @@ Find more [here](https://www.antoniopelusi.com/posts/liferay-portal/)
 - CMake
 - Gradle
 - Maven
-
+-->
 ---
 
 ## 📞 Contact me
