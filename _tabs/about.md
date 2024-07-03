@@ -14,120 +14,14 @@ order: 4
 
 🌱  Browse my projects [**here**](https://www.antoniopelusi.com/archives/)
 
-<!--📜 View my resume [**here**](https://drive.google.com/file/d/1QaucTh5GLyc2mATlXj_HgU22GSyG5Cgd/view?usp=sharing)-->
-
 ---
 
 ## 📜 Resume
 
 <center>
-<iframe src="https://drive.google.com/file/d/1QaucTh5GLyc2mATlXj_HgU22GSyG5Cgd/preview" width="595px" height="1684px"></iframe>
+<iframe src="https://drive.google.com/file/d/1QaucTh5GLyc2mATlXj_HgU22GSyG5Cgd/preview" width="700px" height="1800px"></iframe>
 </center>
 
-<!--
-## 📖 Education
-- Scientific High School
-- Bachelor's Degree in Computer Science at <a href="https://www.unimore.it/">Unimore</a>
-- Post Graduate Degree: [CBI.Attract](https://attract-eu.com/)
-- Blockchain Training Program: [MasterZ](https://www.masterzblockchain.com/)
-- Master's Degree in Computer Science at <a href="https://www.unimore.it/">Unimore</a>
-
----
-
-## 📚 Fields of study
-- Software development
-- Mobile development
-- High Performance Computing
-- Cybersecurity
-- Cryptography
-- Data Analytics
-- Machine Learning
-- Text mining
-- Operative Research
-- Complex Systems
-- Servlet-based Web Apps
-- Distributed algorithms
-- Cloud and Edge computing
-
----
-
-## 🔧 Work experiences
-- [**Liferay**](https://www.liferay.com/): [Stripe](https://stripe.com/) integration into [Liferay Portal](https://github.com/liferay/liferay-portal).
-Find more [here](https://www.antoniopelusi.com/posts/liferay-portal/)
-- [**Random Power**](https://www.randompower.eu/): Research on Differential Privacy algorithms
-
----
-
-## 🔖 Main Programming languages
-
-<span style="color:#555555">●</span> C
-<br>
-<span style="color:#f34b7f">●</span> C++
-<br>
-<span style="color:#3b4e3a">●</span> Cuda
-<br>
-<span style="color:#af7219">●</span> Java
-<br>
-<span style="color:#a97bff">●</span> Kotlin
-<br>
-<span style="color:#3573a6">●</span> Python
-<br>
-<span style="color:#e44c27">●</span> HTML
-<br>
-<span style="color:#543e7c">●</span> CSS
-<br>
-<span style="color:#f1e15a">●</span> JavaScript
-<br>
-
----
-
-## 🏷️ Secondary Programming languages
-<span style="color:#178701">●</span> C#
-<br>
-<span style="color:#da5b0c">●</span> Jupyter Notebook
-<br>
-<span style="color:#0398c3">●</span> Perl
-<br>
-<span style="color:#3fb68c">●</span> LISP
-<br>
-<span style="color:#9e6a04">●</span> COBOL
-<br>
-<span style="color:#c6538c">●</span> SCSS
-<br>
-<span style="color:#3178c6">●</span> TypeScript
-<br>
-<span style="color:#6f1515">●</span> Ruby
-<br>
-<span style="color:#89e051">●</span> Shell
-
----
-
-## 🖼️ Front-end frameworks
-- Dear ImGui
-- SFML
-- JavaFX
-- Bootstrap
-- Django templates
-
----
-
-## ⚙️ Back-end frameworks
-- Django
-- Jekyll
-- Raylib
-
----
-
-## 🧰 Tools
-- Relational databases (SQL)
-- Non-relational databases (NoSQL: graph-based, document-based...)
-- Git
-- Docker
-- Make
-- CMake
-- Gradle
-- Maven
--->
 ---
 
 ## 📞 Contact me
