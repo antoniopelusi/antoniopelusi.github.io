@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Carica il PDF
     pdfjsLib.getDocument(url).promise.then(function(pdfDoc) {
         // Visualizza tutte le pagine
+        console.log("test");
         for (var pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
             (function(pageNum) {
                 pdfDoc.getPage(pageNum).then(function(page) {
