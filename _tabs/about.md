@@ -21,7 +21,7 @@ order: 4
 ## 📜 Resume
 
 <center>
-<iframe src="https://drive.google.com/viewerng/viewer?url=https://drive.google.com/file/d/1QaucTh5GLyc2mATlXj_HgU22GSyG5Cgd/view?pid=explorer&efh=false&a=v&chrome=false&embedded=true" width="400px" height="300px"></iframe>
+<iframe src="https://drive.google.com/file/d/1QaucTh5GLyc2mATlXj_HgU22GSyG5Cgd/preview" width="400px" height="300px"></iframe>
 </center>
 
 <!--
