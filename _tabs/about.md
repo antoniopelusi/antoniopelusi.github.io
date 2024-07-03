@@ -27,33 +27,40 @@ order: 4
 
 <!-- Include il JS di pdf.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+
 <script>
-// Link diretto al file PDF
-var url = 'https://drive.google.com/uc?export=download&id=1QaucTh5GLyc2mATlXj_HgU22GSyG5Cgd';
-// Inizializza pdf.js
-var pdfjsLib = window['pdfjs-dist/build/pdf'];
-// Impostazioni PDFViewer
-var container = document.getElementById('pdf-container');
-// Carica il PDF
-pdfjsLib.getDocument(url).promise.then(function(pdfDoc) {
-    // Visualizza tutte le pagine
-    for (var pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
-        (function(pageNum) {
-            pdfDoc.getPage(pageNum).then(function(page) {
-                var viewport = page.getViewport({ scale: 1 });
-                var canvas = document.createElement('canvas');
-                canvas.className = 'pdf-page';
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-                container.appendChild(canvas);
-                var renderContext = {
-                    canvasContext: canvas.getContext('2d'),
-                    viewport: viewport,
-                };
-                page.render(renderContext);
-            });
-        })(pageNum);
-    }
+document.addEventListener("DOMContentLoaded", function() {
+    // Link diretto al file PDF
+    var url = 'https://drive.google.com/uc?export=download&id=1QaucTh5GLyc2mATlXj_HgU22GSyG5Cgd';
+
+    // Inizializza pdf.js
+    var pdfjsLib = window['pdfjs-dist/build/pdf'];
+
+    // Impostazioni PDFViewer
+    var container = document.getElementById('pdf-container');
+
+    // Carica il PDF
+    pdfjsLib.getDocument(url).promise.then(function(pdfDoc) {
+        // Visualizza tutte le pagine
+        for (var pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
+            (function(pageNum) {
+                pdfDoc.getPage(pageNum).then(function(page) {
+                    var viewport = page.getViewport({ scale: 1 });
+                    var canvas = document.createElement('canvas');
+                    canvas.className = 'pdf-page';
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    container.appendChild(canvas);
+
+                    var renderContext = {
+                        canvasContext: canvas.getContext('2d'),
+                        viewport: viewport,
+                    };
+                    page.render(renderContext);
+                });
+            })(pageNum);
+        }
+    });
 });
 </script>
 
