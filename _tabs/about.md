@@ -40,30 +40,30 @@ order: 4
 </center>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
-    <script>
-        var url = 'https://drive.google.com/uc?export=download&id=1QaucTh5GLyc2mATlXj_HgU22GSyG5Cgd';
-        var pdfjsLib = window['pdfjs-dist/build/pdf'];
-        var container = document.getElementById('pdf-container');
-        pdfjsLib.getDocument(url).promise.then(function(pdfDoc) {
-            for (var pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
-                (function(pageNum) {
-                    pdfDoc.getPage(pageNum).then(function(page) {
-                        var viewport = page.getViewport({ scale: 1 });
-                        var canvas = document.createElement('canvas');
-                        canvas.className = 'pdf-page';
-                        canvas.height = viewport.height;
-                        canvas.width = viewport.width;
-                        container.appendChild(canvas);
-                        var renderContext = {
-                            canvasContext: canvas.getContext('2d'),
-                            viewport: viewport,
-                        };
-                        page.render(renderContext);
-                    });
-                })(pageNum);
-            }
-        });
-    </script>
+<script>
+    var url = 'https://drive.google.com/uc?export=download&id=1QaucTh5GLyc2mATlXj_HgU22GSyG5Cgd';
+    var pdfjsLib = window['pdfjs-dist/build/pdf'];
+    var container = document.getElementById('pdf-container');
+    pdfjsLib.getDocument(url).promise.then(function(pdfDoc) {
+        for (var pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
+            (function(pageNum) {
+                pdfDoc.getPage(pageNum).then(function(page) {
+                    var viewport = page.getViewport({ scale: 1 });
+                    var canvas = document.createElement('canvas');
+                    canvas.className = 'pdf-page';
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    container.appendChild(canvas);
+                    var renderContext = {
+                        canvasContext: canvas.getContext('2d'),
+                        viewport: viewport,
+                    };
+                    page.render(renderContext);
+                });
+            })(pageNum);
+        }
+    });
+</script>
 
 ---
 
