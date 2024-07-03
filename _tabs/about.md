@@ -4,6 +4,23 @@ icon: fas fa-info-circle
 order: 4
 ---
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Viewer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf_viewer.min.css"/>
+    <style>
+        #pdf-container {
+            width: 100%;
+            height: 100vh;
+            overflow: auto;
+        }
+        .pdf-page {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
 ## ✨ Hi, I am Antonio Pelusi
 
 🎓 Master's Degree in Computer Science at [Unimore](https://www.unimore.it/), Modena, Italy
@@ -18,45 +35,35 @@ order: 4
 
 ## 📜 Resume
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf_viewer.min.css"/>
-
 <center>
-<div id="pdf-container" style="width: 100%; height: 100vh;"></div>
+<div id="pdf-container"></div>
 </center>
 
-<script>
-  var url = 'https://drive.google.com/uc?export=download&id=1QaucTh5GLyc2mATlXj_HgU22GSyG5Cgd'; // Link diretto al PDF
-
-  // Inizializza pdf.js
-  var pdfjsLib = window['pdfjs-dist/build/pdf'];
-
-  // Crea un PDFViewerApplication per gestire la visualizzazione
-  var pdfViewer = new pdfjsLib.PDFViewer({
-    container: document.getElementById('pdf-container'),
-  });
-
-  // Carica il PDF
-  pdfjsLib.getDocument(url).promise.then(function(pdfDoc) {
-    // Visualizza tutte le pagine
-    for (var pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
-      pdfDoc.getPage(pageNum).then(function(page) {
-        var viewport = page.getViewport({ scale: 1 });
-        var canvas = document.createElement('canvas');
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
-        document.getElementById('pdf-container').appendChild(canvas);
-
-        var renderContext = {
-          canvasContext: canvas.getContext('2d'),
-          viewport: viewport,
-        };
-        page.render(renderContext);
-      });
-    }
-  });
-</script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <script>
+        var url = 'https://drive.google.com/uc?export=download&id=1QaucTh5GLyc2mATlXj_HgU22GSyG5Cgd';
+        var pdfjsLib = window['pdfjs-dist/build/pdf'];
+        var container = document.getElementById('pdf-container');
+        pdfjsLib.getDocument(url).promise.then(function(pdfDoc) {
+            for (var pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
+                (function(pageNum) {
+                    pdfDoc.getPage(pageNum).then(function(page) {
+                        var viewport = page.getViewport({ scale: 1 });
+                        var canvas = document.createElement('canvas');
+                        canvas.className = 'pdf-page';
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+                        container.appendChild(canvas);
+                        var renderContext = {
+                            canvasContext: canvas.getContext('2d'),
+                            viewport: viewport,
+                        };
+                        page.render(renderContext);
+                    });
+                })(pageNum);
+            }
+        });
+    </script>
 
 ---
 
