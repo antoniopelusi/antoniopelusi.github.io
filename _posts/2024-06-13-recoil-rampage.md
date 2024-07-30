@@ -14,3 +14,5 @@ mermaid: false
 
 > [Retro-shooter game made in C with Raylib][GithubLink]
 {: .prompt-info }
+
+<iframe frameborder="0" src="https://itch.io/embed/2776827?bg_color=222222&amp;fg_color=eeeeee&amp;link_color=327345&amp;border_color=363636" width="552" height="167"><a href="https://antoniopelusi.itch.io/recoil-rampage">Recoil Rampage by Antonio Pelusi</a></iframe>
