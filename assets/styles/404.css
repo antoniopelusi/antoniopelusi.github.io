@@ -1,0 +1,43 @@
+bsod {
+	width: 100%;
+	height: 100dvh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-image: linear-gradient(
+		0deg,
+		rgba(0, 0, 0, 0) 25%,
+		rgba(0, 0, 0, 0.33) 25%,
+		rgba(0, 0, 0, 0.33) 50%,
+		rgba(0, 0, 0, 0) 50%,
+		rgba(0, 0, 0, 0) 75%,
+		rgba(0, 0, 0, 0.33) 75%,
+		rgba(0, 0, 0, 0.33) 100%
+	);
+	background-size: 8px 8px;
+	background-color: #0000aa;
+}
+
+.error {
+	max-width: 400px;
+	padding: 20px;
+}
+
+.error a {
+	color: var(--white);
+	font-weight: bold;
+}
+
+.error-header {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.error-header span {
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 4px;
+	padding-right: 4px;
+	background: var(--white);
+	color: var(--sidebar);
+}

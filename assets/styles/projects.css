@@ -1,0 +1,57 @@
+main {
+	display: block !important;
+	overflow-y: auto !important;
+	height: 100dvh !important;
+	width: 100% !important;
+	padding: 20px !important;
+}
+
+.repo-list {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	list-style-type: none;
+	padding: 0;
+	padding-left: 35px;
+	padding-right: 35px;
+}
+
+.repo-list li {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	height: 45px;
+	width: 50%;
+	border-radius: 8px;
+}
+
+.repo-list a {
+	text-decoration: none;
+	font-size: 17px;
+	color: var(--white);
+	transition:
+		color 0.1s ease,
+		font-size 0.1s ease;
+}
+
+.repo-list li a:hover {
+	font-size: 19px;
+	color: var(--vintage);
+}
+
+.repo-list div {
+	width: 95%;
+}
+
+@media (max-width: 768px) {
+	.repo-list {
+		padding: 0;
+	}
+
+	.repo-list li {
+		width: 100%;
+	}
+}
