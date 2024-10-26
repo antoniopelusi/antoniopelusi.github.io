@@ -1,6 +1,5 @@
 color {
 	color: var(--bright-white);
-	font-weight: 500;
 }
 
 left {
@@ -24,12 +23,17 @@ left img {
 }
 
 left a {
-	text-decoration: none;
+	text-decoration-color: var(--white);
 }
 
 img.big {
 	width: 45px;
 	height: 45px;
-	margin-left: -7px;
-	padding-right: 7px;
+	padding: 0;
+}
+
+#nameFront {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }

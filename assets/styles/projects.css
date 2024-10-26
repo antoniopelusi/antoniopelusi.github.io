@@ -1,9 +1,15 @@
 main {
-	display: block !important;
-	overflow-y: auto !important;
-	height: 100dvh !important;
-	width: 100% !important;
-	padding: 20px !important;
+	display: block;
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: 100dvh;
+	width: 100%;
+	padding: 20px;
+}
+
+#repoListContainer {
+	display: flex;
+	flex-direction: column;
 }
 
 .repo-list {

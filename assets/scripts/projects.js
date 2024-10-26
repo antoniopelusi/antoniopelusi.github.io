@@ -19,49 +19,64 @@ async function simulateTerminal(text, blinkSpeed = 500) {
 simulateTerminal("Antonio Pelusi");
 
 async function fetchGitHubRepos() {
-	const username = "antoniopelusi";
-	const url = `https://api.github.com/users/${username}/repos`;
-	try {
-		const response = await fetch(url);
-		const repos = await response.json();
+	const response = await fetch("assets/data/repos.json");
 
-		repos.sort((a, b) => b.stargazers_count - a.stargazers_count);
+	const repos = await response.json();
 
-		const repoList = document.getElementById("repo-list");
-		repoList.innerHTML = "";
+	repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
-		repos.forEach((repo, index) => {
-			const listItem = document.createElement("li");
-			const container = document.createElement("div");
+	const repoList = document.getElementById("repo-list");
+	repoList.innerHTML = "";
 
-			container.style.display = "flex";
-			container.style.justifyContent = "space-between";
-			container.style.alignItems = "center";
+	repos.forEach((repo, index) => {
+		const listItem = document.createElement("li");
+		const container = document.createElement("div");
 
-			const link = document.createElement("a");
-			link.href = repo.html_url;
-			link.textContent = repo.name;
-			link.target = "_blank";
+		container.style.display = "flex";
+		container.style.justifyContent = "space-between";
+		container.style.alignItems = "center";
 
-			const stars = document.createElement("span");
-			stars.textContent = `⭐ ${repo.stargazers_count}`;
-			stars.style.marginLeft = "8px";
-			stars.style.color = "#FFD700";
+		const titleContainer = document.createElement("div");
+		titleContainer.style.display = "flex";
+		titleContainer.style.alignItems = "center";
+		titleContainer.style.justifyContent = "left";
 
-			if (index % 2 === 0) {
-				listItem.style.background = "#212124";
-			} else {
-				listItem.style.backgroundColor = "#1b1b1e";
-			}
+		const image = document.createElement("img");
 
-			container.appendChild(link);
-			container.appendChild(stars);
-			listItem.appendChild(container);
-			repoList.appendChild(listItem);
-		});
-	} catch (error) {
-		console.error("Errore nel recupero dei repository:", error);
-	}
+		if (index === 0) {
+			image.src = "assets/icons/listicon/listStart.png";
+		} else if (index === repos.length - 1) {
+			image.src = "assets/icons/listicon/listEnd.png";
+		} else {
+			image.src = "assets/icons/listicon/listItem.png";
+		}
+
+		image.style.height = "45px";
+
+		const link = document.createElement("a");
+		link.href = repo.html_url;
+		link.textContent = repo.name;
+		link.target = "_blank";
+
+		const stars = document.createElement("span");
+		stars.textContent = `⭐ ${repo.stargazers_count}`;
+		stars.style.color = "#FFD700";
+		stars.style.whiteSpace = "nowrap";
+
+		if (index % 2 === 0) {
+			listItem.style.background = "#212124";
+		} else {
+			listItem.style.backgroundColor = "#1b1b1e";
+		}
+
+		titleContainer.appendChild(image);
+		titleContainer.appendChild(link);
+
+		container.appendChild(titleContainer);
+		container.appendChild(stars);
+		listItem.appendChild(container);
+		repoList.appendChild(listItem);
+	});
 }
 
 window.onload = fetchGitHubRepos;

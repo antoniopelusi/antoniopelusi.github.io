@@ -1,6 +1,14 @@
-.SILENT: run
+.SILENT: run fetch
 
 all: run
 
 run:
-	python3 -m http.server & firefox http://0.0.0.0:8000/ &
+	python3 -m http.server
+
+fetch:
+	python3 fetch.py
+
+push:
+	git add .
+	git commit -m "Update"
+	git push
