@@ -20,60 +20,87 @@ async function simulateTerminal(text, blinkSpeed = 500) {
 // Inizializzazione del terminale
 simulateTerminal("Antonio Pelusi");
 
-// Impostazione della libreria pdf.js
-pdfjsLib.GlobalWorkerOptions.workerSrc = "assets/scripts/pdf.worker.min.js";
-const pdfUrl = "assets/data/cv.pdf";
+// Funzione per simulare il terminale
+async function simulateTerminal(text, blinkSpeed = 500) {
+    const terminal = document.getElementById("name");
+    let isCursorVisible = false;
 
-// Funzione per renderizzare la pagina PDF
-function renderPage(pdf, pageNum, canvasId, scale) {
-    pdf.getPage(pageNum).then((page) => {
-        const cvDiv = document.getElementById("cvContainer");
-        const viewport = page.getViewport({ scale });
-        const canvas = document.getElementById(canvasId);
-        const context = canvas.getContext("2d");
+    async function updateTerminal(content) {
+        terminal.innerText = content + (isCursorVisible ? "_" : "");
+    }
 
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
+    async function blink() {
+        isCursorVisible = !isCursorVisible;
+        updateTerminal(text);
+    }
 
-        const renderContext = {
-            canvasContext: context,
-            viewport: viewport,
-        };
-        page.render(renderContext);
-    });
+    updateTerminal(text);
+
+    setInterval(blink, blinkSpeed);
 }
 
-// Funzione per renderizzare tutte le pagine del PDF
-function renderAllPages(pdf, scale) {
-    const numPages = pdf.numPages;
-    const cvDiv = document.getElementById("cvContainer");
-    cvDiv.innerHTML = ""; // Svuota il contenitore esistente
+// Inizializzazione del terminale
+simulateTerminal("Antonio Pelusi");
 
-    for (let i = 1; i <= numPages; i++) {
+// Impostazione della libreria pdf.js
+pdfjsLib.GlobalWorkerOptions.workerSrc = "assets/scripts/pdf.worker.min.js";
+const pdfUrl = "assets/data/cv.pdf"; // Percorso del tuo PDF
+
+let pdfLoaded = false; // Variabile per controllare se il PDF è già stato caricato
+let resizeTimeout; // Timeout per il ridimensionamento
+
+// Funzione per caricare e visualizzare il PDF
+async function loadAndRenderPDF() {
+    if (pdfLoaded) return; // Se il PDF è già stato caricato, esci dalla funzione
+
+    pdfLoaded = true; // Imposta la variabile per indicare che il PDF è in fase di caricamento
+    const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+    const numPages = pdf.numPages;
+
+    // Funzione per calcolare la scala in base alla larghezza disponibile
+    const calculateScale = (page) => {
+        const cvDiv = document.getElementById("cvContainer");
+        const width = cvDiv.clientWidth; // Ottieni la larghezza del contenitore
+        const viewport = page.getViewport({ scale: 1 }); // Ottieni il viewport originale
+        return width / viewport.width; // Calcola la scala
+    };
+
+    // Funzione per renderizzare una pagina specifica
+    const renderPage = async (pageNum) => {
+        const page = await pdf.getPage(pageNum);
+        const scale = calculateScale(page); // Calcola la scala per la pagina corrente
+        const viewport = page.getViewport({ scale });
         const canvas = document.createElement("canvas");
-        canvas.id = `pdf-canvas${i}`;
-        cvDiv.appendChild(canvas);
-        renderPage(pdf, i, canvas.id, scale);
+        const context = canvas.getContext("2d");
+
+        // Imposta le dimensioni del canvas
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+        document.getElementById("cvContainer").appendChild(canvas); // Aggiungi il canvas al contenitore
+
+        // Renderizza la pagina sul canvas
+        await page.render({
+            canvasContext: context,
+            viewport: viewport,
+        }).promise;
+    };
+
+    // Renderizza tutte le pagine del PDF
+    for (let i = 1; i <= numPages; i++) {
+        await renderPage(i);
     }
 }
 
-// Funzione per aggiornare la scala del PDF al ridimensionamento della finestra
-function updateScale(pdf) {
-    const cvDiv = document.getElementById("cvContainer");
-    const width = cvDiv.clientWidth; // Ottieni la larghezza del contenitore
+// Carica e visualizza il PDF all'avvio
+loadAndRenderPDF();
 
-    // Calcola la scala in base alla larghezza del contenitore e alla larghezza della pagina
-    pdf.getPage(1).then((page) => {
-        const viewport = page.getViewport({ scale: 1 });
-        const scale = width / viewport.width; // Calcola la scala per massimizzare la larghezza
-        renderAllPages(pdf, scale);
-    });
-}
+// Ricarica il PDF quando la finestra viene ridimensionata
+window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout); // Cancella eventuali timeout esistenti
 
-// Caricamento del documento PDF
-pdfjsLib.getDocument(pdfUrl).promise.then((pdf) => {
-    updateScale(pdf); // Inizializza la scala
-
-    // Aggiungi l'evento di resize per aggiornare il PDF
-    window.addEventListener("resize", () => updateScale(pdf));
+    resizeTimeout = setTimeout(() => {
+        document.getElementById("cvContainer").innerHTML = ""; // Svuota il contenitore
+        pdfLoaded = false; // Resetta la variabile per permettere un nuovo caricamento del PDF
+        loadAndRenderPDF(); // Ricarica il PDF
+    }, 300); // Attendi 300ms dopo l'ultimo ridimensionamento prima di ricaricare
 });

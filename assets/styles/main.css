@@ -274,7 +274,7 @@ main br {
 
 @media (max-width: 768px) {
 	main {
-		padding: 3dvh;
+		padding: 3dvh !important;
 	}
 
 	#closeBtn {
