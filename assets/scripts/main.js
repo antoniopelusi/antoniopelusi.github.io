@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		openBtn.classList.remove("inactive");
 	});
 
-	main.addEventListener("pointerdown", function () {
+	main.addEventListener("click", function () {
 		if (sidebar.classList.contains("open")) {
 			sidebar.classList.remove("open");
 			openBtn.classList.remove("inactive");
