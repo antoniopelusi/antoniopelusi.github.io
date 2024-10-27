@@ -1,4 +1,4 @@
-.SILENT: run fetch
+.SILENT: run fetch push
 
 all: run
 
