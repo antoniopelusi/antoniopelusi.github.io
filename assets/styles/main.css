@@ -144,11 +144,13 @@ main br {
 	opacity: 0;
 	pointer-events: none;
 	transition: opacity 0.3s ease;
+	width: 40px;
+	height: 30px;
 }
 
 #openBtn {
 	position: fixed;
-	top: 24px;
+	top: 20px;
 	left: 20px;
 	transition: opacity 0.3s ease;
 	transition: color 0.3s ease;
@@ -159,6 +161,8 @@ main br {
 	color: var(--white);
 	border: none;
 	cursor: pointer;
+	width: 40px;
+	height: 30px;
 }
 
 #openBtn.inactive {
