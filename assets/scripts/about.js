@@ -1,42 +1,20 @@
 // Funzione per simulare il terminale
 async function simulateTerminal(text, blinkSpeed = 500) {
-    const terminal = document.getElementById("name");
-    let isCursorVisible = false;
+	const terminal = document.getElementById("name");
+	let isCursorVisible = false;
 
-    async function updateTerminal(content) {
-        terminal.innerText = content + (isCursorVisible ? "_" : "");
-    }
+	async function updateTerminal(content) {
+		terminal.innerText = content + (isCursorVisible ? "_" : "");
+	}
 
-    async function blink() {
-        isCursorVisible = !isCursorVisible;
-        updateTerminal(text);
-    }
+	async function blink() {
+		isCursorVisible = !isCursorVisible;
+		updateTerminal(text);
+	}
 
-    updateTerminal(text);
+	updateTerminal(text);
 
-    setInterval(blink, blinkSpeed);
-}
-
-// Inizializzazione del terminale
-simulateTerminal("Antonio Pelusi");
-
-// Funzione per simulare il terminale
-async function simulateTerminal(text, blinkSpeed = 500) {
-    const terminal = document.getElementById("name");
-    let isCursorVisible = false;
-
-    async function updateTerminal(content) {
-        terminal.innerText = content + (isCursorVisible ? "_" : "");
-    }
-
-    async function blink() {
-        isCursorVisible = !isCursorVisible;
-        updateTerminal(text);
-    }
-
-    updateTerminal(text);
-
-    setInterval(blink, blinkSpeed);
+	setInterval(blink, blinkSpeed);
 }
 
 // Inizializzazione del terminale
@@ -44,63 +22,40 @@ simulateTerminal("Antonio Pelusi");
 
 // Impostazione della libreria pdf.js
 pdfjsLib.GlobalWorkerOptions.workerSrc = "assets/scripts/pdf.worker.min.js";
-const pdfUrl = "assets/data/cv.pdf"; // Percorso del tuo PDF
 
-let pdfLoaded = false; // Variabile per controllare se il PDF è già stato caricato
-let resizeTimeout; // Timeout per il ridimensionamento
+const url = "assets/data/cv.pdf";
+const container = document.getElementById('cvContainer');
 
-// Funzione per caricare e visualizzare il PDF
-async function loadAndRenderPDF() {
-    if (pdfLoaded) return; // Se il PDF è già stato caricato, esci dalla funzione
+// Funzione per caricare e visualizzare tutte le pagine del PDF
+pdfjsLib.getDocument(url).promise.then(pdf => {
+    const numPages = pdf.numPages;  // Ottieni il numero di pagine
 
-    pdfLoaded = true; // Imposta la variabile per indicare che il PDF è in fase di caricamento
-    const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
-    const numPages = pdf.numPages;
+    // Itera su tutte le pagine
+    for (let pageNumber = 1; pageNumber <= numPages; pageNumber++) {
+        pdf.getPage(pageNumber).then(page => {
+            const viewport = page.getViewport({ scale: 3 });
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
 
-    // Funzione per calcolare la scala in base alla larghezza disponibile
-    const calculateScale = (page) => {
-        const cvDiv = document.getElementById("cvContainer");
-        const width = cvDiv.clientWidth; // Ottieni la larghezza del contenitore
-        const viewport = page.getViewport({ scale: 1 }); // Ottieni il viewport originale
-        return width / viewport.width; // Calcola la scala
-    };
+            // Imposta il canvas come figlio del contenitore
+            canvas.id = `pdf-canvas-${pageNumber}`;
+            container.appendChild(canvas);
 
-    // Funzione per renderizzare una pagina specifica
-    const renderPage = async (pageNum) => {
-        const page = await pdf.getPage(pageNum);
-        const scale = calculateScale(page); // Calcola la scala per la pagina corrente
-        const viewport = page.getViewport({ scale });
-        const canvas = document.createElement("canvas");
-        const context = canvas.getContext("2d");
+            // Configura il canvas per essere responsive
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            canvas.style.width = '100%';
+            canvas.style.marginBottom = '0px';  // Spaziatura tra le pagine
 
-        // Imposta le dimensioni del canvas
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
-        document.getElementById("cvContainer").appendChild(canvas); // Aggiungi il canvas al contenitore
-
-        // Renderizza la pagina sul canvas
-        await page.render({
-            canvasContext: context,
-            viewport: viewport,
-        }).promise;
-    };
-
-    // Renderizza tutte le pagine del PDF
-    for (let i = 1; i <= numPages; i++) {
-        await renderPage(i);
+            // Renderizza la pagina
+            page.render({
+                canvasContext: context,
+                viewport: viewport
+            });
+        }).catch(error => {
+            console.error(`Errore durante il caricamento della pagina ${pageNumber}:`, error);
+        });
     }
-}
-
-// Carica e visualizza il PDF all'avvio
-loadAndRenderPDF();
-
-// Ricarica il PDF quando la finestra viene ridimensionata
-window.addEventListener("resize", () => {
-    clearTimeout(resizeTimeout); // Cancella eventuali timeout esistenti
-
-    resizeTimeout = setTimeout(() => {
-        document.getElementById("cvContainer").innerHTML = ""; // Svuota il contenitore
-        pdfLoaded = false; // Resetta la variabile per permettere un nuovo caricamento del PDF
-        loadAndRenderPDF(); // Ricarica il PDF
-    }, 300); // Attendi 300ms dopo l'ultimo ridimensionamento prima di ricaricare
+}).catch(error => {
+    console.error('Errore durante il caricamento del PDF:', error);
 });

@@ -7,18 +7,25 @@ main {
 	padding: 0px !important;
 }
 
-#cvContainer {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	filter: invert(0.9) sepia(0.2) hue-rotate(200deg);
-	max-width: 1000px;
-	
-}
-
 centered {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	width: 100%;
+}
+
+#cvContainer {
+	display: block;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	filter: invert(0.9) sepia(0.2) hue-rotate(200deg);
+	height: 100dvh;
+	width: 80%;
+}
+
+@media (max-width: 768px) {
+	#cvContainer {
+		width: 100%;
+	}
 }
