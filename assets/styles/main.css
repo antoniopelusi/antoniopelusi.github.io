@@ -181,6 +181,12 @@ main br {
 #pageTitle {
 	color: var(--vintage);
 	text-align: center;
+	font-size: 28px;
+	font-weight: normal;
+}
+
+.hidden {
+	display: none;
 }
 
 .rounded-link {
