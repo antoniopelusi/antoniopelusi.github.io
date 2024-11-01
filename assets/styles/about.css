@@ -15,13 +15,22 @@ centered {
 }
 
 #cvContainer {
+	z-index: 10;
 	display: block;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	filter: invert(0.9) sepia(0.2) hue-rotate(200deg);
-	height: 100dvh;
 	width: 80%;
+}
+
+#download {
+	z-index: 100;
+	color: var(--white);
+	background-color: var(--button);
+	width: 100px;
+	height: 10px;
+	margin-bottom: 50px;
 }
 
 @media (max-width: 768px) {
