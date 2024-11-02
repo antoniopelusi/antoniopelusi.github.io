@@ -1,5 +1,8 @@
 User-agent: *
 
-Allow: /
+Disallow: /
+
+Allow: /projects
+Allow: /about
 
 Sitemap: https://www.antoniopelusi.com/sitemap.xml
