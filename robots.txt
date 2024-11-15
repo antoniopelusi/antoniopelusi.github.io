@@ -4,5 +4,6 @@ Disallow: /
 Allow: /$
 Allow: /projects$
 Allow: /about$
+Allow: /sitemap.xml
 
 Sitemap: https://www.antoniopelusi.com/sitemap.xml
