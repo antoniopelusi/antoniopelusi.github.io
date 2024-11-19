@@ -19,7 +19,7 @@ async function simulateTerminal(text, blinkSpeed = 500) {
 simulateTerminal("Antonio Pelusi");
 
 async function fetchGitHubRepos() {
-	const response = await fetch("assets/data/repos.json");
+	const response = await fetch("/assets/data/repos.json");
 
 	const repos = await response.json();
 
@@ -44,11 +44,11 @@ async function fetchGitHubRepos() {
 		const image = document.createElement("img");
 
 		if (index === 0) {
-			image.src = "assets/icons/listicon/listStart.png";
+			image.src = "/assets/icons/listicon/listStart.png";
 		} else if (index === repos.length - 1) {
-			image.src = "assets/icons/listicon/listEnd.png";
+			image.src = "/assets/icons/listicon/listEnd.png";
 		} else {
-			image.src = "assets/icons/listicon/listItem.png";
+			image.src = "/assets/icons/listicon/listItem.png";
 		}
 
 		image.style.height = "45px";

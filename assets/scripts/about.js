@@ -21,9 +21,9 @@ async function simulateTerminal(text, blinkSpeed = 500) {
 simulateTerminal("Antonio Pelusi");
 
 // Impostazione della libreria pdf.js
-pdfjsLib.GlobalWorkerOptions.workerSrc = "assets/scripts/pdf.worker.min.js";
+pdfjsLib.GlobalWorkerOptions.workerSrc = "/assets/scripts/pdf.worker.min.js";
 
-const url = "assets/data/cv.pdf";
+const url = "/assets/data/cv.pdf";
 const container = document.getElementById('cvContainer');
 
 // Funzione per caricare e visualizzare tutte le pagine del PDF
