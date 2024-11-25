@@ -64,7 +64,6 @@ async function fetchGitHubRepos() {
 		languagesContainer.style.gap = "5px";
 		languagesContainer.style.marginLeft = "auto";
 
-		// Aggiungi i linguaggi come pallini solo se hanno un colore assegnato
 		repo.languages.forEach((language) => {
 			const color = getLanguageColor(language);
 			if (color !== null) {
@@ -73,7 +72,7 @@ async function fetchGitHubRepos() {
 				languageDot.style.height = "12px";
 				languageDot.style.borderRadius = "50%";
 				languageDot.style.backgroundColor = color;
-				languageDot.title = language;
+				languageDot.setAttribute('language', language);
 				languageDot.className = "language-dot";
 				languagesContainer.appendChild(languageDot);
 			}
