@@ -40,6 +40,7 @@ async function fetchGitHubRepos() {
 		titleContainer.style.display = "flex";
 		titleContainer.style.alignItems = "center";
 		titleContainer.style.justifyContent = "left";
+		titleContainer.style.wordBreak = "break-all";
 
 		const image = document.createElement("img");
 
@@ -58,10 +59,25 @@ async function fetchGitHubRepos() {
 		link.textContent = repo.name;
 		link.target = "_blank";
 
-		const stars = document.createElement("span");
-		stars.textContent = `⭐ ${repo.stargazers_count}`;
-		stars.style.color = "#FFD700";
-		stars.style.whiteSpace = "nowrap";
+		const languagesContainer = document.createElement("div");
+		languagesContainer.style.display = "flex";
+		languagesContainer.style.gap = "5px";
+		languagesContainer.style.marginLeft = "auto";
+
+		// Aggiungi i linguaggi come pallini solo se hanno un colore assegnato
+		repo.languages.forEach((language) => {
+			const color = getLanguageColor(language);
+			if (color !== null) {
+				const languageDot = document.createElement("div");
+				languageDot.style.width = "12px";
+				languageDot.style.height = "12px";
+				languageDot.style.borderRadius = "50%";
+				languageDot.style.backgroundColor = color;
+				languageDot.title = language;
+				languageDot.className = "language-dot";
+				languagesContainer.appendChild(languageDot);
+			}
+		});
 
 		if (index % 2 === 0) {
 			listItem.style.background = "#212124";
@@ -73,10 +89,38 @@ async function fetchGitHubRepos() {
 		titleContainer.appendChild(link);
 
 		container.appendChild(titleContainer);
-		container.appendChild(stars);
+		container.appendChild(languagesContainer);
 		listItem.appendChild(container);
 		repoList.appendChild(listItem);
 	});
+}
+
+function getLanguageColor(language) {
+	const colors = {
+    "C": "#555555",
+    "C++": "#f34b7f",
+    "Rust": "#dea584",
+    "C#": "#178701",
+    "Cuda": "#3b4e3a",
+    "Java": "#af7219",
+    "Kotlin": "#a97bff",
+    "Python": "#3573a6",
+    "Jupyter Notebook": "#da5b0c",
+    "Perl": "#0398c3",
+    "LISP": "#3fb68c",
+    "COBOL": "#9e6a04",
+    "HTML": "#e44c27",
+    "CSS": "#543e7c",
+    "SCSS": "#c6538c",
+    "JavaScript": "#f1e15a",
+    "TypeScript": "#3178c6",
+    "Ruby": "#6f1515",
+    "Makefile": "#42781a",
+    "CMake": "#da3434",
+    "Shell": "#89e051",
+    "Dockerfile": "#394d54"
+};
+	return colors[language] || null;
 }
 
 window.onload = fetchGitHubRepos;

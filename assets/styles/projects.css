@@ -16,7 +16,7 @@ main {
 	width: 90%;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	list-style-type: none;
 	padding: 0;
@@ -30,12 +30,19 @@ main {
 	align-items: center;
 	justify-content: center;
 	height: 45px;
-	width: 50%;
+	width: 70%;
 	border-radius: 8px;
+}
+
+.repo-list li div div:last-child {
+    display: flex;
+    gap: 5px; /* Spaziatura tra i pallini */
+    justify-content: flex-end; /* Non strettamente necessario */
 }
 
 .repo-list a {
 	text-decoration: none;
+	text-align: left;
 	font-size: 17px;
 	color: var(--white);
 	transition:
@@ -44,12 +51,37 @@ main {
 }
 
 .repo-list li a:hover {
-	font-size: 19px;
 	color: var(--vintage);
 }
 
 .repo-list div {
 	width: 95%;
+}
+
+.language-dot {
+    position: relative; /* Necessario per posizionare il tooltip */
+    cursor: pointer;
+}
+
+.language-dot::after {
+    content: attr(title); /* Mostra il contenuto dell'attributo title */
+    position: absolute;
+    bottom: 150%; /* Posiziona sopra il pallino */
+    left: 50%; /* Centra orizzontalmente */
+    transform: translateX(-50%);
+    background-color: #333; /* Sfondo del tooltip */
+    color: #fff; /* Testo leggibile */
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap; /* Impedisce la rottura su più righe */
+    opacity: 0; /* Nasconde il tooltip di default */
+    pointer-events: none; /* Previene interferenze con l'hover */
+    transition: opacity 0.2s ease-in-out; /* Aggiunge una transizione */
+}
+
+.language-dot:hover::after {
+    opacity: 1; /* Mostra il tooltip istantaneamente */
 }
 
 @media (max-width: 768px) {
