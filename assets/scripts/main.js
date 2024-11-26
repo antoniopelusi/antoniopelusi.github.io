@@ -20,4 +20,28 @@ document.addEventListener("DOMContentLoaded", function () {
 			openBtn.classList.remove("inactive");
 		}
 	});
+
+	let startX = 0;
+	let endX = 0;
+
+	main.addEventListener("touchstart", (e) => {
+		startX = e.touches[0].clientX;
+	});
+
+	main.addEventListener("touchend", (e) => {
+		endX = e.changedTouches[0].clientX;
+		handleSwipe();
+	});
+
+	function handleSwipe() {
+		const swipeDistance = endX - startX;
+
+		if (swipeDistance > 50) {
+			sidebar.classList.add("open");
+			openBtn.classList.add("inactive");
+		} else if (swipeDistance < -50) {
+			sidebar.classList.remove("open");
+			openBtn.classList.remove("inactive");
+		}
+	}
 });
