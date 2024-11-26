@@ -45,46 +45,4 @@ document.addEventListener("DOMContentLoaded", function () {
 			openBtn.classList.remove("inactive");
 		}
 	}
-
-	const filesToPreload = [
-		"/assets/icons/favicon/apple-touch-icon.png",
-		"/assets/icons/favicon/favicon-96x96.png",
-		"/assets/icons/favicon/favicon.ico",
-		"/assets/icons/favicon/favicon.svg",
-		"/assets/icons/favicon/site.webmanifest",
-		"/assets/icons/favicon/web-app-manifest-192x192.png",
-		"/assets/icons/favicon/web-app-manifest-512x512.png",
-		"/assets/icons/listicon/listEnd.png",
-		"/assets/icons/listicon/listItem.png",
-		"/assets/icons/listicon/listStart.png",
-		"/assets/icons/w98_catalog.ico",
-		"/assets/icons/w98_certificate.ico",
-		"/assets/icons/w98_connected_world.ico",
-		"/assets/icons/w98_desktop_w95.ico",
-		"/assets/icons/w98_envelope_open_sheet.ico",
-		"/assets/icons/w98_globe_map.ico",
-		"/assets/icons/w98_help_book_big.ico",
-		"/assets/icons/w98_msie1.ico",
-		"/assets/icons/w98_package.ico",
-		"/assets/icons/w98_program_manager.ico",
-		"/assets/icons/w98_tree.ico",
-
-		"/assets/data/cv.pdf",
-		"/assets/data/repos.json",
-	];
-
-	async function preloadFiles() {
-		try {
-			// Precarica tutti i file
-			const fetchPromises = filesToPreload.map((file) =>
-				fetch(file, { cache: "no-cache" }),
-			);
-			await Promise.all(fetchPromises);
-		} catch (err) {
-			console.error("Error during pre-fetch:", err);
-		}
-	}
-
-	// Avvia il precaricamento al caricamento della pagina
-	window.addEventListener("load", preloadFiles);
 });
