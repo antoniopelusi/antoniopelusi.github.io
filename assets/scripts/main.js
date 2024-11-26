@@ -2,7 +2,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	const sidebar = document.getElementById("sidebar");
 	const openBtn = document.getElementById("openBtn");
 	const closeBtn = document.getElementById("closeBtn");
+	const body = document.querySelector("body");
 	const main = document.querySelector("main");
+
 
 	openBtn.addEventListener("click", function () {
 		sidebar.classList.add("open");
@@ -24,11 +26,11 @@ document.addEventListener("DOMContentLoaded", function () {
 	let startX = 0;
 	let endX = 0;
 
-	main.addEventListener("touchstart", (e) => {
+	body.addEventListener("touchstart", (e) => {
 		startX = e.touches[0].clientX;
 	});
 
-	main.addEventListener("touchend", (e) => {
+	body.addEventListener("touchend", (e) => {
 		endX = e.changedTouches[0].clientX;
 		handleSwipe();
 	});
