@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	const body = document.querySelector("body");
 	const main = document.querySelector("main");
 
-
 	openBtn.addEventListener("click", function () {
 		sidebar.classList.add("open");
 		openBtn.classList.add("inactive");
@@ -46,4 +45,20 @@ document.addEventListener("DOMContentLoaded", function () {
 			openBtn.classList.remove("inactive");
 		}
 	}
+
+	async function preloadResources() {
+		try {
+			await fetch("/assets/data/cv.pdf", { cache: "no-cache" });
+			await fetch("/assets/data/repos.json", { cache: "no-cache" });
+			await fetch("/assets/icons/listicon/listStart.png", {
+				cache: "no-cache",
+			});
+			await fetch("/assets/icons/listicon/listItem.png", { cache: "no-cache" });
+			await fetch("/assets/icons/listicon/listEnd.png", { cache: "no-cache" });
+		} catch (err) {
+			console.error("Errore nel precaricamento:", err);
+		}
+	}
+
+	window.addEventListener("load", preloadResources);
 });
