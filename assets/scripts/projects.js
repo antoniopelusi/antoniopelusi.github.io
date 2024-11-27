@@ -52,7 +52,7 @@ async function fetchGitHubRepos() {
 			image.src = "/assets/icons/listicon/listItem.png";
 		}
 
-		image.style.height = "45px";
+		image.style.height = "50px";
 
 		const link = document.createElement("a");
 		link.href = repo.html_url;
@@ -72,7 +72,7 @@ async function fetchGitHubRepos() {
 				languageDot.style.height = "12px";
 				languageDot.style.borderRadius = "50%";
 				languageDot.style.backgroundColor = color;
-				languageDot.setAttribute('language', language);
+				languageDot.setAttribute("language", language);
 				languageDot.className = "language-dot";
 				languagesContainer.appendChild(languageDot);
 			}
@@ -96,29 +96,29 @@ async function fetchGitHubRepos() {
 
 function getLanguageColor(language) {
 	const colors = {
-    "C": "#555555",
-    "C++": "#f34b7f",
-    "Rust": "#dea584",
-    "C#": "#178701",
-    "Cuda": "#3b4e3a",
-    "Java": "#af7219",
-    "Kotlin": "#a97bff",
-    "Python": "#3573a6",
-    "Jupyter Notebook": "#da5b0c",
-    "Perl": "#0398c3",
-    "LISP": "#3fb68c",
-    "COBOL": "#9e6a04",
-    "HTML": "#e44c27",
-    "CSS": "#543e7c",
-    "SCSS": "#c6538c",
-    "JavaScript": "#f1e15a",
-    "TypeScript": "#3178c6",
-    "Ruby": "#6f1515",
-    "Makefile": "#42781a",
-    "CMake": "#da3434",
-    "Shell": "#89e051",
-    "Dockerfile": "#394d54"
-};
+		C: "#555555",
+		"C++": "#f34b7f",
+		Rust: "#dea584",
+		"C#": "#178701",
+		Cuda: "#3b4e3a",
+		Java: "#af7219",
+		Kotlin: "#a97bff",
+		Python: "#3573a6",
+		"Jupyter Notebook": "#da5b0c",
+		Perl: "#0398c3",
+		LISP: "#3fb68c",
+		COBOL: "#9e6a04",
+		HTML: "#e44c27",
+		CSS: "#543e7c",
+		SCSS: "#c6538c",
+		JavaScript: "#f1e15a",
+		TypeScript: "#3178c6",
+		Ruby: "#6f1515",
+		Makefile: "#42781a",
+		CMake: "#da3434",
+		Shell: "#89e051",
+		Dockerfile: "#394d54",
+	};
 	return colors[language] || null;
 }
 

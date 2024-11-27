@@ -115,6 +115,8 @@
 			</div>
 		</div>
 		<div class="content">
+			<canvas id="matrix-canvas"></canvas>
+
 			<button id="openBtn">&#9776;</button>
 			<main>
 				<div id="titleContainer">
@@ -122,9 +124,29 @@
 					<h1 id="pageTitle">Projects</h1>
 				</div>
 				<div id="repoListContainer">
-				<noscript id="noscript-text">
-					<h3>Enable JavaScript to explore the projects</h3>
-				</noscript>
+					<noscript id="noscript-text">
+						<br />
+						<div>
+							<img
+								id="warning-img"
+								src="/assets/icons/w98_tip.ico"
+							/>
+							<h3 id="warning">
+								Enable JavaScript to explore the projects
+							</h3>
+						</div>
+						<br id="separator" />
+						<centered>
+							<a
+								id="small-btn"
+								class="rounded-link"
+								href="https://www.github.com/antoniopelusi"
+								target="_blank"
+							>
+								<p>Open GitHub</p>
+							</a>
+						</centered>
+					</noscript>
 					<ul class="repo-list" id="repo-list"></ul>
 				</div>
 				<br /><br />

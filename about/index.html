@@ -115,6 +115,8 @@
 			</div>
 		</div>
 		<div class="content">
+			<canvas id="matrix-canvas"></canvas>
+
 			<button id="openBtn">&#9776;</button>
 			<main>
 				<div id="titleContainer">
@@ -129,18 +131,28 @@
 				</centered>
 				<centered>
 					<noscript id="noscript-text">
-						<h3>Enable JavaScript to visualize the Curriculum Vitae</h3>
 						<br />
+						<div>
+							<img
+								id="warning-img"
+								src="/assets/icons/w98_tip.ico"
+							/>
+							<h3 id="warning">
+								Enable JavaScript to visualize the Curriculum
+								Vitae
+							</h3>
+						</div>
+						<br id="separator" />
 					</noscript>
 				</centered>
 				<centered>
 					<a
-						id="download"
+						id="small-btn"
 						class="rounded-link"
 						href="/assets/data/cv.pdf"
-						download="CV_AntonioPelusi.pdf"
+						target="_blank"
 					>
-						<span>Download CV</span>
+						<p>Open CV</p>
 					</a>
 				</centered>
 			</main>

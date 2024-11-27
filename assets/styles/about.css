@@ -7,13 +7,6 @@ main {
 	padding: 0px !important;
 }
 
-centered {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-}
-
 #cvContainer {
 	z-index: 10;
 	display: block;
@@ -22,15 +15,6 @@ centered {
 	align-items: center;
 	filter: invert(0.9) sepia(0.2) hue-rotate(200deg);
 	width: 80%;
-}
-
-#download {
-	z-index: 100;
-	color: var(--white);
-	background-color: var(--button);
-	width: 100px;
-	height: 10px;
-	margin-bottom: 50px;
 }
 
 @media (max-width: 768px) {

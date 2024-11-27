@@ -7,6 +7,7 @@ left {
 	flex-direction: column;
 	align-items: left;
 	text-align: left;
+	background: var(--background);
 }
 
 left div {

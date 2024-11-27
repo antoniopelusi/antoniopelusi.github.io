@@ -29,7 +29,7 @@ main {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	height: 45px;
+	height: 50px;
 	width: 70%;
 	border-radius: 8px;
 }

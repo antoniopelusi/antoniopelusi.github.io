@@ -282,6 +282,42 @@ main br {
 	margin-top: 10px;
 }
 
+#matrix-canvas {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: -1;
+}
+
+#small-btn {
+	z-index: 100;
+	color: var(--white);
+	background-color: var(--button);
+	width: fit-content;
+	height: 14px;
+	margin-bottom: 50px;
+	text-align: center
+}
+
+centered {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+#warning {
+	color: var(--lightgray);
+	font-weight: 400;
+}
+
+#warning-img {
+	width: 40px;
+	height: 40px;
+}
+
 @media (max-width: 768px) {
 	main {
 		padding: 3dvh !important;
