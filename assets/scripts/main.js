@@ -22,77 +22,86 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	});
 
-	let startX = 0;
-	let endX = 0;
+	let startX = 0,
+		startY = 0;
+	let endX = 0,
+		endY = 0;
 
 	body.addEventListener("touchstart", (e) => {
 		startX = e.touches[0].clientX;
+		startY = e.touches[0].clientY;
 	});
 
 	body.addEventListener("touchend", (e) => {
 		endX = e.changedTouches[0].clientX;
+		endY = e.changedTouches[0].clientY;
 		handleSwipe();
 	});
 
 	function handleSwipe() {
-		const swipeDistance = endX - startX;
+		const swipeDistanceX = endX - startX;
+		const swipeDistanceY = endY - startY;
 
-		if (swipeDistance > 50) {
+		if (Math.abs(swipeDistanceY) > Math.abs(swipeDistanceX)) {
+			return;
+		}
+
+		if (swipeDistanceX > 50) {
 			sidebar.classList.add("open");
 			openBtn.classList.add("inactive");
-		} else if (swipeDistance < -50) {
+		} else if (swipeDistanceX < -50) {
 			sidebar.classList.remove("open");
 			openBtn.classList.remove("inactive");
 		}
 	}
-});
 
-const canvas = document.getElementById("matrix-canvas");
-const ctx = canvas.getContext("2d");
+	const canvas = document.getElementById("matrix-canvas");
+	const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const fontSize = 16;
-const maxChars = 200;
-let characters = [];
-
-function spawnCharacter() {
-	const char = Math.random() > 0.5 ? "1" : "0";
-	const x = Math.random() * canvas.width;
-	const y = Math.random() * canvas.height;
-	const opacity = 1;
-	const life = Math.random() * 2 + 1;
-
-	characters.push({ char, x, y, opacity, life });
-	if (characters.length > maxChars) {
-		characters.shift();
-	}
-}
-
-function drawCharacters() {
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-	characters.forEach((c, index) => {
-		ctx.fillStyle = `rgba(50, 50, 53, ${c.opacity})`;
-		ctx.font = `${fontSize}px monospace`;
-		ctx.fillText(c.char, c.x, c.y);
-
-		c.opacity -= 0.01;
-		c.life -= 0.01;
-
-		if (c.life <= 0 || c.opacity <= 0) {
-			characters.splice(index, 1);
-		}
-	});
-
-	requestAnimationFrame(drawCharacters);
-}
-
-setInterval(spawnCharacter, 100);
-drawCharacters();
-
-window.addEventListener("resize", () => {
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
+
+	const fontSize = 16;
+	const maxChars = 200;
+	let characters = [];
+
+	function spawnCharacter() {
+		const char = Math.random() > 0.5 ? "1" : "0";
+		const x = Math.random() * canvas.width;
+		const y = Math.random() * canvas.height;
+		const opacity = 1;
+		const life = Math.random() * 2 + 1;
+
+		characters.push({ char, x, y, opacity, life });
+		if (characters.length > maxChars) {
+			characters.shift();
+		}
+	}
+
+	function drawCharacters() {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+		characters.forEach((c, index) => {
+			ctx.fillStyle = `rgba(50, 50, 53, ${c.opacity})`;
+			ctx.font = `${fontSize}px monospace`;
+			ctx.fillText(c.char, c.x, c.y);
+
+			c.opacity -= 0.01;
+			c.life -= 0.01;
+
+			if (c.life <= 0 || c.opacity <= 0) {
+				characters.splice(index, 1);
+			}
+		});
+
+		requestAnimationFrame(drawCharacters);
+	}
+
+	setInterval(spawnCharacter, 100);
+	drawCharacters();
+
+	window.addEventListener("resize", () => {
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+	});
 });
