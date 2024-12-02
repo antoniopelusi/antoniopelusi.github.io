@@ -1,7 +1,6 @@
 main {
 	display: block;
 	overflow-y: auto;
-	overflow-x: hidden;
 	height: 100dvh;
 	width: 100%;
 	padding: 0px !important;
@@ -42,6 +41,7 @@ main {
 
 .repo-list a {
 	text-decoration: none;
+	width: 100%;
 	text-align: left;
 	font-size: 17px;
 	color: var(--white);

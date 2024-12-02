@@ -13,6 +13,7 @@
 * {
 	margin: 0;
 	padding: 0;
+	overflow: hidden;
 }
 
 @font-face {
@@ -26,7 +27,6 @@ body {
 	font-size: 17px;
 	background-color: var(--background);
 	height: 100dvh;
-	overflow: hidden;
 }
 
 main {
@@ -34,7 +34,6 @@ main {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	overflow: auto;
 	padding: 20px;
 	height: 90dvh;
 	width: 100%;

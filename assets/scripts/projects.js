@@ -53,6 +53,8 @@ async function fetchGitHubRepos() {
 		}
 
 		image.style.height = "50px";
+		image.style.minWidth = "22px";
+		image.style.maxWidth = "22px";
 
 		const link = document.createElement("a");
 		link.href = repo.html_url;
