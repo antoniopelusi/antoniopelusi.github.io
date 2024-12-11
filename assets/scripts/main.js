@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		const char = Math.random() > 0.5 ? "1" : "0";
 		const x = Math.random() * canvas.width;
 		const y = Math.random() * canvas.height;
-		const opacity = 1;
+		const opacity = 0.8;
 		const life = Math.random() * 2 + 1;
 
 		characters.push({ char, x, y, opacity, life });

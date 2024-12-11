@@ -52,6 +52,8 @@ main {
 
 .repo-list li a:hover {
 	color: var(--vintage);
+	text-decoration: underline;
+	text-decoration-color: var(--lightgray);
 }
 
 .repo-list div {

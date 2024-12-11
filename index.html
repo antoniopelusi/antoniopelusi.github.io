@@ -29,17 +29,21 @@
 		<link rel="manifest" href="/assets/icons/favicon/site.webmanifest" />
 		<link rel="stylesheet" href="/assets/styles/main.css" />
 		<link rel="stylesheet" href="/assets/styles/index.css" />
+		<noscript>
+			<style>
+				left img {
+					opacity: 1;
+				}
+			</style>
+		</noscript>
 	</head>
 	<body>
 		<div id="sidebar">
 			<button id="closeBtn">&times;</button>
 			<div id="sidebarHeader">
 				<div id="name-container">
-					<h2 id="name"></h2>
-				</div>
-				<noscript>
 					<h2 id="name">Antonio Pelusi</h2>
-				</noscript>
+				</div>
 				<hr id="separator" />
 			</div>
 			<div id="sidebarMenu">
@@ -135,7 +139,7 @@
 							src="/assets/icons/w98_certificate.ico"
 							alt="Degree"
 						/>
-						<p>Ph.D student in Computer Science</p>
+						<p>Ph.D in Computer Science</p>
 					</div>
 					<br />
 					<div>
@@ -143,18 +147,12 @@
 							src="/assets/icons/w98_program_manager.ico"
 							alt="Projects"
 						/>
-						<p>
-							Browse my projects
-							<a href="projects"><color>here</color></a>
-						</p>
+						<a href="projects">Browse my projects here</a>
 					</div>
 					<br />
 					<div>
 						<img src="/assets/icons/w98_tree.ico" alt="About" />
-						<p>
-							Check out my CV
-							<a href="about"><color>here</color></a>
-						</p>
+						<a href="about">Check out my CV here</a>
 					</div>
 					<br />
 				</left>

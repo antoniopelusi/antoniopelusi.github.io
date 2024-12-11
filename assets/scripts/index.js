@@ -1,41 +1,46 @@
-async function simulateTerminal(text, typingSpeed = 100, blinkSpeed = 500) {
-	const terminal = document.getElementById("name");
-	let index = 0;
-	let isCursorVisible = false;
+document.addEventListener("DOMContentLoaded", () => {
+	const typingElements = document.querySelectorAll(
+		"main left div p, main left div a, main left div h2",
+	);
+	const images = document.querySelectorAll("left img");
 
-	async function updateTerminal(content) {
-		terminal.innerText = content + (isCursorVisible ? "_" : "");
-	}
+	typingElements.forEach((el) => {
+		el.style.visibility = "hidden";
+	});
 
-	async function initialBlink(blinkCount) {
-		if (blinkCount > 0) {
-			isCursorVisible = !isCursorVisible;
-			updateTerminal("");
-			setTimeout(() => initialBlink(blinkCount - 1), blinkSpeed);
-		} else {
-			startTyping();
-		}
-	}
+	images.forEach((img) => {
+		img.style.visibility = "hidden";
+	});
 
-	async function startTyping() {
-		const typingInterval = setInterval(() => {
+	setTimeout(() => {
+		typingElements.forEach((el, index) => {
+			const text = el.textContent.trim();
+			el.textContent = "";
+			el.setAttribute("data-text", text);
+			el.classList.add("typing");
+			el.style.visibility = "visible";
+
+			setTimeout(() => {
+				typeText(el, text);
+			}, index * 500);
+		});
+
+		function typeText(element, text, index = 0) {
 			if (index < text.length) {
-				updateTerminal(text.substring(0, index + 1));
-				index++;
+				element.textContent += text[index];
+				setTimeout(() => typeText(element, text, index + 1), 70);
 			} else {
-				clearInterval(typingInterval);
-				isCursorVisible = true;
-				setInterval(blink, blinkSpeed);
+				element.classList.remove("typing");
 			}
-		}, typingSpeed);
-	}
+		}
 
-	async function blink() {
-		isCursorVisible = !isCursorVisible;
-		updateTerminal(text.substring(0, index));
-	}
+		images.forEach((img, index) => {
+			const delay = index === 0 ? 1850 : index * 450;
 
-	initialBlink(1);
-}
-
-simulateTerminal("Antonio Pelusi");
+			setTimeout(() => {
+				img.style.visibility = "visible";
+				img.classList.add("visible");
+			}, delay);
+		});
+	}, 300);
+});

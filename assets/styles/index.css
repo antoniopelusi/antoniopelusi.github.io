@@ -4,6 +4,8 @@ color {
 
 left {
 	display: flex;
+	width: 100%;
+	max-width: 322px;
 	flex-direction: column;
 	align-items: left;
 	text-align: left;
@@ -16,20 +18,46 @@ left div {
 	align-items: left;
 	text-align: left;
 	justify-content: left;
+	white-space: normal;
 }
 
 left img {
-	width: 30px;
-	height: 30px;
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    min-height: 30px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
 
-left a {
-	text-decoration-color: var(--white);
+left img.visible {
+    opacity: 1;
+}
+
+left h2 {
+	font-size: 26.5px;
+	font-weight: 500;
+	color: var(--white);
+}
+
+left a, left p {
+	text-decoration: none;
+	font-size: 19px;
+	color: var(--white);
+	opacity: 0.8;
+}
+
+left a:hover {
+	text-decoration: underline;
+	color: var(--vintage);
+	text-decoration-color: var(--lightgray);
 }
 
 img.big {
 	width: 45px;
+	min-width: 45px;
 	height: 45px;
+	min-height: 45px;
 	padding: 0;
 }
 
@@ -37,4 +65,10 @@ img.big {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+}
+
+.typing {
+	display: inline;
+	white-space: nowrap;
+	border-right: 2px solid var(--lightgray) !important;
 }

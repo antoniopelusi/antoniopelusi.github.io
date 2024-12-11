@@ -48,7 +48,7 @@ main div {
 }
 
 main img {
-	padding-right: 15px;
+	padding-right: 10px;
 }
 
 main h2 {
@@ -71,12 +71,13 @@ main br {
 	color: var(--vintage);
 	display: inline-block;
 	white-space: nowrap;
+	opacity: 0.9;
 }
 
 #name-container {
 	width: 200px;
 	height: 30px;
-	text-align: left;
+	text-align: center;
 }
 
 #location {
@@ -315,6 +316,19 @@ centered {
 #warning-img {
 	width: 40px;
 	height: 40px;
+}
+
+#cursor {
+	font-weight: 100;
+	color: var(--lightgray);
+}
+
+.typing {
+    display: inline;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid var(--white);
+    animation: blink 0.7s steps(1) infinite;
 }
 
 @media (max-width: 768px) {

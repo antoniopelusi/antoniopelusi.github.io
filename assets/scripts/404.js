@@ -1,35 +1,23 @@
-async function simulateTerminal(text, blinkSpeed = 500, shuffleSpeed = 100) {
-	const terminal = document.getElementById("name");
-	let isCursorVisible = false;
+function changeBackground() {
+    let bsodElement = document.querySelector('bsod'); // Aggiunto il punto per selezionare una classe, se 'bsod' è una classe
+    let originalOpacity = bsodElement.style.opacity || 1; // Se l'opacità non è stata impostata, assumiamo che sia 1
+    
+    // Inizializza l'opacità a 1, senza modifiche immediate
+    bsodElement.style.opacity = 1;
 
-	async function updateTerminal(content) {
-		terminal.innerText = content + (isCursorVisible ? "_" : "");
-	}
+    // Aggiungiamo un delay prima di cambiare l'opacità
+    setTimeout(() => {
+        bsodElement.style.opacity = 0.7;
+        
+        // Ripristina l'opacità originale dopo 200ms
+        setTimeout(() => {
+            bsodElement.style.opacity = originalOpacity;
+        }, 200);
+    }, 1000); // Cambia l'opacità dopo 1 secondo
 
-	function shuffleString(str) {
-		const array = str.split("");
-		for (let i = array.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[array[i], array[j]] = [array[j], array[i]];
-		}
-		return array.join("");
-	}
-
-	async function blink() {
-		isCursorVisible = !isCursorVisible;
-		await updateTerminal(terminal.innerText.slice(0, -1));
-	}
-
-	async function shuffle() {
-		const shuffledText = shuffleString(text);
-		await updateTerminal(shuffledText);
-	}
-
-	updateTerminal(text);
-
-	setInterval(blink, blinkSpeed);
-
-	setInterval(shuffle, shuffleSpeed);
+    let randomTime = Math.floor(Math.random() * 5000) + 1000;
+    setTimeout(changeBackground, randomTime); // Chiamata ricorsiva con intervallo casuale
 }
 
-simulateTerminal("Antonio Pelusi");
+// Avvio della funzione
+changeBackground();
