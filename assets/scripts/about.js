@@ -80,16 +80,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		tooltip.style.left = `${mouseX - tooltip.offsetWidth / 2}px`;
 		tooltip.style.top = `${mouseY - tooltip.offsetHeight / 2}px`;
 
-		const zoom = 3;
-		const size = 700;
+		const zoom = 2;
+		const size = 500;
 
 		const rect = container.getBoundingClientRect();
 		const offsetX =
 			mouseX * (pageCanvas.width / rect.width) - size / (2 * zoom);
 		const offsetY =
 			mouseY * (pageCanvas.height / rect.height) - size / (2 * zoom);
-
-		const pageCtx = pageCanvas.getContext("2d");
 
 		magnifierCanvas.width = size / zoom;
 		magnifierCanvas.height = size / zoom;
@@ -108,9 +106,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		);
 	};
 
-	// Gestione eventi su mouse e touch
 	const handleMove = (event) => {
-		if (!isTouching) return; // Solo aggiorna la lente se il touch è mantenuto
+		if (!isTouching) return; // La lente si sposta solo se il tocco è mantenuto
 
 		const { mouseX, mouseY } = getTouchPosition(event);
 
@@ -135,6 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		tooltip.style.display = "none";
 	};
 
+	// Gestione del movimento del mouse (desktop)
 	container.addEventListener("mousemove", handleMove);
 	container.addEventListener("mousedown", (event) => {
 		if (event.button === 0) {
