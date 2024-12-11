@@ -80,8 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		tooltip.style.left = `${mouseX - tooltip.offsetWidth / 2}px`;
 		tooltip.style.top = `${mouseY - tooltip.offsetHeight / 2}px`;
 
-		const zoom = 2;
-		const size = 300;
+		const zoom = 3;
+		const size = 700;
 
 		const rect = container.getBoundingClientRect();
 		const offsetX =
