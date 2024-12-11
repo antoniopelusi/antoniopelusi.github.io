@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
   tooltip.style.width = "150px";
   tooltip.style.height = "150px";
   tooltip.style.pointerEvents = "none";
-  tooltip.style.display = "none";
+  tooltip.style.display = "none"; // La lente sarà nascosta finché non si muove il dito
   tooltip.style.zIndex = "9999";
   container.appendChild(tooltip);
 
@@ -63,8 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
   tooltip.appendChild(magnifierCanvas);
 
   const magnifierCtx = magnifierCanvas.getContext("2d");
-  let isTouching = false; // Variabile per gestire il touch mantenuto
 
+  // Funzione per ottenere la posizione del dito o del mouse
   const getTouchPosition = (event) => {
     const rect = container.getBoundingClientRect();
     const touch = event.touches ? event.touches[0] : event;
@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     tooltip.style.left = `${mouseX - tooltip.offsetWidth / 2}px`;
     tooltip.style.top = `${mouseY - tooltip.offsetHeight / 2}px`;
+    tooltip.style.display = "block"; // Mostra la lente mentre si sposta
 
     const zoom = 2;
     const size = 500;
@@ -107,8 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const handleMove = (event) => {
-    if (!isTouching) return; // La lente si sposta solo se il tocco è mantenuto
-
     const { mouseX, mouseY } = getTouchPosition(event);
 
     // Ottieni il canvas sottostante che contiene il PDF
@@ -118,41 +117,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  const handleStart = (event) => {
-    if (event.touches && event.touches.length === 1) {
-      // Verifica che sia un singolo tocco
-      isTouching = true;
-      tooltip.style.display = "block";
-      handleMove(event); // Aggiorna la lente subito al tocco
-    }
-  };
-
-  const handleEnd = () => {
-    isTouching = false;
-    tooltip.style.display = "none";
-  };
-
   // Gestione del movimento del mouse (desktop e touchpad)
   container.addEventListener("mousemove", handleMove);
-
-  container.addEventListener("mousedown", (event) => {
-    if (event.button === 0) {
-      // Solo tasto sinistro
-      isTouching = true;
-      tooltip.style.display = "block";
-      handleMove(event); // Aggiorna la lente subito al click
-    }
-  });
-
-  container.addEventListener("mouseup", handleEnd);
-  container.addEventListener("mouseleave", handleEnd);
 
   // Aggiungi gli eventi touch
   container.addEventListener("touchmove", (event) => {
     event.preventDefault(); // Previene lo scroll durante il movimento del dito
     handleMove(event);
   });
-  container.addEventListener("touchstart", handleStart);
-  container.addEventListener("touchend", handleEnd);
-  container.addEventListener("touchcancel", handleEnd);
 });
