@@ -22,10 +22,10 @@ left div {
 }
 
 left img {
-    width: 30px;
-    min-width: 30px;
-    height: 30px;
-    min-height: 30px;
+    width: 32px;
+    min-width: 32px;
+    height: 32px;
+    min-height: 32px;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
 }
