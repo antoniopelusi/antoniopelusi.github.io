@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		"main left div p, main left div a, main left div h2",
 	);
 	const images = document.querySelectorAll("left img");
+	const indexseparator = document.getElementById("indexseparator");
 
 	typingElements.forEach((el) => {
 		el.style.visibility = "hidden";
@@ -42,5 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
 				img.classList.add("visible");
 			}, delay);
 		});
+		
+		setTimeout(() => {
+			indexseparator.style.opacity = 1;
+		}, 2700);
 	}, 300);
 });

@@ -22,16 +22,16 @@ left div {
 }
 
 left img {
-    width: 32px;
-    min-width: 32px;
-    height: 32px;
-    min-height: 32px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+	width: 32px;
+	min-width: 32px;
+	height: 32px;
+	min-height: 32px;
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
 }
 
-left img.visible {
-    opacity: 1;
+.visible {
+	opacity: 1;
 }
 
 left h2 {
@@ -40,7 +40,8 @@ left h2 {
 	color: var(--white);
 }
 
-left a, left p {
+left a,
+left p {
 	text-decoration: none;
 	font-size: 19px;
 	color: var(--white);
@@ -65,6 +66,16 @@ img.big {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+}
+
+#indexseparator {
+	border: none;
+	height: 2px;
+	background-color: var(--button-hover);
+	margin-top: -2px;
+	width: 273px;
+	opacity: 0;
+	transition: opacity 1s ease-in-out;
 }
 
 .typing {
