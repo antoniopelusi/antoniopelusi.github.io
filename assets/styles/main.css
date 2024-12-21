@@ -254,6 +254,10 @@ main br {
 	padding-bottom: 1px;
 }
 
+#go-back-home {
+	text-decoration: underline;
+}
+
 #sidebarMenu img {
 	padding-right: 10px;
 	width: 40px;
@@ -329,6 +333,10 @@ centered {
     overflow: hidden;
     border-right: 2px solid var(--white);
     animation: blink 0.7s steps(1) infinite;
+}
+
+a {
+    text-decoration: none;
 }
 
 @media (max-width: 768px) {
