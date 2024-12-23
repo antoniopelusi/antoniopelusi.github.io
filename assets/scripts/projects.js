@@ -61,6 +61,58 @@ document.addEventListener("DOMContentLoaded", () => {
 				}
 			});
 
+			document.querySelectorAll(".language-dot").forEach((dot) => {
+				// Funzione per mostrare il tooltip
+				function showTooltip(event) {
+					// Rimuovi eventuali tooltip aperti
+					hideTooltip();
+
+					const tooltip = document.createElement("div");
+					tooltip.className = "tooltip";
+					tooltip.textContent = event.target.getAttribute("language");
+					document.body.appendChild(tooltip);
+
+					const rect = event.target.getBoundingClientRect();
+					tooltip.style.left = `${rect.left + window.scrollX + rect.width / 2}px`;
+					tooltip.style.top = `${rect.top + window.scrollY - rect.height - 20}px`;
+
+					// Aggiungi la classe `show` dopo un breve ritardo per la transizione
+					setTimeout(() => {
+						tooltip.classList.add("show");
+					}, 0);
+
+					event.target.dataset.tooltip = tooltip;
+				}
+
+				function hideTooltip() {
+					const tooltip = document.body.querySelector(".tooltip.show");
+					if (tooltip) {
+						tooltip.classList.remove("show");
+						setTimeout(() => {
+							tooltip.remove();
+						}, 100);
+					}
+				}
+
+				dot.addEventListener("mouseenter", showTooltip);
+				dot.addEventListener("mouseleave", hideTooltip);
+
+				dot.addEventListener("click", (event) => {
+					const currentTooltip = document.body.querySelector(".tooltip.show");
+					if (currentTooltip) {
+						hideTooltip();
+					} else {
+						showTooltip(event);
+					}
+				});
+
+				document.addEventListener("touchstart", (event) => {
+					if (!dot.contains(event.target)) {
+						hideTooltip();
+					}
+				});
+			});
+
 			if (index % 2 === 0) {
 				listItem.style.background = "#212124";
 			} else {

@@ -34,9 +34,9 @@ main {
 }
 
 .repo-list li div div:last-child {
-    display: flex;
-    gap: 5px;
-    justify-content: flex-end;
+	display: flex;
+	gap: 5px;
+	justify-content: flex-end;
 }
 
 .repo-list a {
@@ -61,28 +61,26 @@ main {
 }
 
 .language-dot {
-    position: relative;
-    cursor: pointer;
+	position: relative;
+	cursor: pointer;
 }
 
-.language-dot::after {
-    content: attr(language);
-    position: absolute;
-    bottom: 150%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #333;
-    padding: 5px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s ease-in-out;
+.tooltip {
+	position: absolute;
+	background-color: #333;
+	color: white;
+	padding: 5px 8px;
+	border-radius: 4px;
+	font-size: 12px;
+	white-space: nowrap;
+	transform: translate(-50%, 0);
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.3s ease;
 }
 
-.language-dot:hover::after {
-    opacity: 1;
+.tooltip.show {
+	opacity: 1;
 }
 
 @media (max-width: 768px) {
