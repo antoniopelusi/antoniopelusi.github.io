@@ -263,6 +263,17 @@
         ]
     },
     {
+        "created_at": "2025-01-04T13:18:07Z",
+        "name": "ToolsTab",
+        "html_url": "https://github.com/antoniopelusi/ToolsTab",
+        "languages": [
+            "JavaScript",
+            "CSS",
+            "HTML",
+            "Python"
+        ]
+    },
+    {
         "created_at": "2022-09-30T08:13:44Z",
         "name": "Twitter-Analyzer",
         "html_url": "https://github.com/antoniopelusi/Twitter-Analyzer",
@@ -277,14 +288,6 @@
         "html_url": "https://github.com/antoniopelusi/vg-sales-analysis",
         "languages": [
             "Jupyter Notebook",
-            "Python"
-        ]
-    },
-    {
-        "created_at": "2022-11-11T10:32:46Z",
-        "name": "vgchartzScrape",
-        "html_url": "https://github.com/antoniopelusi/vgchartzScrape",
-        "languages": [
             "Python"
         ]
     }
