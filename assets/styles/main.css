@@ -115,6 +115,7 @@ main br {
 	display: flex;
 	text-align: center;
 	justify-content: center;
+	margin-bottom: 3dvh;
 }
 
 #sidebar ul li a {
