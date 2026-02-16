@@ -202,21 +202,6 @@ class SummaryLinkHandler {
     }
 }
 
-// ===== SERVICE WORKER REGISTRATION HANDLER =====
-class ServiceWorkerRegistrationHandler {
-    constructor() {
-        this.registerServiceWorker();
-    }
-
-    registerServiceWorker() {
-        if ("serviceWorker" in navigator) {
-            window.addEventListener("load", () => {
-                navigator.serviceWorker.register("/service-worker.js");
-            });
-        }
-    }
-}
-
 // ===== CONFIG LOADER =====
 class ConfigLoader {
     static async load() {
