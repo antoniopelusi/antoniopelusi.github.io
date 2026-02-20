@@ -240,8 +240,6 @@ class App {
         }
 
         this.components.push(new NavigationHighlighter());
-
-        this.components.push(new ServiceWorkerRegistrationHandler());
     }
 }
 
