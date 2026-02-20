@@ -2,4 +2,4 @@ User-agent: *
 
 Allow: /
 
-Sitemap: https://antoniopelusi.com/sitemap.xml
+Sitemap: https://antoniopelusi.github.io/sitemap.xml

@@ -1,4 +1,4 @@
-Site: antoniopelusi.com
+Site: antoniopelusi.github.io
 Developer: Antonio Pelusi
 Email: antoniopelusi2000@gmail.com
 Languages: HTML, CSS, JS

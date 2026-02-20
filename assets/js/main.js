@@ -206,7 +206,7 @@ class SummaryLinkHandler {
 class ConfigLoader {
     static async load() {
         try {
-            const response = await fetch("/assets/config.json");
+            const response = await fetch("./assets/config.json");
             return response.ok ? await response.json() : null;
         } catch (error) {
             console.warn("Could not load config.json:", error.message);
