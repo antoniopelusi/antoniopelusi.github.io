@@ -1,3 +1,35 @@
+// ===== UTILITIES =====
+const Utils = {
+    select(selector) {
+        return document.querySelector(selector);
+    },
+
+    selectAll(selector) {
+        return document.querySelectorAll(selector);
+    },
+
+    throttle(func, delay) {
+        let timeoutId;
+        let lastExecTime = 0;
+
+        return function (...args) {
+            const currentTime = Date.now();
+            const timeSinceLastExec = currentTime - lastExecTime;
+
+            if (timeSinceLastExec > delay) {
+                func.apply(this, args);
+                lastExecTime = currentTime;
+            } else {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    func.apply(this, args);
+                    lastExecTime = Date.now();
+                }, delay - timeSinceLastExec);
+            }
+        };
+    },
+};
+
 // ===== TYPING ANIMATION =====
 class TypingAnimation {
     constructor(phrases, options = {}) {
@@ -15,12 +47,8 @@ class TypingAnimation {
         this.charIndex = 0;
         this.isDeleting = false;
 
-        this.textElement = document.querySelector(
-            "header p span:not([data-cursor])",
-        );
-        this.cursorElement = document.querySelector(
-            "header p span[data-cursor]",
-        );
+        this.textElement = Utils.select("header p span:not([data-cursor])");
+        this.cursorElement = Utils.select("header p span[data-cursor]");
 
         this.init();
     }
@@ -88,15 +116,17 @@ class NavigationHighlighter {
     init() {
         if (this.sections.length === 0) return;
 
-        let lastExecTime = 0;
+        this.handleScroll = Utils.throttle(
+            this.updateActiveSection.bind(this),
+            100,
+        );
+
+        window.addEventListener("scroll", this.handleScroll, { passive: true });
         window.addEventListener(
-            "scroll",
+            "resize",
             () => {
-                const now = Date.now();
-                if (now - lastExecTime > 100) {
-                    this.updateActiveSection();
-                    lastExecTime = now;
-                }
+                this.threshold = window.innerHeight * 0.3;
+                this.updateActiveSection();
             },
             { passive: true },
         );
@@ -107,7 +137,7 @@ class NavigationHighlighter {
     mapSections() {
         const sections = [];
 
-        document.querySelectorAll("aside nav a").forEach((link) => {
+        Utils.selectAll("aside nav a").forEach((link) => {
             const href = link.getAttribute("href");
             let element = null;
             let isSummary = false;
@@ -154,35 +184,71 @@ class NavigationHighlighter {
     }
 }
 
-// ===== BOOTSTRAP =====
-document.addEventListener("DOMContentLoaded", async () => {
-    const summaryLink = document.querySelector('aside nav a[href="#"]');
-    if (summaryLink) {
-        summaryLink.addEventListener("click", (e) => {
-            e.preventDefault();
-            window.history.replaceState(
-                null,
-                null,
-                window.location.origin + window.location.pathname,
-            );
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
+// ===== SUMMARY LINK HANDLER =====
+class SummaryLinkHandler {
+    constructor() {
+        this.summaryLink = Utils.select('aside nav a[href="#"]');
+        this.init();
     }
 
-    try {
-        const response = await fetch("./assets/config.json");
-        if (response.ok) {
-            const config = await response.json();
-            if (config?.typing?.phrases && config?.typing?.options) {
+    init() {
+        if (!this.summaryLink) return;
+
+        this.summaryLink.addEventListener("click", this.handleClick.bind(this));
+    }
+
+    handleClick(e) {
+        e.preventDefault();
+
+        const cleanUrl = window.location.origin + window.location.pathname;
+        window.history.replaceState(null, null, cleanUrl);
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+}
+
+// ===== CONFIG LOADER =====
+class ConfigLoader {
+    static async load() {
+        try {
+            const response = await fetch("./assets/config.json");
+            return response.ok ? await response.json() : null;
+        } catch (error) {
+            console.warn("Could not load config.json:", error.message);
+            return null;
+        }
+    }
+}
+
+// ===== APP INITIALIZATION =====
+class App {
+    constructor() {
+        this.components = [];
+    }
+
+    async init() {
+        const config = await ConfigLoader.load();
+        this.initializeComponents(config);
+    }
+
+    initializeComponents(config) {
+        this.components.push(new SummaryLinkHandler());
+
+        if (config?.typing?.phrases && config?.typing?.options) {
+            this.components.push(
                 new TypingAnimation(
                     config.typing.phrases,
                     config.typing.options,
-                );
-            }
+                ),
+            );
         }
-    } catch (error) {
-        console.warn("Could not load config.json:", error.message);
-    }
 
-    new NavigationHighlighter();
+        this.components.push(new NavigationHighlighter());
+    }
+}
+
+// ===== BOOTSTRAP =====
+window.addEventListener("load", () => {
+    const app = new App();
+    app.init();
 });
