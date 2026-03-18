@@ -159,15 +159,18 @@
             const from = new URLSearchParams(window.location.search).get("from");
             const btn = document.getElementById("back-btn");
             const missing = document.getElementById("missing-url");
-
+            
             missing.textContent = from || window.location.href;
-
-            if (history.length > 1) {
-                btn.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    history.back();
-                });
-            }
+            
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                const steps = from ? -2 : -1;
+                if (history.length > Math.abs(steps)) {
+                    history.go(steps);
+                } else {
+                    window.location.href = "/";
+                }
+            });
         </script>
     </body>
 </html>
