@@ -156,17 +156,13 @@
             <a href="/" id="back-btn">Go back</a>
         </main>
         <script>
-            const from = new URLSearchParams(window.location.search).get(
-                "from",
-            );
+            const from = new URLSearchParams(window.location.search).get("from");
             const btn = document.getElementById("back-btn");
             const missing = document.getElementById("missing-url");
 
             missing.textContent = from || window.location.href;
 
-            if (from) {
-                btn.href = from;
-            } else if (history.length > 1) {
+            if (history.length > 1) {
                 btn.addEventListener("click", (e) => {
                     e.preventDefault();
                     history.back();
