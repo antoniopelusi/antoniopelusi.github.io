@@ -1,254 +1,149 @@
 // ===== UTILITIES =====
-const Utils = {
-    select(selector) {
-        return document.querySelector(selector);
-    },
-
-    selectAll(selector) {
-        return document.querySelectorAll(selector);
-    },
-
-    throttle(func, delay) {
-        let timeoutId;
-        let lastExecTime = 0;
-
-        return function (...args) {
-            const currentTime = Date.now();
-            const timeSinceLastExec = currentTime - lastExecTime;
-
-            if (timeSinceLastExec > delay) {
-                func.apply(this, args);
-                lastExecTime = currentTime;
-            } else {
-                clearTimeout(timeoutId);
-                timeoutId = setTimeout(() => {
-                    func.apply(this, args);
-                    lastExecTime = Date.now();
-                }, delay - timeSinceLastExec);
-            }
-        };
-    },
+const throttle = (func, delay) => {
+  let timeoutId,
+    lastExecTime = 0;
+  return function (...args) {
+    const elapsed = Date.now() - lastExecTime;
+    clearTimeout(timeoutId);
+    if (elapsed > delay) {
+      func.apply(this, args);
+      lastExecTime = Date.now();
+    } else {
+      timeoutId = setTimeout(() => {
+        func.apply(this, args);
+        lastExecTime = Date.now();
+      }, delay - elapsed);
+    }
+  };
 };
 
 // ===== TYPING ANIMATION =====
-class TypingAnimation {
-    constructor(phrases, options = {}) {
-        this.phrases = phrases || [];
-        this.options = {
-            typingSpeed: 100,
-            deletingSpeed: 50,
-            pauseAfterTyping: 2000,
-            pauseAfterDeleting: 500,
-            initialDelay: 1000,
-            ...options,
-        };
+function initTyping() {
+  const textEl = document.querySelector("header p span:not([data-cursor])");
+  const cursorEl = document.querySelector("header p span[data-cursor]");
+  if (!textEl || !cursorEl) return;
 
-        this.phraseIndex = 0;
-        this.charIndex = 0;
-        this.isDeleting = false;
+  const phrases = [
+    "Debugging ideas",
+    "Dodging merge conflicts",
+    "Branching hypotheses",
+    "Refactoring bugs",
+    "Collecting knowledge",
+    "Dereferencing pointers",
+  ];
 
-        this.textElement = Utils.select("header p span:not([data-cursor])");
-        this.cursorElement = Utils.select("header p span[data-cursor]");
+  let phraseIndex = 0,
+    charIndex = 0,
+    isDeleting = false;
 
-        this.init();
+  cursorEl.style.display = "inline";
+
+  function type() {
+    const phrase = phrases[phraseIndex];
+    charIndex += isDeleting ? -1 : 1;
+
+    if (!isDeleting && charIndex > phrase.length) {
+      setTimeout(() => {
+        isDeleting = true;
+        type();
+      }, 2000);
+      return;
+    }
+    if (isDeleting && charIndex < 0) {
+      charIndex = 0;
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      setTimeout(type, 500);
+      return;
     }
 
-    init() {
-        if (
-            !this.textElement ||
-            !this.cursorElement ||
-            this.phrases.length === 0
-        )
-            return;
+    textEl.textContent = phrase.substring(0, charIndex);
+    setTimeout(type, isDeleting ? 25 : 50);
+  }
 
-        this.cursorElement.style.display = "inline";
-        setTimeout(() => this.type(), this.options.initialDelay);
-    }
-
-    type() {
-        const currentPhrase = this.phrases[this.phraseIndex];
-
-        if (this.isDeleting) {
-            this.charIndex--;
-            if (this.charIndex < 0) {
-                this.nextPhrase();
-                return;
-            }
-        } else {
-            this.charIndex++;
-            if (this.charIndex > currentPhrase.length) {
-                setTimeout(() => {
-                    this.isDeleting = true;
-                    this.type();
-                }, this.options.pauseAfterTyping);
-                return;
-            }
-        }
-
-        this.textElement.textContent = currentPhrase.substring(
-            0,
-            this.charIndex,
-        );
-
-        const delay = this.isDeleting
-            ? this.options.deletingSpeed
-            : this.options.typingSpeed;
-        setTimeout(() => this.type(), delay);
-    }
-
-    nextPhrase() {
-        this.charIndex = 0;
-        this.isDeleting = false;
-        this.phraseIndex = (this.phraseIndex + 1) % this.phrases.length;
-        setTimeout(() => this.type(), this.options.pauseAfterDeleting);
-    }
+  setTimeout(type, 1000);
 }
 
 // ===== NAVIGATION HIGHLIGHTER =====
-class NavigationHighlighter {
-    constructor() {
-        this.sections = this.mapSections();
-        this.threshold = window.innerHeight * 0.3;
+function initNavHighlighter() {
+  const sections = [];
+  let threshold = window.innerHeight * 0.3;
 
-        this.init();
+  document.querySelectorAll("aside nav a").forEach((link) => {
+    const href = link.getAttribute("href");
+    let element = null;
+    let isSummary = false;
+
+    if (href === "#") {
+      element = document.body;
+      isSummary = true;
+    } else if (href?.startsWith("#")) {
+      element = document.getElementById(href.substring(1));
     }
 
-    init() {
-        if (this.sections.length === 0) return;
+    if (element) sections.push({ link, element, isSummary });
+  });
 
-        this.handleScroll = Utils.throttle(
-            this.updateActiveSection.bind(this),
-            100,
-        );
+  if (!sections.length) return;
 
-        window.addEventListener("scroll", this.handleScroll, { passive: true });
-        window.addEventListener(
-            "resize",
-            () => {
-                this.threshold = window.innerHeight * 0.3;
-                this.updateActiveSection();
-            },
-            { passive: true },
-        );
+  function update() {
+    const scrollTop = window.pageYOffset;
+    let active = null;
 
-        this.updateActiveSection();
-    }
-
-    mapSections() {
-        const sections = [];
-
-        Utils.selectAll("aside nav a").forEach((link) => {
-            const href = link.getAttribute("href");
-            let element = null;
-            let isSummary = false;
-
-            if (href === "#") {
-                element = document.body;
-                isSummary = true;
-            } else if (href?.startsWith("#")) {
-                element = document.getElementById(href.substring(1));
-            }
-
-            if (element) sections.push({ link, element, isSummary });
-        });
-
-        return sections;
-    }
-
-    updateActiveSection() {
-        const scrollTop = window.pageYOffset;
-        let activeSection = null;
-
-        if (scrollTop < this.threshold) {
-            activeSection = this.sections.find((s) => s.isSummary);
-        } else {
-            for (let i = this.sections.length - 1; i >= 0; i--) {
-                const section = this.sections[i];
-                if (!section.isSummary) {
-                    const rect = section.element.getBoundingClientRect();
-                    if (rect.top <= this.threshold) {
-                        activeSection = section;
-                        break;
-                    }
-                }
-            }
+    if (scrollTop < threshold) {
+      active = sections.find((s) => s.isSummary);
+    } else {
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const s = sections[i];
+        if (
+          !s.isSummary &&
+          s.element.getBoundingClientRect().top <= threshold
+        ) {
+          active = s;
+          break;
         }
-
-        this.sections.forEach((section) => {
-            if (section === activeSection) {
-                section.link.setAttribute("data-active", "true");
-            } else {
-                section.link.removeAttribute("data-active");
-            }
-        });
+      }
     }
+
+    sections.forEach((s) => {
+      if (s === active) {
+        s.link.setAttribute("data-active", "true");
+      } else {
+        s.link.removeAttribute("data-active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", throttle(update, 100), { passive: true });
+  window.addEventListener(
+    "resize",
+    () => {
+      threshold = window.innerHeight * 0.3;
+      update();
+    },
+    { passive: true },
+  );
+  update();
 }
 
 // ===== SUMMARY LINK HANDLER =====
-class SummaryLinkHandler {
-    constructor() {
-        this.summaryLink = Utils.select('aside nav a[href="#"]');
-        this.init();
-    }
-
-    init() {
-        if (!this.summaryLink) return;
-
-        this.summaryLink.addEventListener("click", this.handleClick.bind(this));
-    }
-
-    handleClick(e) {
-        e.preventDefault();
-
-        const cleanUrl = window.location.origin + window.location.pathname;
-        window.history.replaceState(null, null, cleanUrl);
-
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-}
-
-// ===== CONFIG LOADER =====
-class ConfigLoader {
-    static async load() {
-        try {
-            const response = await fetch("./assets/config.json");
-            return response.ok ? await response.json() : null;
-        } catch (error) {
-            console.warn("Could not load config.json:", error.message);
-            return null;
-        }
-    }
-}
-
-// ===== APP INITIALIZATION =====
-class App {
-    constructor() {
-        this.components = [];
-    }
-
-    async init() {
-        const config = await ConfigLoader.load();
-        this.initializeComponents(config);
-    }
-
-    initializeComponents(config) {
-        this.components.push(new SummaryLinkHandler());
-
-        if (config?.typing?.phrases && config?.typing?.options) {
-            this.components.push(
-                new TypingAnimation(
-                    config.typing.phrases,
-                    config.typing.options,
-                ),
-            );
-        }
-
-        this.components.push(new NavigationHighlighter());
-    }
+function initSummaryLink() {
+  document
+    .querySelector('aside nav a[href="#"]')
+    ?.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.history.replaceState(
+        null,
+        null,
+        window.location.origin + window.location.pathname,
+      );
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
 }
 
 // ===== BOOTSTRAP =====
 window.addEventListener("load", () => {
-    const app = new App();
-    app.init();
+  initSummaryLink();
+  initTyping();
+  initNavHighlighter();
 });
