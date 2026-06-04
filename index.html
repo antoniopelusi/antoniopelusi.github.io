@@ -80,7 +80,8 @@
                 <a href="#experience">EXPERIENCE</a>
                 <a href="#education">EDUCATION</a>
                 <a href="#publications">PUBLICATIONS</a>
-                <a href="#projects">PROJECTS</a>
+                <a href="#featured-projects">FEATURED PROJECTS</a>
+                <a href="#side-projects">SIDE PROJECTS</a>
                 <a href="#awards">AWARDS</a>
             </nav>
 
@@ -123,24 +124,15 @@
             <!-- Summary Section -->
             <section id="summary-section">
                 <p>
-                    Ph.D. student and software developer focused on Differential
-                    Privacy, synthetic data generation, and privacy-preserving
-                    Machine Learning systems.
+                    Researcher and software developer focused on the
+                    intersection of advanced generative AI, structured data
+                    synthesis, and privacy-preserving Machine Learning systems.
                 </p>
                 <p>
-                    Combines theoretical privacy research with practical system
-                    development, including production-grade random number
-                    platforms and standardized entropy distribution APIs.
-                </p>
-                <p>
-                    Academic credentials include a Master's degree with
-                    distinction, CERN research collaboration, and an ongoing
-                    industry-academia partnership investigating the impact of
-                    true randomness on privacy mechanisms.
-                </p>
-                <p>
-                    Specialized in bridging fundamental research with
-                    enterprise-grade technological solutions.
+                    Investigates the structural limitations of generative
+                    architectures on structured data, combining rigorous
+                    evaluation of statistical fidelity and memorization risks
+                    with practical system development.
                 </p>
             </section>
 
@@ -274,7 +266,10 @@
                                 open-source Liferay Portal.
                             </li>
                             <li>
-                                <a href="https://github.com/antoniopelusi/liferay-portal-stripe">Explore my contribution here</a>.
+                                <a
+                                    href="https://github.com/antoniopelusi/liferay-portal-stripe"
+                                    >Explore my contribution here</a
+                                >.
                             </li>
                         </ul>
                     </div>
@@ -307,6 +302,12 @@
                             Computation
                         </h3>
                         <ul>
+                            <li>
+                                Researched privacy-preserving synthetic data
+                                generation with small LLMs, investigating LoRA
+                                fine-tuning and Differential Privacy techniques
+                                for tabular data synthesis.
+                            </li>
                             <li>
                                 Researched Differential Privacy frameworks
                                 analyzing how quantum vs. pseudo-random number
@@ -412,6 +413,39 @@
                 Publications
             </h2>
             <section id="publications-section">
+                <!--<article>
+                    <div>
+                        <h3>Jun. 2026</h3>
+                    </div>
+                    <div>
+                        <h3>
+                            <img
+                                src="./assets/icons/articles/uninsubria.svg"
+                                alt="University of Insubria"
+                            />
+                            <a
+                                href=""
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Categorical Prior Lock-in: Why In-Context
+                                Learning Fails for Structured Data
+                            </a>
+                        </h3>
+                        <h3>Research Paper</h3>
+                        <ul>
+                            <li>
+                                An empirical investigation identifying
+                                "categorical prior lock-in", a structural
+                                failure mode in large language models where
+                                in-context learning fails to reproduce rare
+                                categorical distributions in structured data
+                                generation, alongside an analysis of trade-offs
+                                with parameter-efficient fine-tuning (LoRA).
+                            </li>
+                        </ul>
+                    </div>
+                </article>-->
                 <article>
                     <div>
                         <h3>Apr. 2024</h3>
@@ -443,43 +477,42 @@
                 </article>
             </section>
 
-            <!-- Projects Section -->
-            <h2 id="projects">
+            <!-- Featured Projects Section -->
+            <h2 id="featured-projects">
                 <img
-                    src="./assets/icons/sections/projects.svg"
-                    alt="Projects"
+                    src="./assets/icons/sections/featured_projects.svg"
+                    alt="Featured Projects"
                 />
-                Projects
+                Featured Projects
             </h2>
-            <section id="projects-section">
+            <section id="featured-projects-section">
                 <article>
                     <div>
-                        <h3>Feb. 2026</h3>
+                        <h3>May 2026</h3>
                     </div>
                     <div>
                         <h3>
                             <img
-                                src="./assets/icons/articles/link.svg"
-                                alt="TxtUrl"
+                                src="./assets/icons/articles/LLM-synthetic-data-generation.svg"
+                                alt="LLM-synthetic-data-generation"
                             />
                             <a
-                                href="https://github.com/antoniopelusi/txturl"
+                                href="https://github.com/antoniopelusi/LLM-synthetic-data-generation"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                TxtUrl
+                                LLM-synthetic-data-generation
                             </a>
                         </h3>
-                        <h3>Serverless text editor embedded in the URL</h3>
+                        <h3>
+                            LLM-based Synthetic Tabular Data Generation Pipeline
+                        </h3>
                         <ul>
                             <li>
-                                Built a text editor that encodes content
-                                directly in the URL hash, with no server, no
-                                database, and no account required. Supports
-                                Markdown syntax rendering.
-                            </li>
-                            <li>
-                                <a href="/txturl/">Open the web app here</a>.
+                                Designed and implemented a config-driven
+                                pipeline to generate and evaluate synthetic
+                                tabular data using large language models with
+                                LoRA fine-tuning and differential privacy.
                             </li>
                         </ul>
                     </div>
@@ -508,6 +541,120 @@
                                 Designed and implemented a library for applying
                                 Local Differential Privacy mechanisms to local
                                 databases.
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Side Projects Section -->
+            <h2 id="side-projects">
+                <img
+                    src="./assets/icons/sections/side_projects.svg"
+                    alt="Side Projects"
+                />
+                Side Projects
+            </h2>
+            <section id="side-projects-section">
+                <article>
+                    <div>
+                        <h3>Jun. 2026</h3>
+                    </div>
+                    <div>
+                        <h3>
+                            <img
+                                src="./assets/icons/articles/graphvisualizer.svg"
+                                alt="GraphVisualizer"
+                            />
+                            <a
+                                href="https://github.com/antoniopelusi/graphvisualizer"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Graph Visualizer
+                            </a>
+                        </h3>
+                        <h3>Knowledge Graph dynamic visualizer</h3>
+                        <ul>
+                            <li>
+                                Built a web-based tool to visualize knowledge
+                                networks directly in the browser. Supports
+                                interactive node positioning and reordering,
+                                automatic edge rendering, and class-based
+                                highlighting, with no server or database
+                                required.
+                            </li>
+                            <li>
+                                <a href="/graphvisualizer/">
+                                    Open the web app here</a
+                                >.
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+                <article>
+                    <div>
+                        <h3>Mar. 2026</h3>
+                    </div>
+                    <div>
+                        <h3>
+                            <img
+                                src="./assets/icons/articles/recoilisland.svg"
+                                alt="RecoilIsland"
+                            />
+                            <a
+                                href="https://github.com/antoniopelusi/recoilisland"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Recoil Island
+                            </a>
+                        </h3>
+                        <h3>Fast-paced 2D retro shooter</h3>
+                        <ul>
+                            <li>
+                                Built a web-based retro shooter featuring a
+                                unique one-click control scheme. Use weapon
+                                recoil to simultaneously attack and move through
+                                challenging environments. No server, no
+                                installation.
+                            </li>
+                            <li>
+                                <a href="/graphvisualizer/">
+                                    Play the game here</a
+                                >.
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+                <article>
+                    <div>
+                        <h3>Feb. 2026</h3>
+                    </div>
+                    <div>
+                        <h3>
+                            <img
+                                src="./assets/icons/articles/txturl.svg"
+                                alt="TxtUrl"
+                            />
+                            <a
+                                href="https://github.com/antoniopelusi/txturl"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                TxtUrl
+                            </a>
+                        </h3>
+                        <h3>Serverless text editor embedded in the URL</h3>
+                        <ul>
+                            <li>
+                                Built a text editor that encodes content
+                                directly in the URL hash, with no server, no
+                                database, and no account required. Supports
+                                Markdown syntax rendering.
+                            </li>
+                            <li>
+                                <a href="/txturl/">Open the web app here</a>.
                             </li>
                         </ul>
                     </div>
