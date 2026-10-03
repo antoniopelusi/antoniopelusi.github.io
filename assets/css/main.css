@@ -318,13 +318,45 @@ main article div:last-child p {
     font-size: calc(var(--body) * 0.9);
 }
 
+main article div:last-child ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    position: relative;
+}
+
 main article div:last-child li {
+    position: relative;
+    padding-left: 1.25em;
     margin-bottom: var(--space-s);
     font-size: calc(var(--body) * 0.9);
 }
 
 main article div:last-child li:last-child {
     margin-bottom: 0;
+}
+
+main article div:last-child li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--text);
+    z-index: 1;
+}
+
+main article div:last-child li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 2.5px;
+    top: calc(0.55em + 6px + 8px);
+    bottom: calc(-1 * var(--space-s) - 0.55em + 8px);
+    width: 1px;
+    background-color: var(--text);
+    opacity: 0.3;
 }
 
 /* ===== ICONS ===== */
