@@ -250,16 +250,23 @@ main article {
 }
 
 main article:not(:last-child) {
-    position: relative;
+    margin-bottom: var(--space-s);
+}
+
+main section {
     margin-bottom: var(--space);
 }
 
-main article:not(:last-child)::after {
+main h2 {
+    position: relative;
+}
+
+main h2::after {
     content: "";
     position: absolute;
-    bottom: calc(-1 * var(--space) / 2);
-    left: calc(var(--space) / 2);
-    right: calc(var(--space) / 2);
+    bottom: 0;
+    left: 0;
+    right: 0;
     height: 2px;
     border-radius: 1px;
     background-color: var(--text);
@@ -540,10 +547,6 @@ body::after {
         flex-direction: row;
     }
 
-    h2 {
-        margin-top: var(--space-xl);
-    }
-
     a:hover {
         text-decoration-color: var(--header);
     }
@@ -664,8 +667,7 @@ body::after {
 
     main h2 {
         background-color: transparent;
-        position: static;
-        padding: 0;
+        position: relative;
         z-index: auto;
     }
 
@@ -690,14 +692,6 @@ body::after {
     main article:hover {
         background-color: var(--article);
         box-shadow: 0 4px 12px var(--article-box);
-    }
-
-    main article:not(:last-child) {
-        margin-bottom: var(--space-s);
-    }
-
-    main article:not(:last-child)::after {
-        display: none;
     }
 
     main article div:first-child {
