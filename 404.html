@@ -69,7 +69,7 @@
 
             body {
                 height: 100%;
-                font-family: "Roboto local";
+                font-family: "Roboto Local";
                 gap: 1.5rem;
                 line-height: 1.2;
                 transition:
@@ -113,6 +113,7 @@
                 opacity: 0.08;
                 z-index: -1;
                 pointer-events: none;
+                background-color: var(--bubble);
             }
 
             a {
@@ -120,10 +121,6 @@
                 font-weight: 400;
                 text-decoration: underline;
                 transition: text-decoration-color 0.2s ease;
-            }
-
-            body::before {
-                background-color: var(--bubble);
             }
 
             h1 span:first-child {
