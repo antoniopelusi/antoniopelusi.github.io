@@ -1,0 +1,402 @@
+{
+  "name": "Antonio Pelusi",
+  "title": [
+    "Dottorando in Informatica",
+    "e Matematica del Calcolo"
+  ],
+  "contacts": {
+    "location": {
+      "text": "Modena, Italia"
+    },
+    "phone": {
+      "text": "+39 3284261797",
+      "url": "tel:+393284261797"
+    },
+    "email": {
+      "text": "antoniopelusi2000@gmail.com",
+      "url": "mailto:antoniopelusi2000@gmail.com"
+    },
+    "website": {
+      "text": "antoniopelusi.github.io",
+      "url": "https://antoniopelusi.github.io/"
+    },
+    "cv": {
+      "text": "antoniopelusi.github.io/cv",
+      "url": "/cv/"
+    },
+    "linkedin": {
+      "text": "linkedin.com/in/antoniopelusi",
+      "url": "https://linkedin.com/in/antoniopelusi"
+    },
+    "scholar": {
+      "text": "Antonio Pelusi",
+      "url": "https://scholar.google.com/citations?user=3BgZo94AAAAJ"
+    },
+    "orcid": {
+      "text": "0009-0006-0807-4364",
+      "url": "https://orcid.org/0009-0006-0807-4364"
+    },
+    "github": {
+      "text": "github.com/antoniopelusi",
+      "url": "https://github.com/antoniopelusi"
+    }
+  },
+  "summary": {
+    "title": "Profilo",
+    "text": [
+      "Ricercatore e sviluppatore software focalizzato sull'intersezione tra intelligenza artificiale generativa avanzata, sintesi di dati strutturati e sistemi di Machine Learning orientati alla privacy.",
+      "Studia le limitazioni strutturali delle architetture generative in questo contesto, combinando una rigorosa valutazione della fedeltà statistica e dei rischi di memorizzazione con lo sviluppo pratico di sistemi."
+    ]
+  },
+  "experience": {
+    "title": "Esperienza",
+    "items": [
+      {
+        "id": "ibm",
+        "title": "Visiting Researcher",
+        "date": "Set 2026 - Mar 2027",
+        "subtitle": "IBM Research",
+        "detail": "Dublino, Irlanda",
+        "bullets": [
+          "Ricerca sulla generazione di dati sintetici differenzialmente privati basata su LLM, dal fine-tuning LoRA alla valutazione di privacy, fedeltà e utilità."
+        ]
+      },
+      {
+        "id": "randompower",
+        "title": "Software Developer (Part-time)",
+        "date": "Mag 2024 - Nov 2025",
+        "subtitle": "Random Power (Startup)",
+        "detail": "Remoto",
+        "bullets": [
+          "Realizzazione in C di una piattaforma Entropy-as-a-Service conforme all'API QRNG di Palo Alto, per la distribuzione di bit casuali quantistici a 1 Gbit/s, e collaborazione ai suoi moduli scheduler e TEE per una distribuzione sicura.",
+          "Sviluppo del client web Django (backend e frontend) per la 64x Multi-Generator Board, con autenticazione multi-utente, gestione delle sessioni e interfacce di comunicazione hardware-software."
+        ]
+      },
+      {
+        "id": "liferay",
+        "title": "Junior Software Developer (Stage)",
+        "date": "Mar 2021 - Lug 2021",
+        "subtitle": "Liferay Inc.",
+        "detail": "Remoto",
+        "bullets": [
+          "Integrazione della funzionalità di pagamento Stripe nel portale open-source Liferay."
+        ],
+        "links": [
+          {
+            "type": "repository",
+            "url": "https://github.com/antoniopelusi/liferay-portal-stripe"
+          }
+        ]
+      }
+    ]
+  },
+  "side_experience": {
+    "title": "Altre Esperienze",
+    "items": [
+      {
+        "id": "paradisi",
+        "title": "Docente di Informatica alle Scuole Superiori (Part-time)",
+        "date": "Set 2024 - Lug 2025",
+        "subtitle": "Liceo A. Paradisi",
+        "detail": "Vignola, Italia",
+        "bullets": [
+          "Insegnamento di programmazione, algoritmi e concetti informatici fondamentali a oltre 75 studenti delle superiori."
+        ]
+      },
+      {
+        "id": "unimore-tutor",
+        "title": "Tutor Universitario di Informatica (Part-time)",
+        "date": "Set 2024 - Dic 2024",
+        "subtitle": "Università di Modena e Reggio Emilia",
+        "detail": "Modena, Italia",
+        "bullets": [
+          "Supporto a oltre 50 studenti universitari nei laboratori di programmazione, algoritmi e strutture dati."
+        ]
+      }
+    ]
+  },
+  "education": {
+    "title": "Formazione",
+    "items": [
+      {
+        "id": "uninsubria",
+        "title": "PhD in Informatica e Matematica del Calcolo",
+        "date": "Nov 2024 - Presente",
+        "subtitle": "Università dell'Insubria",
+        "detail": "Varese, Italia",
+        "bullets": [
+          "Ricerca sulla generazione di dati sintetici con tutela della privacy tramite LLM di piccole dimensioni, investigando tecniche di fine-tuning LoRA e Differential Privacy per dati tabulari."
+        ]
+      },
+      {
+        "id": "unimore-master",
+        "title": "Laurea Magistrale in Informatica",
+        "date": "Set 2022 - Apr 2024",
+        "subtitle": "Università di Modena e Reggio Emilia",
+        "detail": "Modena, Italia",
+        "bullets": [
+          "Corsi avanzati in Big Data & Machine Learning (modellazione predittiva, analisi di dati su larga scala, tecniche avanzate di apprendimento) e in Cybersecurity & Crittografia (sicurezza dei dati applicata, protocolli crittografici). Voto finale: 110/110."
+        ]
+      },
+      {
+        "id": "cbi-attract",
+        "title": "Corso di Alta Formazione CBI.Attract",
+        "date": "Feb 2023 - Giu 2023",
+        "subtitle": "Università di Bologna, CERN, AGH University",
+        "detail": "Bologna, Italia",
+        "bullets": [
+          "Partecipazione a collaborazioni internazionali di ricerca presso il CERN e AGH University, finanziate dal Progetto EU Attract, affiancando gruppi di ricerca nell'esplorazione di soluzioni per tecnologie emergenti attraverso lo sviluppo e il test di prototipi con approccio Design Thinking. Voto finale: 30/30 con lode."
+        ]
+      },
+      {
+        "id": "unimore-bachelor",
+        "title": "Laurea Triennale in Informatica",
+        "date": "Set 2018 - Apr 2022",
+        "subtitle": "Università di Modena e Reggio Emilia",
+        "detail": "Modena, Italia",
+        "bullets": [
+          "Acquisizione di basi in algoritmi, strutture dati, linguaggi di programmazione, architettura dei calcolatori e sistemi operativi, integrate da matematica discreta, calcolo, statistica e algebra lineare."
+        ]
+      }
+    ]
+  },
+  "publications": {
+    "title": "Pubblicazioni",
+    "items": [
+      {
+        "id": "explainable-governance",
+        "title": "Towards Explainable Governance of Synthetic Health Data in Collaborative Healthcare Ecosystems",
+        "date": "Ott 2026",
+        "subtitle": "A. Pelusi, A. Trombetta, D. Spoladore, S. Braghin",
+        "detail": "arXiv:2606.11961",
+        "bullets": [
+          "Proposta di un framework di Explainable AI basato sui ruoli per la governance di dati sanitari sintetici generati da LLM, che traduce metriche di privacy, fedeltà e affidabilità in spiegazioni specifiche per ciascun stakeholder, in linea con GDPR ed EU AI Act."
+        ],
+        "links": [
+          {
+            "type": "paper"
+          }
+        ],
+        "status": "development"
+      },
+      {
+        "id": "privacy-fidelity",
+        "title": "Privacy-Fidelity Trade-offs in Differentially Private Synthetic Tabular Data Generation",
+        "date": "Lug 2026",
+        "subtitle": "A. Pelusi, S. Braghin, A. Trombetta",
+        "bullets": [
+          "Valutazione del fine-tuning LoRA con Differential Privacy (DP-SGD tramite Opacus) per la sintesi tabulare basata su LLM, caratterizzando la frontiera privacy-fedeltà e il degrado a livello di feature sugli attributi categorici ad alta cardinalità."
+        ],
+        "links": [
+          {
+            "type": "repository",
+            "url": "https://github.com/antoniopelusi/LLM-synthetic-data-generation/releases/tag/v2.0.0"
+          },
+          {
+            "type": "paper"
+          }
+        ],
+        "status": "development"
+      },
+      {
+        "id": "categorical-prior-lock-in",
+        "title": "Categorical Prior Lock-in: Why In-Context Learning Fails for Structured Data",
+        "date": "Apr 2026",
+        "subtitle": "A. Pelusi, S. Braghin, A. Trombetta",
+        "bullets": [
+          "Confronto tra in-context learning e fine-tuning LoRA per la sintesi tabulare basata su LLM, individuando il categorical prior lock-in, l'incapacità dell'ICL di riprodurre distribuzioni categoriche ad alta cardinalità, e il suo compromesso con il rischio di memorizzazione."
+        ],
+        "links": [
+          {
+            "type": "repository",
+            "url": "https://github.com/antoniopelusi/LLM-synthetic-data-generation/releases/tag/v1.0.0"
+          },
+          {
+            "type": "paper"
+          }
+        ],
+        "status": "development"
+      }
+    ]
+  },
+  "projects": {
+    "title": "Progetti",
+    "items": [
+      {
+        "id": "pipeline",
+        "title": "synth-pipeline",
+        "date": "Ott 2026",
+        "subtitle": "Pipeline di Generazione di Dati Tabulari Sintetici Privacy-Preserving",
+        "bullets": [
+          "Architettura di una pipeline end-to-end per la sintesi di dati tabulari con tutela della privacy: gli LLM sono addestrati con fine-tuning LoRA per generare record validati rispetto allo schema, con training opzionale in Differential Privacy tramite Opacus a epsilon configurabile.",
+          "Ideazione di un framework di valutazione rigoroso che misura la fedeltà statistica (TVD, errore di correlazione), l'utilità downstream (TSTR) e il rischio per la privacy (distanza dal record più vicino, k-anonimato, membership inference attack)."
+        ],
+        "links": [
+          {
+            "type": "repository"
+          }
+        ],
+        "status": "development"
+      },
+      {
+        "id": "chesslm",
+        "title": "chesSLM",
+        "date": "Giu 2026",
+        "subtitle": "Chess Small Language Model",
+        "bullets": [
+          "Realizzazione da zero di un Transformer decoder-only da ~100M di parametri (attention, training loop e schema di tokenizzazione custom), addestrato con un curriculum a due stadi di pretraining/finetuning e distribuito come motore scacchistico compatibile UCI che raggiunge 1650 Elo contro Stockfish."
+        ],
+        "links": [
+          {
+            "type": "repository",
+            "url": "https://github.com/antoniopelusi/chesSLM"
+          },
+          {
+            "type": "model",
+            "url": "https://huggingface.co/antoniopelusi/chesSLM"
+          }
+        ]
+      },
+      {
+        "id": "epsiloc",
+        "title": "epsiloc",
+        "date": "Ott 2025",
+        "subtitle": "Libreria Local Differential Privacy",
+        "bullets": [
+          "Implementazione di una libreria per applicare meccanismi di Local Differential Privacy a dataset locali."
+        ],
+        "links": [
+          {
+            "type": "repository",
+            "url": "https://github.com/antoniopelusi/epsiloc"
+          }
+        ]
+      }
+    ]
+  },
+  "side_projects": {
+    "title": "Altri Progetti",
+    "items": [
+      {
+        "id": "recoilisland",
+        "title": "Recoil Island",
+        "date": "Mar 2026",
+        "subtitle": "Sparatutto retro 2D frenetico",
+        "bullets": [
+          "Creazione di uno sparatutto retro basato sul web con uno schema di controllo a un solo clic, usando il rinculo dell'arma per attaccare e muoversi contemporaneamente in ambienti impegnativi, senza server e senza installazione."
+        ],
+        "links": [
+          {
+            "type": "repository",
+            "url": "https://github.com/antoniopelusi/recoilisland"
+          },
+          {
+            "type": "website",
+            "url": "/recoilisland/"
+          }
+        ]
+      },
+      {
+        "id": "txturl",
+        "title": "TxtUrl",
+        "date": "Feb 2026",
+        "subtitle": "Editor di testo serverless integrato nell'URL",
+        "bullets": [
+          "Sviluppo di un editor di testo che codifica il contenuto direttamente nell'hash dell'URL, senza server, database né account. Supporta il rendering della sintassi Markdown."
+        ],
+        "links": [
+          {
+            "type": "repository",
+            "url": "https://github.com/antoniopelusi/txturl"
+          },
+          {
+            "type": "website",
+            "url": "/txturl/"
+          }
+        ]
+      },
+      {
+        "id": "scoretracker",
+        "title": "Score Tracker",
+        "date": "Feb 2025",
+        "subtitle": "Web App per il tracciamento dei punteggi",
+        "bullets": [
+          "Rilascio di una Web App per tenere traccia dei punteggi di giochi da tavolo, di carte e di qualsiasi competizione multiplayer."
+        ],
+        "links": [
+          {
+            "type": "repository",
+            "url": "https://github.com/antoniopelusi/scoretracker"
+          },
+          {
+            "type": "website",
+            "url": "/scoretracker/"
+          }
+        ]
+      },
+      {
+        "id": "toolstab",
+        "title": "ToolsTab",
+        "date": "Gen 2025",
+        "subtitle": "Estensione browser startpage",
+        "bullets": [
+          "Pubblicazione di una startpage per browser minimale e responsive con strumenti utili."
+        ],
+        "links": [
+          {
+            "type": "repository",
+            "url": "https://github.com/antoniopelusi/toolstab"
+          },
+          {
+            "type": "website",
+            "url": "/toolstab/"
+          }
+        ]
+      }
+    ]
+  },
+  "awards": {
+    "title": "Riconoscimenti",
+    "items": [
+      {
+        "id": "hackathon",
+        "title": "Vincitore dell'Hackathon Green & Digital Transformation",
+        "date": "Set 2023",
+        "subtitle": "Università di Modena e Reggio Emilia",
+        "detail": "Mantova, Italia",
+        "bullets": [
+          "Prototipazione di un modello predittivo basato su machine learning per l'ottimizzazione del consumo idrico."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Competenze",
+    "items": [
+      {
+        "label": "Linguaggi",
+        "text": "Python, C, C++, Java"
+      },
+      {
+        "label": "ML/AI",
+        "text": "PyTorch, Opacus, LangChain, scikit-learn, NumPy, Pandas"
+      },
+      {
+        "label": "Web",
+        "text": "HTML, CSS, JavaScript, Django"
+      },
+      {
+        "label": "Database",
+        "text": "PostgreSQL, SQLite, MongoDB"
+      },
+      {
+        "label": "Strumenti",
+        "text": "Linux, Bash, Git, Docker"
+      },
+      {
+        "label": "Lingue parlate",
+        "text": "Italiano (madrelingua), Inglese (B2)"
+      }
+    ]
+  }
+}

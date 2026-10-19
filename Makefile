@@ -1,6 +1,7 @@
 .SILENT: run
 
 run:
-	echo "Network access: http://$$(hostname -I | awk '{print $$1}'):8000"
+	echo "Site: http://127.0.0.1:8000"
+	echo "CV:   http://127.0.0.1:8000/cv/"
 	echo ""
-	python3 -m http.server 8000 --bind 0.0.0.0
+	python3 -m http.server 8000 --bind 127.0.0.1

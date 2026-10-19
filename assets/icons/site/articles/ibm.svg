@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 64 64"
+   width="64"
+   height="64"
+   version="1.1"
+   id="svg6"
+   sodipodi:docname="ibm.svg"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs6" />
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="4.1771544"
+     inkscape:cx="45.485511"
+     inkscape:cy="34.233832"
+     inkscape:window-width="1512"
+     inkscape:window-height="921"
+     inkscape:window-x="0"
+     inkscape:window-y="33"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg6" />
+  <g
+     id="g8"
+     transform="translate(0,-3.5613659)">
+    <path
+       d="M 13.827626,19.07765 A 4.7309366,4.7309366 0 1 1 7.1188162,19.0594 4.7502994,4.7502994 0 0 1 13.827626,19.07765"
+       id="path4"
+       style="fill:#f7afbb;fill-opacity:1;stroke-width:0.645422" />
+    <path
+       d="m 22.225049,10.680227 a 4.7309366,4.7309366 0 1 1 -6.70881,-0.01825 4.7502994,4.7502994 0 0 1 6.70881,0.01825"
+       id="path5"
+       style="fill:#f7afbb;fill-opacity:1;stroke-width:0.645422" />
+    <path
+       d="m 8.9352132,49.783009 6.3528358,-16.466252 8.401986,16.069196 c 1.455857,2.907154 1.770761,6.882238 -1.337198,9.990197 A 8.3130239,8.3130239 0 0 1 10.564499,59.39897 C 7.8262092,56.66068 7.6345282,53.128287 8.9123972,49.7967"
+       id="path6"
+       style="fill:#26923c;fill-opacity:1;stroke-width:0.645422" />
+    <path
+       d="m 46.244414,12.473808 -16.466248,6.352832 16.069197,8.401986 c 2.907151,1.455858 6.905055,1.747943 10.013014,-1.360016 v 0 a 8.293661,8.293661 0 0 0 -0.04107,-11.724445 c -2.73829,-2.73829 -6.270685,-2.929969 -9.60227,-1.652102"
+       id="path7"
+       style="fill:#26923c;fill-opacity:1;stroke-width:0.645422" />
+    <path
+       d="M 30.216293,20.633912 A 10.249287,10.249287 0 0 0 17.05881,33.791395 Z"
+       id="path8"
+       style="fill:#eeb50e;fill-opacity:1;stroke-width:0.645422" />
+    <polygon
+       points="121.28,46.11 121.28,37.54 153.12,37.54 153.12,46.11 "
+       id="polygon8"
+       transform="matrix(0.45638164,-0.45638164,0.45638164,0.45638164,-52.712818,76.061465)"
+       style="fill:#eeb50e;fill-opacity:1" />
+    <polygon
+       points="121.28,62.1 121.28,53.53 153.12,53.53 153.12,62.1 "
+       id="polygon9"
+       transform="matrix(0.45638164,-0.45638164,0.45638164,0.45638164,-52.712818,76.061465)"
+       style="fill:#eeb50e;fill-opacity:1" />
+    <polygon
+       points="151.62,69.5 151.62,78.73 122.79,78.73 122.79,69.5 "
+       style="fill:none"
+       id="polygon10"
+       transform="matrix(0.45638164,-0.45638164,0.45638164,0.45638164,-52.712818,76.061465)" />
+    <path
+       d="M 35.049375,51.745448 A 10.249287,10.249287 0 0 0 48.206856,38.587967 Z"
+       id="path10"
+       style="fill:#eeb50e;fill-opacity:1;stroke-width:0.645422" />
+  </g>
+</svg>

@@ -1,0 +1,54 @@
+html,
+body {
+    height: 100%;
+}
+
+body,
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    gap: 1.5rem;
+    color: var(--muted);
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    line-height: 1.2;
+}
+
+main {
+    gap: 1rem;
+}
+
+h1 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 400;
+    color: var(--light);
+}
+
+h1 span:first-child {
+    font-weight: 700;
+}
+
+h1 span:last-child {
+    color: var(--muted);
+}
+
+p {
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+    word-break: break-all;
+}
+
+a {
+    color: var(--light);
+    font-weight: 400;
+    text-decoration: underline;
+    text-decoration-color: var(--muted);
+    transition: text-decoration-color 0.2s;
+}
+
+a:hover {
+    text-decoration-color: var(--light);
+}

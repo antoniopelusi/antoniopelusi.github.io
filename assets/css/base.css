@@ -1,0 +1,140 @@
+@font-face {
+    font-family: "Roboto Local";
+    src: url("../fonts/Roboto-Light.woff2") format("woff2");
+    font-weight: 300;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: "Roboto Local";
+    src: url("../fonts/Roboto-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: "Roboto Local";
+    src: url("../fonts/Roboto-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: block;
+}
+
+:root {
+    --dark: #111828;
+    --light: #e2e8f0;
+    --muted: #a2afc1;
+    --bubble: #739bd0;
+    --article: #a2afc110;
+    --article-hover: #a2afc12e;
+    --article-box: #0000001a;
+}
+
+html {
+    background-color: var(--dark);
+}
+
+::selection {
+    background-color: var(--muted);
+    color: var(--dark);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto Local";
+    font-feature-settings:
+        "liga" 0,
+        "clig" 0,
+        "kern" 0;
+}
+
+address {
+    font-style: normal;
+}
+
+noscript {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: max-content;
+    max-width: 90vw;
+    padding: 1rem 1.5rem;
+    border-radius: 16px;
+    background-color: var(--article);
+    color: var(--muted);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+noscript div {
+    display: flex;
+    gap: 0.5rem;
+}
+
+noscript img {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+noscript img:last-child {
+    filter: grayscale(1);
+    opacity: 0.6;
+}
+
+noscript p {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    filter: blur(75px);
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.08;
+    background-color: var(--bubble);
+    border-radius: 50% 40% 60% 30%;
+}
+
+body::before {
+    width: clamp(200px, 25vw, 400px);
+    height: clamp(200px, 25vw, 400px);
+    top: clamp(1rem, 5vh, 3rem);
+    left: clamp(1rem, 5vw, 3rem);
+}
+
+body::after {
+    width: clamp(150px, 20vw, 300px);
+    height: clamp(150px, 20vw, 300px);
+    bottom: clamp(1rem, 5vh, 3rem);
+    right: clamp(1rem, 5vw, 3rem);
+}
+
+body[data-outline] main > div *:not(nav, nav *) {
+    outline: 1px solid orangered;
+    outline-offset: -1px;
+}
+
+@media print {
+    body::before,
+    body::after {
+        display: none;
+    }
+
+    body[data-outline] main > div *:not(nav, nav *) {
+        outline: none;
+    }
+}

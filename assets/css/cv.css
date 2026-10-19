@@ -1,0 +1,274 @@
+::selection {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+html {
+    min-width: fit-content;
+    min-height: fit-content;
+}
+
+body {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 5mm;
+    color: var(--dark);
+    font-size: 9pt;
+    font-weight: 400;
+    line-height: 1.25;
+    hyphens: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 5mm;
+}
+
+main > div {
+    display: flex;
+    flex-direction: column;
+    width: 21cm;
+    height: 29.7cm;
+    max-height: 29.7cm;
+    padding: 10mm;
+    border-radius: 16px;
+    background-color: var(--light);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+main > div > div {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 2mm;
+    min-height: 0;
+}
+
+body[data-outline] main > div > div:not(nav, nav *) {
+    outline-color: limegreen;
+    outline-offset: 0;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5mm;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    gap: 1mm;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5mm;
+}
+
+h1 {
+    font-size: 25pt;
+    font-weight: 700;
+    line-height: 1.1;
+    text-align: center;
+}
+
+h2 {
+    border-bottom: solid 1px var(--dark);
+    font-size: 14pt;
+}
+
+h3 {
+    font-size: 10pt;
+}
+
+p,
+li {
+    font-weight: 300;
+    word-break: keep-all;
+}
+
+strong {
+    font-weight: 700;
+}
+
+img {
+    width: 1lh;
+    height: 1lh;
+}
+
+address a,
+address span {
+    display: inline-block;
+}
+
+address img {
+    vertical-align: -0.15em;
+}
+
+section > p {
+    display: flex;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+header > p {
+    font-size: 10pt;
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+    width: 21cm;
+    padding: 2mm;
+    border-radius: 8px;
+    background-color: var(--article);
+    user-select: none;
+}
+
+nav button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4em;
+    padding: 0.2em 0.6em;
+    border: none;
+    border-radius: 4px;
+    font: inherit;
+    background-color: var(--article);
+    color: var(--muted);
+    cursor: pointer;
+    transition:
+        background-color 0.2s,
+        color 0.2s;
+}
+
+nav button[data-action="back"] {
+    margin-right: auto;
+}
+
+nav button:hover {
+    background-color: rgba(162, 175, 193, 0.12);
+    color: var(--light);
+}
+
+nav button[data-active="true"] {
+    background-color: var(--article-hover);
+    color: var(--light);
+}
+
+nav button[data-active="true"]:hover {
+    background-color: rgba(162, 175, 193, 0.28);
+}
+
+nav button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+address {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1mm;
+}
+
+address p {
+    line-height: 1;
+}
+
+address span {
+    font-weight: 400;
+}
+
+article > div {
+    display: block;
+}
+
+article h3,
+article time {
+    display: inline;
+}
+
+article time {
+    font-size: 8pt;
+}
+
+article p {
+    font-size: 8pt;
+    font-weight: 400;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5mm;
+    list-style: inside disc;
+}
+
+section > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1mm;
+}
+
+section > div > p {
+    font-size: 8pt;
+}
+
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+
+    :root {
+        --dark: #000000;
+        --light: #ffffff;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    main {
+        gap: 0;
+    }
+
+    nav {
+        display: none;
+    }
+
+    main > div > div {
+        overflow: hidden;
+    }
+
+    main > div {
+        border-radius: 0;
+        box-shadow: none;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    main > div:not(:last-child) {
+        break-after: page;
+        page-break-after: always;
+    }
+
+    article {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}

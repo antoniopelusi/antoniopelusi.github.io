@@ -2,164 +2,46 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width" />
+
         <title>404 | Antonio Pelusi</title>
+
         <meta name="description" content="Page not found - Antonio Pelusi" />
         <meta name="author" content="Antonio Pelusi" />
 
-        <!-- Favicon -->
         <link
             rel="icon"
             type="image/png"
-            href="./assets/icons/favicon/favicon-96x96.png"
+            href="/assets/icons/favicon/favicon-96x96.png"
             sizes="96x96"
         />
         <link
             rel="icon"
             type="image/svg+xml"
-            href="./assets/icons/favicon/favicon.svg"
+            href="/assets/icons/favicon/favicon.svg"
         />
-        <link rel="shortcut icon" href="./assets/icons/favicon/favicon.ico" />
+        <link rel="shortcut icon" href="/assets/icons/favicon/favicon.ico" />
         <link
             rel="apple-touch-icon"
             sizes="180x180"
-            href="./assets/icons/favicon/apple-touch-icon.png"
+            href="/assets/icons/favicon/apple-touch-icon.png"
         />
-        <link rel="manifest" href="./assets/icons/favicon/site.webmanifest" />
+        <link rel="manifest" href="/assets/icons/favicon/site.webmanifest" />
         <meta
             name="apple-mobile-web-app-title"
             content="antoniopelusi.github.io"
         />
 
-        <style>
-            @font-face {
-                font-family: "Roboto Local";
-                src: url("./assets/fonts/Roboto-Regular.woff2") format("woff2");
-                font-weight: 400;
-                font-style: normal;
-                font-display: block;
-                unicode-range: U+0020-007F, U+00A9;
-            }
+        <link rel="stylesheet" href="/assets/css/base.css" />
+        <link rel="stylesheet" href="/assets/css/404.css" />
 
-            @font-face {
-                font-family: "Roboto Local";
-                src: url("./assets/fonts/Roboto-Bold.woff2") format("woff2");
-                font-weight: 700;
-                font-style: normal;
-                font-display: block;
-                unicode-range: U+0020-007F;
-            }
-
-            :root {
-                --bg: #111828;
-                --header: #e2e8f0;
-                --text: #a2afc1;
-                --bubble: #739bd0;
-            }
-
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-
-            html {
-                height: 100%;
-            }
-
-            body {
-                height: 100%;
-                font-family: "Roboto Local";
-                gap: 1.5rem;
-                line-height: 1.2;
-                transition:
-                    background-color 0.2s ease,
-                    color 0.2s ease;
-                background-color: var(--bg);
-            }
-
-            body,
-            main {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-
-            main {
-                gap: 1rem;
-            }
-
-            h1 {
-                font-size: clamp(1.5rem, 4vw, 2.5rem);
-                font-weight: 400;
-                margin: 0;
-            }
-
-            h1 span:first-child {
-                font-weight: 700;
-            }
-
-            body::before {
-                content: "";
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: clamp(150px, 20vw, 300px);
-                height: clamp(150px, 20vw, 300px);
-                border-radius: 50%;
-                filter: blur(75px);
-                opacity: 0.08;
-                z-index: -1;
-                pointer-events: none;
-                background-color: var(--bubble);
-            }
-
-            a {
-                font-size: clamp(0.9rem, 2vw, 1rem);
-                font-weight: 400;
-                text-decoration: underline;
-                transition: text-decoration-color 0.2s ease;
-            }
-
-            h1 span:first-child {
-                color: var(--header);
-            }
-
-            h1 span:last-child {
-                color: var(--text);
-            }
-
-            p {
-                color: var(--text);
-                font-size: clamp(0.8rem, 2vw, 0.9rem);
-                word-break: break-all;
-            }
-
-            a {
-                color: var(--header);
-            }
-
-            a:hover {
-                text-decoration-color: var(--header);
-            }
-        </style>
+        <script src="/assets/js/404.js" defer></script>
     </head>
     <body>
-        <main>
+        <main role="main">
             <h1><span>404</span> <span>| Not Found</span></h1>
-            <p id="missing-url"></p>
-            <a href="/" id="back-btn">Go back</a>
+            <p></p>
+            <a href="/">Go back</a>
         </main>
-        <script>
-            const from = new URLSearchParams(window.location.search).get("from");
-            const missing = from || window.location.href;
-            const btn = document.getElementById("back-btn");
-            document.getElementById("missing-url").textContent = missing;
-            
-            const parent = new URL(missing).pathname.replace(/\/[^/]*$/, "") || "/";
-            btn.href = parent || "/";
-        </script>
     </body>
 </html>
