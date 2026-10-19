@@ -235,6 +235,10 @@ article p img {
     height: 1lh;
 }
 
+article p span span {
+    font-weight: 400;
+}
+
 article p span + span {
     flex-basis: 100%;
     font-weight: 400;
@@ -316,6 +320,10 @@ article li:has([data-type="paper"])::before {
     background-image: url("../icons/site/articles/paper.svg");
 }
 
+article li:has([data-type="thesis"])::before {
+    background-image: url("../icons/site/articles/thesis.svg");
+}
+
 article li:has([data-type="model"])::before {
     background-image: url("../icons/site/articles/model.svg");
 }
@@ -330,7 +338,6 @@ article li a {
 }
 
 article li a:not([href]) {
-    font-style: italic;
     text-decoration: none;
     opacity: 0.7;
 }
@@ -417,6 +424,7 @@ dt {
 dd {
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
     gap: var(--space-xs);
 }
 

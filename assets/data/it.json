@@ -9,7 +9,7 @@
       "text": "Modena, Italia"
     },
     "phone": {
-      "text": "+39 3284261797",
+      "text": "+39 328 426 1797",
       "url": "tel:+393284261797"
     },
     "email": {
@@ -44,8 +44,8 @@
   "summary": {
     "title": "Profilo",
     "text": [
-      "Ricercatore e sviluppatore software focalizzato sull'intersezione tra intelligenza artificiale generativa avanzata, sintesi di dati strutturati e sistemi di Machine Learning orientati alla privacy.",
-      "Studia le limitazioni strutturali delle architetture generative in questo contesto, combinando una rigorosa valutazione della fedeltà statistica e dei rischi di memorizzazione con lo sviluppo pratico di sistemi."
+      "Dottorando in Informatica con focus su Differential Privacy e parameter-efficient fine-tuning di modelli.",
+      "Autore di articoli scientifici sulla sintesi di dati tabulari basata su LLM, sui relativi rischi di memorizzazione e sulla explainable governance di dati sanitari sintetici."
     ]
   },
   "experience": {
@@ -58,28 +58,28 @@
         "subtitle": "IBM Research",
         "detail": "Dublino, Irlanda",
         "bullets": [
-          "Ricerca sulla generazione di dati sintetici differenzialmente privati basata su LLM, dal fine-tuning LoRA alla valutazione di privacy, fedeltà e utilità."
+          "Ricerca congiunta con IBM Research sul privacy-preserving fine-tuning di LLM, applicando il lavoro di dottorato in un contesto industriale."
         ]
       },
       {
         "id": "randompower",
         "title": "Software Developer (Part-time)",
         "date": "Mag 2024 - Nov 2025",
-        "subtitle": "Random Power (Startup)",
+        "subtitle": "Random Power (Startup di Quantum RNG)",
         "detail": "Remoto",
         "bullets": [
-          "Realizzazione in C di una piattaforma Entropy-as-a-Service conforme all'API QRNG di Palo Alto, per la distribuzione di bit casuali quantistici a 1 Gbit/s, e collaborazione ai suoi moduli scheduler e TEE per una distribuzione sicura.",
+          "Realizzazione in C di una piattaforma Entropy-as-a-Service conforme all'API Quantum Random Number Generator (QRNG) di Palo Alto Networks, per la distribuzione di bit casuali quantistici a 1 Gbit/s.",
           "Sviluppo del client web Django (backend e frontend) per la 64x Multi-Generator Board, con autenticazione multi-utente, gestione delle sessioni e interfacce di comunicazione hardware-software."
         ]
       },
       {
         "id": "liferay",
-        "title": "Junior Software Developer (Stage)",
+        "title": "Junior Software Developer (Tirocinio)",
         "date": "Mar 2021 - Lug 2021",
         "subtitle": "Liferay Inc.",
         "detail": "Remoto",
         "bullets": [
-          "Integrazione della funzionalità di pagamento Stripe nel portale open-source Liferay."
+          "Integrazione della funzionalità di pagamento Stripe nel portale open-source Liferay, in Java."
         ],
         "links": [
           {
@@ -91,7 +91,7 @@
     ]
   },
   "side_experience": {
-    "title": "Altre Esperienze",
+    "title": "Esperienza Didattica",
     "items": [
       {
         "id": "paradisi",
@@ -100,7 +100,7 @@
         "subtitle": "Liceo A. Paradisi",
         "detail": "Vignola, Italia",
         "bullets": [
-          "Insegnamento di programmazione, algoritmi e concetti informatici fondamentali a oltre 75 studenti delle superiori."
+          "Insegnamento di programmazione e algoritmi a oltre 75 studenti."
         ]
       },
       {
@@ -110,7 +110,7 @@
         "subtitle": "Università di Modena e Reggio Emilia",
         "detail": "Modena, Italia",
         "bullets": [
-          "Supporto a oltre 50 studenti universitari nei laboratori di programmazione, algoritmi e strutture dati."
+          "Supporto a oltre 50 studenti universitari nei laboratori di programmazione e strutture dati."
         ]
       }
     ]
@@ -125,7 +125,8 @@
         "subtitle": "Università dell'Insubria",
         "detail": "Varese, Italia",
         "bullets": [
-          "Ricerca sulla generazione di dati sintetici con tutela della privacy tramite LLM di piccole dimensioni, investigando tecniche di fine-tuning LoRA e Differential Privacy per dati tabulari."
+          "Ricerca sul privacy-preserving fine-tuning di Large Language Model (LLM) di piccole dimensioni e distribuibili in locale, applicato alla generazione di dati sintetici per la condivisione di dati in ambiti sensibili.",
+          "Valutazione del quantum true random number generator di Random Power come sorgente di rumore nei meccanismi di Differential Privacy, analizzandone l'impatto sulle garanzie teoriche di privacy e sulla robustezza empirica."
         ]
       },
       {
@@ -135,7 +136,13 @@
         "subtitle": "Università di Modena e Reggio Emilia",
         "detail": "Modena, Italia",
         "bullets": [
-          "Corsi avanzati in Big Data & Machine Learning (modellazione predittiva, analisi di dati su larga scala, tecniche avanzate di apprendimento) e in Cybersecurity & Crittografia (sicurezza dei dati applicata, protocolli crittografici). Voto finale: 110/110."
+          "Corsi di Big Data & Machine Learning e Cybersecurity & Cryptography. Tesi \"Privacy Preservation in Data Sharing: A Study on Differential Privacy\". Voto finale: 110/110."
+        ],
+        "links": [
+          {
+            "type": "thesis",
+            "url": "https://morethesis.unimore.it/theses/available/etd-02202024-141019/"
+          }
         ]
       },
       {
@@ -145,7 +152,7 @@
         "subtitle": "Università di Bologna, CERN, AGH University",
         "detail": "Bologna, Italia",
         "bullets": [
-          "Partecipazione a collaborazioni internazionali di ricerca presso il CERN e AGH University, finanziate dal Progetto EU Attract, affiancando gruppi di ricerca nell'esplorazione di soluzioni per tecnologie emergenti attraverso lo sviluppo e il test di prototipi con approccio Design Thinking. Voto finale: 30/30 con lode."
+          "Prototipazione di soluzioni per tecnologie emergenti tramite Design Thinking, in collaborazione con gruppi di ricerca del CERN e di AGH University nell'ambito del progetto EU Attract. Voto finale: 30/30 con lode."
         ]
       },
       {
@@ -155,7 +162,7 @@
         "subtitle": "Università di Modena e Reggio Emilia",
         "detail": "Modena, Italia",
         "bullets": [
-          "Acquisizione di basi in algoritmi, strutture dati, linguaggi di programmazione, architettura dei calcolatori e sistemi operativi, integrate da matematica discreta, calcolo, statistica e algebra lineare."
+          "Formazione di base in algoritmi, strutture dati, sviluppo software e fondamenti di matematica."
         ]
       }
     ]
@@ -168,24 +175,24 @@
         "title": "Towards Explainable Governance of Synthetic Health Data in Collaborative Healthcare Ecosystems",
         "date": "Ott 2026",
         "subtitle": "A. Pelusi, A. Trombetta, D. Spoladore, S. Braghin",
-        "detail": "arXiv:2606.11961",
+        "detail": "PRO-VE 2026, Padova, Italia",
         "bullets": [
-          "Proposta di un framework di Explainable AI basato sui ruoli per la governance di dati sanitari sintetici generati da LLM, che traduce metriche di privacy, fedeltà e affidabilità in spiegazioni specifiche per ciascun stakeholder, in linea con GDPR ed EU AI Act."
+          "Proposta di un framework di Explainable AI role-aware per la governance di dati sanitari sintetici generati da LLM, traducendo metriche di privacy, fedeltà e affidabilità in spiegazioni specifiche per ciascun stakeholder, in linea con il GDPR e l'AI Act europeo."
         ],
         "links": [
           {
             "type": "paper"
           }
-        ],
-        "status": "development"
+        ]
       },
       {
         "id": "privacy-fidelity",
         "title": "Privacy-Fidelity Trade-offs in Differentially Private Synthetic Tabular Data Generation",
         "date": "Lug 2026",
         "subtitle": "A. Pelusi, S. Braghin, A. Trombetta",
+        "detail": "Inviato",
         "bullets": [
-          "Valutazione del fine-tuning LoRA con Differential Privacy (DP-SGD tramite Opacus) per la sintesi tabulare basata su LLM, caratterizzando la frontiera privacy-fedeltà e il degrado a livello di feature sugli attributi categorici ad alta cardinalità."
+          "Valutazione del fine-tuning Low-Rank Adaptation (LoRA) di LLM con differentially private SGD (DP-SGD, tramite Opacus) per la sintesi di dati tabulari, evidenziando il degrado a livello di feature sugli attributi categorici ad alta cardinalità."
         ],
         "links": [
           {
@@ -195,16 +202,16 @@
           {
             "type": "paper"
           }
-        ],
-        "status": "development"
+        ]
       },
       {
         "id": "categorical-prior-lock-in",
         "title": "Categorical Prior Lock-in: Why In-Context Learning Fails for Structured Data",
         "date": "Apr 2026",
         "subtitle": "A. Pelusi, S. Braghin, A. Trombetta",
+        "detail": "Inviato",
         "bullets": [
-          "Confronto tra in-context learning e fine-tuning LoRA per la sintesi tabulare basata su LLM, individuando il categorical prior lock-in, l'incapacità dell'ICL di riprodurre distribuzioni categoriche ad alta cardinalità, e il suo compromesso con il rischio di memorizzazione."
+          "Confronto tra in-context learning e fine-tuning LoRA per la sintesi di dati tabulari basata su LLM, caratterizzando la fedeltà delle distribuzioni categoriche ad alta cardinalità e il relativo trade-off con il rischio di memorizzazione."
         ],
         "links": [
           {
@@ -214,8 +221,7 @@
           {
             "type": "paper"
           }
-        ],
-        "status": "development"
+        ]
       }
     ]
   },
@@ -226,17 +232,16 @@
         "id": "pipeline",
         "title": "synth-pipeline",
         "date": "Ott 2026",
-        "subtitle": "Pipeline di Generazione di Dati Tabulari Sintetici Privacy-Preserving",
+        "subtitle": "Pipeline di Sintesi di Dati Tabulari Privacy-Preserving",
         "bullets": [
-          "Architettura di una pipeline end-to-end per la sintesi di dati tabulari con tutela della privacy: gli LLM sono addestrati con fine-tuning LoRA per generare record validati rispetto allo schema, con training opzionale in Differential Privacy tramite Opacus a epsilon configurabile.",
-          "Ideazione di un framework di valutazione rigoroso che misura la fedeltà statistica (TVD, errore di correlazione), l'utilità downstream (TSTR) e il rischio per la privacy (distanza dal record più vicino, k-anonimato, membership inference attack)."
+          "Realizzazione di una pipeline end-to-end configurabile (PyTorch, PEFT, Opacus) per la sintesi di dati tabulari: fine-tuning LoRA degli LLM per generare record validati rispetto allo schema, con training opzionale in Differential Privacy a epsilon configurabile.",
+          "Progettazione di un framework di valutazione per misurare la fedeltà statistica (total variation distance, correlation error), l'utilità downstream (train on synthetic, test on real) e il rischio per la privacy (distance to closest record, k-anonymity, membership inference attack)."
         ],
         "links": [
           {
             "type": "repository"
           }
-        ],
-        "status": "development"
+        ]
       },
       {
         "id": "chesslm",
@@ -244,7 +249,8 @@
         "date": "Giu 2026",
         "subtitle": "Chess Small Language Model",
         "bullets": [
-          "Realizzazione da zero di un Transformer decoder-only da ~100M di parametri (attention, training loop e schema di tokenizzazione custom), addestrato con un curriculum a due stadi di pretraining/finetuning e distribuito come motore scacchistico compatibile UCI che raggiunge 1650 Elo contro Stockfish."
+          "Realizzazione da zero in PyTorch di un Transformer decoder-only da ~100M di parametri, con blocchi Pre-LN, Rotary Positional Embeddings, causal attention con kernel FlashAttention e tokenizer custom.",
+          "Addestramento su dataset Hugging Face con un curriculum a due stadi di pretraining/fine-tuning, mixed precision, gradient accumulation, AdamW e cosine learning-rate scheduling, e distribuzione come motore Universal Chess Interface (UCI) con un punteggio di ~1650 Elo contro Stockfish a forza limitata."
         ],
         "links": [
           {
@@ -261,9 +267,9 @@
         "id": "epsiloc",
         "title": "epsiloc",
         "date": "Ott 2025",
-        "subtitle": "Libreria Local Differential Privacy",
+        "subtitle": "Libreria per la Local Differential Privacy",
         "bullets": [
-          "Implementazione di una libreria per applicare meccanismi di Local Differential Privacy a dataset locali."
+          "Implementazione di meccanismi di perturbazione per rendere privati i dataset in locale."
         ],
         "links": [
           {
@@ -283,7 +289,7 @@
         "date": "Mar 2026",
         "subtitle": "Sparatutto retro 2D frenetico",
         "bullets": [
-          "Creazione di uno sparatutto retro basato sul web con uno schema di controllo a un solo clic, usando il rinculo dell'arma per attaccare e muoversi contemporaneamente in ambienti impegnativi, senza server e senza installazione."
+          "Ideazione di un controllo a un solo clic basato sul rinculo dell'arma per attaccare e muoversi allo stesso tempo, interamente nel browser, senza server né installazione."
         ],
         "links": [
           {
@@ -302,7 +308,7 @@
         "date": "Feb 2026",
         "subtitle": "Editor di testo serverless integrato nell'URL",
         "bullets": [
-          "Sviluppo di un editor di testo che codifica il contenuto direttamente nell'hash dell'URL, senza server, database né account. Supporta il rendering della sintassi Markdown."
+          "Implementazione della codifica del contenuto direttamente nell'hash dell'URL, senza database né account, con aggiunta del rendering Markdown."
         ],
         "links": [
           {
@@ -319,9 +325,9 @@
         "id": "scoretracker",
         "title": "Score Tracker",
         "date": "Feb 2025",
-        "subtitle": "Web App per il tracciamento dei punteggi",
+        "subtitle": "Web app per il tracciamento dei punteggi",
         "bullets": [
-          "Rilascio di una Web App per tenere traccia dei punteggi di giochi da tavolo, di carte e di qualsiasi competizione multiplayer."
+          "Rilascio di un'app per tenere traccia dei punteggi di giochi da tavolo, di carte e di qualsiasi competizione multiplayer."
         ],
         "links": [
           {
@@ -338,9 +344,9 @@
         "id": "toolstab",
         "title": "ToolsTab",
         "date": "Gen 2025",
-        "subtitle": "Estensione browser startpage",
+        "subtitle": "Estensione browser con startpage",
         "bullets": [
-          "Pubblicazione di una startpage per browser minimale e responsive con strumenti utili."
+          "Pubblicazione di una startpage minimale e responsive con strumenti integrati."
         ],
         "links": [
           {
@@ -374,24 +380,24 @@
     "title": "Competenze",
     "items": [
       {
-        "label": "Linguaggi",
+        "label": "Linguaggi di programmazione",
         "text": "Python, C, C++, Java"
       },
       {
-        "label": "ML/AI",
-        "text": "PyTorch, Opacus, LangChain, scikit-learn, NumPy, Pandas"
+        "label": "Aree di ricerca",
+        "text": "Differential Privacy, Synthetic Data Generation, LLM Fine-Tuning, Membership Inference, Explainable AI"
+      },
+      {
+        "label": "Librerie ML/AI",
+        "text": "torch, transformers, peft, opacus, scikit-learn, numpy, pandas"
       },
       {
         "label": "Web",
         "text": "HTML, CSS, JavaScript, Django"
       },
       {
-        "label": "Database",
-        "text": "PostgreSQL, SQLite, MongoDB"
-      },
-      {
         "label": "Strumenti",
-        "text": "Linux, Bash, Git, Docker"
+        "text": "Linux, Bash, Git, Docker, LaTeX"
       },
       {
         "label": "Lingue parlate",

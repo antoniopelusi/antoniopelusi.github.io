@@ -9,7 +9,7 @@
       "text": "Modena, Italy"
     },
     "phone": {
-      "text": "+39 3284261797",
+      "text": "+39 328 426 1797",
       "url": "tel:+393284261797"
     },
     "email": {
@@ -44,8 +44,8 @@
   "summary": {
     "title": "Summary",
     "text": [
-      "Researcher and software developer focused on the intersection of advanced generative AI, structured data synthesis, and privacy-preserving Machine Learning systems.",
-      "Investigates the structural limitations of generative architectures in this setting, combining rigorous evaluation of statistical fidelity and memorization risks with practical system development."
+      "PhD student in Computer Science focused on Differential Privacy and parameter-efficient fine-tuning of models.",
+      "Author of research papers on LLM-based tabular data synthesis, its memorization risks, and the explainable governance of synthetic health data."
     ]
   },
   "experience": {
@@ -58,17 +58,17 @@
         "subtitle": "IBM Research",
         "detail": "Dublin, Ireland",
         "bullets": [
-          "Researching differentially private, LLM-based synthetic data generation, from LoRA fine-tuning to the evaluation of privacy, fidelity, and utility."
+          "Conducted joint research with IBM Research on privacy-preserving fine-tuning of LLMs, applying the PhD work in an industrial setting."
         ]
       },
       {
         "id": "randompower",
         "title": "Software Developer (Part-time)",
         "date": "May 2024 - Nov 2025",
-        "subtitle": "Random Power (Startup)",
+        "subtitle": "Random Power (Quantum RNG Startup)",
         "detail": "Remote",
         "bullets": [
-          "Built in C a Palo Alto QRNG API-compliant Entropy-as-a-Service platform distributing quantum random bits at 1 Gbit/s, and collaborated on its scheduler and TEE modules for secure distribution.",
+          "Built in C an Entropy-as-a-Service platform compliant with the Palo Alto Networks Quantum Random Number Generator (QRNG) API, distributing quantum random bits at 1 Gbit/s.",
           "Developed the Django web client (backend and frontend) for the 64x Multi-Generator Board, with multi-user authentication, session management, and the hardware-software communication interfaces."
         ]
       },
@@ -79,7 +79,7 @@
         "subtitle": "Liferay Inc.",
         "detail": "Remote",
         "bullets": [
-          "Integrated Stripe payment functionality into the open-source Liferay Portal."
+          "Integrated Stripe payment functionality into the open-source Liferay Portal in Java."
         ],
         "links": [
           {
@@ -91,7 +91,7 @@
     ]
   },
   "side_experience": {
-    "title": "Side Experience",
+    "title": "Teaching Experience",
     "items": [
       {
         "id": "paradisi",
@@ -100,7 +100,7 @@
         "subtitle": "A. Paradisi High School",
         "detail": "Vignola, Italy",
         "bullets": [
-          "Taught programming, algorithms, and fundamental computer concepts to 75+ high school students."
+          "Taught programming and algorithms to 75+ students."
         ]
       },
       {
@@ -110,7 +110,7 @@
         "subtitle": "University of Modena and Reggio Emilia",
         "detail": "Modena, Italy",
         "bullets": [
-          "Supported 50+ undergraduate students in programming, algorithms, and data structures labs."
+          "Supported 50+ undergraduate students in programming and data structures labs."
         ]
       }
     ]
@@ -125,7 +125,8 @@
         "subtitle": "University of Insubria",
         "detail": "Varese, Italy",
         "bullets": [
-          "Researching privacy-preserving synthetic data generation with small LLMs, investigating LoRA fine-tuning and Differential Privacy techniques for tabular data."
+          "Researched privacy-preserving fine-tuning of small, locally deployable Large Language Models (LLMs), applied to synthetic data generation for data sharing in sensitive domains.",
+          "Evaluated the Random Power quantum true random number generator as the noise source in Differential Privacy mechanisms, analyzing its impact on theoretical privacy guarantees and empirical robustness."
         ]
       },
       {
@@ -135,17 +136,23 @@
         "subtitle": "University of Modena and Reggio Emilia",
         "detail": "Modena, Italy",
         "bullets": [
-          "Advanced coursework in Big Data & Machine Learning (predictive modeling, large-scale data analysis, advanced learning techniques) and Cybersecurity & Cryptography (applied data security, cryptographic protocols). Final grade: 110/110."
+          "Coursework in Big Data & Machine Learning and Cybersecurity & Cryptography. Thesis \"Privacy Preservation in Data Sharing: A Study on Differential Privacy\". Final grade: 110/110."
+        ],
+        "links": [
+          {
+            "type": "thesis",
+            "url": "https://morethesis.unimore.it/theses/available/etd-02202024-141019/"
+          }
         ]
       },
       {
         "id": "cbi-attract",
-        "title": "Postgraduate Degree CBI.Attract",
+        "title": "Postgraduate Course CBI.Attract",
         "date": "Feb 2023 - Jun 2023",
         "subtitle": "University of Bologna, CERN, AGH University",
         "detail": "Bologna, Italy",
         "bullets": [
-          "Joined international research collaborations at CERN and AGH University, funded by the EU Attract Project, working alongside research groups to explore solutions for emerging technologies by building and testing prototypes with a Design Thinking approach. Final grade: 30/30 with Honors."
+          "Prototyped emerging-technology solutions with Design Thinking, in collaboration with research groups at CERN and AGH University within the EU Attract Project. Final grade: 30/30 with Honors."
         ]
       },
       {
@@ -155,7 +162,7 @@
         "subtitle": "University of Modena and Reggio Emilia",
         "detail": "Modena, Italy",
         "bullets": [
-          "Built foundations in algorithms, data structures, programming languages, computer architecture, and operating systems, complemented by discrete mathematics, calculus, statistics, and linear algebra."
+          "Core curriculum in algorithms, data structures, software development, and the fundamentals of mathematics."
         ]
       }
     ]
@@ -168,7 +175,7 @@
         "title": "Towards Explainable Governance of Synthetic Health Data in Collaborative Healthcare Ecosystems",
         "date": "Oct 2026",
         "subtitle": "A. Pelusi, A. Trombetta, D. Spoladore, S. Braghin",
-        "detail": "arXiv:2606.11961",
+        "detail": "PRO-VE 2026, Padua, Italy",
         "bullets": [
           "Proposed a role-aware Explainable AI framework for the governance of LLM-generated synthetic health data, translating privacy, fidelity, and reliability metrics into stakeholder-specific explanations aligned with GDPR and the EU AI Act."
         ],
@@ -176,16 +183,16 @@
           {
             "type": "paper"
           }
-        ],
-        "status": "development"
+        ]
       },
       {
         "id": "privacy-fidelity",
         "title": "Privacy-Fidelity Trade-offs in Differentially Private Synthetic Tabular Data Generation",
         "date": "Jul 2026",
         "subtitle": "A. Pelusi, S. Braghin, A. Trombetta",
+        "detail": "Submitted",
         "bullets": [
-          "Evaluated differentially private LoRA fine-tuning (DP-SGD via Opacus) for LLM-based tabular synthesis, characterizing the privacy-fidelity frontier and the feature-level degradation on high-cardinality categorical attributes."
+          "Evaluated Low-Rank Adaptation (LoRA) fine-tuning of LLMs with differentially private SGD (DP-SGD, via Opacus) for tabular data synthesis, showing feature-level degradation on high-cardinality categorical attributes."
         ],
         "links": [
           {
@@ -195,16 +202,16 @@
           {
             "type": "paper"
           }
-        ],
-        "status": "development"
+        ]
       },
       {
         "id": "categorical-prior-lock-in",
         "title": "Categorical Prior Lock-in: Why In-Context Learning Fails for Structured Data",
         "date": "Apr 2026",
         "subtitle": "A. Pelusi, S. Braghin, A. Trombetta",
+        "detail": "Submitted",
         "bullets": [
-          "Compared in-context learning and LoRA fine-tuning for LLM-based tabular synthesis, identifying categorical prior lock-in, the failure of ICL to reproduce high-cardinality categorical distributions, and its trade-off with memorization risk."
+          "Compared in-context learning and LoRA fine-tuning for LLM-based tabular data synthesis, characterizing the fidelity of high-cardinality categorical distributions and its trade-off with memorization risk."
         ],
         "links": [
           {
@@ -214,8 +221,7 @@
           {
             "type": "paper"
           }
-        ],
-        "status": "development"
+        ]
       }
     ]
   },
@@ -226,17 +232,16 @@
         "id": "pipeline",
         "title": "synth-pipeline",
         "date": "Oct 2026",
-        "subtitle": "Privacy-Preserving Synthetic Tabular Data Generation Pipeline",
+        "subtitle": "Privacy-Preserving Tabular Data Synthesis Pipeline",
         "bullets": [
-          "Architected an end-to-end pipeline for privacy-preserving tabular data synthesis: LLMs are fine-tuned with LoRA to generate schema-validated records, with optional Differential Privacy training via Opacus at a configurable epsilon.",
-          "Devised a rigorous evaluation framework assessing statistical fidelity (TVD, correlation error), downstream utility (TSTR) and privacy risk (distance to closest record, k-anonymity, membership inference attacks)."
+          "Built an end-to-end, configurable pipeline (PyTorch, PEFT, Opacus) for tabular data synthesis: LoRA fine-tuning of LLMs to generate schema-validated records, with optional Differential Privacy training at a configurable epsilon.",
+          "Designed an evaluation framework to measure statistical fidelity (total variation distance, correlation error), downstream utility (train on synthetic, test on real) and privacy risk (distance to closest record, k-anonymity, membership inference attacks)."
         ],
         "links": [
           {
             "type": "repository"
           }
-        ],
-        "status": "development"
+        ]
       },
       {
         "id": "chesslm",
@@ -244,7 +249,8 @@
         "date": "Jun 2026",
         "subtitle": "Chess Small Language Model",
         "bullets": [
-          "Engineered from scratch a ~100M-parameter decoder-only Transformer (custom attention, training loop, and tokenization scheme), trained via a two-stage pretraining/finetuning curriculum and deployed as a UCI-compliant chess engine reaching 1650 Elo against Stockfish."
+          "Engineered a ~100M-parameter decoder-only Transformer from scratch in PyTorch, with Pre-LN blocks, Rotary Positional Embeddings, causal attention with FlashAttention kernels, and a custom tokenizer.",
+          "Trained it on Hugging Face datasets with a two-stage pretraining/fine-tuning curriculum, mixed precision, gradient accumulation, AdamW, and cosine learning-rate scheduling, and deployed it as a Universal Chess Interface (UCI) engine rated ~1650 Elo against Stockfish at limited strength."
         ],
         "links": [
           {
@@ -263,7 +269,7 @@
         "date": "Oct 2025",
         "subtitle": "Local Differential Privacy library",
         "bullets": [
-          "Implemented a library for applying Local Differential Privacy mechanisms to local datasets."
+          "Implemented perturbation mechanisms to privatize datasets locally."
         ],
         "links": [
           {
@@ -283,7 +289,7 @@
         "date": "Mar 2026",
         "subtitle": "Fast-paced 2D retro shooter",
         "bullets": [
-          "Created a web-based retro shooter featuring a unique one-click control scheme, using weapon recoil to simultaneously attack and move through challenging environments, with no server and no installation."
+          "Designed a one-click control scheme based on weapon recoil to attack and move at the same time, running entirely in the browser with no server or installation."
         ],
         "links": [
           {
@@ -302,7 +308,7 @@
         "date": "Feb 2026",
         "subtitle": "Serverless text editor embedded in the URL",
         "bullets": [
-          "Developed a text editor that encodes content directly in the URL hash, with no server, no database, and no account required. Supports Markdown syntax rendering."
+          "Implemented content encoding directly in the URL hash, with no database or account, and added Markdown rendering."
         ],
         "links": [
           {
@@ -319,9 +325,9 @@
         "id": "scoretracker",
         "title": "Score Tracker",
         "date": "Feb 2025",
-        "subtitle": "Score tracker Web App",
+        "subtitle": "Score tracking web app",
         "bullets": [
-          "Released a Web App to keep track of scores for board games, card games, and any multiplayer competition."
+          "Released an app to track scores for board games, card games, and any multiplayer competition."
         ],
         "links": [
           {
@@ -340,7 +346,7 @@
         "date": "Jan 2025",
         "subtitle": "Startpage browser extension",
         "bullets": [
-          "Published a minimal and responsive browser startpage with useful tools."
+          "Published a minimal, responsive startpage with built-in tools."
         ],
         "links": [
           {
@@ -374,24 +380,24 @@
     "title": "Skills",
     "items": [
       {
-        "label": "Languages",
+        "label": "Programming languages",
         "text": "Python, C, C++, Java"
       },
       {
-        "label": "ML/AI",
-        "text": "PyTorch, Opacus, LangChain, scikit-learn, NumPy, Pandas"
+        "label": "Research areas",
+        "text": "Differential Privacy, Synthetic Data Generation, LLM Fine-Tuning, Membership Inference, Explainable AI"
+      },
+      {
+        "label": "ML/AI libraries",
+        "text": "torch, transformers, peft, opacus, scikit-learn, numpy, pandas"
       },
       {
         "label": "Web",
         "text": "HTML, CSS, JavaScript, Django"
       },
       {
-        "label": "Databases",
-        "text": "PostgreSQL, SQLite, MongoDB"
-      },
-      {
         "label": "Tools",
-        "text": "Linux, Bash, Git, Docker"
+        "text": "Linux, Bash, Git, Docker, LaTeX"
       },
       {
         "label": "Spoken languages",

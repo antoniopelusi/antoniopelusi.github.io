@@ -154,7 +154,11 @@ nav button {
         color 0.2s;
 }
 
-nav button[data-action="back"] {
+nav button[data-action="translate"] {
+    margin-left: auto;
+}
+
+nav button[data-action="outline"] {
     margin-right: auto;
 }
 

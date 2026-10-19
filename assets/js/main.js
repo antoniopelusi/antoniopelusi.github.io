@@ -3,7 +3,7 @@ const CONFIG = {
     footer: true,
     toolbar: "footer",
     pageFrame: false,
-    actions: ["translate", "outline"],
+    actions: ["translate"],
     untitled: ["summary"],
     header: ["name", "title", "typing", "nav", "contacts"],
     nav: ["summary", "education", "experience", "publications", "projects", "awards", "skills"],
@@ -12,9 +12,9 @@ const CONFIG = {
         "summary",
         "education",
         "experience",
-        "side_experience",
         "publications",
         "projects",
+        "side_experience",
         "side_projects",
         "awards",
         "skills",
@@ -42,7 +42,7 @@ const CONFIG = {
     nav: [],
     pages: [
       ["summary", "education", "experience", "publications"],
-      ["projects", "awards", "skills"],
+      ["projects", "side_experience", "awards", "skills"],
     ],
     contacts: [
       ["phone", "email", "linkedin"],
@@ -86,6 +86,7 @@ const TEXT = {
       repository: "View repository",
       model: "View model",
       paper: "Read paper",
+      thesis: "Read thesis",
       website: "Visit website",
       unavailable: "Not yet available",
     },
@@ -130,6 +131,7 @@ const TEXT = {
       repository: "Vedi repository",
       model: "Vedi modello",
       paper: "Leggi il paper",
+      thesis: "Leggi la tesi",
       website: "Visita il sito",
       unavailable: "Non ancora disponibile",
     },
@@ -190,7 +192,8 @@ const lang = flags.translate ? "it" : "en";
 const text = TEXT[lang];
 
 const localized = (path, next = {}) => {
-  const query = FLAGS.filter((flag) => next[flag] ?? flags[flag]).join("&");
+  const activeFlags = path === location.pathname ? FLAGS : ["translate"];
+  const query = activeFlags.filter((flag) => next[flag] ?? flags[flag]).join("&");
   return query ? `${path}?${query}` : path;
 };
 
@@ -320,17 +323,22 @@ const renderHeader = (data) => {
   return h("header", { role: "banner" }, ...header.map((part) => parts[part]()));
 };
 
-const renderArticle = ({ id, title, date, subtitle, detail, bullets, status, links = [] }) => {
+const renderAuthors = (subtitle) => {
+  const [first, ...others] = subtitle.split(",");
+  return [h("strong", {}, first), ...(others.length ? [h("span", {}, `,${others.join(",")}`)] : [])];
+};
+
+const renderArticle = ({ id, title, date, subtitle, detail, bullets, links = [] }, authors = false) => {
   const head = { time: h("time", {}, date), h3: h("h3", {}, title) };
   return h(
     "article",
-    status && { "data-status": status },
+    {},
     h("div", {}, ...articleHead.flatMap((part, i) => [i && separator, head[part]])),
     h(
       "p",
       {},
       articleIcons && h("img", { src: `/assets/icons/${page}/articles/${ICONS[id] ?? id}.svg`, alt: "" }),
-      h("span", {}, subtitle),
+      h("span", {}, ...(authors ? renderAuthors(subtitle) : [subtitle])),
       ...(detail ? [separator, h("span", {}, detail)] : []),
     ),
     h(
@@ -370,7 +378,7 @@ const renderSection = (key, { title, text: paragraphs = [], items = [] }) => {
   const renderedItems =
     hasSkills
       ? [renderSkills(items)]
-      : items.map((item) => renderArticle(item));
+      : items.map((item) => renderArticle(item, key === "publications"));
   return h(
     "section",
     { id: slug(key), ...(untitled.includes(key) && { "aria-label": title }) },
