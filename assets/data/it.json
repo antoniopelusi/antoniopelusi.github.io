@@ -137,7 +137,7 @@
         ],
         "detail": "",
         "bullets": [
-          "Sviluppo di una piattaforma Entropy-as-a-Service in C, conforme all'API QRNG di Palo Alto Networks, per lo streaming di bit casuali quantistici a 1 Gbit/s.",
+          "Sviluppo di una piattaforma Entropy-as-a-Service in C, conforme all'API QRNG di Palo Alto Networks, per lo streaming di bit quantistici a 1 Gbit/s.",
           "Realizzazione dell'interfaccia full-stack Django per la 64x Multi-Generator Board, implementando protocolli di comunicazione hardware-software e autenticazione delle sessioni."
         ],
         "links": []
@@ -238,7 +238,7 @@
         "subtitle": [
           "Università di Modena e Reggio Emilia (Modena, Italia)"
         ],
-        "detail": "110/110 con lode",
+        "detail": "Voto: 110/110",
         "bullets": [
           "Curriculum in Machine Learning, Crittografia e Sistemi Distribuiti. Tesi magistrale su Differential Privacy per la condivisione di dati tabulari."
         ],
@@ -261,7 +261,7 @@
           "CERN (Ginevra, Svizzera)",
           "AGH University (Cracovia, Polonia)"
         ],
-        "detail": "30/30 con lode",
+        "detail": "Voto: 30/30 con lode",
         "bullets": [
           "Prototipazione di soluzioni tecnologiche emergenti tramite Design Thinking nel framework di ricerca europeo ATTRACT."
         ],
@@ -278,9 +278,9 @@
           "Università di Modena e Reggio Emilia (Modena, Italia)",
           "Liferay Inc. (Remoto)"
         ],
-        "detail": "110/110",
+        "detail": "",
         "bullets": [
-          "Fondamenti di algoritmi, complessità computazionale, ingegneria del software e matematica. Tesi triennale su architetture di elaborazione pagamenti in portali web enterprise."
+          "Fondamenti di algoritmi, complessità computazionale, ingegneria del software e matematica."
         ],
         "links": []
       }
@@ -378,7 +378,7 @@
         ],
         "detail": "",
         "bullets": [
-          "Realizzazione di una pipeline end-to-end in Python e PyTorch con PEFT/LoRA e Opacus per generare record tabulari validati con budget di privacy configurabile.",
+          "Realizzazione di una pipeline configurabile per la generazione di dati tabulari sintetici con LLM fine-tunati tramite LoRA, con Differential Privacy attivabile (DP-SGD via Opacus) e output validati su schema.",
           "Implementazione di una suite di benchmark per valutare fedeltà statistica (TVD, errore di correlazione), utilità machine learning (TSTR) e protezione della privacy (distanza dal record più vicino, membership inference)."
         ],
         "links": [

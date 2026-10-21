@@ -102,8 +102,8 @@
   "summary": {
     "title": "Summary",
     "text": [
-      "Research focus spanning Differential Privacy and parameter-efficient fine-tuning of LLMs, with papers on tabular data synthesis, memorization risks, and explainable governance of synthetic health data.",
-      "Engineering experience in Python and C, spanning ML pipelines, evaluation frameworks, and high-throughput data platforms."
+      "Research focused on Differential Privacy and parameter-efficient fine-tuning of LLMs, with papers on tabular data synthesis, memorization risks, and explainable governance of synthetic health data.",
+      "Engineering experience in Python and C, covering ML pipelines, evaluation frameworks, and high-throughput data platforms."
     ]
   },
   "experience": {
@@ -137,7 +137,7 @@
         ],
         "detail": "",
         "bullets": [
-          "Built an Entropy-as-a-Service platform in C, compliant with the Palo Alto Networks QRNG API, streaming quantum random bits at 1 Gbit/s.",
+          "Built a C Entropy-as-a-Service platform compliant with the Palo Alto Networks QRNG API, streaming quantum random bits at 1 Gbit/s.",
           "Developed a full-stack Django management interface for the 64x Multi-Generator Board, implementing hardware-software communication protocols and session authentication."
         ],
         "links": []
@@ -238,7 +238,7 @@
         "subtitle": [
           "University of Modena and Reggio Emilia (Modena, Italy)"
         ],
-        "detail": "110/110 with Honors",
+        "detail": "Grade: 110/110",
         "bullets": [
           "Curriculum in Machine Learning, Cryptography, and Distributed Systems. Master's thesis on Differential Privacy for tabular data sharing."
         ],
@@ -261,7 +261,7 @@
           "CERN (Geneva, Switzerland)",
           "AGH University (Kraków, Poland)"
         ],
-        "detail": "30/30 with Honors",
+        "detail": "Grade: 30/30 with Honors",
         "bullets": [
           "Prototyped emerging technology solutions via Design Thinking within the EU ATTRACT research framework."
         ],
@@ -278,9 +278,9 @@
           "University of Modena and Reggio Emilia (Modena, Italy)",
           "Liferay Inc. (Remote)"
         ],
-        "detail": "110/110",
+        "detail": "",
         "bullets": [
-          "Foundations in algorithms, complexity, software engineering, and mathematics. Bachelor's thesis on payment processing architectures in enterprise web portals."
+          "Foundations in algorithms, complexity, software engineering, and mathematics."
         ],
         "links": []
       }
@@ -378,7 +378,7 @@
         ],
         "detail": "",
         "bullets": [
-          "Engineered an end-to-end Python/PyTorch evaluation pipeline incorporating PEFT/LoRA and Opacus, generating schema-validated tabular records with configurable privacy budgets.",
+          "Built a configurable pipeline for synthetic tabular data generation with LoRA-fine-tuned LLMs, with optional Differential Privacy (DP-SGD via Opacus) and schema-validated outputs.",
           "Implemented an automated benchmark suite assessing statistical fidelity (TVD, correlation error), machine learning utility (TSTR), and privacy protection (distance to closest record, membership inference)."
         ],
         "links": [
