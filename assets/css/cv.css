@@ -1,10 +1,10 @@
 :root {
-    --size-h1:   25pt;
-    --size-h2:   14pt;
-    --size-h3:   10pt;
-    --size-body: 9pt;
-    --size-sm:   8pt;
-    --size-xs:   7pt;
+    --size-h1:   28pt;
+    --size-h2:   15.5pt;
+    --size-h3:   11pt;
+    --size-body: 10pt;
+    --size-sm:   9pt;
+    --size-xs:   8pt;
 
     --space-xs: 1.5pt;
     --space-s:  3pt;
@@ -64,7 +64,7 @@ main > div > div {
 }
 
 main > div > div > * + * {
-    margin-top: var(--space-l);
+    margin-top: var(--space);
 }
 
 body[data-outline] [data-overflow] {

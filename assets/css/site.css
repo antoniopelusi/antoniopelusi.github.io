@@ -12,12 +12,12 @@ img {
 }
 
 :root {
-    --size-h1:   2.2rem;
-    --size-h2:   1.05rem;
-    --size-h3:   0.9rem;
-    --size-body: 0.9rem;
-    --size-sm:   0.75rem;
-    --size-xs:   0.65rem;
+    --size-h1:   2.45rem;
+    --size-h2:   1.15rem;
+    --size-h3:   1rem;
+    --size-body: 1rem;
+    --size-sm:   0.85rem;
+    --size-xs:   0.7rem;
 
     --space-xs: 0.45rem;
     --space-s:  0.9rem;
@@ -42,6 +42,17 @@ img {
     --shadow: 0 0.15rem 0.45rem var(--article-box);
 }
 
+@media (max-width: 1023px) {
+    :root {
+        --size-h1:   2.7rem;
+        --size-h2:   1.25rem;
+        --size-h3:   1.1rem;
+        --size-body: 1.1rem;
+        --size-sm:   0.95rem;
+        --size-xs:   0.78rem;
+    }
+}
+
 html {
     font-size: clamp(14px, 1vw + 10.4px, 18px);
     scroll-behavior: smooth;
@@ -58,6 +69,12 @@ body {
     color: var(--muted);
     font-size: var(--size-body);
     line-height: var(--line-height-body);
+}
+
+@media (max-width: 1023px) {
+    body {
+        width: calc(min(90vw, 72rem) - 2 * var(--space));
+    }
 }
 
 main {
@@ -227,10 +244,6 @@ article time {
     font-variant-numeric: tabular-nums;
 }
 
-article time:has([data-separator]) > span:first-child {
-    opacity: 0.75;
-}
-
 article h3 {
     order: 1;
     margin-bottom: var(--space-xs);
@@ -316,7 +329,6 @@ article p [data-entities] > span > img {
 article:not([data-skills]) p > span + span {
     flex-basis: 100%;
     color: var(--muted);
-    opacity: 0.6;
 }
 
 article ul {

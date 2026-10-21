@@ -95,16 +95,23 @@ header > p {
     font-weight: 400;
 }
 
-address p {
-    font-size: var(--size-body);
+/* Testo normale: stessa dimensione, peso e interlinea ovunque */
+address p,
+section > p,
+article p,
+article li {
+    font-size: var(--size-sm);
+    line-height: var(--line-height-body);
+}
+
+section > p,
+article p,
+article li {
+    font-weight: 300;
 }
 
 address [data-value] {
     font-weight: 300;
-}
-
-section > p {
-    font-size: var(--size-sm);
 }
 
 article time {
@@ -113,19 +120,12 @@ article time {
     line-height: var(--line-height-head);
 }
 
-article p,
-article li {
-    font-size: var(--size-sm);
-    font-weight: 300;
-}
-
-article p {
-    line-height: var(--line-height-head);
+article:not([data-skills]) p > span + span {
+    font-size: var(--size-xs);
 }
 
 article li {
     margin-bottom: var(--space-xs);
-    line-height: var(--line-height-body);
 }
 
 article li:last-child {
@@ -134,10 +134,6 @@ article li:last-child {
 
 article[data-skills] h3 {
     font-size: var(--size-sm);
-}
-
-article[data-skills] p {
-    font-size: var(--size-xs);
 }
 
 noscript {
