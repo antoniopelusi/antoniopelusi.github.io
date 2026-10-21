@@ -7,13 +7,20 @@
    id="svg6"
    sodipodi:docname="ibm.svg"
    inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   xml:space="preserve"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs6" />
-  <sodipodi:namedview
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs6"><clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3028"><path
+         inkscape:connector-curvature="0"
+         d="M 0,595.275 H 841.89 V 0 H 0 Z"
+         id="path3030" /></clipPath><clipPath
+       id="clip1"><path
+         d="m 10.390625,0 h 43.15625 C 59.285156,0 63.9375,4.652344 63.9375,10.390625 v 43.15625 c 0,5.738281 -4.652344,10.390625 -10.390625,10.390625 H 10.390625 C 4.652344,63.9375 0,59.285156 0,53.546875 V 10.390625 C 0,4.652344 4.652344,0 10.390625,0 Z m 0,0"
+         id="path962" /></clipPath></defs><sodipodi:namedview
      id="namedview6"
      pagecolor="#ffffff"
      bordercolor="#000000"
@@ -22,56 +29,101 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="4.1771544"
-     inkscape:cx="45.485511"
-     inkscape:cy="34.233832"
+     inkscape:zoom="3.4966846"
+     inkscape:cx="48.045511"
+     inkscape:cy="60.62886"
      inkscape:window-width="1512"
      inkscape:window-height="921"
      inkscape:window-x="0"
      inkscape:window-y="33"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg6" />
-  <g
-     id="g8"
-     transform="translate(0,-3.5613659)">
-    <path
-       d="M 13.827626,19.07765 A 4.7309366,4.7309366 0 1 1 7.1188162,19.0594 4.7502994,4.7502994 0 0 1 13.827626,19.07765"
-       id="path4"
-       style="fill:#f7afbb;fill-opacity:1;stroke-width:0.645422" />
-    <path
-       d="m 22.225049,10.680227 a 4.7309366,4.7309366 0 1 1 -6.70881,-0.01825 4.7502994,4.7502994 0 0 1 6.70881,0.01825"
-       id="path5"
-       style="fill:#f7afbb;fill-opacity:1;stroke-width:0.645422" />
-    <path
-       d="m 8.9352132,49.783009 6.3528358,-16.466252 8.401986,16.069196 c 1.455857,2.907154 1.770761,6.882238 -1.337198,9.990197 A 8.3130239,8.3130239 0 0 1 10.564499,59.39897 C 7.8262092,56.66068 7.6345282,53.128287 8.9123972,49.7967"
-       id="path6"
-       style="fill:#26923c;fill-opacity:1;stroke-width:0.645422" />
-    <path
-       d="m 46.244414,12.473808 -16.466248,6.352832 16.069197,8.401986 c 2.907151,1.455858 6.905055,1.747943 10.013014,-1.360016 v 0 a 8.293661,8.293661 0 0 0 -0.04107,-11.724445 c -2.73829,-2.73829 -6.270685,-2.929969 -9.60227,-1.652102"
-       id="path7"
-       style="fill:#26923c;fill-opacity:1;stroke-width:0.645422" />
-    <path
-       d="M 30.216293,20.633912 A 10.249287,10.249287 0 0 0 17.05881,33.791395 Z"
-       id="path8"
-       style="fill:#eeb50e;fill-opacity:1;stroke-width:0.645422" />
-    <polygon
-       points="121.28,46.11 121.28,37.54 153.12,37.54 153.12,46.11 "
-       id="polygon8"
-       transform="matrix(0.45638164,-0.45638164,0.45638164,0.45638164,-52.712818,76.061465)"
-       style="fill:#eeb50e;fill-opacity:1" />
-    <polygon
-       points="121.28,62.1 121.28,53.53 153.12,53.53 153.12,62.1 "
-       id="polygon9"
-       transform="matrix(0.45638164,-0.45638164,0.45638164,0.45638164,-52.712818,76.061465)"
-       style="fill:#eeb50e;fill-opacity:1" />
-    <polygon
-       points="151.62,69.5 151.62,78.73 122.79,78.73 122.79,69.5 "
-       style="fill:none"
-       id="polygon10"
-       transform="matrix(0.45638164,-0.45638164,0.45638164,0.45638164,-52.712818,76.061465)" />
-    <path
-       d="M 35.049375,51.745448 A 10.249287,10.249287 0 0 0 48.206856,38.587967 Z"
-       id="path10"
-       style="fill:#eeb50e;fill-opacity:1;stroke-width:0.645422" />
-  </g>
-</svg>
+     inkscape:current-layer="IBM_logo" /><g
+     id="IBM_logo"
+     fill="#1f70c1"
+     transform="translate(223.20772,-168.22856)"
+     inkscape:export-filename="IBM_logo.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96">
+	
+	
+	
+	
+<circle
+   style="fill:#ececec;stroke:none;stroke-width:2.6257"
+   id="path1"
+   cx="-191.20772"
+   cy="200.22856"
+   r="29.662142" /><g
+   id="IBM_logo_4_righe"
+   fill="#1f70c1"
+   transform="matrix(0.04706638,0,0,0.04706638,-214.7409,190.78776)"
+   style="fill:#1f70c1;fill-opacity:1"><g
+     id="I-4"
+     style="fill:#1f70c1;fill-opacity:1"><rect
+       x="0"
+       y="0"
+       width="194.42999"
+       height="81.220001"
+       id="rect1-7"
+       style="fill:#1f70c1;fill-opacity:1" /><rect
+       x="55.467999"
+       y="106.58"
+       width="83.399002"
+       height="81.311996"
+       id="rect2-1"
+       style="fill:#1f70c1;fill-opacity:1" /><rect
+       x="55.467999"
+       y="213.25"
+       width="83.399002"
+       height="81.222"
+       id="rect3-3"
+       style="fill:#1f70c1;fill-opacity:1" /><rect
+       x="0"
+       y="319.82999"
+       width="194.42999"
+       height="81.269997"
+       id="rect4-8"
+       style="fill:#1f70c1;fill-opacity:1" /></g><g
+     id="B-4"
+     style="fill:#1f70c1;fill-opacity:1"><path
+       d="m 222.17,0 h 207.11 c 27.542,0 52.799,10.697 71.42,27.932 l 20.5,25.356 c 4.751,8.618 8.515,18.027 11.09,27.932 H 222.17 Z"
+       id="path4-8"
+       style="fill:#1f70c1;fill-opacity:1" /><path
+       d="m 277.73,106.58 h 83.3 v 27.93 h 83.4 v -27.93 h 90.927 c 0,9.606 -1.288,19.016 -3.764,27.93 l -10.396,25.45 c -6.142,10.697 -13.966,20.107 -23.277,27.932 H 277.73 Z"
+       id="path5-0"
+       style="fill:#1f70c1;fill-opacity:1" /><path
+       d="m 277.73,213.25 h 220.19 c 9.105,7.825 16.93,17.234 23.27,27.932 l 10.403,25.358 c 2.476,8.915 3.764,18.324 3.764,27.932 H 444.43 V 266.54 h -83.4 v 27.932 h -83.3 z"
+       id="path6-4"
+       style="fill:#1f70c1;fill-opacity:1" /><path
+       d="m 222.17,319.83 h 310.12 c -2.275,9.903 -6.039,19.313 -11.09,27.93 l -20.41,25.46 c -18.717,17.23 -43.776,27.927 -71.51,27.927 L 222.17,400.85 Z"
+       id="path7-6"
+       style="fill:#1f70c1;fill-opacity:1" /></g><g
+     id="M-0"
+     style="fill:#1f70c1;fill-opacity:1"><polygon
+       points="742.67,81.22 555.57,81.22 555.57,0 714.64,0 "
+       id="polygon7"
+       style="fill:#1f70c1;fill-opacity:1" /><polygon
+       points="1000,81.22 812.9,81.22 840.93,0 1000,0 "
+       id="polygon8-3"
+       style="fill:#1f70c1;fill-opacity:1" /><polygon
+       points="751.49,106.58 777.73,182.54 803.98,106.58 944.43,106.58 944.43,187.89 861.03,187.89 861.03,162.24 852.22,187.89 703.25,187.89 694.43,162.24 694.43,187.89 611.03,187.89 611.03,106.58 "
+       id="polygon9-2"
+       style="fill:#1f70c1;fill-opacity:1" /><polygon
+       points="694.43,294.47 611.03,294.47 611.03,213.25 694.43,213.25 "
+       id="polygon10-6"
+       style="fill:#1f70c1;fill-opacity:1" /><polygon
+       points="814.88,294.47 740.59,294.47 712.36,213.25 843.11,213.25 "
+       id="polygon11"
+       style="fill:#1f70c1;fill-opacity:1" /><polygon
+       points="944.43,294.47 861.03,294.47 861.03,213.25 944.43,213.25 "
+       id="polygon12"
+       style="fill:#1f70c1;fill-opacity:1" /><polygon
+       points="694.54,401.15 555.57,401.15 555.57,319.83 694.54,319.83 "
+       id="polygon13"
+       style="fill:#1f70c1;fill-opacity:1" /><polygon
+       points="777.73,400.85 749.5,319.83 806.06,319.83 "
+       id="polygon14"
+       style="fill:#1f70c1;fill-opacity:1" /><polygon
+       points="1000,401.17 861.03,401.17 861.03,319.83 1000,319.83 "
+       id="polygon15-9"
+       style="fill:#1f70c1;fill-opacity:1" /></g></g></g></svg>

@@ -30,15 +30,10 @@
     --article: #a2afc110;
     --article-hover: #a2afc12e;
     --article-box: #0000001a;
-}
 
-html {
-    background-color: var(--dark);
-}
-
-::selection {
-    background-color: var(--muted);
-    color: var(--dark);
+    --btn-gap:     0.4em;
+    --btn-pad-v:   0.2em;
+    --btn-pad-h:   0.6em;
 }
 
 * {
@@ -52,49 +47,176 @@ html {
         "kern" 0;
 }
 
+::selection {
+    background-color: var(--muted);
+    color: var(--dark);
+}
+
+html {
+    background-color: var(--dark);
+}
+
 address {
     font-style: normal;
 }
 
+small {
+    font-size: inherit;
+}
+
+h1,
+h2,
+h3,
+strong {
+    font-weight: 700;
+}
+
+h1 {
+    font-size: var(--size-h1);
+    line-height: var(--line-height-h1);
+}
+
+h2 {
+    font-size: var(--size-h2);
+    line-height: var(--line-height-head);
+}
+
+h3 {
+    font-size: var(--size-h3);
+    line-height: var(--line-height-head);
+}
+
+h3 [data-separator] {
+    font-weight: 400;
+}
+
+header > p {
+    font-size: var(--size-h3);
+    font-weight: 400;
+}
+
+address p {
+    font-size: var(--size-body);
+}
+
+address [data-value] {
+    font-weight: 300;
+}
+
+section > p {
+    font-size: var(--size-sm);
+}
+
+article time {
+    font-size: var(--size-xs);
+    font-weight: 400;
+    line-height: var(--line-height-head);
+}
+
+article p,
+article li {
+    font-size: var(--size-sm);
+    font-weight: 300;
+}
+
+article p {
+    line-height: var(--line-height-head);
+}
+
+article li {
+    margin-bottom: var(--space-xs);
+    line-height: var(--line-height-body);
+}
+
+article li:last-child {
+    margin-bottom: 0;
+}
+
+article[data-skills] h3 {
+    font-size: var(--size-sm);
+}
+
+article[data-skills] p {
+    font-size: var(--size-xs);
+}
+
 noscript {
+    --ns-font: var(--size-body, 1rem);
     position: fixed;
     top: 50%;
     left: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--space-xs, 0.45rem);
     width: max-content;
     max-width: 90vw;
-    padding: 1rem 1.5rem;
-    border-radius: 16px;
+    padding: var(--space-s, 0.9rem) var(--space, 1.8rem);
+    border-radius: calc(var(--radius, 0.375rem) * 2);
     background-color: var(--article);
     color: var(--muted);
-    font-size: 1rem;
+    font-size: var(--ns-font);
     font-weight: 400;
-    line-height: 1.4;
+    line-height: 1.5;
     text-align: center;
     transform: translate(-50%, -50%);
 }
 
 noscript div {
     display: flex;
-    gap: 0.5rem;
+    gap: var(--space-xs, 0.45rem);
 }
 
-noscript img {
-    width: 1.5rem;
-    height: 1.5rem;
+noscript > div > img {
+    width: calc(var(--ns-font) * 2);
+    height: calc(var(--ns-font) * 2);
 }
 
-noscript img:last-child {
-    filter: grayscale(1);
-    opacity: 0.6;
+noscript > div > img:last-child {
+    opacity: 0.35;
 }
 
 noscript p {
-    font-size: 1rem;
+    font-size: var(--ns-font);
     font-weight: 400;
+    color: var(--muted);
+    opacity: 0.85;
+}
+
+noscript p + p {
+    margin-top: var(--space-s, 0.9rem);
+    color: var(--light);
+    opacity: 1;
+}
+
+noscript a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--btn-gap);
+    padding: var(--btn-pad-v) var(--btn-pad-h);
+    border-radius: var(--radius-s, 0.2rem);
+    background-color: var(--article);
+    color: var(--muted);
+    font-family: inherit;
+    font-size: var(--ns-font);
+    font-weight: 400;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background-color 0.2s,
+        color 0.2s;
+}
+
+noscript a img {
+    width: 1lh;
+    height: 1lh;
+}
+
+@media (hover: hover) {
+    noscript a:hover {
+        background-color: var(--article-hover);
+        color: var(--light);
+    }
 }
 
 body::before,
@@ -123,18 +245,9 @@ body::after {
     right: clamp(1rem, 5vw, 3rem);
 }
 
-body[data-outline] main > div *:not(nav, nav *) {
-    outline: 1px solid orangered;
-    outline-offset: -1px;
-}
-
 @media print {
     body::before,
     body::after {
         display: none;
-    }
-
-    body[data-outline] main > div *:not(nav, nav *) {
-        outline: none;
     }
 }

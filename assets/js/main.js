@@ -6,31 +6,8 @@ const CONFIG = {
     actions: ["translate"],
     untitled: ["summary"],
     header: ["name", "title", "typing", "nav", "contacts"],
-    nav: ["summary", "education", "experience", "publications", "projects", "awards", "skills"],
-    pages: [
-      [
-        "summary",
-        "education",
-        "experience",
-        "publications",
-        "projects",
-        "side_experience",
-        "side_projects",
-        "awards",
-        "skills",
-      ],
-    ],
-    contacts: [
-      ["cv", "email", "linkedin", "scholar", "orcid", "github"],
-    ],
-    contactLabels: false,
-    titleLines: true,
-    sectionIcons: true,
-    articleIcons: true,
-    articleLinks: true,
-    skillTags: true,
-    separator: "",
-    articleHead: ["time", "h3"],
+    nav: ["summary", "education", "experience", "publications", "projects", "awards", "skills", "other_experience"],
+    icons: ["links", "ui", "sections", "articles", "footer"],
   },
   cv: {
     footer: false,
@@ -40,29 +17,24 @@ const CONFIG = {
     untitled: [],
     header: ["name", "title", "contacts"],
     nav: [],
-    pages: [
-      ["summary", "education", "experience", "publications"],
-      ["projects", "side_experience", "awards", "skills"],
-    ],
-    contacts: [
-      ["phone", "email", "linkedin"],
-      ["website", "github"],
-      ["scholar", "orcid"],
-    ],
-    contactLabels: true,
-    titleLines: false,
-    sectionIcons: false,
-    articleIcons: false,
-    articleLinks: false,
-    skillTags: false,
-    separator: " | ",
-    articleHead: ["h3", "time"],
+    icons: ["links", "ui"],
   },
+};
+
+const SEPARATOR = " | ";
+const DATE_SEPARATOR = " - ";
+const LIST_SEPARATOR = ", ";
+const LABEL_SEPARATOR = ": ";
+const BULLET = "• ";
+
+const LAYOUT = {
+  linkOrder: ["paper", "thesis", "model", "repository", "website"],
 };
 
 const TEXT = {
   en: {
     nav: "Navigation",
+    navOther: "Other",
     tools: "Tools",
     actions: {
       back: "Go back",
@@ -83,12 +55,19 @@ const TEXT = {
       website: "Web",
     },
     links: {
-      repository: "View repository",
       model: "View model",
+      repository: "View repository",
       paper: "Read paper",
       thesis: "Read thesis",
       website: "Visit website",
-      unavailable: "Not yet available",
+      unavailableSuffix: "not yet available",
+      unavailableLabel: {
+        model: "Model",
+        repository: "Repository",
+        paper: "Paper",
+        thesis: "Thesis",
+        website: "Website",
+      },
     },
     footer: {
       builtWith: "Built with",
@@ -108,6 +87,7 @@ const TEXT = {
   },
   it: {
     nav: "Navigazione",
+    navOther: "Altro",
     tools: "Strumenti",
     actions: {
       back: "Torna indietro",
@@ -133,7 +113,14 @@ const TEXT = {
       paper: "Leggi il paper",
       thesis: "Leggi la tesi",
       website: "Visita il sito",
-      unavailable: "Non ancora disponibile",
+      unavailableSuffix: "non ancora disponibile",
+      unavailableLabel: {
+        model: "Modello",
+        repository: "Repository",
+        paper: "Paper",
+        thesis: "Tesi",
+        website: "Sito",
+      },
     },
     footer: {
       builtWith: "Realizzato con",
@@ -154,14 +141,18 @@ const TEXT = {
 };
 
 const ICONS = {
+  ibm: "ibm",
+  randompower: "randompower",
+  liferay: "liferay",
   paradisi: "school",
   "unimore-tutor": "unimore",
   "unimore-master": "unimore",
-  "unimore-bachelor": "unimore",
-  "cbi-attract": "unibo",
-  "explainable-governance": "uninsubria",
-  "privacy-fidelity": "uninsubria",
-  "categorical-prior-lock-in": "uninsubria",
+  "unimore-bachelor": ["unimore", "liferay"],
+  uninsubria: ["uninsubria", "randompower", "ibm"],
+  "cbi-attract": ["unibo", "cern", "agh"],
+  "explainable-governance": ["uninsubria", "uninsubria", "cnr", "ibm"],
+  "privacy-fidelity": ["uninsubria", "ibm", "uninsubria"],
+  "categorical-prior-lock-in": ["uninsubria", "ibm", "uninsubria"],
   hackathon: "unimore",
 };
 
@@ -174,18 +165,9 @@ const {
   untitled,
   header,
   nav,
-  pages,
-  contacts,
-  contactLabels,
-  titleLines,
-  sectionIcons,
-  articleIcons,
-  articleLinks,
-  skillTags,
-  separator,
-  articleHead,
+  icons: iconSets,
 } = CONFIG[page];
-const FLAGS = ["translate", "outline"];
+const FLAGS = CONFIG[page].actions.filter((a) => ["translate", "outline"].includes(a));
 const params = new URLSearchParams(location.search);
 const flags = Object.fromEntries(FLAGS.map((flag) => [flag, params.has(flag)]));
 const lang = flags.translate ? "it" : "en";
@@ -236,6 +218,9 @@ const h = (tag, attrs = {}, ...children) => {
 
 const slug = (key) => key.replaceAll("_", "-");
 
+const icon = (dir, name, alt = "") =>
+  name && iconSets.includes(dir) && h("img", { src: `/assets/icons/${page}/${dir}/${name}.svg`, alt });
+
 const link = (url, attrs, ...children) =>
   h(
     "a",
@@ -248,11 +233,11 @@ const link = (url, attrs, ...children) =>
   );
 
 const renderButton = (action) => {
-  const [icon, onClick, active] = ACTIONS[action];
+  const [name, onClick, active] = ACTIONS[action];
   const el = h(
     "button",
     { type: "button", "data-action": action },
-    h("img", { src: `/assets/icons/${page}/ui/${icon}.svg`, alt: "" }),
+    icon("ui", name),
     h("span", {}, text.actions[action]),
   );
   if (active !== undefined) el.dataset.active = active;
@@ -272,11 +257,17 @@ const renderNav = (data) =>
     "nav",
     { role: "navigation", "aria-label": text.nav },
     ...nav.map((key) =>
-      h("a", { href: key === "summary" ? "#" : `#${slug(key)}` }, data[key].title.toUpperCase()),
+      h(
+        "a",
+        { href: key === "summary" ? "#" : `#${slug(key)}` },
+        (key === "other_experience" ? text.navOther : data[key].title).toUpperCase(),
+      ),
     ),
   );
 
-const renderContacts = (data) =>
+const separator = (value) => h("span", { "data-separator": "" }, value);
+
+const renderContacts = (data, contacts) =>
   h(
     "address",
     {},
@@ -285,18 +276,17 @@ const renderContacts = (data) =>
         "p",
         {},
         ...row.flatMap((key, i) => {
-          const gap = i && separator;
           const label = text.contacts[key];
           const { url, text: value } = data.contacts[key];
-          const attrs = contactLabels ? {} : { "aria-label": label };
           const internal = url?.startsWith("/");
+          const attrs = { "data-label": label, ...(internal && { "data-path": url }) };
           return [
-            gap,
+            i && separator(SEPARATOR),
             link(
               internal ? localized(url) : url,
-              internal ? { ...attrs, "data-path": url } : attrs,
-              h("img", { src: `/assets/icons/${page}/links/${key}.svg`, alt: "" }),
-              contactLabels && [h("span", {}, label), ": ", value],
+              attrs,
+              icon("links", key),
+              h("span", {}, ` ${label}: `, h("span", { "data-value": "" }, value)),
             ),
           ];
         }),
@@ -311,86 +301,119 @@ const renderHeader = (data) => {
       h(
         "p",
         {},
-        ...data.title.flatMap((line, i) => [
-          i && " ",
-          titleLines ? h("span", {}, line) : line,
-        ]),
+        ...data.title.flatMap((line, i) => [i && " ", h("span", {}, line)]),
       ),
     typing: () => h("p", {}, h("span"), h("span", {}, "|")),
     nav: () => renderNav(data),
-    contacts: () => renderContacts(data),
+    contacts: () => renderContacts(data, data.layout.contacts[page]),
   };
   return h("header", { role: "banner" }, ...header.map((part) => parts[part]()));
 };
 
-const renderAuthors = (subtitle) => {
-  const [first, ...others] = subtitle.split(",");
-  return [h("strong", {}, first), ...(others.length ? [h("span", {}, `,${others.join(",")}`)] : [])];
+const entityText = (name, bold) => {
+  const [, main, secondary] = name.match(/^(.*?)(?:\s*\((.*)\))?$/);
+  return [bold ? h("strong", {}, main) : main, secondary && h("small", {}, ` (${secondary})`)];
 };
 
-const renderArticle = ({ id, title, date, subtitle, detail, bullets, links = [] }, authors = false) => {
-  const head = { time: h("time", {}, date), h3: h("h3", {}, title) };
+const renderEntities = (subtitle, icons) => {
+  const names = [].concat(subtitle);
   return h(
-    "article",
-    {},
-    h("div", {}, ...articleHead.flatMap((part, i) => [i && separator, head[part]])),
-    h(
-      "p",
-      {},
-      articleIcons && h("img", { src: `/assets/icons/${page}/articles/${ICONS[id] ?? id}.svg`, alt: "" }),
-      h("span", {}, ...(authors ? renderAuthors(subtitle) : [subtitle])),
-      ...(detail ? [separator, h("span", {}, detail)] : []),
-    ),
-    h(
-      "ul",
-      {},
-      ...bullets.map((bullet) => h("li", {}, bullet)),
-      ...(articleLinks ? links : []).map(({ type, url }) =>
-        h("li", {}, link(url, { "data-type": type }, url ? text.links[type] : text.links.unavailable)),
+    "span",
+    { "data-entities": "" },
+    ...names.map((name, i) =>
+      h(
+        "span",
+        {},
+        icon("articles", icons[i]),
+        h("span", {}, ...entityText(name, i === 0)),
+        i < names.length - 1 && separator(LIST_SEPARATOR),
       ),
     ),
   );
 };
 
-const renderSkills = (items) =>
-  skillTags
-    ? h(
-        "dl",
+const renderArticle = (item) => {
+  if (item.label) {
+    const { label, text: value } = item;
+    return h(
+      "article",
+      { "data-skills": "" },
+      h("h3", {}, label, separator(LABEL_SEPARATOR)),
+      h(
+        "p",
         {},
-        ...items.map(({ label, text: value }) => {
-          const tokens = value.split(/,\s*|\s+-\s+/).map((t) => t.trim()).filter(Boolean);
-          return h(
-            "div",
-            {},
-            h("dt", {}, label),
-            h("dd", {}, ...tokens.map((t) => h("span", {}, t))),
-          );
-        }),
-      )
-    : h(
-        "div",
+        ...value
+          .split(/,\s*/)
+          .filter(Boolean)
+          .flatMap((tag, i) => [i && separator(LIST_SEPARATOR), h("span", {}, tag)]),
+      ),
+    );
+  }
+  const { id, title, date, subtitle, detail, bullets = [], links = [] } = item;
+  const icons = [].concat(ICONS[id] ?? []);
+  const sortedLinks = [...links].sort(
+    (a, b) => LAYOUT.linkOrder.indexOf(a.type) - LAYOUT.linkOrder.indexOf(b.type),
+  );
+  return h(
+    "article",
+    {},
+    h(
+      "div",
+      {},
+      h("h3", {}, title, separator(SEPARATOR)),
+      h(
+        "time",
         {},
-        ...items.map(({ label, text: value }) => h("p", {}, h("strong", {}, label), ": ", value)),
-      );
+        ...[].concat(date).flatMap((d, i) => [i && separator(DATE_SEPARATOR), h("span", {}, d)]),
+      ),
+    ),
+    h(
+      "p",
+      {},
+      renderEntities(subtitle, icons),
+      ...(detail ? [separator(SEPARATOR), h("span", {}, detail)] : []),
+    ),
+    h(
+      "ul",
+      {},
+      ...sortedLinks.map(({ type, url }) =>
+        h(
+          "li",
+          {},
+          link(
+            url,
+            { "data-type": type },
+            url
+              ? text.links[type]
+              : `${text.links.unavailableLabel[type]} ${text.links.unavailableSuffix}`,
+          ),
+        ),
+      ),
+      ...bullets.map((bullet) => h("li", {}, h("span", { "data-bullet": "" }, BULLET), bullet)),
+    ),
+  );
+};
 
-const renderSection = (key, { title, text: paragraphs = [], items = [] }) => {
-  const hasSkills = items.length > 0 && items[0].label;
-  const renderedItems =
-    hasSkills
-      ? [renderSkills(items)]
-      : items.map((item) => renderArticle(item, key === "publications"));
+const renderSection = (spec, data) => {
+  const [, key, filter] = spec.match(/^([^[]+)(?:\[(.*)\])?$/);
+  const { title, text: paragraphs = [], items = [] } = data[key];
+  const tokens = filter ? filter.split(",").map((s) => s.trim()) : null;
+  const notitle = tokens?.includes("notitle");
+  const allowed = tokens ? tokens.filter((t) => t !== "notitle") : null;
+  const filteredItems = allowed?.length ? items.filter((it) => allowed.includes(it.id ?? it.label)) : items;
+
   return h(
     "section",
     { id: slug(key), ...(untitled.includes(key) && { "aria-label": title }) },
-    !untitled.includes(key) &&
+    !untitled.includes(key) && !notitle &&
       h(
         "h2",
         {},
-        sectionIcons && h("img", { src: `/assets/icons/${page}/sections/${key}.svg`, alt: "" }),
+        icon("sections", key),
         title,
       ),
     ...paragraphs.map((paragraph) => h("p", {}, paragraph)),
-    ...renderedItems,
+    ...filteredItems.map(renderArticle),
   );
 };
 
@@ -404,18 +427,28 @@ const renderFooter = () =>
       {},
       text.footer.builtWith,
       ...["HTML", "CSS", "JS"].flatMap((name, i) => [
-        h("img", { src: `/assets/icons/${page}/footer/${name.toLowerCase()}.svg`, alt: name }),
+        icon("footer", name.toLowerCase(), name),
         i < 2 ? `${name},` : name,
       ]),
     ),
     h(
       "p",
       {},
+      text.footer.icons,
+      h("span", {}, link("https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/", {}, "Papirus"), ","),
+      h("span", {}, link("https://iconoir.com/", {}, "Iconoir"), ","),
+      link("https://fontawesome.com/icons", {}, "Font Awesome"),
+    ),
+    h(
+      "p",
+      {},
       text.footer.typography,
       link("https://fonts.google.com/specimen/Roboto", {}, "Roboto"),
-      `- ${text.footer.icons}`,
-      link("https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/", {}, "Papirus"),
-      `- ${text.footer.source}`,
+    ),
+    h(
+      "p",
+      {},
+      text.footer.source,
       link("https://github.com/antoniopelusi/antoniopelusi.github.io", {}, "GitHub"),
     ),
     h("p", {}, text.footer.copyright),
@@ -426,7 +459,7 @@ const render = (data) => {
   document.body.toggleAttribute("data-outline", flags.outline);
 
   const main = document.querySelector("main");
-  const contents = pages.map((keys) => h("div", {}, ...keys.map((key) => renderSection(key, data[key]))));
+  const contents = data.layout.pages[page].map((keys) => h("div", {}, ...keys.map((key) => renderSection(key, data))));
 
   contents[0].prepend(renderHeader(data));
   if (footer) contents.at(-1).append(renderFooter());
@@ -473,6 +506,11 @@ const initPrintGuard = (button) => {
     const overflow = blocked();
     button.disabled = overflow;
     button.lastElementChild.textContent = overflow ? text.actions.overflow : text.actions.print;
+    frames.forEach((frame) => {
+      const excess = frame.scrollHeight - frame.clientHeight;
+      frame.toggleAttribute("data-overflow", excess > 1);
+      frame.style.setProperty("--overflow-h", excess > 1 ? `${excess}px` : "0px");
+    });
   };
 
   addEventListener("keydown", (event) => {
@@ -501,10 +539,31 @@ const initStickyTitles = () => {
 };
 
 const initNav = (links) => {
+  const headerEl = document.querySelector("header");
+  const navEl = headerEl.querySelector("nav");
   const sections = links.slice(1).map((a) => document.querySelector(a.hash));
   let pinned = location.hash ? links.find((a) => a.hash === location.hash) : null;
+  let navHeight = 0;
+
+  const checkSpace = () => {
+    if (!matchMedia("(min-width: 1024px)").matches) return;
+    if (!navHeight) navHeight = navEl.scrollHeight;
+
+    let required = 0;
+    for (const child of headerEl.children) {
+      if (child === navEl) {
+        required += navHeight;
+      } else {
+        const style = getComputedStyle(child);
+        required += child.offsetHeight + parseFloat(style.marginTop) + parseFloat(style.marginBottom);
+      }
+    }
+
+    headerEl.toggleAttribute("data-compact", headerEl.clientHeight < required);
+  };
 
   const update = () => {
+    checkSpace();
     if (!links[0].offsetParent) return;
     const threshold = innerHeight * 0.5;
     const index =
@@ -547,6 +606,7 @@ const initNav = (links) => {
 fetch(`/assets/data/${lang}.json`)
   .then((response) => response.json())
   .then((data) => {
+    if (pageFrame) document.title += `_${lang}`;
     render(data);
     if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
     if (header.includes("typing")) initTyping(text.phrases);

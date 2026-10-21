@@ -1,3 +1,22 @@
+:root {
+    --size-h1:   2.2rem;
+    --size-body: 0.9rem;
+    --size-sm:   0.75rem;
+
+    --space-xs: 0.45rem;
+    --space-s:  0.9rem;
+    --space:    1.8rem;
+    --space-l:  2.7rem;
+
+    --line-height-head: 1.3;
+}
+
+html {
+    font-size: clamp(14px, 1vw + 10.4px, 18px);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
 html,
 body {
     height: 100%;
@@ -12,19 +31,23 @@ main {
 }
 
 body {
-    gap: 1.5rem;
+    gap: var(--space);
+    padding: var(--space-l);
     color: var(--muted);
-    font-size: clamp(0.9rem, 2vw, 1rem);
-    line-height: 1.2;
+    font-size: var(--size-body);
+    line-height: var(--line-height-head);
 }
 
 main {
-    gap: 1rem;
+    gap: var(--space-s);
+    max-width: 100%;
+    text-align: center;
 }
 
 h1 {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-size: var(--size-h1);
     font-weight: 400;
+    line-height: var(--line-height-head);
     color: var(--light);
 }
 
@@ -37,8 +60,9 @@ h1 span:last-child {
 }
 
 p {
-    font-size: clamp(0.8rem, 2vw, 0.9rem);
-    word-break: break-all;
+    max-width: 100%;
+    font-size: var(--size-sm);
+    overflow-wrap: anywhere;
 }
 
 a {
@@ -46,9 +70,10 @@ a {
     font-weight: 400;
     text-decoration: underline;
     text-decoration-color: var(--muted);
-    transition: text-decoration-color 0.2s;
 }
 
-a:hover {
-    text-decoration-color: var(--light);
+@media (hover: hover) {
+    a:hover {
+        text-decoration-color: var(--light);
+    }
 }

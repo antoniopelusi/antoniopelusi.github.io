@@ -1,3 +1,30 @@
+:root {
+    --size-h1:   25pt;
+    --size-h2:   14pt;
+    --size-h3:   10pt;
+    --size-body: 9pt;
+    --size-sm:   8pt;
+    --size-xs:   7pt;
+
+    --space-xs: 1.5pt;
+    --space-s:  3pt;
+    --space:    6pt;
+    --space-l:  14pt;
+    --space-xl: 28pt;
+
+    --page-w: 21cm;
+    --page-h: 29.7cm;
+
+    --radius:   12pt;
+    --radius-s: 6pt;
+
+    --line-height-h1:   1.1;
+    --line-height-head: 1.2;
+    --line-height-body: 1.25;
+
+    --shadow: 0 0 8pt color-mix(in srgb, var(--dark) 50%, transparent);
+}
+
 ::selection {
     background-color: var(--dark);
     color: var(--light);
@@ -11,106 +38,111 @@ html {
 body {
     width: fit-content;
     margin: 0 auto;
-    padding: 5mm;
+    padding: var(--space-l);
     color: var(--dark);
-    font-size: 9pt;
-    font-weight: 400;
-    line-height: 1.25;
+    font-size: var(--size-body);
+    line-height: var(--line-height-body);
     hyphens: none;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    gap: 5mm;
+main > * + * {
+    margin-top: var(--space-l);
 }
 
 main > div {
-    display: flex;
-    flex-direction: column;
-    width: 21cm;
-    height: 29.7cm;
-    max-height: 29.7cm;
-    padding: 10mm;
-    border-radius: 16px;
+    width: var(--page-w);
+    height: var(--page-h);
+    max-height: var(--page-h);
+    padding: var(--space-xl);
+    border-radius: var(--radius);
     background-color: var(--light);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: var(--shadow);
 }
 
 main > div > div {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    gap: 2mm;
-    min-height: 0;
+    height: 100%;
 }
 
-body[data-outline] main > div > div:not(nav, nav *) {
-    outline-color: limegreen;
+main > div > div > * + * {
+    margin-top: var(--space-l);
+}
+
+body[data-outline] [data-overflow] {
+    position: relative;
+}
+
+body[data-outline] [data-overflow]::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: var(--overflow-h, 0px);
+    background-color: rgba(255, 200, 0, 0.25);
+    pointer-events: none;
+}
+
+body[data-outline] main > div > div * {
+    outline: 1px solid #e05a00;
     outline-offset: 0;
 }
 
-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5mm;
+body[data-outline] main > div > div {
+    outline: 1px solid #1a8c1a;
+    outline-offset: 1px;
 }
 
-section {
-    display: flex;
-    flex-direction: column;
-    gap: 1mm;
+header > * + * {
+    margin-top: var(--space-s);
 }
 
-article {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5mm;
+address > * + * {
+    margin-top: var(--space-s);
 }
 
-h1 {
-    font-size: 25pt;
-    font-weight: 700;
-    line-height: 1.1;
-    text-align: center;
+section > * + * {
+    margin-top: var(--space-s);
+}
+
+article > * + * {
+    margin-top: var(--space-xs);
+}
+
+article > div {
+    font-size: var(--size-h3);
+    line-height: var(--line-height-head);
+}
+
+article h3,
+article time {
+    display: inline;
+}
+
+article p [data-entities] > span > span:not([data-separator]) {
+    white-space: nowrap;
+}
+
+article[data-skills] p {
+    display: inline;
+}
+
+article li:has(a) {
+    display: none;
 }
 
 h2 {
     border-bottom: solid 1px var(--dark);
-    font-size: 14pt;
 }
 
-h3 {
-    font-size: 10pt;
-}
-
-p,
-li {
-    font-weight: 300;
+article p,
+article li {
     word-break: keep-all;
-}
-
-strong {
-    font-weight: 700;
 }
 
 img {
     width: 1lh;
     height: 1lh;
-}
-
-address a,
-address span {
-    display: inline-block;
-}
-
-address img {
-    vertical-align: -0.15em;
-}
-
-section > p {
-    display: flex;
+    vertical-align: top;
 }
 
 a {
@@ -119,20 +151,17 @@ a {
     white-space: nowrap;
 }
 
-header > p {
-    font-size: 10pt;
-    font-weight: 400;
-    line-height: 1.2;
-    text-align: center;
+ul {
+    list-style: none;
 }
 
 nav {
     display: flex;
     align-items: center;
-    gap: 2mm;
-    width: 21cm;
-    padding: 2mm;
-    border-radius: 8px;
+    gap: var(--space);
+    width: var(--page-w);
+    padding: var(--space);
+    border-radius: var(--radius-s);
     background-color: var(--article);
     user-select: none;
 }
@@ -141,11 +170,12 @@ nav button {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.4em;
-    padding: 0.2em 0.6em;
+    gap: var(--btn-gap);
+    padding: var(--btn-pad-v) var(--btn-pad-h);
     border: none;
-    border-radius: 4px;
-    font: inherit;
+    border-radius: var(--radius-s);
+    font-family: inherit;
+    font-size: inherit;
     background-color: var(--article);
     color: var(--muted);
     cursor: pointer;
@@ -162,18 +192,9 @@ nav button[data-action="outline"] {
     margin-right: auto;
 }
 
-nav button:hover {
-    background-color: rgba(162, 175, 193, 0.12);
-    color: var(--light);
-}
-
 nav button[data-active="true"] {
     background-color: var(--article-hover);
     color: var(--light);
-}
-
-nav button[data-active="true"]:hover {
-    background-color: rgba(162, 175, 193, 0.28);
 }
 
 nav button:disabled {
@@ -181,54 +202,11 @@ nav button:disabled {
     cursor: not-allowed;
 }
 
-address {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1mm;
-}
-
-address p {
-    line-height: 1;
-}
-
-address span {
-    font-weight: 400;
-}
-
-article > div {
-    display: block;
-}
-
-article h3,
-article time {
-    display: inline;
-}
-
-article time {
-    font-size: 8pt;
-}
-
-article p {
-    font-size: 8pt;
-    font-weight: 400;
-}
-
-ul {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5mm;
-    list-style: inside disc;
-}
-
-section > div {
-    display: flex;
-    flex-direction: column;
-    gap: 1mm;
-}
-
-section > div > p {
-    font-size: 8pt;
+@media (hover: hover) {
+    nav button:hover {
+        background-color: var(--article-hover);
+        color: var(--light);
+    }
 }
 
 @media print {
@@ -247,11 +225,20 @@ section > div > p {
         padding: 0;
     }
 
-    main {
-        gap: 0;
+    main > * + * {
+        margin-top: 0;
     }
 
     nav {
+        display: none;
+    }
+
+    body[data-outline] main > div > div,
+    body[data-outline] main > div > div * {
+        outline: none !important;
+    }
+
+    body[data-outline] [data-overflow]::after {
         display: none;
     }
 
