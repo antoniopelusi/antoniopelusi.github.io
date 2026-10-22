@@ -1,5 +1,4 @@
 :root {
-
     --size-h1:   28pt;
     --size-h2:   15.5pt;
     --size-h3:   11pt;
@@ -23,24 +22,24 @@
     --line-height-head: 1.2;
     --line-height-body: 1.25;
 
-    --radius:   12pt;
-    --radius-s: 6pt;
-    --shadow:   0 0 8pt color-mix(in srgb, var(--dark) 50%, transparent);
-
-    --icon-size: 1lh;
-
     --color-text:    var(--dark);
     --color-heading: var(--dark);
     --color-link:    currentColor;
     --selection-bg:  var(--dark);
     --selection-fg:  var(--light);
 
+    --radius:   12pt;
+    --radius-s: 6pt;
+    --shadow:   0 0 8pt color-mix(in srgb, var(--dark) 50%, transparent);
+
+    --icon-size: 1lh;
+
     --page-w: 21cm;
     --page-h: 29.7cm;
 
     --debug-outline:  #e05a00;
     --debug-frame:    #1a8c1a;
-    --debug-overflow: rgb(255 200 0 / 0.25);
+    --debug-overflow: #ffc80040;
 }
 
 html {
@@ -64,7 +63,6 @@ main {
 main > div {
     width: var(--page-w);
     height: var(--page-h);
-    max-height: var(--page-h);
     padding: var(--space-xl);
     border-radius: var(--radius);
     background-color: var(--light);
@@ -78,8 +76,18 @@ main > div > div {
     height: 100%;
 }
 
+h2 {
+    border-bottom: var(--stroke) solid var(--dark);
+}
+
+a {
+    color: var(--color-link);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
 header > address > p > a > span {
-    font-weight: 700;
+    font-weight: var(--weight-bold);
 }
 
 article[data-skills] {
@@ -116,14 +124,6 @@ main article:not([data-skills]) p > [data-separator] {
     font-weight: var(--weight-regular);
 }
 
-article:not([data-skills]) p > span + span {
-    font-size: var(--size-sm);
-}
-
-article:not([data-skills]) p > [data-separator] {
-    font-size: var(--size-sm);
-}
-
 article li:has(a) {
     display: none;
 }
@@ -131,16 +131,6 @@ article li:has(a) {
 article p,
 article li {
     word-break: keep-all;
-}
-
-h2 {
-    border-bottom: var(--stroke) solid var(--dark);
-}
-
-a {
-    color: var(--color-link);
-    text-decoration: none;
-    white-space: nowrap;
 }
 
 nav {
@@ -193,7 +183,6 @@ body[data-outline] main > div > div {
 }
 
 @media print {
-
     @page {
         size: A4 portrait;
         margin: 0;
@@ -217,19 +206,6 @@ body[data-outline] main > div > div {
         display: none;
     }
 
-    body[data-outline] main > div > div,
-    body[data-outline] main > div > div * {
-        outline: none !important;
-    }
-
-    body[data-outline] [data-overflow]::after {
-        display: none;
-    }
-
-    main > div > div {
-        overflow: hidden;
-    }
-
     main > div {
         border-radius: 0;
         box-shadow: none;
@@ -240,6 +216,19 @@ body[data-outline] main > div > div {
     main > div:not(:last-child) {
         break-after: page;
         page-break-after: always;
+    }
+
+    main > div > div {
+        overflow: hidden;
+    }
+
+    body[data-outline] main > div > div,
+    body[data-outline] main > div > div * {
+        outline: none !important;
+    }
+
+    body[data-outline] [data-overflow]::after {
+        display: none;
     }
 
     article {
