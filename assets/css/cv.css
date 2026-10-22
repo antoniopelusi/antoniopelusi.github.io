@@ -78,6 +78,10 @@ main > div > div {
     height: 100%;
 }
 
+header > address > p > a > span {
+    font-weight: 700;
+}
+
 article[data-skills] {
     display: block;
 }

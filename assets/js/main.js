@@ -34,7 +34,7 @@ const LAYOUT = {
 const TEXT = {
   en: {
     nav: "Navigation",
-    navOther: "Other",
+    navOther: "Others",
     tools: "Tools",
     actions: {
       back: "Go back",

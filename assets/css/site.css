@@ -121,6 +121,11 @@ h2 {
     padding-block: var(--space-s);
 }
 
+h2 img {
+    width: auto;
+    padding-right: var(--space-xs);
+}
+
 h2[data-stuck] {
     background-color: var(--dark);
 }
@@ -396,7 +401,7 @@ article li a:not([href]) {
 
 a:not([href]),
 a:not([href]) * {
-    font-weight: var(--weight-light);
+    font-weight: var(--weight-regular);
     font-style: italic;
 }
 
@@ -539,7 +544,6 @@ footer nav {
 
     header nav a {
         position: relative;
-
         max-height: clamp(0px, calc((100cqh - var(--nav-need)) * 1000), 100vh);
         overflow: clip;
         padding-left: var(--nav-indent);

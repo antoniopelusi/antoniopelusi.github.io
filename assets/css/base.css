@@ -1,13 +1,5 @@
 @font-face {
     font-family: "Roboto Local";
-    src: url("../fonts/Roboto-Light.woff2") format("woff2");
-    font-weight: 300;
-    font-style: normal;
-    font-display: block;
-}
-
-@font-face {
-    font-family: "Roboto Local";
     src: url("../fonts/Roboto-Regular.woff2") format("woff2");
     font-weight: 400;
     font-style: normal;
@@ -33,7 +25,6 @@
     --article-box:   #0000001a;
 
     --font-family:    "Roboto Local", sans-serif;
-    --weight-light:   300;
     --weight-regular: 400;
     --weight-bold:    700;
 
@@ -83,6 +74,7 @@
 }
 
 html {
+    height: 100%;
     background-color: var(--dark);
 }
 
@@ -179,11 +171,11 @@ article li {
 section > p,
 article p,
 article li {
-    font-weight: var(--weight-light);
+    font-weight: var(--weight-regular);
 }
 
 address [data-value] {
-    font-weight: var(--weight-light);
+    font-weight: var(--weight-regular);
 }
 
 article time {
@@ -212,7 +204,7 @@ noscript a {
     gap: var(--btn-gap);
     padding: var(--btn-pad-v) var(--btn-pad-h);
     border: 0;
-    border-radius: var(--radius-s, 4px);
+    border-radius: var(--radius);
     background-color: var(--article);
     color: var(--muted);
     font-size: inherit;
@@ -247,12 +239,12 @@ noscript {
     width: max-content;
     max-width: var(--page-share);
     padding: calc(var(--gap-item) * 3) calc(var(--gap-item) * 4);
-    border-radius: var(--radius-s);
+    border-radius: var(--radius);
     background-color: var(--article);
     box-shadow: 0 var(--stroke) 0 var(--article-box);
     color: var(--muted);
     font-size: var(--size-body);
-    font-weight: var(--weight-light);
+    font-weight: var(--weight-regular);
     line-height: var(--line-height-body);
     text-align: center;
     transform: translate(-50%, -50%);
