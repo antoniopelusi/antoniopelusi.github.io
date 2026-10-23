@@ -47,7 +47,7 @@
     --icon-dot:      url("../icons/site/articles/bullets/dot.svg");
     --entity-gap:    calc(var(--space-xxs) / 2);
 
-    --root-size:      clamp(17px, 0.5vw + 14px, 19px);
+    --root-size:      clamp(18px, 0.5vw + 14px, 19px);
     --page-max:       72rem;
     --page-inset:     var(--space);
     --z-sticky:       10;

@@ -1,5 +1,5 @@
 :root {
-    --root-size:      clamp(17px, 0.5vw + 14px, 19px);
+    --root-size:      clamp(18px, 0.5vw + 14px, 19px);
 
     --size-h1:   2.25rem;
     --size-h2:   1.05rem;
