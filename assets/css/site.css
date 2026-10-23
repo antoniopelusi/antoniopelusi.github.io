@@ -2,6 +2,7 @@
     --size-h1:   2.25rem;
     --size-h2:   1.05rem;
     --size-h3:   0.92rem;
+    --size-h4:   0.78rem;
     --size-body: 0.92rem;
     --size-sm:   0.78rem;
     --size-xs:   0.70rem;
@@ -42,11 +43,11 @@
     --icon-size:     1lh;
     --icon-scale-sm: 0.8;
     --icon-size-sm:  calc(var(--icon-size) * var(--icon-scale-sm));
-    --icon-size-lg:  var(--space);
+    --icon-size-lg:  calc(var(--space) * 0.9);
     --icon-dot:      url("../icons/site/articles/bullets/dot.svg");
     --entity-gap:    calc(var(--space-xxs) / 2);
 
-    --root-size:      clamp(16px, 0.5vw + 14px, 19px);
+    --root-size:      clamp(17px, 0.5vw + 14px, 19px);
     --page-max:       72rem;
     --page-inset:     var(--space);
     --z-sticky:       10;
@@ -192,6 +193,31 @@ header address a {
     transition:
         filter var(--duration),
         transform var(--duration-fast);
+}
+
+header address a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: height var(--duration-fast);
+}
+
+header address a::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: calc(100% + var(--space-xs));
+    left: 50%;
+    z-index: var(--z-tooltip);
+    color: var(--muted);
+    font-size: var(--size-xs);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%);
+    transition: opacity var(--duration-slow);
 }
 
 header address a > span {
@@ -462,31 +488,6 @@ footer nav {
     gap: var(--btn-gap);
 }
 
-header address a::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: height var(--duration-fast);
-}
-
-header address a::after {
-    content: attr(data-label);
-    position: absolute;
-    bottom: calc(100% + var(--space-xs));
-    left: 50%;
-    z-index: var(--z-tooltip);
-    color: var(--muted);
-    font-size: var(--size-xs);
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-50%);
-    transition: opacity var(--duration-slow);
-}
-
 /* Hover: any device with a real hover, regardless of viewport width. */
 @media (hover: hover) {
     a:hover {
@@ -567,12 +568,13 @@ header address a::after {
 
     header address {
         margin-top: auto;
+        padding-top: calc(var(--icon-size-lg) * 1.5);
     }
 
     header nav {
         --nav-count:  1;
-        --nav-line-h: calc(var(--size-xs) * var(--line-height-body));
-        --nav-need:   calc(var(--nav-count) * var(--nav-line-h) + (var(--nav-count) - 1) * var(--gap-head));
+        --nav-line-h: calc(var(--size-xs) * 0.9 * var(--line-height-body));
+        --nav-need:   calc(var(--nav-count) * (var(--nav-line-h) + 2 * var(--gap-head) / 3));
 
         container-type: size;
         display: flex;
@@ -580,7 +582,6 @@ header address a::after {
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
-        gap: var(--gap-head);
         min-height: 0;
     }
 
@@ -598,9 +599,10 @@ header address a::after {
         position: relative;
         max-height: clamp(0px, calc((100cqh - var(--nav-need)) * 1000), 100vh);
         overflow: clip;
+        padding-block: clamp(0px, calc((100cqh - var(--nav-need)) * 1000), calc(var(--gap-head) / 3));
         padding-left: var(--nav-indent);
         color: var(--color-soft);
-        font-size: var(--size-xs);
+        font-size: calc(var(--size-xs) * 0.9);
         font-weight: var(--weight-bold);
         text-decoration: none;
         transition:

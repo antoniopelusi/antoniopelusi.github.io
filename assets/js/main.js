@@ -78,7 +78,7 @@ const TEXT = {
     },
     phrases: [
       "Debugging ideas",
-      "Dodging merge conflicts",
+      "Merging conflicts",
       "Branching hypotheses",
       "Refactoring bugs",
       "Collecting knowledge",
@@ -131,7 +131,7 @@ const TEXT = {
     },
     phrases: [
       "Debuggando idee",
-      "Schivando merge conflict",
+      "Mergiando conflitti",
       "Ramificando ipotesi",
       "Rifattorizzando bug",
       "Raccogliendo conoscenza",

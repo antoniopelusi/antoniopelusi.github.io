@@ -158,7 +158,7 @@ h3 [data-separator] {
 }
 
 header > p {
-    font-size: var(--size-h3);
+    font-size: var(--size-h4);
     font-weight: var(--weight-regular);
 }
 
