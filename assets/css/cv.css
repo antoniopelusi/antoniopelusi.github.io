@@ -61,6 +61,11 @@ main {
     gap: var(--gap-page);
 }
 
+main:empty {
+    width: var(--page-w);
+    height: var(--page-h);
+}
+
 main > div {
     width: var(--page-w);
     height: var(--page-h);
