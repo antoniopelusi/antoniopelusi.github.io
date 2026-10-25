@@ -122,8 +122,8 @@ h2 {
 
 h2 img {
     height: var(--icon-size);
-    width: auto;
-    padding-right: var(--space-xxs);
+    width: var(--icon-size);
+    margin-right: var(--space-xxs);
 }
 
 h2[data-stuck] {

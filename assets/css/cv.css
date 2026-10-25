@@ -91,6 +91,11 @@ header > address > p > a > span {
     font-weight: var(--weight-bold);
 }
 
+header > address img {
+    width: var(--icon-size);
+    height: var(--icon-size);
+}
+
 article[data-skills] {
     display: block;
 }
