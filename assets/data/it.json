@@ -112,6 +112,7 @@
       {
         "id": "ibm",
         "title": "Visiting Researcher",
+        "url": null,
         "date": [
           "Set 2026",
           "Mar 2027"
@@ -128,6 +129,7 @@
       {
         "id": "randompower",
         "title": "Software Developer (Part-time)",
+        "url": null,
         "date": [
           "Mag 2024",
           "Nov 2025"
@@ -150,6 +152,7 @@
       {
         "id": "paradisi",
         "title": "Docente di Informatica alle Scuole Superiori (Part-time)",
+        "url": null,
         "date": [
           "Set 2024",
           "Lug 2025"
@@ -166,6 +169,7 @@
       {
         "id": "unimore-tutor",
         "title": "Tutor Universitario di Informatica (Part-time)",
+        "url": null,
         "date": [
           "Set 2024",
           "Dic 2024"
@@ -182,6 +186,7 @@
       {
         "id": "liferay",
         "title": "Junior Software Developer (Tirocinio)",
+        "url": null,
         "date": [
           "Mar 2021",
           "Lug 2021"
@@ -208,6 +213,7 @@
       {
         "id": "uninsubria",
         "title": "PhD in Informatica e Matematica del Calcolo",
+        "url": null,
         "date": [
           "Nov 2024",
           "Ott 2027"
@@ -231,6 +237,7 @@
       {
         "id": "unimore-master",
         "title": "Laurea Magistrale in Informatica",
+        "url": null,
         "date": [
           "Set 2022",
           "Apr 2024"
@@ -252,6 +259,7 @@
       {
         "id": "cbi-attract",
         "title": "Corso di Alta Formazione CBI.Attract",
+        "url": null,
         "date": [
           "Feb 2023",
           "Giu 2023"
@@ -270,6 +278,7 @@
       {
         "id": "unimore-bachelor",
         "title": "Laurea Triennale in Informatica",
+        "url": null,
         "date": [
           "Set 2018",
           "Apr 2022"
@@ -292,6 +301,7 @@
       {
         "id": "explainable-governance",
         "title": "Towards Explainable Governance of Synthetic Health Data in Collaborative Healthcare Ecosystems",
+        "url": "https://doi.org/10.1007/978-3-032-41230-0_34",
         "date": [
           "Ott 2026"
         ],
@@ -315,6 +325,7 @@
       {
         "id": "privacy-fidelity",
         "title": "Privacy-Fidelity Trade-offs in Differentially Private Synthetic Tabular Data Generation",
+        "url": null,
         "date": [
           "Lug 2026"
         ],
@@ -340,6 +351,7 @@
       {
         "id": "categorical-prior-lock-in",
         "title": "Categorical Prior Lock-in: Why In-Context Learning Fails for Structured Data",
+        "url": null,
         "date": [
           "Apr 2026"
         ],
@@ -370,6 +382,7 @@
       {
         "id": "pipeline",
         "title": "synth-pipeline",
+        "url": null,
         "date": [
           "Ott 2026"
         ],
@@ -390,6 +403,7 @@
       {
         "id": "chesslm",
         "title": "chesSLM",
+        "url": "https://github.com/antoniopelusi/chesSLM",
         "date": [
           "Giu 2026"
         ],
@@ -415,6 +429,7 @@
       {
         "id": "epsiloc",
         "title": "epsiloc",
+        "url": "https://github.com/antoniopelusi/epsiloc",
         "date": [
           "Ott 2025"
         ],
@@ -440,6 +455,7 @@
       {
         "id": "recoilisland",
         "title": "Recoil Island",
+        "url": "https://github.com/antoniopelusi/recoilisland",
         "date": [
           "Mar 2026"
         ],
@@ -464,6 +480,7 @@
       {
         "id": "txturl",
         "title": "TxtUrl",
+        "url": "https://github.com/antoniopelusi/txturl",
         "date": [
           "Feb 2026"
         ],
@@ -488,6 +505,7 @@
       {
         "id": "scoretracker",
         "title": "Score Tracker",
+        "url": "https://github.com/antoniopelusi/scoretracker",
         "date": [
           "Feb 2025"
         ],
@@ -512,6 +530,7 @@
       {
         "id": "toolstab",
         "title": "ToolsTab",
+        "url": "https://github.com/antoniopelusi/toolstab",
         "date": [
           "Gen 2025"
         ],
@@ -541,6 +560,7 @@
       {
         "id": "hackathon",
         "title": "Vincitore dell'Hackathon Green & Digital Transformation",
+        "url": null,
         "date": [
           "Set 2023"
         ],

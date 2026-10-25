@@ -349,18 +349,20 @@ const renderArticle = (item) => {
       ),
     );
   }
-  const { id, title, date, subtitle, detail, bullets = [], links = [] } = item;
+
+  const { id, title, url, date, subtitle, detail, bullets = [], links = [] } = item;
   const icons = [].concat(ICONS[id] ?? []);
   const sortedLinks = [...links].sort(
     (a, b) => LAYOUT.linkOrder.indexOf(a.type) - LAYOUT.linkOrder.indexOf(b.type),
   );
+
   return h(
     "article",
     {},
     h(
       "div",
       {},
-      h("h3", {}, title, separator(SEPARATOR)),
+      h("h3", {}, (url && page === "cv") ? link(url, { "aria-label": title }, title) : title, separator(SEPARATOR)),
       h(
         "time",
         {},
@@ -376,16 +378,19 @@ const renderArticle = (item) => {
     h(
       "ul",
       {},
-      ...sortedLinks.map(({ type, url }) =>
+      ...sortedLinks.map((l) =>
         h(
           "li",
           {},
           link(
-            url,
-            { "data-type": type },
-            url
-              ? text.links[type]
-              : `${text.links.unavailableLabel[type]} ${text.links.unavailableSuffix}`,
+            l.url,
+            {
+              "data-type": l.type,
+              ...(l.url && { "aria-label": l.url === url ? title : `${text.links[l.type]} - ${title}` }),
+            },
+            l.url
+              ? text.links[l.type]
+              : `${text.links.unavailableLabel[l.type]} ${text.links.unavailableSuffix}`,
           ),
         ),
       ),
@@ -525,13 +530,16 @@ const initPrintGuard = (button) => {
 const initStickyTitles = () => {
   const titles = [...document.querySelectorAll("h2")];
 
-  const update = () =>
-    titles.forEach((title) =>
-      title.toggleAttribute(
-        "data-stuck",
-        getComputedStyle(title).position === "sticky" && title.getBoundingClientRect().top <= 0,
-      ),
-    );
+  const update = () => {
+    const states = titles.map((title) => ({
+      el: title,
+      isStuck: getComputedStyle(title).position === "sticky" && title.getBoundingClientRect().top <= 0,
+    }));
+
+    states.forEach(({ el, isStuck }) => {
+      el.toggleAttribute("data-stuck", isStuck);
+    });
+  };
 
   addEventListener("scroll", update, { passive: true });
   addEventListener("resize", update, { passive: true });
@@ -545,8 +553,8 @@ const initNav = (links) => {
   let pinned = location.hash ? links.find((a) => a.hash === location.hash) : null;
   let navHeight = 0;
 
-  const checkSpace = () => {
-    if (!matchMedia("(min-width: 1024px)").matches) return;
+  const getCompactState = () => {
+    if (!matchMedia("(min-width: 1024px)").matches) return null;
     if (!navHeight) navHeight = navEl.scrollHeight;
 
     let required = 0;
@@ -559,18 +567,23 @@ const initNav = (links) => {
       }
     }
 
-    headerEl.toggleAttribute("data-compact", headerEl.clientHeight < required);
+    return headerEl.clientHeight < required;
   };
 
   const update = () => {
-    checkSpace();
     if (!links[0].offsetParent) return;
+
+    const isCompact = getCompactState();
     const threshold = innerHeight * 0.5;
-    const index =
-      scrollY < 10
-        ? -1
-        : sections.findLastIndex((el) => el.getBoundingClientRect().top <= threshold);
+    const currentScrollY = scrollY;
+    const index = currentScrollY < 10
+      ? -1
+      : sections.findLastIndex((el) => el && el.getBoundingClientRect().top <= threshold);
     const current = pinned ?? links[index + 1];
+
+    if (isCompact !== null) {
+      headerEl.toggleAttribute("data-compact", isCompact);
+    }
 
     links.forEach((a) => {
       if (a === current) a.setAttribute("aria-current", "location");
@@ -590,14 +603,9 @@ const initNav = (links) => {
     scrollTo({ top: 0, behavior: "smooth" });
   });
   ["wheel", "touchmove", "keydown", "pointerdown"].forEach((type) =>
-    addEventListener(
-      type,
-      () => {
-        pinned = null;
-      },
-      { passive: true },
-    ),
+    addEventListener(type, () => { pinned = null; }, { passive: true })
   );
+  
   addEventListener("scroll", update, { passive: true });
   addEventListener("resize", update, { passive: true });
   update();

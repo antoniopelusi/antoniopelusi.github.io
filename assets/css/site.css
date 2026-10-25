@@ -116,11 +116,14 @@ h2 {
     top: 0;
     z-index: var(--z-sticky);
     padding-block: var(--space-s);
+    display: flex;
+    align-items: center;
 }
 
 h2 img {
+    height: var(--icon-size);
     width: auto;
-    padding-right: var(--space-xs);
+    padding-right: var(--space-xxs);
 }
 
 h2[data-stuck] {
@@ -158,9 +161,11 @@ header > p:first-of-type span {
 }
 
 header > p:nth-of-type(2) {
-    display: flex;
-    align-items: flex-start;
-    height: 2lh;
+  min-height: 1.5em;
+  white-space: nowrap;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 header > p:nth-of-type(2) span:last-child {
@@ -452,7 +457,8 @@ footer {
 }
 
 footer a {
-    color: inherit;
+  display: inline-block;
+  padding: 4px 0px;
 }
 
 footer button {
