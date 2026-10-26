@@ -198,7 +198,8 @@ article p [data-entities] > span:first-child small {
     font-weight: var(--weight-bold);
 }
 
-nav button {
+nav button,
+noscript a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -221,54 +222,91 @@ nav button[data-active="true"] {
 }
 
 @media (hover: hover) {
-    nav button:not(:disabled):hover {
+    nav button:not(:disabled):hover,
+    noscript a:hover {
         background-color: var(--article-hover);
         color: var(--light);
     }
 }
 
 noscript {
+    --noscript-text:        var(--muted);
+    --noscript-accent:      var(--light);
+    --noscript-bg:          var(--article);
+    --noscript-shadow:      var(--article-box);
+
+    --noscript-root:        clamp(16px, 0.5vw + 14px, 19px);
+
+    --noscript-size:        calc(var(--noscript-root) * 0.78);
+    --noscript-size-btn:    calc(var(--noscript-root) * 0.7);
+    --noscript-line-height: 1.6;
+    --noscript-icon:        1em;
+    --noscript-gap:         calc(var(--noscript-root) * 0.675);
+    --noscript-gap-inline:  calc(var(--noscript-root) * 0.9);
+    --noscript-pad-v:       calc(var(--noscript-root) * 0.9);
+    --noscript-pad-h:       calc(var(--noscript-root) * 1.35);
+    --noscript-radius:      calc(var(--noscript-root) * 0.375);
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    width: min(48rem, 90vw);
-    margin: 0 auto;
-    padding: 2rem 0;
-    color: var(--light);
-    font-size: 1rem;
-    line-height: 1.5;
+    align-items: center;
+    justify-content: center;
+    gap: var(--noscript-gap);
+    width: max-content;
+    max-width: var(--page-share);
+    padding: var(--noscript-pad-v) var(--noscript-pad-h);
+    border-radius: var(--noscript-radius);
+    background-color: var(--noscript-bg);
+    box-shadow: 0 var(--stroke) 0 var(--noscript-shadow);
+    color: var(--noscript-text);
+    font-size: var(--noscript-size);
+    font-weight: var(--weight-regular);
+    line-height: var(--noscript-line-height);
+    text-align: center;
+    transform: translate(-50%, -50%);
 }
 
-noscript section {
+noscript div {
     display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    align-items: center;
+    gap: var(--noscript-gap-inline);
 }
 
-noscript h2 {
-    padding-bottom: 0.25rem;
-    border-bottom: var(--stroke) solid var(--muted);
-    color: var(--light);
-    font-size: 1.25rem;
-    line-height: 1.2;
+noscript p {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
 }
 
-noscript object {
-    display: block;
-    width: 100%;
-    aspect-ratio: 21 / 29.7;
-    border: 0;
-    border-radius: 0.375rem;
+noscript p + p {
+    color: var(--noscript-accent);
 }
 
 noscript a {
-    color: var(--light);
-    text-decoration: underline;
-    white-space: normal;
+    border-radius: var(--noscript-radius);
+    font-size: var(--noscript-size-btn);
 }
 
-body:has(noscript object) main:empty {
-    display: none;
+noscript img {
+    width: var(--noscript-icon);
+    height: var(--noscript-icon);
+}
+
+noscript > div > img {
+    width: 1.5em;
+    height: 1.5em; 
+}
+
+noscript > div > img:last-of-type {
+    opacity: 0.3;
+}
+
+noscript > div > a > img {
+    width: 1em;
+    height: 1em;
 }
 
 body::before,
