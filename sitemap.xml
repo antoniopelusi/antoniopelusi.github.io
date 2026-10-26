@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <urlset
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
 >
-
     <url>
         <loc>https://antoniopelusi.github.io/</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://antoniopelusi.github.io/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://antoniopelusi.github.io/?translate"/>
         <priority>1.00</priority>
     </url>
-
     <url>
         <loc>https://antoniopelusi.github.io/cv/</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://antoniopelusi.github.io/cv/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://antoniopelusi.github.io/cv/?translate"/>
         <priority>0.80</priority>
     </url>
-
 </urlset>

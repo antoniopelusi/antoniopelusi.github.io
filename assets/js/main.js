@@ -31,11 +31,20 @@ const LAYOUT = {
   linkOrder: ["paper", "thesis", "model", "repository", "website"],
 };
 
+const BUILT_WITH = ["HTML", "CSS", "JS"];
+
+const ICON_CREDITS = [
+  ["Papirus", "https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/"],
+  ["Iconoir", "https://iconoir.com/"],
+  ["Font Awesome", "https://fontawesome.com/icons"],
+];
+
 const TEXT = {
   en: {
     nav: "Navigation",
     navOther: "Others",
     tools: "Tools",
+    error: "Content unavailable.",
     actions: {
       back: "Go back",
       print: "Print this CV",
@@ -89,6 +98,7 @@ const TEXT = {
     nav: "Navigazione",
     navOther: "Altro",
     tools: "Strumenti",
+    error: "Contenuto non disponibile.",
     actions: {
       back: "Torna indietro",
       print: "Stampa il CV",
@@ -167,15 +177,31 @@ const {
   nav,
   icons: iconSets,
 } = CONFIG[page];
-const FLAGS = CONFIG[page].actions.filter((a) => ["translate", "outline"].includes(a));
+
+const FLAGS = actions.filter((action) => ["translate", "outline"].includes(action));
 const params = new URLSearchParams(location.search);
 const flags = Object.fromEntries(FLAGS.map((flag) => [flag, params.has(flag)]));
 const lang = flags.translate ? "it" : "en";
 const text = TEXT[lang];
 
-const localized = (path, next = {}) => {
+document.documentElement.lang = lang;
+document.body.toggleAttribute("data-outline", Boolean(flags.outline));
+
+const rafThrottle = (fn) => {
+  let queued = false;
+  return () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => {
+      queued = false;
+      fn();
+    });
+  };
+};
+
+const localized = (path) => {
   const activeFlags = path === location.pathname ? FLAGS : ["translate"];
-  const query = activeFlags.filter((flag) => next[flag] ?? flags[flag]).join("&");
+  const query = activeFlags.filter((flag) => flags[flag]).join("&");
   return query ? `${path}?${query}` : path;
 };
 
@@ -184,11 +210,16 @@ const syncLinks = () =>
     a.href = localized(a.dataset.path);
   });
 
-const toggle = (icon, flag, apply) => [
-  icon,
-  (btn) => {
+const setActive = (button, value) => {
+  button.dataset.active = value;
+  button.setAttribute("aria-pressed", value);
+};
+
+const toggle = (iconName, flag, apply) => [
+  iconName,
+  (button) => {
     flags[flag] = !flags[flag];
-    btn.dataset.active = flags[flag];
+    setActive(button, flags[flag]);
     history.replaceState(null, "", localized(location.pathname) + location.hash);
     syncLinks();
     apply();
@@ -198,39 +229,54 @@ const toggle = (icon, flag, apply) => [
 
 const ACTIONS = {
   back: ["arrow-left", () => location.assign(localized("/"))],
-  print: ["printing-page", () => print()],
+  print: ["printing-page", () => window.print()],
   translate: toggle("translate", "translate", () => location.reload()),
   outline: toggle("outline", "outline", () =>
     document.body.toggleAttribute("data-outline", flags.outline),
   ),
 };
 
-if (location.pathname + location.search !== localized(location.pathname)) {
-  history.replaceState(null, "", localized(location.pathname) + location.hash);
+const canonicalUrl = localized(location.pathname);
+if (location.pathname + location.search !== canonicalUrl) {
+  history.replaceState(null, "", canonicalUrl + location.hash);
 }
 
 const h = (tag, attrs = {}, ...children) => {
   const el = document.createElement(tag);
-  Object.entries(attrs).forEach(([name, value]) => el.setAttribute(name, value));
-  el.append(...children.flat().filter(Boolean));
+  for (const [name, value] of Object.entries(attrs)) {
+    if (value !== undefined && value !== null && value !== false) {
+      el.setAttribute(name, value === true ? "" : value);
+    }
+  }
+  el.append(...children.flat().filter((child) => child !== undefined && child !== null && child !== false));
   return el;
 };
 
 const slug = (key) => key.replaceAll("_", "-");
 
 const icon = (dir, name, alt = "") =>
-  name && iconSets.includes(dir) && h("img", { src: `/assets/icons/${page}/${dir}/${name}.svg`, alt });
+  name && iconSets.includes(dir)
+    ? h("img", { src: `/assets/icons/${page}/${dir}/${name}.svg`, alt })
+    : null;
 
-const link = (url, attrs, ...children) =>
-  h(
+const link = (url, attrs, ...children) => {
+  const external = /^https?:/.test(url ?? "");
+  return h(
     "a",
     {
-      ...(url && { href: url }),
-      ...(/^https?:/.test(url) && { target: "_blank", rel: "noopener noreferrer" }),
+      href: url,
+      target: external && "_blank",
+      rel: external && "noopener noreferrer",
       ...attrs,
     },
     ...children,
   );
+};
+
+const separator = (value) => h("span", { "data-separator": "", "aria-hidden": "true" }, value);
+
+const joinWith = (items, value) =>
+  items.flatMap((item, i) => (i ? [separator(value), item] : [item]));
 
 const renderButton = (action) => {
   const [name, onClick, active] = ACTIONS[action];
@@ -240,57 +286,49 @@ const renderButton = (action) => {
     icon("ui", name),
     h("span", {}, text.actions[action]),
   );
-  if (active !== undefined) el.dataset.active = active;
+  if (active !== undefined) setActive(el, active);
   el.addEventListener("click", () => onClick(el));
   return el;
 };
 
 const renderToolbar = () =>
-  h(
-    "nav",
-    { role: "navigation", "aria-label": text.tools },
-    ...actions.map((action) => renderButton(action)),
-  );
+  h("nav", { "aria-label": text.tools }, ...actions.map((action) => renderButton(action)));
 
 const renderNav = (data) =>
   h(
     "nav",
-    { role: "navigation", "aria-label": text.nav },
-    ...nav.map((key) =>
-      h(
-        "a",
-        { href: key === "summary" ? "#" : `#${slug(key)}` },
-        (key === "other_experience" ? text.navOther : data[key].title).toUpperCase(),
+    { "aria-label": text.nav },
+    ...nav
+      .filter((key) => data[key])
+      .map((key) =>
+        h(
+          "a",
+          { href: key === "summary" ? "#" : `#${slug(key)}` },
+          (key === "other_experience" ? text.navOther : data[key].title).toUpperCase(),
+        ),
       ),
-    ),
   );
 
-const separator = (value) => h("span", { "data-separator": "" }, value);
+const renderContact = (data, key) => {
+  const entry = data.contacts[key];
+  if (!entry) return null;
+  const { url, text: value } = entry;
+  const label = text.contacts[key];
+  const internal = url?.startsWith("/");
+  return link(
+    internal ? localized(url) : url,
+    { "data-label": label, "data-path": internal && url },
+    icon("links", key),
+    h("span", {}, ` ${label}${LABEL_SEPARATOR}`, h("span", { "data-value": "" }, value)),
+  );
+};
 
-const renderContacts = (data, contacts) =>
+const renderContacts = (data, rows) =>
   h(
     "address",
     {},
-    ...contacts.map((row) =>
-      h(
-        "p",
-        {},
-        ...row.flatMap((key, i) => {
-          const label = text.contacts[key];
-          const { url, text: value } = data.contacts[key];
-          const internal = url?.startsWith("/");
-          const attrs = { "data-label": label, ...(internal && { "data-path": url }) };
-          return [
-            i && separator(SEPARATOR),
-            link(
-              internal ? localized(url) : url,
-              attrs,
-              icon("links", key),
-              h("span", {}, ` ${label}: `, h("span", { "data-value": "" }, value)),
-            ),
-          ];
-        }),
-      ),
+    ...rows.map((row) =>
+      h("p", {}, ...joinWith(row.map((key) => renderContact(data, key)).filter(Boolean), SEPARATOR)),
     ),
   );
 
@@ -298,25 +336,22 @@ const renderHeader = (data) => {
   const parts = {
     name: () => h("h1", {}, data.name),
     title: () =>
-      h(
-        "p",
-        {},
-        ...data.title.flatMap((line, i) => [i && " ", h("span", {}, line)]),
-      ),
-    typing: () => h("p", {}, h("span"), h("span", {}, "|")),
+      h("p", {}, ...data.title.flatMap((line, i) => [i > 0 && " ", h("span", {}, line)])),
+    typing: () =>
+      h("p", { "data-typing": "" }, h("span"), h("span", { "aria-hidden": "true" }, "|")),
     nav: () => renderNav(data),
     contacts: () => renderContacts(data, data.layout.contacts[page]),
   };
-  return h("header", { role: "banner" }, ...header.map((part) => parts[part]()));
+  return h("header", {}, ...header.map((part) => parts[part]()));
 };
 
 const entityText = (name, bold) => {
-  const [, main, secondary] = name.match(/^(.*?)(?:\s*\((.*)\))?$/);
+  const [, main, secondary] = name.match(/^(.*?)(?:\s*\((.*)\))?$/s);
   return [bold ? h("strong", {}, main) : main, secondary && h("small", {}, ` (${secondary})`)];
 };
 
 const renderEntities = (subtitle, icons) => {
-  const names = [].concat(subtitle);
+  const names = [].concat(subtitle ?? []);
   return h(
     "span",
     { "data-entities": "" },
@@ -332,29 +367,53 @@ const renderEntities = (subtitle, icons) => {
   );
 };
 
-const renderArticle = (item) => {
-  if (item.label) {
-    const { label, text: value } = item;
-    return h(
-      "article",
-      { "data-skills": "" },
-      h("h3", {}, label, separator(LABEL_SEPARATOR)),
-      h(
-        "p",
-        {},
-        ...value
+const linkRank = (type) => {
+  const index = LAYOUT.linkOrder.indexOf(type);
+  return index === -1 ? LAYOUT.linkOrder.length : index;
+};
+
+const renderLink = (item, title) => {
+  const label = text.links[item.type] ?? item.type;
+  const unavailable = `${text.links.unavailableLabel[item.type] ?? item.type} ${text.links.unavailableSuffix}`;
+  return h(
+    "li",
+    {},
+    link(
+      item.url,
+      {
+        "data-type": item.type,
+        "aria-label": item.url && `${label} - ${title}`,
+      },
+      item.url ? label : unavailable,
+    ),
+  );
+};
+
+const renderBullet = (bullet) =>
+  h("li", {}, h("span", { "data-bullet": "", "aria-hidden": "true" }, BULLET), bullet);
+
+const renderSkills = ({ label, text: value }) =>
+  h(
+    "article",
+    { "data-skills": "" },
+    h("h3", {}, label, separator(LABEL_SEPARATOR)),
+    h(
+      "p",
+      {},
+      ...joinWith(
+        value
           .split(/,\s*/)
           .filter(Boolean)
-          .flatMap((tag, i) => [i && separator(LIST_SEPARATOR), h("span", {}, tag)]),
+          .map((tag) => h("span", {}, tag)),
+        LIST_SEPARATOR,
       ),
-    );
-  }
-
-  const { id, title, url, date, subtitle, detail, bullets = [], links = [] } = item;
-  const icons = [].concat(ICONS[id] ?? []);
-  const sortedLinks = [...links].sort(
-    (a, b) => LAYOUT.linkOrder.indexOf(a.type) - LAYOUT.linkOrder.indexOf(b.type),
+    ),
   );
+
+const renderEntry = ({ id, title, url, date, subtitle, detail, bullets = [], links = [] }) => {
+  const icons = [].concat(ICONS[id] ?? []);
+  const sortedLinks = [...links].sort((a, b) => linkRank(a.type) - linkRank(b.type));
+  const dates = [].concat(date ?? []).map((value) => h("span", {}, value));
 
   return h(
     "article",
@@ -362,12 +421,8 @@ const renderArticle = (item) => {
     h(
       "div",
       {},
-      h("h3", {}, (url && page === "cv") ? link(url, { "aria-label": title }, title) : title, separator(SEPARATOR)),
-      h(
-        "time",
-        {},
-        ...[].concat(date).flatMap((d, i) => [i && separator(DATE_SEPARATOR), h("span", {}, d)]),
-      ),
+      h("h3", {}, url && page === "cv" ? link(url, {}, title) : title, separator(SEPARATOR)),
+      h("time", {}, ...joinWith(dates, DATE_SEPARATOR)),
     ),
     h(
       "p",
@@ -378,71 +433,64 @@ const renderArticle = (item) => {
     h(
       "ul",
       {},
-      ...sortedLinks.map((l) =>
-        h(
-          "li",
-          {},
-          link(
-            l.url,
-            {
-              "data-type": l.type,
-              ...(l.url && { "aria-label": l.url === url ? title : `${text.links[l.type]} - ${title}` }),
-            },
-            l.url
-              ? text.links[l.type]
-              : `${text.links.unavailableLabel[l.type]} ${text.links.unavailableSuffix}`,
-          ),
-        ),
-      ),
-      ...bullets.map((bullet) => h("li", {}, h("span", { "data-bullet": "" }, BULLET), bullet)),
+      ...sortedLinks.map((item) => renderLink(item, title)),
+      ...bullets.map(renderBullet),
     ),
   );
 };
 
+const renderArticle = (item) => (item.label ? renderSkills(item) : renderEntry(item));
+
+const usedIds = new Set();
+
 const renderSection = (spec, data) => {
   const [, key, filter] = spec.match(/^([^[]+)(?:\[(.*)\])?$/);
-  const { title, text: paragraphs = [], items = [] } = data[key];
-  const tokens = filter ? filter.split(",").map((s) => s.trim()) : null;
-  const notitle = tokens?.includes("notitle");
-  const allowed = tokens ? tokens.filter((t) => t !== "notitle") : null;
-  const filteredItems = allowed?.length ? items.filter((it) => allowed.includes(it.id ?? it.label)) : items;
+  const section = data[key];
+  if (!section) return null;
+
+  const { title, text: paragraphs = [], items = [] } = section;
+  const tokens = filter ? filter.split(",").map((token) => token.trim()) : [];
+  const isUntitled = untitled.includes(key);
+  const showTitle = !isUntitled && !tokens.includes("notitle");
+  const allowed = tokens.filter((token) => token !== "notitle");
+  const visibleItems = allowed.length
+    ? items.filter((item) => allowed.includes(item.id ?? item.label))
+    : items;
+
+  const id = slug(key);
+  const duplicate = usedIds.has(id);
+  usedIds.add(id);
 
   return h(
     "section",
-    { id: slug(key), ...(untitled.includes(key) && { "aria-label": title }) },
-    !untitled.includes(key) && !notitle &&
-      h(
-        "h2",
-        {},
-        icon("sections", key),
-        title,
-      ),
+    { id: duplicate ? undefined : id, "aria-label": isUntitled ? title : undefined },
+    showTitle && h("h2", {}, icon("sections", key), title),
     ...paragraphs.map((paragraph) => h("p", {}, paragraph)),
-    ...filteredItems.map(renderArticle),
+    ...visibleItems.map((item) => renderArticle(item)),
   );
 };
 
 const renderFooter = () =>
   h(
     "footer",
-    { role: "contentinfo" },
+    {},
     toolbar === "footer" && renderToolbar(),
     h(
       "p",
       {},
       text.footer.builtWith,
-      ...["HTML", "CSS", "JS"].flatMap((name, i) => [
+      ...BUILT_WITH.flatMap((name, i, all) => [
         icon("footer", name.toLowerCase(), name),
-        i < 2 ? `${name},` : name,
+        i < all.length - 1 ? `${name},` : name,
       ]),
     ),
     h(
       "p",
       {},
       text.footer.icons,
-      h("span", {}, link("https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/", {}, "Papirus"), ","),
-      h("span", {}, link("https://iconoir.com/", {}, "Iconoir"), ","),
-      link("https://fontawesome.com/icons", {}, "Font Awesome"),
+      ...ICON_CREDITS.map(([name, url], i, all) =>
+        i < all.length - 1 ? h("span", {}, link(url, {}, name), ",") : link(url, {}, name),
+      ),
     ),
     h(
       "p",
@@ -460,102 +508,139 @@ const renderFooter = () =>
   );
 
 const render = (data) => {
-  document.documentElement.lang = lang;
-  document.body.toggleAttribute("data-outline", flags.outline);
-
   const main = document.querySelector("main");
-  const contents = data.layout.pages[page].map((keys) => h("div", {}, ...keys.map((key) => renderSection(key, data))));
+  const contents = data.layout.pages[page].map((keys) =>
+    h("div", {}, ...keys.map((key) => renderSection(key, data))),
+  );
 
   contents[0].prepend(renderHeader(data));
   if (footer) contents.at(-1).append(renderFooter());
-  if (toolbar === "top") main.prepend(renderToolbar());
   main.append(...(pageFrame ? contents.map((content) => h("div", {}, content)) : contents));
+  if (toolbar === "top") main.prepend(renderToolbar());
+};
+
+const renderError = () => {
+  document.querySelector("main").replaceChildren(h("p", { role: "alert" }, text.error));
 };
 
 const initTyping = (phrases) => {
-  const target = document.querySelector("header > p:nth-of-type(2) span");
-  let phrase = 0,
-    chars = 0,
-    deleting = false;
+  const root = document.querySelector("[data-typing]");
+  const target = root?.firstElementChild;
+  if (!target) return;
 
-  const type = () => {
-    chars += deleting ? -1 : 1;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    target.textContent = phrases[0];
+    return;
+  }
 
-    if (!deleting && chars > phrases[phrase].length) {
-      setTimeout(() => {
-        deleting = true;
-        type();
-      }, 2000);
-      return;
+  let visible = true;
+  new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+  }).observe(root);
+
+  let phrase = 0;
+  let chars = 0;
+  let deleting = false;
+
+  const schedule = (delay) => setTimeout(tick, delay);
+
+  const tick = () => {
+    if (!visible || document.hidden) return schedule(500);
+
+    const current = phrases[phrase];
+
+    if (!deleting && chars === current.length) {
+      deleting = true;
+      return schedule(2000);
     }
-    if (deleting && chars < 0) {
-      chars = 0;
+    if (deleting && chars === 0) {
       deleting = false;
       phrase = (phrase + 1) % phrases.length;
-      setTimeout(type, 500);
-      return;
+      return schedule(500);
     }
 
-    target.textContent = phrases[phrase].substring(0, chars);
-    setTimeout(type, deleting ? 25 : 50);
+    chars += deleting ? -1 : 1;
+    target.textContent = current.slice(0, chars);
+    return schedule(deleting ? 25 : 50);
   };
 
-  setTimeout(type, 1000);
+  schedule(1000);
 };
 
 const initPrintGuard = (button) => {
   const frames = [...document.querySelectorAll("main > div > div")];
-  const blocked = () => frames.some((frame) => frame.scrollHeight - frame.clientHeight > 1);
+  const label = button.lastElementChild;
+  let blocked = false;
 
   const sync = () => {
-    const overflow = blocked();
-    button.disabled = overflow;
-    button.lastElementChild.textContent = overflow ? text.actions.overflow : text.actions.print;
-    frames.forEach((frame) => {
-      const excess = frame.scrollHeight - frame.clientHeight;
-      frame.toggleAttribute("data-overflow", excess > 1);
-      frame.style.setProperty("--overflow-h", excess > 1 ? `${excess}px` : "0px");
+    const excess = frames.map((frame) => frame.scrollHeight - frame.clientHeight);
+    blocked = excess.some((value) => value > 1);
+    button.disabled = blocked;
+    label.textContent = blocked ? text.actions.overflow : text.actions.print;
+
+    frames.forEach((frame, i) => {
+      const over = excess[i] > 1;
+      frame.toggleAttribute("data-overflow", over);
+      frame.style.setProperty("--overflow-h", over ? `${excess[i]}px` : "0px");
     });
   };
 
+  const observer = new ResizeObserver(rafThrottle(sync));
+  frames.forEach((frame) => [...frame.children].forEach((child) => observer.observe(child)));
+
   addEventListener("keydown", (event) => {
-    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "p" && blocked()) {
-      event.preventDefault();
+    if ((event.ctrlKey || event.metaKey) && event.key?.toLowerCase() === "p") {
+      sync();
+      if (blocked) event.preventDefault();
     }
   });
+  addEventListener("beforeprint", sync);
   document.fonts.ready.then(sync);
   sync();
 };
 
 const initStickyTitles = () => {
   const titles = [...document.querySelectorAll("h2")];
+  if (!titles.length) return;
+
+  let sticky = [];
 
   const update = () => {
-    const states = titles.map((title) => ({
-      el: title,
-      isStuck: getComputedStyle(title).position === "sticky" && title.getBoundingClientRect().top <= 0,
-    }));
-
-    states.forEach(({ el, isStuck }) => {
-      el.toggleAttribute("data-stuck", isStuck);
+    const tops = titles.map((title) => title.getBoundingClientRect().top);
+    titles.forEach((title, i) => {
+      title.toggleAttribute("data-stuck", sticky[i] && tops[i] <= 0);
     });
   };
 
-  addEventListener("scroll", update, { passive: true });
-  addEventListener("resize", update, { passive: true });
-  update();
+  const measure = () => {
+    sticky = titles.map((title) => getComputedStyle(title).position === "sticky");
+    update();
+  };
+
+  addEventListener("scroll", rafThrottle(update), { passive: true });
+  addEventListener("resize", rafThrottle(measure), { passive: true });
+  measure();
 };
 
 const initNav = (links) => {
   const headerEl = document.querySelector("header");
   const navEl = headerEl.querySelector("nav");
   const sections = links.slice(1).map((a) => document.querySelector(a.hash));
-  let pinned = location.hash ? links.find((a) => a.hash === location.hash) : null;
+  const desktop = matchMedia("(min-width: 1024px)");
+
+  const fromHash = () =>
+    location.hash ? (links.find((a) => a.hash === location.hash) ?? null) : null;
+
+  let pinned = fromHash();
+  let active = null;
   let navHeight = 0;
 
-  const getCompactState = () => {
-    if (!matchMedia("(min-width: 1024px)").matches) return null;
-    if (!navHeight) navHeight = navEl.scrollHeight;
+  const syncCompact = (remeasure) => {
+    if (!desktop.matches || !links[0].checkVisibility()) return;
+
+    if (!navHeight || (remeasure && !headerEl.hasAttribute("data-compact"))) {
+      navHeight = navEl.scrollHeight;
+    }
 
     let required = 0;
     for (const child of headerEl.children) {
@@ -567,60 +652,86 @@ const initNav = (links) => {
       }
     }
 
-    return headerEl.clientHeight < required;
+    headerEl.toggleAttribute("data-compact", headerEl.clientHeight < required);
   };
 
-  const update = () => {
-    if (!links[0].offsetParent) return;
+  const updateActive = () => {
+    if (!links[0].checkVisibility()) return;
 
-    const isCompact = getCompactState();
-    const threshold = innerHeight * 0.5;
-    const currentScrollY = scrollY;
-    const index = currentScrollY < 10
-      ? -1
-      : sections.findLastIndex((el) => el && el.getBoundingClientRect().top <= threshold);
-    const current = pinned ?? links[index + 1];
-
-    if (isCompact !== null) {
-      headerEl.toggleAttribute("data-compact", isCompact);
+    let index;
+    if (scrollY < 10) {
+      index = -1;
+    } else if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) {
+      index = sections.length - 1;
+    } else {
+      const threshold = innerHeight * 0.5;
+      index = sections.findLastIndex((el) => el && el.getBoundingClientRect().top <= threshold);
     }
 
-    links.forEach((a) => {
-      if (a === current) a.setAttribute("aria-current", "location");
-      else a.removeAttribute("aria-current");
-    });
+    const current = pinned ?? links[index + 1];
+    if (current === active) return;
+
+    active?.removeAttribute("aria-current");
+    current.setAttribute("aria-current", "location");
+    active = current;
+  };
+
+  const refresh = (remeasure = false) => {
+    syncCompact(remeasure);
+    updateActive();
   };
 
   links.forEach((a) =>
     a.addEventListener("click", () => {
       pinned = a;
-      update();
+      updateActive();
     }),
   );
+
   links[0].addEventListener("click", (event) => {
     event.preventDefault();
     history.replaceState(null, "", location.pathname + location.search);
     scrollTo({ top: 0, behavior: "smooth" });
   });
+
   ["wheel", "touchmove", "keydown", "pointerdown"].forEach((type) =>
-    addEventListener(type, () => { pinned = null; }, { passive: true })
+    addEventListener(
+      type,
+      () => {
+        pinned = null;
+      },
+      { passive: true },
+    ),
   );
-  
-  addEventListener("scroll", update, { passive: true });
-  addEventListener("resize", update, { passive: true });
-  update();
+
+  addEventListener("scroll", rafThrottle(updateActive), { passive: true });
+  addEventListener("resize", rafThrottle(() => refresh(true)), { passive: true });
+  addEventListener("hashchange", () => {
+    pinned = fromHash();
+    updateActive();
+  });
+
+  refresh();
+  document.fonts.ready.then(() => refresh(true));
 };
 
-fetch(`/assets/data/${lang}.json`)
-  .then((response) => response.json())
-  .then((data) => {
-    if (pageFrame) document.title += `_${lang}`;
-    render(data);
-    if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
-    if (header.includes("typing")) initTyping(text.phrases);
-    initStickyTitles();
-    const printButton = document.querySelector('[data-action="print"]');
-    if (printButton) initPrintGuard(printButton);
-    const links = [...document.querySelectorAll("header nav a")];
-    if (links.length) initNav(links);
-  });
+const init = () => {
+  if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
+  if (header.includes("typing")) initTyping(text.phrases);
+  initStickyTitles();
+
+  const printButton = document.querySelector('[data-action="print"]');
+  if (printButton) initPrintGuard(printButton);
+
+  const links = [...document.querySelectorAll("header nav a")];
+  if (links.length) initNav(links);
+};
+
+try {
+  if (pageFrame) document.title += `_${lang}`;
+  render(window.DATA[lang]);
+  init();
+} catch (error) {
+  console.error(error);
+  renderError();
+}

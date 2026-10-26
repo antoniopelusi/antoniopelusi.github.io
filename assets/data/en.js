@@ -1,4 +1,5 @@
-{
+window.DATA = window.DATA || {};
+window.DATA.en = {
   "layout": {
     "pages": {
       "site": [
@@ -59,12 +60,12 @@
   },
   "name": "Antonio Pelusi",
   "title": [
-    "Dottorando in Informatica",
-    "e Matematica del Calcolo"
+    "PhD student in Computer Science",
+    "and Mathematics of Computation"
   ],
   "contacts": {
     "location": {
-      "text": "Modena, Italia"
+      "text": "Modena, Italy"
     },
     "phone": {
       "text": "+39 328 426 1797",
@@ -100,29 +101,29 @@
     }
   },
   "summary": {
-    "title": "Profilo",
+    "title": "Summary",
     "text": [
-      "Attività di ricerca focalizzata su Differential Privacy e parameter-efficient fine-tuning di LLM, con pubblicazioni su sintesi di dati tabulari, rischi di memorizzazione ed explainable governance di dati sanitari sintetici.",
-      "Esperienza ingegneristica in Python e C, su pipeline ML, framework di valutazione e piattaforme dati ad alto throughput."
+      "Research focused on Differential Privacy and parameter-efficient fine-tuning of LLMs, with papers on tabular data synthesis, memorization risks, and explainable governance of synthetic health data.",
+      "Engineering experience in Python and C, covering ML pipelines, evaluation frameworks, and high-throughput data platforms."
     ]
   },
   "experience": {
-    "title": "Esperienza",
+    "title": "Experience",
     "items": [
       {
         "id": "ibm",
         "title": "Visiting Researcher",
         "url": null,
         "date": [
-          "Set 2026",
+          "Sep 2026",
           "Mar 2027"
         ],
         "subtitle": [
-          "IBM Research (Dublino, Irlanda)"
+          "IBM Research (Dublin, Ireland)"
         ],
         "detail": "",
         "bullets": [
-          "Ricerca congiunta sul fine-tuning con Differential Privacy di foundation model per la sintesi di dati strutturati in contesti enterprise."
+          "Conducted joint research on differentially private fine-tuning of foundation models for structured data synthesis in enterprise environments."
         ],
         "links": []
       },
@@ -131,72 +132,72 @@
         "title": "Software Developer (Part-time)",
         "url": null,
         "date": [
-          "Mag 2024",
+          "May 2024",
           "Nov 2025"
         ],
         "subtitle": [
-          "Random Power (Remoto)"
+          "Random Power (Remote)"
         ],
         "detail": "",
         "bullets": [
-          "Sviluppo di una piattaforma Entropy-as-a-Service in C, conforme all'API QRNG di Palo Alto Networks, per lo streaming di bit quantistici a 1 Gbit/s.",
-          "Realizzazione dell'interfaccia full-stack Django per la 64x Multi-Generator Board, implementando protocolli di comunicazione hardware-software e autenticazione delle sessioni."
+          "Built a C Entropy-as-a-Service platform compliant with the Palo Alto Networks QRNG API, streaming quantum random bits at 1 Gbit/s.",
+          "Developed a full-stack Django management interface for the 64x Multi-Generator Board, implementing hardware-software communication protocols and session authentication."
         ],
         "links": []
       }
     ]
   },
   "other_experience": {
-    "title": "Altra Esperienza",
+    "title": "Other Experience",
     "items": [
       {
         "id": "paradisi",
-        "title": "Docente di Informatica alle Scuole Superiori (Part-time)",
+        "title": "Computer Science High School Teacher (Part-time)",
         "url": null,
         "date": [
-          "Set 2024",
-          "Lug 2025"
+          "Sep 2024",
+          "Jul 2025"
         ],
         "subtitle": [
-          "Liceo A. Paradisi (Vignola, Italia)"
+          "A. Paradisi High School (Vignola, Italy)"
         ],
         "detail": "",
         "bullets": [
-          "Insegnamento di fondamenti di programmazione, strutture dati e algoritmi a oltre 75 studenti."
+          "Taught programming principles, data structures, and algorithms to 75+ secondary school students."
         ],
         "links": []
       },
       {
         "id": "unimore-tutor",
-        "title": "Tutor Universitario di Informatica (Part-time)",
+        "title": "Computer Science University Tutor (Part-time)",
         "url": null,
         "date": [
-          "Set 2024",
-          "Dic 2024"
+          "Sep 2024",
+          "Dec 2024"
         ],
         "subtitle": [
-          "Università di Modena e Reggio Emilia (Modena, Italia)"
+          "University of Modena and Reggio Emilia (Modena, Italy)"
         ],
         "detail": "",
         "bullets": [
-          "Supporto e tutorato a oltre 50 studenti universitari nei laboratori di programmazione e strutture dati."
+          "Mentored 50+ undergraduate students in laboratory sessions on programming and data structures."
         ],
         "links": []
       },
       {
         "id": "liferay",
-        "title": "Junior Software Developer (Tirocinio)",
+        "title": "Junior Software Developer (Internship)",
         "url": null,
         "date": [
           "Mar 2021",
-          "Lug 2021"
+          "Jul 2021"
         ],
         "subtitle": [
-          "Liferay Inc. (Remoto)"
+          "Liferay Inc. (Remote)"
         ],
         "detail": "",
         "bullets": [
-          "Implementazione di moduli di integrazione dei pagamenti Stripe per il portale enterprise open-source in Java."
+          "Implemented Stripe payment integration modules for the open-source enterprise portal in Java."
         ],
         "links": [
           {
@@ -208,25 +209,25 @@
     ]
   },
   "education": {
-    "title": "Formazione",
+    "title": "Education",
     "items": [
       {
         "id": "uninsubria",
-        "title": "PhD in Informatica e Matematica del Calcolo",
+        "title": "PhD in Computer Science and Mathematics of Computation",
         "url": null,
         "date": [
           "Nov 2024",
-          "Ott 2027"
+          "Oct 2027"
         ],
         "subtitle": [
-          "Università dell'Insubria (Varese, Italia)",
-          "Random Power (Remoto)",
-          "IBM Research (Dublino, Irlanda)"
+          "University of Insubria (Varese, Italy)",
+          "Random Power (Remote)",
+          "IBM Research (Dublin, Ireland)"
         ],
         "detail": "",
         "bullets": [
-          "Ricerca sul privacy-preserving fine-tuning di Large Language Model (LLM) locali per la sintesi di dati tabulari protetti.",
-          "Studio di sorgenti di entropia quantistica in meccanismi di Differential Privacy, caratterizzando budget teorici e protezione empirica."
+          "Researched privacy-preserving fine-tuning of locally deployable Large Language Models (LLMs) for synthetic tabular data generation.",
+          "Investigated quantum entropy noise sources in Differential Privacy mechanisms, characterizing theoretical privacy budgets and empirical protection."
         ],
         "links": [
           {
@@ -236,18 +237,18 @@
       },
       {
         "id": "unimore-master",
-        "title": "Laurea Magistrale in Informatica",
+        "title": "Master's Degree in Computer Science",
         "url": null,
         "date": [
-          "Set 2022",
+          "Sep 2022",
           "Apr 2024"
         ],
         "subtitle": [
-          "Università di Modena e Reggio Emilia (Modena, Italia)"
+          "University of Modena and Reggio Emilia (Modena, Italy)"
         ],
-        "detail": "Voto: 110/110",
+        "detail": "Grade: 110/110",
         "bullets": [
-          "Curriculum in Machine Learning, Crittografia e Sistemi Distribuiti. Tesi magistrale su Differential Privacy per la condivisione di dati tabulari."
+          "Curriculum in Machine Learning, Cryptography, and Distributed Systems. Master's thesis on Differential Privacy for tabular data sharing."
         ],
         "links": [
           {
@@ -258,62 +259,62 @@
       },
       {
         "id": "cbi-attract",
-        "title": "Corso di Alta Formazione CBI.Attract",
+        "title": "Postgraduate Course CBI.Attract",
         "url": null,
         "date": [
           "Feb 2023",
-          "Giu 2023"
+          "Jun 2023"
         ],
         "subtitle": [
-          "Università di Bologna (Bologna, Italia)",
-          "CERN (Ginevra, Svizzera)",
-          "AGH University (Cracovia, Polonia)"
+          "University of Bologna (Bologna, Italy)",
+          "CERN (Geneva, Switzerland)",
+          "AGH University (Kraków, Poland)"
         ],
-        "detail": "Voto: 30/30 con lode",
+        "detail": "Grade: 30/30 with Honors",
         "bullets": [
-          "Prototipazione di soluzioni tecnologiche emergenti tramite Design Thinking nel framework di ricerca europeo ATTRACT."
+          "Prototyped emerging technology solutions via Design Thinking within the EU ATTRACT research framework."
         ],
         "links": []
       },
       {
         "id": "unimore-bachelor",
-        "title": "Laurea Triennale in Informatica",
+        "title": "Bachelor's Degree in Computer Science",
         "url": null,
         "date": [
-          "Set 2018",
+          "Sep 2018",
           "Apr 2022"
         ],
         "subtitle": [
-          "Università di Modena e Reggio Emilia (Modena, Italia)",
-          "Liferay Inc. (Remoto)"
+          "University of Modena and Reggio Emilia (Modena, Italy)",
+          "Liferay Inc. (Remote)"
         ],
         "detail": "",
         "bullets": [
-          "Fondamenti di algoritmi, complessità computazionale, ingegneria del software e matematica."
+          "Foundations in algorithms, complexity, software engineering, and mathematics."
         ],
         "links": []
       }
     ]
   },
   "publications": {
-    "title": "Pubblicazioni",
+    "title": "Publications",
     "items": [
       {
         "id": "explainable-governance",
         "title": "Towards Explainable Governance of Synthetic Health Data in Collaborative Healthcare Ecosystems",
         "url": "https://doi.org/10.1007/978-3-032-41230-0_34",
         "date": [
-          "Ott 2026"
+          "Oct 2026"
         ],
         "subtitle": [
-          "A. Pelusi (Università dell'Insubria, Varese, Italia)",
-          "A. Trombetta (Università dell'Insubria, Varese, Italia)",
-          "D. Spoladore (CNR, Milano, Italia)",
-          "S. Braghin (IBM Research, Dublino, Irlanda)"
+          "A. Pelusi (University of Insubria, Varese, Italy)",
+          "A. Trombetta (University of Insubria, Varese, Italy)",
+          "D. Spoladore (CNR, Milan, Italy)",
+          "S. Braghin (IBM Research, Dublin, Ireland)"
         ],
-        "detail": "PRO-VE 2026, Padova, Italia",
+        "detail": "PRO-VE 2026, Padua, Italy",
         "bullets": [
-          "Proposta di un framework role-aware di Explainable AI per la governance di dati sanitari sintetici, mappando metriche di privacy e fedeltà sui requisiti degli stakeholder secondo GDPR e EU AI Act."
+          "Proposed a role-aware Explainable AI framework for the governance of synthetic health data, mapping privacy and fidelity metrics to stakeholder-specific requirements under GDPR and the EU AI Act."
         ],
         "links": [
           {
@@ -327,16 +328,16 @@
         "title": "Privacy-Fidelity Trade-offs in Differentially Private Synthetic Tabular Data Generation",
         "url": null,
         "date": [
-          "Lug 2026"
+          "Jul 2026"
         ],
         "subtitle": [
-          "A. Pelusi (Università dell'Insubria, Varese, Italia)",
-          "S. Braghin (IBM Research, Dublino, Irlanda)",
-          "A. Trombetta (Università dell'Insubria, Varese, Italia)"
+          "A. Pelusi (University of Insubria, Varese, Italy)",
+          "S. Braghin (IBM Research, Dublin, Ireland)",
+          "A. Trombetta (University of Insubria, Varese, Italy)"
         ],
-        "detail": "In revisione",
+        "detail": "Under review",
         "bullets": [
-          "Valutazione del fine-tuning LoRA di LLM con DP-SGD tramite Opacus per la sintesi tabulare, identificando il degrado indotto dalla privacy su distribuzioni categoriche ad alta cardinalità."
+          "Evaluated Low-Rank Adaptation (LoRA) fine-tuning of LLMs with DP-SGD via Opacus for tabular synthesis, identifying privacy-induced degradation on high-cardinality categorical distributions."
         ],
         "links": [
           {
@@ -356,13 +357,13 @@
           "Apr 2026"
         ],
         "subtitle": [
-          "A. Pelusi (Università dell'Insubria, Varese, Italia)",
-          "S. Braghin (IBM Research, Dublino, Irlanda)",
-          "A. Trombetta (Università dell'Insubria, Varese, Italia)"
+          "A. Pelusi (University of Insubria, Varese, Italy)",
+          "S. Braghin (IBM Research, Dublin, Ireland)",
+          "A. Trombetta (University of Insubria, Varese, Italy)"
         ],
-        "detail": "In revisione",
+        "detail": "Under review",
         "bullets": [
-          "Confronto tra in-context learning e fine-tuning parameter-efficient per la sintesi tabulare, caratterizzando il trade-off tra fedeltà e memorizzazione nei foundation model."
+          "Compared in-context learning against parameter-efficient fine-tuning for tabular data synthesis, characterizing the fidelity-memorization trade-off in foundation models."
         ],
         "links": [
           {
@@ -377,22 +378,22 @@
     ]
   },
   "projects": {
-    "title": "Progetti",
+    "title": "Projects",
     "items": [
       {
         "id": "pipeline",
         "title": "synth-pipeline",
         "url": null,
         "date": [
-          "Ott 2026"
+          "Oct 2026"
         ],
         "subtitle": [
-          "Pipeline di Sintesi di Dati Tabulari Privacy-Preserving"
+          "Privacy-Preserving Tabular Data Synthesis Pipeline"
         ],
         "detail": "",
         "bullets": [
-          "Realizzazione di una pipeline configurabile per la generazione di dati tabulari sintetici con LLM fine-tunati tramite LoRA, con Differential Privacy attivabile (DP-SGD via Opacus) e output validati su schema.",
-          "Implementazione di una suite di benchmark per valutare fedeltà statistica (TVD, errore di correlazione), utilità machine learning (TSTR) e protezione della privacy (distanza dal record più vicino, membership inference)."
+          "Built a configurable pipeline for synthetic tabular data generation with LoRA-fine-tuned LLMs, with optional Differential Privacy (DP-SGD via Opacus) and schema-validated outputs.",
+          "Implemented an automated benchmark suite assessing statistical fidelity (TVD, correlation error), machine learning utility (TSTR), and privacy protection (distance to closest record, membership inference)."
         ],
         "links": [
           {
@@ -405,15 +406,15 @@
         "title": "chesSLM",
         "url": "https://github.com/antoniopelusi/chesSLM",
         "date": [
-          "Giu 2026"
+          "Jun 2026"
         ],
         "subtitle": [
-          "Language Model Decoder-only Addestrato su Partite di Scacchi"
+          "Decoder-only Language Model Trained on Chess Games"
         ],
         "detail": "",
         "bullets": [
-          "Realizzazione da zero in PyTorch di un Transformer da ~100M di parametri con blocchi Pre-LN, Rotary Positional Embeddings (RoPE) e kernel FlashAttention.",
-          "Addestramento con curriculum a due stadi (mixed precision, gradient accumulation, cosine decay) e rilascio come motore scacchistico UCI con rating ~1650 Elo."
+          "Engineered a ~100M-parameter Transformer from scratch in PyTorch featuring Pre-LN blocks, Rotary Positional Embeddings (RoPE), and FlashAttention kernels.",
+          "Trained via a two-stage curriculum (mixed precision, gradient accumulation, cosine decay) and packaged as a standalone UCI chess engine rated ~1650 Elo."
         ],
         "links": [
           {
@@ -431,14 +432,14 @@
         "title": "epsiloc",
         "url": "https://github.com/antoniopelusi/epsiloc",
         "date": [
-          "Ott 2025"
+          "Oct 2025"
         ],
         "subtitle": [
-          "Libreria di Local Differential Privacy per Dati Tabulari"
+          "Local Differential Privacy Library for Tabular Data"
         ],
         "detail": "",
         "bullets": [
-          "Implementazione in Python di algoritmi vettorizzati di perturbazione di Laplace e randomized response per l'applicazione di local differential privacy su dataset strutturati."
+          "Implemented vectorized Laplace and randomized response perturbation algorithms in Python for local differential privacy enforcement on structured datasets."
         ],
         "links": [
           {
@@ -450,7 +451,7 @@
     ]
   },
   "other_projects": {
-    "title": "Altri Progetti",
+    "title": "Other Projects",
     "items": [
       {
         "id": "recoilisland",
@@ -460,11 +461,11 @@
           "Mar 2026"
         ],
         "subtitle": [
-          "Sparatutto retro 2D frenetico"
+          "Fast-paced 2D retro shooter"
         ],
         "detail": "",
         "bullets": [
-          "Realizzazione di uno sparatutto arcade 2D per il web con fisica di rinculo delle armi come meccanica di navigazione primaria, sviluppato nativamente in HTML5 Canvas e JavaScript senza dipendenze esterne."
+          "Engineered a 2D web arcade shooter with weapon-recoil physics acting as the primary navigation mechanic, built natively with HTML5 Canvas and JavaScript without external runtime dependencies."
         ],
         "links": [
           {
@@ -485,11 +486,11 @@
           "Feb 2026"
         ],
         "subtitle": [
-          "Editor di testo serverless integrato nell'URL"
+          "Serverless text editor embedded in the URL"
         ],
         "detail": "",
         "bullets": [
-          "Sviluppo di un editor di testo zero-backend che comprime e codifica note Markdown direttamente nel fragment hash dell'URL per la condivisione serverless di documenti."
+          "Built a zero-backend text editor compressing and encoding Markdown notes directly into the URL hash fragment for serverless, encrypted document sharing."
         ],
         "links": [
           {
@@ -510,11 +511,11 @@
           "Feb 2025"
         ],
         "subtitle": [
-          "Web app per il tracciamento dei punteggi"
+          "Score tracking web app"
         ],
         "detail": "",
         "bullets": [
-          "Realizzazione di una Progressive Web App offline-first con tabelloni segnapunti responsive, cronologia turni e salvataggio locale persistente per giochi multiplayer."
+          "Developed an offline-first Progressive Web App with responsive score sheets, turn logs, and persistent local storage for multiplayer games."
         ],
         "links": [
           {
@@ -532,14 +533,14 @@
         "title": "ToolsTab",
         "url": "https://github.com/antoniopelusi/toolstab",
         "date": [
-          "Gen 2025"
+          "Jan 2025"
         ],
         "subtitle": [
-          "Estensione browser con startpage"
+          "Startpage browser extension"
         ],
         "detail": "",
         "bullets": [
-          "Pubblicazione di un'estensione browser leggera e orientata alla privacy con startpage offline, calcolatori per sviluppatori e utilità di monitoraggio del tempo."
+          "Published a lightweight, privacy-focused browser extension providing an offline startpage with developer calculators and time-tracking utilities."
         ],
         "links": [
           {
@@ -555,39 +556,39 @@
     ]
   },
   "awards": {
-    "title": "Riconoscimenti",
+    "title": "Awards",
     "items": [
       {
         "id": "hackathon",
-        "title": "Vincitore dell'Hackathon Green & Digital Transformation",
+        "title": "Winner of Green & Digital Transformation Hackathon",
         "url": null,
         "date": [
-          "Set 2023"
+          "Sep 2023"
         ],
         "subtitle": [
-          "Università di Modena e Reggio Emilia (Mantova, Italia)"
+          "University of Modena and Reggio Emilia (Mantua, Italy)"
         ],
         "detail": "",
         "bullets": [
-          "Sviluppo di un modello predittivo con XGBoost per l'ottimizzazione di reti idriche comunali, vincendo il primo premio tra 15 team concorrenti."
+          "Developed an XGBoost predictive model for municipal water distribution networks, winning first place among 15 competing teams."
         ],
         "links": []
       }
     ]
   },
   "skills": {
-    "title": "Competenze",
+    "title": "Skills",
     "items": [
       {
-        "label": "Linguaggi di programmazione",
+        "label": "Programming languages",
         "text": "Python, C, C++, Java"
       },
       {
-        "label": "Aree di ricerca",
+        "label": "Research areas",
         "text": "Differential Privacy, Synthetic Data Generation, LLM Fine-Tuning, Membership Inference, Explainable AI"
       },
       {
-        "label": "Librerie ML/AI",
+        "label": "ML/AI libraries",
         "text": "PyTorch, Hugging Face Transformers, PEFT, Opacus, scikit-learn, NumPy, pandas"
       },
       {
@@ -595,13 +596,13 @@
         "text": "HTML, CSS, JavaScript, Django"
       },
       {
-        "label": "Strumenti",
+        "label": "Tools",
         "text": "Linux, Bash, Git, Docker, LaTeX"
       },
       {
-        "label": "Lingue parlate",
-        "text": "Italiano (madrelingua), Inglese (B2)"
+        "label": "Spoken languages",
+        "text": "Italian (native), English (B2)"
       }
     ]
   }
-}
+};
