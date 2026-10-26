@@ -7,17 +7,16 @@
     --size-sm:   9pt;
     --size-xs:   8pt;
 
-    --space-xs: 1.5pt;
-    --space-s:  3pt;
-    --space:    6pt;
-    --space-l:  14pt;
-    --space-xl: 28pt;
+    --space-xs:  1.5pt;
+    --space-s:   3pt;
+    --space:     6pt;
+    --space-l:   14pt;
+    --space-xl:  28pt;
 
     --gap-block: var(--space);
     --gap-item:  var(--space-s);
     --gap-row:   var(--space-xs);
     --gap-head:  var(--space-s);
-    --gap-page:  var(--space-l);
 
     --line-height-h1:   1.1;
     --line-height-head: 1.2;
@@ -26,6 +25,8 @@
     --color-text:    var(--dark);
     --color-heading: var(--dark);
     --color-link:    currentColor;
+    --color-soft:    var(--dark);
+    --color-line:    var(--dark);
     --selection-bg:  var(--dark);
     --selection-fg:  var(--light);
 
@@ -33,14 +34,18 @@
     --radius-s: 6pt;
     --shadow:   0 0 8pt color-mix(in srgb, var(--dark) 50%, transparent);
 
-    --icon-size: 1lh;
+    --link-decoration:   none;
+    --link-wrap:         nowrap;
+    --separator-display: inline;
 
-    --page-w: 21cm;
-    --page-h: 29.7cm;
+    --gap-page: var(--space-l);
+    --page-w:   21cm;
+    --page-h:   29.7cm;
 
     --debug-outline:  #e05a00;
     --debug-frame:    #1a8c1a;
     --debug-overflow: #ffc80040;
+    --overflow-h:     0;
 }
 
 html {
@@ -61,11 +66,6 @@ main {
     gap: var(--gap-page);
 }
 
-main:empty {
-    width: var(--page-w);
-    height: var(--page-h);
-}
-
 main > div {
     width: var(--page-w);
     height: var(--page-h);
@@ -83,22 +83,11 @@ main > div > div {
 }
 
 h2 {
-    border-bottom: var(--stroke) solid var(--dark);
-}
-
-a {
-    color: var(--color-link);
-    text-decoration: none;
-    white-space: nowrap;
+    border-bottom: var(--stroke) solid var(--color-line);
 }
 
 header > address > p > a > span {
     font-weight: var(--weight-bold);
-}
-
-header > address img {
-    width: var(--icon-size);
-    height: var(--icon-size);
 }
 
 article[data-skills] {
@@ -144,7 +133,7 @@ article li {
     word-break: keep-all;
 }
 
-nav {
+nav[data-tools] {
     display: flex;
     align-items: center;
     gap: var(--space);
@@ -155,17 +144,43 @@ nav {
     user-select: none;
 }
 
-nav button[data-action="translate"] {
-    margin-left: auto;
+nav[data-tools] :is(a, button) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--btn-gap);
+    padding: var(--btn-pad-v) var(--btn-pad-h);
+    border-radius: var(--radius);
+    background-color: var(--article);
+    color: var(--muted);
+    border: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: normal;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition-colors);
 }
 
-nav button[data-action="outline"] {
-    margin-right: auto;
+nav[data-tools] [data-active="true"] {
+    background-color: var(--article-hover);
+    color: var(--light);
 }
 
-nav button:disabled {
-    background-color: transparent;
+@media (hover: hover) {
+    nav[data-tools] :is(a, button):not(:disabled):hover {
+        background-color: var(--article-hover);
+        color: var(--light);
+    }
+}
+
+nav[data-tools] button:disabled {
+    opacity: 0.5;
     cursor: not-allowed;
+}
+
+nav[data-tools] [data-action="outline"] {
+    margin-left: auto;
 }
 
 body[data-outline] [data-overflow] {
@@ -176,9 +191,9 @@ body[data-outline] [data-overflow]::after {
     content: "";
     position: absolute;
     top: 100%;
-    left: 0;
     right: 0;
-    height: var(--overflow-h, 0);
+    left: 0;
+    height: var(--overflow-h);
     background-color: var(--debug-overflow);
     pointer-events: none;
 }
@@ -213,7 +228,7 @@ body[data-outline] main > div > div {
         gap: 0;
     }
 
-    nav {
+    nav[data-tools] {
         display: none;
     }
 

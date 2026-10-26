@@ -21,7 +21,6 @@
     --bubble:        #739bd0;
     --article:       #a2afc110;
     --article-hover: #a2afc12e;
-    --article-box:   #0000001a;
 
     --font-family:    "Roboto Local", sans-serif;
     --weight-regular: 400;
@@ -29,9 +28,7 @@
 
     --stroke: 1px;
 
-    --duration-fast: 0.1s;
-    --duration:      0.2s;
-    --duration-slow: 0.3s;
+    --duration: 0.2s;
     --transition-colors:
         background-color var(--duration),
         color var(--duration);
@@ -40,7 +37,8 @@
     --btn-pad-v: 0.2em;
     --btn-pad-h: 0.6em;
 
-    --page-share: 90vw;
+    --space-xxs: calc(var(--space-xs) / 2);
+    --icon-size: 1lh;
 
     --z-bubble:       -1;
     --bubble-alpha:   8%;
@@ -76,7 +74,6 @@
 html {
     height: 100%;
     background-color: var(--dark);
-    -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
 }
 
@@ -181,16 +178,23 @@ address [data-value] {
 }
 
 article time {
+    color: var(--color-soft);
     font-size: var(--size-xs);
     font-weight: var(--weight-regular);
     line-height: var(--line-height-head);
 }
 
+article p small {
+    color: var(--color-soft);
+}
+
 article:not([data-skills]) p > span + span {
+    color: var(--color-soft);
     font-size: var(--size-xs);
 }
 
 article[data-skills] h3 {
+    color: var(--color-soft);
     font-size: var(--size-sm);
 }
 
@@ -198,115 +202,28 @@ article p [data-entities] > span:first-child small {
     font-weight: var(--weight-bold);
 }
 
-nav button,
-noscript a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--btn-gap);
-    padding: var(--btn-pad-v) var(--btn-pad-h);
-    border: 0;
-    border-radius: var(--radius);
-    background-color: var(--article);
-    color: var(--muted);
-    font-size: inherit;
-    font-weight: inherit;
-    text-decoration: none;
-    cursor: pointer;
-    transition: var(--transition-colors);
+h3 [data-separator],
+address [data-separator],
+article p [data-separator],
+article li [data-bullet] {
+    display: var(--separator-display);
 }
 
-nav button[data-active="true"] {
-    background-color: var(--article-hover);
-    color: var(--light);
+a {
+    color: var(--color-link);
+    text-decoration: var(--link-decoration);
+    text-decoration-color: var(--muted);
+    white-space: var(--link-wrap);
+}
+
+a:not([href]) {
+    font-weight: var(--weight-regular);
 }
 
 @media (hover: hover) {
-    nav button:not(:disabled):hover,
-    noscript a:hover {
-        background-color: var(--article-hover);
-        color: var(--light);
+    a:hover {
+        text-decoration-color: var(--light);
     }
-}
-
-noscript {
-    --noscript-text:        var(--muted);
-    --noscript-accent:      var(--light);
-    --noscript-bg:          var(--article);
-    --noscript-shadow:      var(--article-box);
-
-    --noscript-root:        clamp(16px, 0.5vw + 14px, 19px);
-
-    --noscript-size:        calc(var(--noscript-root) * 0.78);
-    --noscript-size-btn:    calc(var(--noscript-root) * 0.7);
-    --noscript-line-height: 1.6;
-    --noscript-icon:        1em;
-    --noscript-gap:         calc(var(--noscript-root) * 0.675);
-    --noscript-gap-inline:  calc(var(--noscript-root) * 0.9);
-    --noscript-pad-v:       calc(var(--noscript-root) * 0.9);
-    --noscript-pad-h:       calc(var(--noscript-root) * 1.35);
-    --noscript-radius:      calc(var(--noscript-root) * 0.375);
-
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--noscript-gap);
-    width: max-content;
-    max-width: var(--page-share);
-    padding: var(--noscript-pad-v) var(--noscript-pad-h);
-    border-radius: var(--noscript-radius);
-    background-color: var(--noscript-bg);
-    box-shadow: 0 var(--stroke) 0 var(--noscript-shadow);
-    color: var(--noscript-text);
-    font-size: var(--noscript-size);
-    font-weight: var(--weight-regular);
-    line-height: var(--noscript-line-height);
-    text-align: center;
-    transform: translate(-50%, -50%);
-}
-
-noscript div {
-    display: flex;
-    align-items: center;
-    gap: var(--noscript-gap-inline);
-}
-
-noscript p {
-    margin: 0;
-    font-size: inherit;
-    font-weight: inherit;
-}
-
-noscript p + p {
-    color: var(--noscript-accent);
-}
-
-noscript a {
-    border-radius: var(--noscript-radius);
-    font-size: var(--noscript-size-btn);
-}
-
-noscript img {
-    width: var(--noscript-icon);
-    height: var(--noscript-icon);
-}
-
-noscript > div > img {
-    width: 1.5em;
-    height: 1.5em; 
-}
-
-noscript > div > img:last-of-type {
-    opacity: 0.3;
-}
-
-noscript > div > a > img {
-    width: 1em;
-    height: 1em;
 }
 
 body::before,

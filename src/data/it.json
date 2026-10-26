@@ -1,38 +1,38 @@
-window.DATA = window.DATA || {};
-window.DATA.it = {
+{
   "layout": {
     "pages": {
       "site": [
         [
           "summary",
-          "education",
-          "experience",
-          "publications",
-          "projects",
-          "awards",
-          "skills",
-          "other_experience",
-          "other_projects"
+          "education[uninsubria,unimore-master,cbi-attract,unimore-bachelor]",
+          "experience[ibm,randompower]",
+          "publications[explainable-governance,privacy-fidelity,categorical-prior-lock-in]",
+          "projects[pipeline,chesslm,epsiloc]",
+          "awards[hackathon]",
+          "skills[Linguaggi di programmazione,Aree di ricerca,Librerie ML/AI,Web,Strumenti,Lingue parlate]",
+          "other_experience[paradisi,unimore-tutor,liferay]",
+          "other_projects[recoilisland,txturl,scoretracker,toolstab]"
         ]
       ],
       "cv": [
         [
           "summary",
-          "education",
-          "experience",
-          "publications"
+          "education[uninsubria,unimore-master,cbi-attract,unimore-bachelor]",
+          "experience[ibm,randompower]",
+          "publications[explainable-governance,privacy-fidelity,categorical-prior-lock-in]"
         ],
         [
-          "projects",
-          "awards",
-          "skills",
-          "other_experience"
+          "projects[pipeline,chesslm,epsiloc]",
+          "awards[hackathon]",
+          "skills[Linguaggi di programmazione,Aree di ricerca,Librerie ML/AI,Web,Strumenti,Lingue parlate]",
+          "other_experience[paradisi,unimore-tutor,liferay]"
         ]
       ]
     },
     "contacts": {
       "site": [
         [
+          "translate",
           "cv",
           "email",
           "linkedin",
@@ -77,11 +77,16 @@ window.DATA.it = {
     },
     "website": {
       "text": "antoniopelusi.github.io",
-      "url": "https://antoniopelusi.github.io/"
+      "url": "https://antoniopelusi.github.io/it/"
+    },
+    "translate": {
+      "text": "antoniopelusi.github.io",
+      "url": "/",
+      "hreflang": "en"
     },
     "cv": {
       "text": "antoniopelusi.github.io/cv",
-      "url": "/cv/"
+      "url": "/cv/it/"
     },
     "linkedin": {
       "text": "linkedin.com/in/antoniopelusi",
@@ -605,4 +610,4 @@ window.DATA.it = {
       }
     ]
   }
-};
+}

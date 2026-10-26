@@ -1,38 +1,38 @@
-window.DATA = window.DATA || {};
-window.DATA.en = {
+{
   "layout": {
     "pages": {
       "site": [
         [
           "summary",
-          "education",
-          "experience",
-          "publications",
-          "projects",
-          "awards",
-          "skills",
-          "other_experience",
-          "other_projects"
+          "education[uninsubria,unimore-master,cbi-attract,unimore-bachelor]",
+          "experience[ibm,randompower]",
+          "publications[explainable-governance,privacy-fidelity,categorical-prior-lock-in]",
+          "projects[pipeline,chesslm,epsiloc]",
+          "awards[hackathon]",
+          "skills[Programming languages,Research areas,ML/AI libraries,Web,Tools,Spoken languages]",
+          "other_experience[paradisi,unimore-tutor,liferay]",
+          "other_projects[recoilisland,txturl,scoretracker,toolstab]"
         ]
       ],
       "cv": [
         [
           "summary",
-          "education",
-          "experience",
-          "publications"
+          "education[uninsubria,unimore-master,cbi-attract,unimore-bachelor]",
+          "experience[ibm,randompower]",
+          "publications[explainable-governance,privacy-fidelity,categorical-prior-lock-in]"
         ],
         [
-          "projects",
-          "awards",
-          "skills",
-          "other_experience"
+          "projects[pipeline,chesslm,epsiloc]",
+          "awards[hackathon]",
+          "skills[Programming languages,Research areas,ML/AI libraries,Web,Tools,Spoken languages]",
+          "other_experience[paradisi,unimore-tutor,liferay]"
         ]
       ]
     },
     "contacts": {
       "site": [
         [
+          "translate",
           "cv",
           "email",
           "linkedin",
@@ -78,6 +78,11 @@ window.DATA.en = {
     "website": {
       "text": "antoniopelusi.github.io",
       "url": "https://antoniopelusi.github.io/"
+    },
+    "translate": {
+      "text": "antoniopelusi.github.io/it",
+      "url": "/it/",
+      "hreflang": "it"
     },
     "cv": {
       "text": "antoniopelusi.github.io/cv",
@@ -605,4 +610,4 @@ window.DATA.en = {
       }
     ]
   }
-};
+}

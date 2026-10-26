@@ -1,5 +1,5 @@
 User-agent: *
-
-Allow: /
+Disallow: /src/
+Disallow: /tools/
 
 Sitemap: https://antoniopelusi.github.io/sitemap.xml
