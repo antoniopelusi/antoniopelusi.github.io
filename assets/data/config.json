@@ -28,7 +28,9 @@
     "sameAs": ["github", "linkedin", "orcid", "scholar"],
     "affiliation": { "name": "University of Insubria", "url": "https://www.uninsubria.eu/" },
     "alumniOf": [
-      { "name": "University of Modena and Reggio Emilia", "url": "https://www.unimore.it/" }
+      { "name": "University of Modena and Reggio Emilia", "url": "https://www.unimore.it/" },
+      { "name": "University of Bologna", "url": "https://www.unibo.it/" },
+      { "name": "University of Insubria", "url": "https://www.uninsubria.eu/" }
     ],
     "knowsAboutSkill": "research"
   },
