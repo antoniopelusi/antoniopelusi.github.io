@@ -72,7 +72,6 @@
 }
 
 html {
-    height: 100%;
     background-color: var(--dark);
     text-size-adjust: 100%;
 }
