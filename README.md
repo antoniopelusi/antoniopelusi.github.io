@@ -14,25 +14,45 @@ Requires Node 22 (`.nvmrc`) and Python 3 for `make run`.
 ## Structure
 
 ```
-tools/build.mjs      generator
-src/data/            content: en.json, it.json
-assets/css/          base.css, site.css, cv.css
-assets/js/           site.js, cv.js
-assets/icons/        site/, cv/, favicon/
-assets/fonts/        Roboto
-index.html           generated: site (EN)
-it/index.html        generated: site (IT)
-cv/index.html        generated: CV (EN)
-cv/it/index.html     generated: CV (IT)
-404.html             standalone
+tools/build.mjs          generator
+assets/data/             config.json, en.json, it.json
+assets/css/              base.css, site.css, cv.css
+assets/js/               site.js, cv.js
+assets/icons/            site/, cv/, favicon/ (includes site.webmanifest)
+assets/fonts/            Roboto
+index.html               generated: site (EN)
+it/index.html            generated: site (IT)
+cv/index.html            generated: CV (EN)
+cv/it/index.html         generated: CV (IT)
+404.html                 standalone
+humans.txt
 robots.txt
 sitemap.xml
 ```
 
 ## Editing
 
-- Content: edit `src/data/*.json`, then `make build`.
-- Which sections and entries appear on each page: `layout.pages` in the JSON, e.g. `"experience[ibm,randompower]"`.
-- Page options (title, nav, toolbar, icons): `PAGES` in `tools/build.mjs`.
-- Style: `base.css` holds the shared rules; `site.css` and `cv.css` set the variables.
-- Do not edit the generated `.html` files.
+Everything the build uses lives in three JSON files in `assets/data/`. After any change, run `make build`.
+
+- `config.json`: everything that does not depend on the language.
+  - `site`: name, URL, app title, repository, Search Console token, languages, assets path, fonts, title and description templates.
+  - `contacts`: email, phone, profile links. Website, CV and language-switch links are derived from the page URLs.
+  - `person`: data for the JSON-LD (profiles, affiliation, alma mater, skill used for `knowsAbout`).
+  - `format`, `footer`, `entityIcons`: separators, footer credits, icons per entry id.
+  - `pages`: for the site and the CV, URLs, viewport, toolbar actions, nav, icon sets, contact rows and the sections shown in each column. The CV `<title>`, which is also the PDF filename when printing, is `pages.cv.title`.
+- `en.json`, `it.json`: translated content and UI labels.
+  - `meta`: `headline`, `description` and `jobTitle`, combined with the name by the title and description templates in `config.json`.
+  - `ui`: labels for navigation, toolbar, links and footer.
+  - Sections: `summary`, `education`, `experience`, `publications`, `projects`, `awards`, `skills`, and so on. Entry ids must exist in both languages: the build stops with an error naming the missing one.
+
+Do not edit the generated `.html` files. Style lives in `base.css` (shared rules), with `site.css` and `cv.css` setting the variables.
+
+## Using this as a template
+
+After editing the three JSON files and running `make build`, update the files the build does not generate:
+
+- `assets/icons/favicon/`: favicon images and `site.webmanifest` (name and short name).
+- `assets/icons/site/articles/`: logos of the institutions used in `entityIcons`.
+- `sitemap.xml`, `humans.txt`, `robots.txt`: URLs, name and contacts.
+- The repository must be named `<username>.github.io`, and `site.url` in `config.json` must match.
+- `site.verification` in `config.json`: use your own Search Console token or remove it.

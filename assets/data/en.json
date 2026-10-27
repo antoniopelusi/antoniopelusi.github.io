@@ -1,64 +1,45 @@
 {
-  "layout": {
-    "pages": {
-      "site": [
-        [
-          "summary",
-          "education[uninsubria,unimore-master,cbi-attract,unimore-bachelor]",
-          "experience[ibm,randompower]",
-          "publications[explainable-governance,privacy-fidelity,categorical-prior-lock-in]",
-          "projects[pipeline,chesslm,epsiloc]",
-          "awards[hackathon]",
-          "skills[Programming languages,Research areas,ML/AI libraries,Web,Tools,Spoken languages]",
-          "other_experience[paradisi,unimore-tutor,liferay]",
-          "other_projects[recoilisland,txturl,scoretracker,toolstab]"
-        ]
-      ],
-      "cv": [
-        [
-          "summary",
-          "education[uninsubria,unimore-master,cbi-attract,unimore-bachelor]",
-          "experience[ibm,randompower]",
-          "publications[explainable-governance,privacy-fidelity,categorical-prior-lock-in]"
-        ],
-        [
-          "projects[pipeline,chesslm,epsiloc]",
-          "awards[hackathon]",
-          "skills[Programming languages,Research areas,ML/AI libraries,Web,Tools,Spoken languages]",
-          "other_experience[paradisi,unimore-tutor,liferay]"
-        ]
-      ]
+  "meta": {
+    "headline": "PhD Computer Science",
+    "description": "PhD student in Computer Science and software developer. Portfolio showcasing research projects, education and open-source contributions.",
+    "jobTitle": "PhD student in Computer Science"
+  },
+  "ui": {
+    "nav": "Navigation",
+    "tools": "Tools",
+    "actions": {
+      "back": "Go back",
+      "outline": "Outline",
+      "print": "Print",
+      "translate": "Traduci"
     },
     "contacts": {
-      "site": [
-        [
-          "translate",
-          "cv",
-          "email",
-          "linkedin",
-          "scholar",
-          "orcid",
-          "github"
-        ]
-      ],
-      "cv": [
-        [
-          "email",
-          "phone"
-        ],
-        [
-          "website",
-          "github",
-          "linkedin"
-        ],
-        [
-          "scholar",
-          "orcid"
-        ]
-      ]
+      "location": "Location",
+      "phone": "Phone"
+    },
+    "links": {
+      "model": "View model",
+      "repository": "View repository",
+      "paper": "Read paper",
+      "thesis": "Read thesis",
+      "website": "Visit website",
+      "unavailableSuffix": "not yet available",
+      "unavailableLabel": {
+        "model": "Model",
+        "repository": "Repository",
+        "paper": "Paper",
+        "thesis": "Thesis",
+        "website": "Website"
+      }
+    },
+    "footer": {
+      "builtWith": "Built with",
+      "typography": "Typography:",
+      "icons": "Icons:",
+      "source": "Source:",
+      "copyright": "© {name}. All rights reserved."
     }
   },
-  "name": "Antonio Pelusi",
   "title": [
     "PhD student in Computer Science",
     "and Mathematics of Computation"
@@ -66,43 +47,6 @@
   "contacts": {
     "location": {
       "text": "Modena, Italy"
-    },
-    "phone": {
-      "text": "+39 328 426 1797",
-      "url": "tel:+393284261797"
-    },
-    "email": {
-      "text": "antoniopelusi2000@gmail.com",
-      "url": "mailto:antoniopelusi2000@gmail.com"
-    },
-    "website": {
-      "text": "antoniopelusi.github.io",
-      "url": "https://antoniopelusi.github.io/"
-    },
-    "translate": {
-      "text": "antoniopelusi.github.io/it",
-      "url": "/it/",
-      "hreflang": "it"
-    },
-    "cv": {
-      "text": "antoniopelusi.github.io/cv",
-      "url": "/cv/"
-    },
-    "linkedin": {
-      "text": "linkedin.com/in/antoniopelusi",
-      "url": "https://linkedin.com/in/antoniopelusi"
-    },
-    "scholar": {
-      "text": "scholar.google.com/citations?user=3BgZo94AAAAJ",
-      "url": "https://scholar.google.com/citations?user=3BgZo94AAAAJ"
-    },
-    "orcid": {
-      "text": "orcid.org/0009-0006-0807-4364",
-      "url": "https://orcid.org/0009-0006-0807-4364"
-    },
-    "github": {
-      "text": "github.com/antoniopelusi",
-      "url": "https://github.com/antoniopelusi"
     }
   },
   "summary": {
@@ -585,26 +529,32 @@
     "title": "Skills",
     "items": [
       {
+        "id": "languages",
         "label": "Programming languages",
         "text": "Python, C, C++, Java"
       },
       {
+        "id": "research",
         "label": "Research areas",
         "text": "Differential Privacy, Synthetic Data Generation, LLM Fine-Tuning, Membership Inference, Explainable AI"
       },
       {
+        "id": "libraries",
         "label": "ML/AI libraries",
         "text": "PyTorch, Hugging Face Transformers, PEFT, Opacus, scikit-learn, NumPy, pandas"
       },
       {
+        "id": "web",
         "label": "Web",
         "text": "HTML, CSS, JavaScript, Django"
       },
       {
+        "id": "tools",
         "label": "Tools",
         "text": "Linux, Bash, Git, Docker, LaTeX"
       },
       {
+        "id": "spoken",
         "label": "Spoken languages",
         "text": "Italian (native), English (B2)"
       }

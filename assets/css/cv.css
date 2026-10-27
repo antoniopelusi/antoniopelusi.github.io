@@ -179,7 +179,7 @@ nav[data-tools] button:disabled {
     cursor: not-allowed;
 }
 
-nav[data-tools] [data-action="outline"] {
+nav[data-tools] [data-action="translate"] {
     margin-left: auto;
 }
 

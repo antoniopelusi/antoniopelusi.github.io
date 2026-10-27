@@ -1,64 +1,45 @@
 {
-  "layout": {
-    "pages": {
-      "site": [
-        [
-          "summary",
-          "education[uninsubria,unimore-master,cbi-attract,unimore-bachelor]",
-          "experience[ibm,randompower]",
-          "publications[explainable-governance,privacy-fidelity,categorical-prior-lock-in]",
-          "projects[pipeline,chesslm,epsiloc]",
-          "awards[hackathon]",
-          "skills[Linguaggi di programmazione,Aree di ricerca,Librerie ML/AI,Web,Strumenti,Lingue parlate]",
-          "other_experience[paradisi,unimore-tutor,liferay]",
-          "other_projects[recoilisland,txturl,scoretracker,toolstab]"
-        ]
-      ],
-      "cv": [
-        [
-          "summary",
-          "education[uninsubria,unimore-master,cbi-attract,unimore-bachelor]",
-          "experience[ibm,randompower]",
-          "publications[explainable-governance,privacy-fidelity,categorical-prior-lock-in]"
-        ],
-        [
-          "projects[pipeline,chesslm,epsiloc]",
-          "awards[hackathon]",
-          "skills[Linguaggi di programmazione,Aree di ricerca,Librerie ML/AI,Web,Strumenti,Lingue parlate]",
-          "other_experience[paradisi,unimore-tutor,liferay]"
-        ]
-      ]
+  "meta": {
+    "headline": "Dottorato in Informatica",
+    "description": "Dottorando in Informatica e sviluppatore software. Portfolio con progetti di ricerca, formazione e contributi open-source.",
+    "jobTitle": "Dottorando in Informatica"
+  },
+  "ui": {
+    "nav": "Navigazione",
+    "tools": "Strumenti",
+    "actions": {
+      "back": "Torna indietro",
+      "outline": "Contorni",
+      "print": "Stampa",
+      "translate": "Translate"
     },
     "contacts": {
-      "site": [
-        [
-          "translate",
-          "cv",
-          "email",
-          "linkedin",
-          "scholar",
-          "orcid",
-          "github"
-        ]
-      ],
-      "cv": [
-        [
-          "email",
-          "phone"
-        ],
-        [
-          "website",
-          "github",
-          "linkedin"
-        ],
-        [
-          "scholar",
-          "orcid"
-        ]
-      ]
+      "location": "Luogo",
+      "phone": "Telefono"
+    },
+    "links": {
+      "repository": "Vedi repository",
+      "model": "Vedi modello",
+      "paper": "Leggi il paper",
+      "thesis": "Leggi la tesi",
+      "website": "Visita il sito",
+      "unavailableSuffix": "non ancora disponibile",
+      "unavailableLabel": {
+        "model": "Modello",
+        "repository": "Repository",
+        "paper": "Paper",
+        "thesis": "Tesi",
+        "website": "Sito"
+      }
+    },
+    "footer": {
+      "builtWith": "Realizzato con",
+      "typography": "Tipografia:",
+      "icons": "Icone:",
+      "source": "Sorgente:",
+      "copyright": "© {name}. Tutti i diritti riservati."
     }
   },
-  "name": "Antonio Pelusi",
   "title": [
     "Dottorando in Informatica",
     "e Matematica del Calcolo"
@@ -66,43 +47,6 @@
   "contacts": {
     "location": {
       "text": "Modena, Italia"
-    },
-    "phone": {
-      "text": "+39 328 426 1797",
-      "url": "tel:+393284261797"
-    },
-    "email": {
-      "text": "antoniopelusi2000@gmail.com",
-      "url": "mailto:antoniopelusi2000@gmail.com"
-    },
-    "website": {
-      "text": "antoniopelusi.github.io",
-      "url": "https://antoniopelusi.github.io/it/"
-    },
-    "translate": {
-      "text": "antoniopelusi.github.io",
-      "url": "/",
-      "hreflang": "en"
-    },
-    "cv": {
-      "text": "antoniopelusi.github.io/cv",
-      "url": "/cv/it/"
-    },
-    "linkedin": {
-      "text": "linkedin.com/in/antoniopelusi",
-      "url": "https://linkedin.com/in/antoniopelusi"
-    },
-    "scholar": {
-      "text": "scholar.google.com/citations?user=3BgZo94AAAAJ",
-      "url": "https://scholar.google.com/citations?user=3BgZo94AAAAJ"
-    },
-    "orcid": {
-      "text": "orcid.org/0009-0006-0807-4364",
-      "url": "https://orcid.org/0009-0006-0807-4364"
-    },
-    "github": {
-      "text": "github.com/antoniopelusi",
-      "url": "https://github.com/antoniopelusi"
     }
   },
   "summary": {
@@ -585,26 +529,32 @@
     "title": "Competenze",
     "items": [
       {
+        "id": "languages",
         "label": "Linguaggi di programmazione",
         "text": "Python, C, C++, Java"
       },
       {
+        "id": "research",
         "label": "Aree di ricerca",
         "text": "Differential Privacy, Synthetic Data Generation, LLM Fine-Tuning, Membership Inference, Explainable AI"
       },
       {
+        "id": "libraries",
         "label": "Librerie ML/AI",
         "text": "PyTorch, Hugging Face Transformers, PEFT, Opacus, scikit-learn, NumPy, pandas"
       },
       {
+        "id": "web",
         "label": "Web",
         "text": "HTML, CSS, JavaScript, Django"
       },
       {
+        "id": "tools",
         "label": "Strumenti",
         "text": "Linux, Bash, Git, Docker, LaTeX"
       },
       {
+        "id": "spoken",
         "label": "Lingue parlate",
         "text": "Italiano (madrelingua), Inglese (B2)"
       }

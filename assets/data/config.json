@@ -1,0 +1,132 @@
+{
+  "site": {
+    "url": "https://antoniopelusi.github.io",
+    "name": "Antonio Pelusi",
+    "appTitle": "Antonio Pelusi",
+    "repository": "https://github.com/antoniopelusi/antoniopelusi.github.io",
+    "verification": "xBmNs4D8oAAYOdxcLWPzvRMdKA3VqGQzPYwk9zuvREc",
+    "languages": { "en": "en_US", "it": "it_IT" },
+    "defaultLang": "en",
+    "assets": "/assets",
+    "fonts": ["Roboto-Regular.woff2", "Roboto-Bold.woff2"],
+    "titleTemplate": "{name} - {headline}",
+    "descriptionTemplate": "{name} - {description}"
+  },
+
+  "contacts": {
+    "email": { "label": "Email", "url": "mailto:antoniopelusi2000@gmail.com" },
+    "phone": { "url": "tel:+393284261797", "text": "+39 328 426 1797" },
+    "linkedin": { "label": "LinkedIn", "url": "https://linkedin.com/in/antoniopelusi" },
+    "scholar": { "label": "Scholar", "url": "https://scholar.google.com/citations?user=3BgZo94AAAAJ" },
+    "orcid": { "label": "ORCID", "url": "https://orcid.org/0009-0006-0807-4364" },
+    "github": { "label": "GitHub", "url": "https://github.com/antoniopelusi" },
+    "website": { "label": "Web" },
+    "cv": { "label": "CV" }
+  },
+
+  "person": {
+    "sameAs": ["github", "linkedin", "orcid", "scholar"],
+    "affiliation": { "name": "University of Insubria", "url": "https://www.uninsubria.eu/" },
+    "alumniOf": [
+      { "name": "University of Modena and Reggio Emilia", "url": "https://www.unimore.it/" }
+    ],
+    "knowsAboutSkill": "research"
+  },
+
+  "format": {
+    "separator": " | ",
+    "dateSeparator": " - ",
+    "listSeparator": ", ",
+    "labelSeparator": ": ",
+    "bullet": "• ",
+    "linkOrder": ["paper", "thesis", "model", "repository", "website"]
+  },
+
+  "footer": {
+    "builtWith": ["HTML", "CSS", "JS"],
+    "iconCredits": [
+      ["Papirus", "https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/"],
+      ["Iconoir", "https://iconoir.com/"],
+      ["Font Awesome", "https://fontawesome.com/icons"]
+    ],
+    "typography": { "name": "Roboto", "url": "https://fonts.google.com/specimen/Roboto" },
+    "sourceName": "GitHub"
+  },
+
+  "entityIcons": {
+    "ibm": "ibm",
+    "randompower": "randompower",
+    "liferay": "liferay",
+    "paradisi": "school",
+    "unimore-tutor": "unimore",
+    "unimore-master": "unimore",
+    "unimore-bachelor": ["unimore", "liferay"],
+    "uninsubria": ["uninsubria", "randompower", "ibm"],
+    "cbi-attract": ["unibo", "cern", "agh"],
+    "explainable-governance": ["uninsubria", "uninsubria", "cnr", "ibm"],
+    "privacy-fidelity": ["uninsubria", "ibm", "uninsubria"],
+    "categorical-prior-lock-in": ["uninsubria", "ibm", "uninsubria"],
+    "hackathon": "unimore"
+  },
+
+  "pages": {
+    "site": {
+      "url": { "en": "/", "it": "/it/" },
+      "viewport": "width=device-width, initial-scale=1",
+      "frames": false,
+      "footer": true,
+      "linkTitles": false,
+      "jsonld": true,
+      "actions": [],
+      "untitled": ["summary"],
+      "nav": ["summary", "education", "experience", "publications", "projects", "awards", "skills", "other_experience", "other_projects"],
+      "icons": ["links", "sections", "articles", "footer"],
+      "contacts": [["translate", "cv", "email", "linkedin", "scholar", "orcid", "github"]],
+      "columns": [
+        [
+          "summary",
+          "education[uninsubria,unimore-master,cbi-attract,unimore-bachelor]",
+          "experience[ibm,randompower]",
+          "publications[explainable-governance,privacy-fidelity,categorical-prior-lock-in]",
+          "projects[pipeline,chesslm,epsiloc]",
+          "awards[hackathon]",
+          "skills[languages,research,libraries,web,tools,spoken]",
+          "other_experience[paradisi,unimore-tutor,liferay]",
+          "other_projects[recoilisland,txturl,scoretracker,toolstab]"
+        ]
+      ]
+    },
+    "cv": {
+      "url": { "en": "/cv/", "it": "/cv/it/" },
+      "viewport": "width=device-width",
+      "frames": true,
+      "footer": false,
+      "linkTitles": true,
+      "jsonld": true,
+      "title": "CV_{nameFile}_{lang}",
+      "actions": ["back", "translate", "outline", "print"],
+      "untitled": [],
+      "nav": [],
+      "icons": ["links", "ui"],
+      "contacts": [
+        ["email", "phone"],
+        ["website", "github", "linkedin"],
+        ["scholar", "orcid"]
+      ],
+      "columns": [
+        [
+          "summary",
+          "education[uninsubria,unimore-master,cbi-attract,unimore-bachelor]",
+          "experience[ibm,randompower]",
+          "publications[explainable-governance,privacy-fidelity,categorical-prior-lock-in]"
+        ],
+        [
+          "projects[pipeline,chesslm,epsiloc]",
+          "awards[hackathon]",
+          "skills[languages,research,libraries,web,tools,spoken]",
+          "other_experience[paradisi,unimore-tutor,liferay]"
+        ]
+      ]
+    }
+  }
+}

@@ -2,155 +2,105 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const SITE_URL = "https://antoniopelusi.github.io";
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const DATA_DIR = "assets/data";
 
-const COMMON = {
-  appTitle: "antoniopelusi.github.io",
-  verification: "xBmNs4D8oAAYOdxcLWPzvRMdKA3VqGQzPYwk9zuvREc",
+const readJSON = (...parts) => JSON.parse(fs.readFileSync(path.join(ROOT, ...parts), "utf8"));
+
+const config = readJSON(DATA_DIR, "config.json");
+const { site, person, format, footer: FOOTER, pages: PAGES } = config;
+
+const LANGS = Object.keys(site.languages);
+const HOST = new URL(site.url).host;
+
+const fail = (message) => {
+  throw new Error(`build: ${message}`);
 };
 
-const PAGES = {
-  site: {
-    url: { en: "/", it: "/it/" },
-    title: () => "Antonio Pelusi",
-    viewport: "width=device-width, initial-scale=1",
-    frames: false,
-    footer: true,
-    linkTitles: false,
-    actions: [],
-    untitled: ["summary"],
-    nav: ["summary", "education", "experience", "publications", "projects", "awards", "skills", "other_experience", "other_projects"],
-    icons: ["links", "sections", "articles", "footer"],
-  },
-  cv: {
-    url: { en: "/cv/", it: "/cv/it/" },
-    title: (lang) => `CV_Antonio_Pelusi_${lang}`,
-    viewport: "width=device-width",
-    frames: true,
-    footer: false,
-    linkTitles: true,
-    actions: ["back", "outline", "print", "translate"],
-    untitled: [],
-    nav: [],
-    icons: ["links", "ui"],
-  },
+if (LANGS.length !== 2) fail("il selettore di lingua supporta esattamente due lingue");
+if (!LANGS.includes(site.defaultLang)) fail(`defaultLang "${site.defaultLang}" non è in languages`);
+
+const otherLang = (lang) => LANGS.find((code) => code !== lang);
+
+const fill = (template, vars) =>
+  template.replace(/\{(\w+)\}/g, (_, key) => {
+    if (!(key in vars)) fail(`segnaposto {${key}} sconosciuto in "${template}"`);
+    return vars[key];
+  });
+
+const fileSafe = (value) =>
+  value
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .trim()
+    .replace(/[^\w]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+
+const bare = (url) =>
+  url
+    .replace(/^[a-z][a-z0-9+.-]*:(\/\/)?/i, "")
+    .replace(/^www\./, "")
+    .replace(/\/$/, "");
+
+const trimSlash = (value) => value.replace(/\/$/, "");
+
+const escapeText = (value) =>
+  value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+
+const escapeAttr = (value) => value.replaceAll("&", "&amp;").replaceAll('"', "&quot;");
+
+const REQUIRED = {
+  meta: ["headline", "description", "jobTitle"],
+  ui: ["nav", "tools", "actions", "contacts", "links", "footer"],
 };
 
-const SEPARATOR = " | ";
-const DATE_SEPARATOR = " - ";
-const LIST_SEPARATOR = ", ";
-const LABEL_SEPARATOR = ": ";
-const BULLET = "• ";
-
-const LINK_ORDER = ["paper", "thesis", "model", "repository", "website"];
-
-const BUILT_WITH = ["HTML", "CSS", "JS"];
-
-const ICON_CREDITS = [
-  ["Papirus", "https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/"],
-  ["Iconoir", "https://iconoir.com/"],
-  ["Font Awesome", "https://fontawesome.com/icons"],
-];
-
-const CONTACTS = {
-  cv: "CV",
-  email: "Email",
-  linkedin: "LinkedIn",
-  scholar: "Scholar",
-  orcid: "ORCID",
-  github: "GitHub",
-  website: "Web",
+const loadData = (lang) => {
+  const data = readJSON(DATA_DIR, `${lang}.json`);
+  for (const [group, keys] of Object.entries(REQUIRED)) {
+    for (const key of keys) {
+      if (data[group]?.[key] === undefined) fail(`${lang}.json: manca "${group}.${key}"`);
+    }
+  }
+  if (!Array.isArray(data.title)) fail(`${lang}.json: "title" deve essere un array di righe`);
+  return data;
 };
 
-const TEXT = {
-  en: {
-    description:
-      "Antonio Pelusi - PhD student in Computer Science and software developer. Portfolio showcasing research projects, education and open-source contributions.",
-    ogTitle: "Antonio Pelusi - PhD Computer Science",
-    nav: "Navigation",
-    tools: "Tools",
-    actions: {
-      back: "Go back",
-      outline: "Outline",
-      print: "Print",
-      translate: "Translate",
-    },
-    contacts: { ...CONTACTS, translate: "Traduci", location: "Location", phone: "Phone" },
-    links: {
-      model: "View model",
-      repository: "View repository",
-      paper: "Read paper",
-      thesis: "Read thesis",
-      website: "Visit website",
-      unavailableSuffix: "not yet available",
-      unavailableLabel: {
-        model: "Model",
-        repository: "Repository",
-        paper: "Paper",
-        thesis: "Thesis",
-        website: "Website",
-      },
-    },
-    footer: {
-      builtWith: "Built with",
-      typography: "Typography:",
-      icons: "Icons:",
-      source: "Source:",
-      copyright: "© Antonio Pelusi. All rights reserved.",
-    },
-  },
-  it: {
-    description:
-      "Antonio Pelusi - Dottorando in Informatica e sviluppatore software. Portfolio con progetti di ricerca, formazione e contributi open-source.",
-    ogTitle: "Antonio Pelusi - Dottorato in Informatica",
-    nav: "Navigazione",
-    tools: "Strumenti",
-    actions: {
-      back: "Torna indietro",
-      outline: "Contorni",
-      print: "Stampa",
-      translate: "Translate",
-    },
-    contacts: { ...CONTACTS, translate: "Translate", location: "Luogo", phone: "Telefono" },
-    links: {
-      repository: "Vedi repository",
-      model: "Vedi modello",
-      paper: "Leggi il paper",
-      thesis: "Leggi la tesi",
-      website: "Visita il sito",
-      unavailableSuffix: "non ancora disponibile",
-      unavailableLabel: {
-        model: "Modello",
-        repository: "Repository",
-        paper: "Paper",
-        thesis: "Tesi",
-        website: "Sito",
-      },
-    },
-    footer: {
-      builtWith: "Realizzato con",
-      typography: "Tipografia:",
-      icons: "Icone:",
-      source: "Sorgente:",
-      copyright: "© Antonio Pelusi. Tutti i diritti riservati.",
-    },
-  },
-};
+const resolveContacts = (lang, data) => {
+  const contacts = {};
 
-const ICONS = {
-  ibm: "ibm",
-  randompower: "randompower",
-  liferay: "liferay",
-  paradisi: "school",
-  "unimore-tutor": "unimore",
-  "unimore-master": "unimore",
-  "unimore-bachelor": ["unimore", "liferay"],
-  uninsubria: ["uninsubria", "randompower", "ibm"],
-  "cbi-attract": ["unibo", "cern", "agh"],
-  "explainable-governance": ["uninsubria", "uninsubria", "cnr", "ibm"],
-  "privacy-fidelity": ["uninsubria", "ibm", "uninsubria"],
-  "categorical-prior-lock-in": ["uninsubria", "ibm", "uninsubria"],
-  hackathon: "unimore",
+  for (const [key, entry] of Object.entries(config.contacts)) {
+    contacts[key] = {
+      label: entry.label,
+      url: entry.url,
+      text: entry.text ?? (entry.url ? bare(entry.url) : undefined),
+    };
+  }
+
+  const other = otherLang(lang);
+  contacts.website = {
+    ...contacts.website,
+    url: `${site.url}${PAGES.site.url[lang]}`,
+    text: HOST,
+  };
+  contacts.cv = {
+    ...contacts.cv,
+    url: PAGES.cv.url[lang],
+    text: `${HOST}${trimSlash(PAGES.cv.url[site.defaultLang])}`,
+  };
+  contacts.translate = {
+    label: data.ui.actions.translate,
+    url: PAGES.site.url[other],
+    text: `${HOST}${trimSlash(PAGES.site.url[other])}`,
+    hreflang: other,
+  };
+
+  for (const [key, entry] of Object.entries(data.contacts ?? {})) {
+    contacts[key] = { ...contacts[key], ...entry };
+  }
+  for (const [key, label] of Object.entries(data.ui.contacts)) {
+    contacts[key] = { ...contacts[key], label };
+  }
+  return contacts;
 };
 
 const h = (tag, attrs = {}, ...children) => ({
@@ -163,11 +113,6 @@ const h = (tag, attrs = {}, ...children) => ({
     .filter((child) => child !== undefined && child !== null && child !== false),
 });
 
-const escapeText = (value) =>
-  value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
-
-const escapeAttr = (value) => value.replaceAll("&", "&amp;").replaceAll('"', "&quot;");
-
 const toHTML = (node) => {
   if (typeof node === "string") return escapeText(node);
   const attrs = node.attrs.map(([name, value]) => ` ${name}="${escapeAttr(value)}"`).join("");
@@ -179,7 +124,7 @@ const slug = (key) => key.replaceAll("_", "-");
 
 const icon = (ctx, dir, name, alt = "") =>
   name && ctx.cfg.icons.includes(dir)
-    ? h("img", { src: `/assets/icons/${ctx.page}/${dir}/${name}.svg`, alt })
+    ? h("img", { src: `${site.assets}/icons/${ctx.page}/${dir}/${name}.svg`, alt })
     : null;
 
 const link = (url, attrs, ...children) => {
@@ -202,34 +147,24 @@ const joinWith = (items, value) =>
   items.flatMap((item, i) => (i ? [separator(value), item] : [item]));
 
 const ACTIONS = {
-  back: (ctx) => ({
-    icon: "arrow-left",
-    href: PAGES.site.url[ctx.lang],
-  }),
-  outline: () => ({
-    tag: "button",
-    icon: "outline",
-    disabled: true,
-    active: "false",
-  }),
-  print: () => ({
-    tag: "button",
-    icon: "print",
-    disabled: true,
-  }),
+  back: (ctx) => ({ icon: "arrow-left", href: PAGES.site.url[ctx.lang] }),
+  outline: () => ({ tag: "button", icon: "outline", disabled: true, active: "false" }),
+  print: () => ({ tag: "button", icon: "print", disabled: true }),
   translate: (ctx) => {
-    const other = ctx.lang === "en" ? "it" : "en";
+    const other = otherLang(ctx.lang);
     return {
       icon: "translate",
       href: ctx.cfg.url[other],
       hreflang: other,
-      active: String(ctx.lang === "it"),
+      active: String(ctx.lang === LANGS[1]),
     };
   },
 };
 
 const renderAction = (ctx, action) => {
-  const { tag = "a", icon: name, href, hreflang, active, disabled } = ACTIONS[action](ctx);
+  const build = ACTIONS[action] ?? fail(`azione "${action}" sconosciuta`);
+  const { tag = "a", icon: name, href, hreflang, active, disabled } = build(ctx);
+  const label = ctx.data.ui.actions[action] ?? fail(`${ctx.lang}.json: manca ui.actions.${action}`);
   return h(
     tag,
     {
@@ -241,7 +176,7 @@ const renderAction = (ctx, action) => {
       "data-active": active,
     },
     icon(ctx, "ui", name),
-    h("span", {}, ctx.text.actions[action]),
+    h("span", { lang: action === "translate" ? hreflang : undefined }, label),
   );
 };
 
@@ -249,65 +184,63 @@ const renderToolbar = (ctx) =>
   ctx.cfg.actions.length > 0 &&
   h(
     "nav",
-    { "aria-label": ctx.text.tools, "data-tools": true },
+    { "aria-label": ctx.data.ui.tools, "data-tools": true },
     ...ctx.cfg.actions.map((action) => renderAction(ctx, action)),
   );
 
 const renderNav = (ctx) => {
-  const keys = ctx.cfg.nav.filter((key) => ctx.data[key]);
+  const { nav } = ctx.cfg;
   return (
-    keys.length > 0 &&
+    nav.length > 0 &&
     h(
       "nav",
-      { "aria-label": ctx.text.nav },
-      ...keys.map((key) =>
-        h(
+      { "aria-label": ctx.data.ui.nav },
+      ...nav.map((key, i) => {
+        const section = ctx.data[key] ?? fail(`${ctx.lang}.json: manca la sezione "${key}" (nav)`);
+        return h(
           "a",
-          { href: key === "summary" ? "#" : `#${slug(key)}` },
-          ctx.data[key].title.toUpperCase(),
-        ),
-      ),
+          {
+            href: key === "summary" ? "#" : `#${slug(key)}`,
+            "aria-current": i === 0 && "true",
+          },
+          section.title.toUpperCase(),
+        );
+      }),
     )
   );
 };
 
 const renderContact = (ctx, key) => {
-  const entry = ctx.data.contacts[key];
-  if (!entry) return null;
-  const { url, text: value, hreflang } = entry;
-  const label = ctx.text.contacts[key];
+  const entry = ctx.contacts[key] ?? fail(`contatto "${key}" non definito (${ctx.page}/${ctx.lang})`);
+  const { url, text: value, hreflang, label } = entry;
+  if (!label) fail(`contatto "${key}" senza etichetta (${ctx.lang})`);
+  if (!value) fail(`contatto "${key}" senza testo (${ctx.lang})`);
   return link(
     url,
     { "data-label": label, hreflang },
     icon(ctx, "links", key),
-    h("span", {}, ` ${label}${LABEL_SEPARATOR}`, h("span", { "data-value": "" }, value)),
+    h("span", {}, ` ${label}${format.labelSeparator}`, h("span", { "data-value": "" }, value)),
   );
 };
 
-const renderContacts = (ctx, rows) =>
+const renderContacts = (ctx) =>
   h(
     "address",
     {},
-    ...rows.map((row) =>
-      h(
-        "p",
-        {},
-        ...joinWith(row.map((key) => renderContact(ctx, key)).filter(Boolean), SEPARATOR),
-      ),
+    ...ctx.cfg.contacts.map((row) =>
+      h("p", {}, ...joinWith(row.map((key) => renderContact(ctx, key)), format.separator)),
     ),
   );
 
-const renderHeader = (ctx) => {
-  const { data } = ctx;
-  return h(
+const renderHeader = (ctx) =>
+  h(
     "header",
     {},
-    h("h1", {}, data.name),
-    h("p", {}, ...data.title.flatMap((line, i) => [i > 0 && " ", h("span", {}, line)])),
+    h("h1", {}, site.name),
+    h("p", {}, ...ctx.data.title.flatMap((line, i) => [i > 0 && " ", h("span", {}, line)])),
     renderNav(ctx),
-    renderContacts(ctx, data.layout.contacts[ctx.page]),
+    renderContacts(ctx),
   );
-};
 
 const entityText = (name, bold) => {
   const [, main, secondary] = name.match(/^(.*?)(?:\s*\((.*)\))?$/s);
@@ -325,19 +258,19 @@ const renderEntities = (ctx, subtitle, icons) => {
         {},
         icon(ctx, "articles", icons[i]),
         h("span", {}, ...entityText(name, i === 0)),
-        i < names.length - 1 && separator(LIST_SEPARATOR),
+        i < names.length - 1 && separator(format.listSeparator),
       ),
     ),
   );
 };
 
 const linkRank = (type) => {
-  const index = LINK_ORDER.indexOf(type);
-  return index === -1 ? LINK_ORDER.length : index;
+  const index = format.linkOrder.indexOf(type);
+  return index === -1 ? format.linkOrder.length : index;
 };
 
 const renderLink = (ctx, item, title) => {
-  const { links } = ctx.text;
+  const { links } = ctx.data.ui;
   const label = links[item.type] ?? item.type;
   const unavailable = `${links.unavailableLabel[item.type] ?? item.type} ${links.unavailableSuffix}`;
   return h(
@@ -345,23 +278,20 @@ const renderLink = (ctx, item, title) => {
     {},
     link(
       item.url,
-      {
-        "data-type": item.type,
-        "aria-label": item.url && `${label} - ${title}`,
-      },
+      { "data-type": item.type, "aria-label": item.url && `${label} - ${title}` },
       item.url ? label : unavailable,
     ),
   );
 };
 
 const renderBullet = (bullet) =>
-  h("li", {}, h("span", { "data-bullet": "", "aria-hidden": "true" }, BULLET), bullet);
+  h("li", {}, h("span", { "data-bullet": "", "aria-hidden": "true" }, format.bullet), bullet);
 
 const renderSkills = ({ label, text: value }) =>
   h(
     "article",
     { "data-skills": "" },
-    h("h3", {}, label, separator(LABEL_SEPARATOR)),
+    h("h3", {}, label, separator(format.labelSeparator)),
     h(
       "p",
       {},
@@ -370,13 +300,13 @@ const renderSkills = ({ label, text: value }) =>
           .split(/,\s*/)
           .filter(Boolean)
           .map((tag) => h("span", {}, tag)),
-        LIST_SEPARATOR,
+        format.listSeparator,
       ),
     ),
   );
 
 const renderEntry = (ctx, { id, title, url, date, subtitle, detail, bullets = [], links = [] }) => {
-  const icons = [].concat(ICONS[id] ?? []);
+  const icons = [].concat(config.entityIcons[id] ?? []);
   const sortedLinks = [...links].sort((a, b) => linkRank(a.type) - linkRank(b.type));
   const dates = [].concat(date ?? []).map((value) => h("span", {}, value));
 
@@ -386,14 +316,19 @@ const renderEntry = (ctx, { id, title, url, date, subtitle, detail, bullets = []
     h(
       "div",
       {},
-      h("h3", {}, url && ctx.cfg.linkTitles ? link(url, {}, title) : title, separator(SEPARATOR)),
-      h("time", {}, ...joinWith(dates, DATE_SEPARATOR)),
+      h(
+        "h3",
+        {},
+        url && ctx.cfg.linkTitles ? link(url, {}, title) : title,
+        separator(format.separator),
+      ),
+      h("time", {}, ...joinWith(dates, format.dateSeparator)),
     ),
     h(
       "p",
       {},
       renderEntities(ctx, subtitle, icons),
-      ...(detail ? [separator(SEPARATOR), h("span", {}, detail)] : []),
+      ...(detail ? [separator(format.separator), h("span", {}, detail)] : []),
     ),
     h(
       "ul",
@@ -408,15 +343,20 @@ const renderArticle = (ctx, item) => (item.label ? renderSkills(item) : renderEn
 
 const renderSection = (ctx, spec) => {
   const [, key, filter] = spec.match(/^([^[]+)(?:\[(.*)\])?$/);
-  const section = ctx.data[key];
-  if (!section) return null;
+  const section = ctx.data[key] ?? fail(`${ctx.lang}.json: manca la sezione "${key}"`);
 
   const { title, text: paragraphs = [], items = [] } = section;
   const allowed = filter ? filter.split(",").map((token) => token.trim()) : [];
+  const idOf = (item) => item.id ?? item.label;
+
+  for (const id of allowed) {
+    if (!items.some((item) => idOf(item) === id)) {
+      fail(`${ctx.lang}.json: "${key}" non contiene l'elemento "${id}"`);
+    }
+  }
+
   const isUntitled = ctx.cfg.untitled.includes(key);
-  const visibleItems = filter
-    ? items.filter((item) => allowed.includes(item.id ?? item.label))
-    : items;
+  const visibleItems = filter ? items.filter((item) => allowed.includes(idOf(item))) : items;
 
   return h(
     "section",
@@ -428,15 +368,15 @@ const renderSection = (ctx, spec) => {
 };
 
 const renderFooter = (ctx) => {
-  const { footer } = ctx.text;
+  const text = ctx.data.ui.footer;
   return h(
     "footer",
     {},
     h(
       "p",
       {},
-      footer.builtWith,
-      ...BUILT_WITH.flatMap((name, i, all) => [
+      text.builtWith,
+      ...FOOTER.builtWith.flatMap((name, i, all) => [
         icon(ctx, "footer", name.toLowerCase(), name),
         i < all.length - 1 ? `${name},` : name,
       ]),
@@ -444,27 +384,20 @@ const renderFooter = (ctx) => {
     h(
       "p",
       {},
-      footer.icons,
-      ...ICON_CREDITS.map(([name, url], i, all) =>
+      text.icons,
+      ...FOOTER.iconCredits.map(([name, url], i, all) =>
         i < all.length - 1 ? h("span", {}, link(url, {}, name), ",") : link(url, {}, name),
       ),
     ),
-    h("p", {}, footer.typography, link("https://fonts.google.com/specimen/Roboto", {}, "Roboto")),
-    h(
-      "p",
-      {},
-      footer.source,
-      link("https://github.com/antoniopelusi/antoniopelusi.github.io", {}, "GitHub"),
-    ),
-    h("p", {}, footer.copyright),
+    h("p", {}, text.typography, link(FOOTER.typography.url, {}, FOOTER.typography.name)),
+    h("p", {}, text.source, link(site.repository, {}, FOOTER.sourceName)),
+    h("p", {}, fill(text.copyright, { name: site.name })),
   );
 };
 
-const renderPage = ({ page, lang, data }) => {
-  const cfg = PAGES[page];
-  const ctx = { page, lang, data, cfg, text: TEXT[lang] };
-
-  const columns = data.layout.pages[page].map((keys) => keys.map((key) => renderSection(ctx, key)));
+const renderPage = (ctx) => {
+  const { cfg } = ctx;
+  const columns = cfg.columns.map((keys) => keys.map((key) => renderSection(ctx, key)));
 
   const contents = columns.map((sections, i) =>
     h(
@@ -484,20 +417,105 @@ const renderPage = ({ page, lang, data }) => {
   );
 };
 
+const metaFor = (data, lang) => {
+  const vars = { name: site.name, lang, ...data.meta };
+  return {
+    title: fill(site.titleTemplate, vars),
+    description: fill(site.descriptionTemplate, vars),
+    vars: { ...vars, nameFile: fileSafe(site.name) },
+  };
+};
+
+const personSchema = (ctx) => {
+  const { data, contacts, lang } = ctx;
+
+  const sameAs = person.sameAs.map((key) => {
+    const url = contacts[key]?.url;
+    if (!/^https?:/.test(url ?? "")) fail(`person.sameAs: "${key}" non ha un URL assoluto`);
+    return url;
+  });
+
+  const skill = person.knowsAboutSkill
+    ? data.skills?.items.find((item) => item.id === person.knowsAboutSkill)
+    : null;
+  if (person.knowsAboutSkill && !skill) {
+    fail(`${lang}.json: skills non contiene "${person.knowsAboutSkill}" (person.knowsAboutSkill)`);
+  }
+
+  const university = (entry) => ({ "@type": "CollegeOrUniversity", ...entry });
+
+  return {
+    "@type": "Person",
+    "@id": `${site.url}/#person`,
+    name: site.name,
+    url: `${site.url}${PAGES.site.url[lang]}`,
+    jobTitle: data.meta.jobTitle,
+    affiliation: person.affiliation && university(person.affiliation),
+    alumniOf: person.alumniOf?.map(university),
+    knowsAbout: skill?.text.split(/,\s*/).filter(Boolean),
+    sameAs,
+  };
+};
+
+const jsonLd = (ctx, canonical, title, indent) => {
+  const personNode = personSchema(ctx);
+  const graph =
+    ctx.page === "cv"
+      ? {
+          "@type": "ProfilePage",
+          url: canonical,
+          name: title,
+          inLanguage: ctx.lang,
+          mainEntity: personNode,
+        }
+      : personNode;
+  const json = JSON.stringify({ "@context": "https://schema.org", ...graph }, null, 2).replaceAll(
+    "<",
+    "\\u003c",
+  );
+  const body = json
+    .split("\n")
+    .map((line) => `${indent}${line}`)
+    .join("\n");
+  return `<script type="application/ld+json">\n${body}\n${indent}</script>`;
+};
+
 const INDENT = "        ";
 
-const renderDocument = ({ page, lang, main }) => {
-  const cfg = PAGES[page];
-  const text = TEXT[lang];
-  const canonical = `${SITE_URL}${cfg.url[lang]}`;
+const renderDocument = (ctx, main) => {
+  const { page, lang, cfg } = ctx;
+  const meta = metaFor(ctx.data, lang);
+  const canonical = `${site.url}${cfg.url[lang]}`;
+  const pageTitle = cfg.title ? fill(cfg.title, meta.vars) : meta.title;
+  const favicon = `${site.assets}/icons/favicon`;
 
   const alternates = [
-    ["en", cfg.url.en],
-    ["it", cfg.url.it],
-    ["x-default", cfg.url.en],
+    ...LANGS.map((code) => [code, cfg.url[code]]),
+    ["x-default", cfg.url[site.defaultLang]],
   ]
-    .map(([code, url]) => `<link rel="alternate" hreflang="${code}" href="${SITE_URL}${url}" />`)
+    .map(([code, url]) => `<link rel="alternate" hreflang="${code}" href="${site.url}${url}" />`)
     .join(`\n${INDENT}`);
+
+  const ogLocales = [
+    `<meta property="og:locale" content="${site.languages[lang]}" />`,
+    ...LANGS.filter((code) => code !== lang).map(
+      (code) => `<meta property="og:locale:alternate" content="${site.languages[code]}" />`,
+    ),
+  ].join(`\n${INDENT}`);
+
+  const fonts = site.fonts
+    .map(
+      (file) => `<link
+            rel="preload"
+            href="${site.assets}/fonts/${file}"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />`,
+    )
+    .join(`\n${INDENT}`);
+
+  const schema = cfg.jsonld ? `\n${INDENT}${jsonLd(ctx, canonical, meta.title, INDENT)}\n` : "";
 
   return `<!doctype html>
 <html lang="${lang}">
@@ -505,35 +523,35 @@ const renderDocument = ({ page, lang, main }) => {
         <meta charset="UTF-8" />
         <meta name="viewport" content="${cfg.viewport}" />
 
-        <title>${cfg.title(lang)}</title>
+        <title>${escapeText(pageTitle)}</title>
 
         <meta
             name="description"
-            content="${text.description}"
+            content="${escapeAttr(meta.description)}"
         />
-        <meta name="author" content="Antonio Pelusi" />
+        <meta name="author" content="${escapeAttr(site.name)}" />
 
         <link
             rel="icon"
             type="image/png"
-            href="/assets/icons/favicon/favicon-96x96.png"
+            href="${favicon}/favicon-96x96.png"
             sizes="96x96"
         />
         <link
             rel="icon"
             type="image/svg+xml"
-            href="/assets/icons/favicon/favicon.svg"
+            href="${favicon}/favicon.svg"
         />
-        <link rel="shortcut icon" href="/assets/icons/favicon/favicon.ico" />
+        <link rel="shortcut icon" href="${favicon}/favicon.ico" />
         <link
             rel="apple-touch-icon"
             sizes="180x180"
-            href="/assets/icons/favicon/apple-touch-icon.png"
+            href="${favicon}/apple-touch-icon.png"
         />
-        <link rel="manifest" href="/assets/icons/favicon/site.webmanifest" />
+        <link rel="manifest" href="${favicon}/site.webmanifest" />
         <meta
             name="apple-mobile-web-app-title"
-            content="${COMMON.appTitle}"
+            content="${escapeAttr(site.appTitle)}"
         />
 
         <link rel="canonical" href="${canonical}" />
@@ -541,39 +559,27 @@ const renderDocument = ({ page, lang, main }) => {
 
         <meta
             property="og:title"
-            content="${text.ogTitle}"
+            content="${escapeAttr(meta.title)}"
         />
         <meta
             property="og:description"
-            content="${text.description}"
+            content="${escapeAttr(meta.description)}"
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="${canonical}" />
+        ${ogLocales}
 
         <meta
             name="google-site-verification"
-            content="${COMMON.verification}"
+            content="${escapeAttr(site.verification)}"
         />
+${schema}
+        ${fonts}
 
-        <link
-            rel="preload"
-            href="/assets/fonts/Roboto-Regular.woff2"
-            as="font"
-            type="font/woff2"
-            crossorigin
-        />
-        <link
-            rel="preload"
-            href="/assets/fonts/Roboto-Bold.woff2"
-            as="font"
-            type="font/woff2"
-            crossorigin
-        />
+        <link rel="stylesheet" href="${site.assets}/css/base.css" />
+        <link rel="stylesheet" href="${site.assets}/css/${page}.css" />
 
-        <link rel="stylesheet" href="/assets/css/base.css" />
-        <link rel="stylesheet" href="/assets/css/${page}.css" />
-
-        <script src="/assets/js/${page}.js" defer></script>
+        <script src="${site.assets}/js/${page}.js" defer></script>
     </head>
     <body>
         ${toHTML(main)}
@@ -582,21 +588,19 @@ const renderDocument = ({ page, lang, main }) => {
 `;
 };
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const dataByLang = Object.fromEntries(LANGS.map((lang) => [lang, loadData(lang)]));
 
-const OUTPUTS = [
-  { page: "site", lang: "en", file: "index.html" },
-  { page: "site", lang: "it", file: "it/index.html" },
-  { page: "cv", lang: "en", file: "cv/index.html" },
-  { page: "cv", lang: "it", file: "cv/it/index.html" },
-];
+for (const [page, cfg] of Object.entries(PAGES)) {
+  for (const lang of LANGS) {
+    const url = cfg.url[lang] ?? fail(`pages.${page}.url.${lang} mancante`);
+    const data = dataByLang[lang];
+    const ctx = { page, lang, cfg, data, contacts: resolveContacts(lang, data) };
 
-for (const { page, lang, file } of OUTPUTS) {
-  const data = JSON.parse(fs.readFileSync(path.join(ROOT, "src", "data", `${lang}.json`), "utf8"));
-  const main = renderPage({ page, lang, data });
-  const target = path.join(ROOT, ...file.split("/"));
+    const file = `${url.replace(/^\//, "")}index.html`;
+    const target = path.join(ROOT, ...file.split("/"));
 
-  fs.mkdirSync(path.dirname(target), { recursive: true });
-  fs.writeFileSync(target, renderDocument({ page, lang, main }), "utf8");
-  console.log(`built ${file}`);
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.writeFileSync(target, renderDocument(ctx, renderPage(ctx)), "utf8");
+    console.log(`built ${file}`);
+  }
 }
