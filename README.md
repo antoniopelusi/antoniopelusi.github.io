@@ -35,7 +35,7 @@ sitemap.xml
 Everything the build uses lives in three JSON files in `assets/data/`. After any change, run `make build`.
 
 - `config.json`: everything that does not depend on the language.
-  - `site`: name, URL, app title, repository, Search Console token, languages, assets path, fonts, title and description templates.
+  - `site`: name, URL, app title, repository, Search Console token, languages, `indexLanguages` (languages search engines may index; the others get `noindex` and no hreflang), assets path, fonts, title and description templates.
   - `contacts`: email, phone, profile links. Website, CV and language-switch links are derived from the page URLs.
   - `person`: data for the JSON-LD (profiles, affiliation, alma mater, skill used for `knowsAbout`).
   - `format`, `footer`, `entityIcons`: separators, footer credits, icons per entry id.

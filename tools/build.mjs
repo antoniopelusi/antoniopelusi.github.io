@@ -20,6 +20,12 @@ const fail = (message) => {
 if (LANGS.length !== 2) fail("il selettore di lingua supporta esattamente due lingue");
 if (!LANGS.includes(site.defaultLang)) fail(`defaultLang "${site.defaultLang}" non è in languages`);
 
+const INDEXED = site.indexLanguages ?? LANGS;
+for (const code of INDEXED) {
+  if (!LANGS.includes(code)) fail(`indexLanguages: "${code}" non è in languages`);
+}
+if (!INDEXED.includes(site.defaultLang)) fail("indexLanguages deve includere defaultLang");
+
 const otherLang = (lang) => LANGS.find((code) => code !== lang);
 
 const fill = (template, vars) =>
@@ -489,12 +495,17 @@ const renderDocument = (ctx, main) => {
   const pageTitle = cfg.title ? fill(cfg.title, meta.vars) : meta.title;
   const favicon = `${site.assets}/icons/favicon`;
 
-  const alternates = [
-    ...LANGS.map((code) => [code, cfg.url[code]]),
-    ["x-default", cfg.url[site.defaultLang]],
-  ]
-    .map(([code, url]) => `<link rel="alternate" hreflang="${code}" href="${site.url}${url}" />`)
-    .join(`\n${INDENT}`);
+  const alternates =
+    INDEXED.length > 1
+      ? [...INDEXED.map((code) => [code, cfg.url[code]]), ["x-default", cfg.url[site.defaultLang]]]
+          .map(
+            ([code, url]) =>
+              `\n${INDENT}<link rel="alternate" hreflang="${code}" href="${site.url}${url}" />`,
+          )
+          .join("")
+      : "";
+
+  const robots = INDEXED.includes(lang) ? "" : `\n${INDENT}<meta name="robots" content="noindex" />`;
 
   const ogLocales = [
     `<meta property="og:locale" content="${site.languages[lang]}" />`,
@@ -529,7 +540,7 @@ const renderDocument = (ctx, main) => {
             name="description"
             content="${escapeAttr(meta.description)}"
         />
-        <meta name="author" content="${escapeAttr(site.name)}" />
+        <meta name="author" content="${escapeAttr(site.name)}" />${robots}
 
         <link
             rel="icon"
@@ -554,8 +565,7 @@ const renderDocument = (ctx, main) => {
             content="${escapeAttr(site.appTitle)}"
         />
 
-        <link rel="canonical" href="${canonical}" />
-        ${alternates}
+        <link rel="canonical" href="${canonical}" />${alternates}
 
         <meta
             property="og:title"
