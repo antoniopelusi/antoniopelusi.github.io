@@ -51,7 +51,8 @@ Do not edit the generated `.html` files. Style lives in `base.css` (shared rules
 
 After editing the three JSON files and running `make build`, update the files the build does not generate:
 
-- `assets/icons/favicon/`: favicon images and `site.webmanifest` (name and short name).
+- `assets/icons/favicon/`: favicon images and `site.webmanifest` (name, short name and theme colors).
+- `404.html`: name, title, description, app title, fonts and favicon.
 - `assets/icons/site/articles/`: logos of the institutions used in `entityIcons`.
 - `sitemap.xml`, `humans.txt`, `robots.txt`: URLs, name and contacts.
 - The repository must be named `<username>.github.io`, and `site.url` in `config.json` must match.

@@ -40,9 +40,9 @@
     --link-wrap:         normal;
     --separator-display: none;
 
-    --page-share: 90vw;
+    --page-share: 95vw;
     --root-size:  clamp(18px, 0.5vw + 14px, 19px);
-    --page-max:   72rem;
+    --page-max:   65rem;
     --page-inset: var(--space);
     --duration-fast: 0.1s;
     --duration-slow: 0.3s;
@@ -152,7 +152,7 @@ header nav {
 header address p {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--gap-row) calc(var(--space-s) * 0.8);
+    gap: var(--gap-row) calc(var(--space-s) * 0.65);
 }
 
 header address a {
@@ -428,7 +428,7 @@ footer img {
     vertical-align: middle;
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (min-width: 1024px) {
     body:has(header address a:hover) header address a:not(:hover) {
         filter: brightness(var(--brightness-faded));
     }
@@ -444,7 +444,9 @@ footer img {
     header address a:hover::after {
         opacity: 1;
     }
+}
 
+@media (hover: hover) {
     article:hover {
         background-color: var(--article);
         box-shadow: var(--shadow);

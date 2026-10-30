@@ -52,7 +52,7 @@
   "summary": {
     "title": "Profilo",
     "text": [
-      "Attività di ricerca focalizzata su Differential Privacy e parameter-efficient fine-tuning di LLM, con pubblicazioni su sintesi di dati tabulari, rischi di memorizzazione ed explainable governance di dati sanitari sintetici.",
+      "Attività di ricerca focalizzata su Differential Privacy e parameter-efficient fine-tuning di LLM, con pubblicazioni su generazione di dati tabulari sintetici, rischi di memorizzazione ed explainable governance di dati sanitari sintetici.",
       "Esperienza ingegneristica in Python e C, su pipeline ML, framework di valutazione e piattaforme dati ad alto throughput."
     ]
   },
@@ -72,7 +72,7 @@
         ],
         "detail": "",
         "bullets": [
-          "Ricerca congiunta sul fine-tuning con Differential Privacy di foundation model per la sintesi di dati strutturati in contesti enterprise."
+          "Ricerca congiunta sul fine-tuning con Differential Privacy di foundation model per la generazione di dati strutturati sintetici in contesti enterprise."
         ],
         "links": []
       },
@@ -175,7 +175,7 @@
         ],
         "detail": "",
         "bullets": [
-          "Ricerca sul privacy-preserving fine-tuning di Large Language Model (LLM) locali per la sintesi di dati tabulari protetti.",
+          "Ricerca sul privacy-preserving fine-tuning di Large Language Model (LLM) locali per la generazione di dati tabulari sintetici.",
           "Studio di sorgenti di entropia quantistica in meccanismi di Differential Privacy, caratterizzando budget teorici e protezione empirica."
         ],
         "links": [
@@ -286,7 +286,7 @@
         ],
         "detail": "In revisione",
         "bullets": [
-          "Valutazione del fine-tuning LoRA di LLM con DP-SGD tramite Opacus per la sintesi tabulare, identificando il degrado indotto dalla privacy su distribuzioni categoriche ad alta cardinalità."
+          "Valutazione del fine-tuning LoRA di LLM con DP-SGD tramite Opacus per la generazione di dati tabulari sintetici, identificando il degrado indotto dalla privacy su distribuzioni categoriche ad alta cardinalità."
         ],
         "links": [
           {
@@ -312,7 +312,7 @@
         ],
         "detail": "In revisione",
         "bullets": [
-          "Confronto tra in-context learning e fine-tuning parameter-efficient per la sintesi tabulare, caratterizzando il trade-off tra fedeltà e memorizzazione nei foundation model."
+          "Confronto tra in-context learning e fine-tuning parameter-efficient per la generazione di dati tabulari sintetici, caratterizzando il trade-off tra fedeltà e memorizzazione nei foundation model."
         ],
         "links": [
           {
@@ -337,7 +337,7 @@
           "Ott 2026"
         ],
         "subtitle": [
-          "Pipeline di Sintesi di Dati Tabulari Privacy-Preserving"
+          "Pipeline di Generazione di Dati Tabulari Sintetici Privacy-Preserving"
         ],
         "detail": "",
         "bullets": [
@@ -489,7 +489,7 @@
         ],
         "detail": "",
         "bullets": [
-          "Pubblicazione di un'estensione browser leggera e orientata alla privacy con startpage offline, calcolatori per sviluppatori e utilità di monitoraggio del tempo."
+          "Pubblicazione di un'estensione browser leggera e orientata alla privacy con startpage offline e strumenti di produttività come notepad, clipboard, bookmarks e to-do list."
         ],
         "links": [
           {
