@@ -41,8 +41,8 @@
     --separator-display: none;
 
     --page-share: 95vw;
-    --root-size:  clamp(18px, 0.5vw + 14px, 19px);
-    --page-max:   65rem;
+    --root-size:  clamp(19px, 0.5vw + 14px, 22px);
+    --page-max:   70rem;
     --page-inset: var(--space);
     --duration-fast: 0.1s;
     --duration-slow: 0.3s;
