@@ -291,7 +291,7 @@
         "links": [
           {
             "type": "repository",
-            "url": "https://github.com/antoniopelusi/LLM-synthetic-data-generation/releases/tag/v2.0.0"
+            "url": "https://github.com/antoniopelusi/LLM-synthetic-data-generation"
           },
           {
             "type": "paper"
@@ -317,7 +317,7 @@
         "links": [
           {
             "type": "repository",
-            "url": "https://github.com/antoniopelusi/LLM-synthetic-data-generation/releases/tag/v1.0.0"
+            "url": "https://github.com/antoniopelusi/LLM-synthetic-data-generation"
           },
           {
             "type": "paper"
