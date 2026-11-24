@@ -1,4 +1,14 @@
 User-agent: *
-Allow: /
+Allow: /$
+Allow: /cv/$
+Allow: /cv$
+# Crawlable on purpose so crawlers can read their noindex meta tag
+Allow: /it/$
+Allow: /cv/it/$
+Allow: /assets/
+Disallow: /assets/data/
+Allow: /favicon.ico
+Allow: /sitemap.xml
+Disallow: /
 
 Sitemap: https://antoniopelusi.github.io/sitemap.xml
