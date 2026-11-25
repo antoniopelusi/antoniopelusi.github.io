@@ -5,7 +5,7 @@
     "appTitle": "Antonio Pelusi",
     "repository": "https://github.com/antoniopelusi/antoniopelusi.github.io",
     "verification": "xBmNs4D8oAAYOdxcLWPzvRMdKA3VqGQzPYwk9zuvREc",
-    "languages": { "en": "en_US", "it": "it_IT" },
+    "languages": {"en": "en_US", "it": "it_IT"},
     "defaultLang": "en",
     "indexLanguages": ["en"],
     "assets": "/assets",
@@ -13,37 +13,239 @@
     "titleTemplate": "{name} - {headline}",
     "descriptionTemplate": "{name} - {description}"
   },
-
-  "contacts": {
-    "email": { "label": "Email", "url": "mailto:antoniopelusi2000@gmail.com" },
-    "phone": { "url": "tel:+393284261797", "text": "+39 328 426 1797" },
-    "linkedin": { "label": "LinkedIn", "url": "https://linkedin.com/in/antoniopelusi" },
-    "scholar": { "label": "Scholar", "url": "https://scholar.google.com/citations?user=3BgZo94AAAAJ" },
-    "orcid": { "label": "ORCID", "url": "https://orcid.org/0009-0006-0807-4364" },
-    "github": { "label": "GitHub", "url": "https://github.com/antoniopelusi" },
-    "huggingface": { "label": "Hugging Face", "url": "https://huggingface.co/antoniopelusi" },
-    "website": { "label": "Web" },
-    "cv": { "label": "CV" }
-  },
-
   "person": {
-    "sameAs": ["github", "huggingface", "linkedin", "orcid", "scholar"],
-    "affiliation": { "name": "University of Insubria", "url": "https://www.uninsubria.eu/" },
+    "affiliation": {"name": "University of Insubria", "url": "https://www.uninsubria.eu/"},
     "alumniOf": [
-      { "name": "University of Modena and Reggio Emilia", "url": "https://www.unimore.it/" }
+      {"name": "University of Insubria", "url": "https://www.uninsubria.eu/"},
+      {"name": "University of Modena and Reggio Emilia", "url": "https://www.unimore.it/"},
+      {"name": "University of Bologna", "url": "https://www.unibo.it/"}
     ],
-    "knowsAboutSkill": "research"
+    "knowsAboutSkill": "research",
+    "sameAs": ["github", "huggingface", "linkedin", "orcid", "scholar"]
   },
-
+  "contacts": {
+    "website": {"label": "Web", "url": null, "text": null},
+    "cv": {"label": "CV", "url": null, "text": null},
+    "translate": {"label": null, "url": null, "text": null},
+    "email": {
+      "label": "Email",
+      "url": "mailto:antoniopelusi2000@gmail.com",
+      "text": "antoniopelusi2000@gmail.com"
+    },
+    "location": {"label": null, "url": null, "text": null},
+    "phone": {"label": null, "url": "tel:+393284261797", "text": "+39 328 426 1797"},
+    "linkedin": {
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/antoniopelusi",
+      "text": "linkedin.com/in/antoniopelusi"
+    },
+    "github": {
+      "label": "GitHub",
+      "url": "https://github.com/antoniopelusi",
+      "text": "github.com/antoniopelusi"
+    },
+    "huggingface": {
+      "label": "Hugging Face",
+      "url": "https://huggingface.co/antoniopelusi",
+      "text": "huggingface.co/antoniopelusi"
+    },
+    "scholar": {
+      "label": "Scholar",
+      "url": "https://scholar.google.com/citations?user=3BgZo94AAAAJ",
+      "text": "scholar.google.com/citations?user=3BgZo94AAAAJ"
+    },
+    "orcid": {
+      "label": "ORCID",
+      "url": "https://orcid.org/0009-0006-0807-4364",
+      "text": "orcid.org/0009-0006-0807-4364"
+    }
+  },
+  "sections": {
+    "summary": {"layout": "text", "items": null},
+    "education": {
+      "layout": "entries",
+      "items": {
+        "uninsubria": {
+          "url": null,
+          "date": ["2024-11", "2027-10"],
+          "icons": ["uninsubria", "ibm", "randompower"],
+          "links": [
+            {"type": "thesis", "url": null}
+          ]
+        },
+        "unimore-master": {
+          "url": null,
+          "date": ["2022-09", "2024-04"],
+          "icons": ["unimore"],
+          "links": [
+            {
+              "type": "thesis",
+              "url": "https://morethesis.unimore.it/theses/available/etd-02202024-141019/"
+            }
+          ]
+        },
+        "cbi-attract": {
+          "url": null,
+          "date": ["2023-02", "2023-06"],
+          "icons": ["unibo", "agh", "cern"],
+          "links": null
+        },
+        "unimore-bachelor": {
+          "url": null,
+          "date": ["2018-09", "2022-04"],
+          "icons": ["unimore", "liferay"],
+          "links": null
+        }
+      }
+    },
+    "experience": {
+      "layout": "entries",
+      "items": {
+        "ibm": {
+          "url": null,
+          "date": ["2026-09", "2027-03"],
+          "icons": ["ibm"],
+          "links": null
+        },
+        "randompower": {
+          "url": null,
+          "date": ["2024-05", "2025-11"],
+          "icons": ["randompower"],
+          "links": null
+        }
+      }
+    },
+    "publications": {
+      "layout": "entries",
+      "items": {
+        "explainable-governance": {
+          "url": "https://doi.org/10.1007/978-3-032-41230-0_34",
+          "date": ["2026-10"],
+          "icons": ["uninsubria", "uninsubria", "cnr", "ibm"],
+          "links": [
+            {"type": "paper", "url": "https://doi.org/10.1007/978-3-032-41230-0_34"}
+          ]
+        }
+      }
+    },
+    "projects": {
+      "layout": "entries",
+      "items": {
+        "chesslm": {
+          "url": "https://github.com/antoniopelusi/chesSLM",
+          "date": ["2026-06"],
+          "icons": null,
+          "links": [
+            {"type": "model", "url": "https://huggingface.co/antoniopelusi/chesSLM"},
+            {"type": "repository", "url": "https://github.com/antoniopelusi/chesSLM"}
+          ]
+        },
+        "epsiloc": {
+          "url": "https://github.com/antoniopelusi/epsiloc",
+          "date": ["2025-10"],
+          "icons": null,
+          "links": [
+            {"type": "repository", "url": "https://github.com/antoniopelusi/epsiloc"}
+          ]
+        }
+      }
+    },
+    "awards": {
+      "layout": "entries",
+      "items": {
+        "hackathon": {
+          "url": null,
+          "date": ["2023-09"],
+          "icons": ["unimore"],
+          "links": null
+        }
+      }
+    },
+    "skills": {
+      "layout": "tags",
+      "items": {
+        "languages": {"url": null, "date": null, "icons": null, "links": null},
+        "research": {"url": null, "date": null, "icons": null, "links": null},
+        "libraries": {"url": null, "date": null, "icons": null, "links": null},
+        "web": {"url": null, "date": null, "icons": null, "links": null},
+        "tools": {"url": null, "date": null, "icons": null, "links": null},
+        "spoken": {"url": null, "date": null, "icons": null, "links": null}
+      }
+    },
+    "other-experience": {
+      "layout": "entries",
+      "items": {
+        "paradisi": {
+          "url": null,
+          "date": ["2024-09", "2025-07"],
+          "icons": ["school"],
+          "links": null
+        },
+        "unimore-tutor": {
+          "url": null,
+          "date": ["2024-09", "2024-12"],
+          "icons": ["unimore"],
+          "links": null
+        },
+        "liferay": {
+          "url": null,
+          "date": ["2021-03", "2021-07"],
+          "icons": ["liferay"],
+          "links": [
+            {"type": "repository", "url": "https://github.com/antoniopelusi/liferay-portal-stripe"}
+          ]
+        }
+      }
+    },
+    "other-projects": {
+      "layout": "entries",
+      "items": {
+        "recoilisland": {
+          "url": "https://github.com/antoniopelusi/recoilisland",
+          "date": ["2026-03"],
+          "icons": null,
+          "links": [
+            {"type": "repository", "url": "https://github.com/antoniopelusi/recoilisland"},
+            {"type": "website", "url": "/recoilisland/"}
+          ]
+        },
+        "txturl": {
+          "url": "https://github.com/antoniopelusi/txturl",
+          "date": ["2026-02"],
+          "icons": null,
+          "links": [
+            {"type": "repository", "url": "https://github.com/antoniopelusi/txturl"},
+            {"type": "website", "url": "/txturl/"}
+          ]
+        },
+        "scoretracker": {
+          "url": "https://github.com/antoniopelusi/scoretracker",
+          "date": ["2025-02"],
+          "icons": null,
+          "links": [
+            {"type": "repository", "url": "https://github.com/antoniopelusi/scoretracker"},
+            {"type": "website", "url": "/scoretracker/"}
+          ]
+        },
+        "toolstab": {
+          "url": "https://github.com/antoniopelusi/toolstab",
+          "date": ["2025-01"],
+          "icons": null,
+          "links": [
+            {"type": "repository", "url": "https://github.com/antoniopelusi/toolstab"},
+            {"type": "website", "url": "/toolstab/"}
+          ]
+        }
+      }
+    }
+  },
   "format": {
     "separator": " | ",
     "dateSeparator": " - ",
     "listSeparator": ", ",
     "labelSeparator": ": ",
-    "bullet": "• ",
-    "linkOrder": ["paper", "thesis", "model", "repository", "website"]
+    "bullet": "• "
   },
-
   "footer": {
     "builtWith": ["HTML", "CSS", "JS"],
     "iconCredits": [
@@ -51,29 +253,13 @@
       ["Iconoir", "https://iconoir.com/"],
       ["Font Awesome", "https://fontawesome.com/icons"]
     ],
-    "typography": { "name": "Roboto", "url": "https://fonts.google.com/specimen/Roboto" },
+    "typography": {"name": "Roboto", "url": "https://fonts.google.com/specimen/Roboto"},
     "sourceName": "GitHub"
   },
-
-  "entityIcons": {
-    "ibm": "ibm",
-    "randompower": "randompower",
-    "liferay": "liferay",
-    "paradisi": "school",
-    "unimore-tutor": "unimore",
-    "unimore-master": "unimore",
-    "unimore-bachelor": ["unimore", "liferay"],
-    "uninsubria": ["uninsubria", "randompower", "ibm"],
-    "cbi-attract": ["unibo", "cern", "agh"],
-    "explainable-governance": ["uninsubria", "uninsubria", "cnr", "ibm"],
-    "privacy-fidelity": ["uninsubria", "ibm", "uninsubria"],
-    "categorical-prior-lock-in": ["uninsubria", "ibm", "uninsubria"],
-    "hackathon": "unimore"
-  },
-
   "pages": {
     "site": {
-      "url": { "en": "/", "it": "/it/" },
+      "url": {"en": "/", "it": "/it/"},
+      "title": "{title}",
       "viewport": "width=device-width, initial-scale=1",
       "frames": false,
       "footer": true,
@@ -81,31 +267,67 @@
       "jsonld": true,
       "actions": [],
       "untitled": ["summary"],
-      "nav": ["summary", "education", "experience", "publications", "projects", "awards", "skills", "other_experience", "other_projects"],
+      "nav": [
+        "summary",
+        "education",
+        "experience",
+        "publications",
+        "projects",
+        "awards",
+        "skills",
+        "other-experience",
+        "other-projects"
+      ],
       "icons": ["links", "sections", "articles", "footer"],
-      "contacts": [["translate", "cv", "email", "linkedin", "scholar", "orcid", "github", "huggingface"]],
+      "contacts": [
+        ["translate", "cv", "email", "linkedin", "scholar", "orcid", "github", "huggingface"]
+      ],
       "columns": [
         [
-          "summary",
-          "education[uninsubria,unimore-master,cbi-attract,unimore-bachelor]",
-          "experience[ibm,randompower]",
-          "publications[explainable-governance,privacy-fidelity,categorical-prior-lock-in]",
-          "projects[pipeline,chesslm,epsiloc]",
-          "awards[hackathon]",
-          "skills[languages,research,libraries,web,tools,spoken]",
-          "other_experience[paradisi,unimore-tutor,liferay]",
-          "other_projects[recoilisland,txturl,scoretracker,toolstab]"
+          {"section": "summary", "ids": null},
+          {
+            "section": "education",
+            "ids": ["uninsubria", "unimore-master", "cbi-attract", "unimore-bachelor"]
+          },
+          {
+            "section": "experience",
+            "ids": ["ibm", "randompower"]
+          },
+          {
+            "section": "publications",
+            "ids": ["explainable-governance"]
+          },
+          {
+            "section": "projects",
+            "ids": ["chesslm", "epsiloc"]
+          },
+          {
+            "section": "awards",
+            "ids": ["hackathon"]
+          },
+          {
+            "section": "skills",
+            "ids": ["languages", "research", "libraries", "web", "tools", "spoken"]
+          },
+          {
+            "section": "other-experience",
+            "ids": ["paradisi", "unimore-tutor", "liferay"]
+          },
+          {
+            "section": "other-projects",
+            "ids": ["recoilisland", "txturl", "scoretracker", "toolstab"]
+          }
         ]
       ]
     },
     "cv": {
-      "url": { "en": "/cv/", "it": "/cv/it/" },
+      "url": {"en": "/cv/", "it": "/cv/it/"},
+      "title": "CV_{nameFile}_{lang}",
       "viewport": "width=device-width",
       "frames": true,
       "footer": false,
       "linkTitles": true,
       "jsonld": true,
-      "title": "CV_{nameFile}_{lang}",
       "actions": ["back", "translate", "outline", "print"],
       "untitled": [],
       "nav": [],
@@ -117,16 +339,33 @@
       ],
       "columns": [
         [
-          "summary",
-          "education[uninsubria,unimore-master,cbi-attract,unimore-bachelor]",
-          "experience[ibm,randompower]",
-          "publications[explainable-governance,privacy-fidelity,categorical-prior-lock-in]"
+          {"section": "summary", "ids": null},
+          {
+            "section": "education",
+            "ids": ["uninsubria", "unimore-master", "cbi-attract", "unimore-bachelor"]
+          },
+          {
+            "section": "experience",
+            "ids": ["ibm", "randompower"]
+          },
+          {
+            "section": "publications",
+            "ids": ["explainable-governance"]
+          },
+          {
+            "section": "projects",
+            "ids": ["chesslm", "epsiloc"]
+          }
         ],
         [
-          "projects[pipeline,chesslm,epsiloc]",
-          "awards[hackathon]",
-          "skills[languages,research,libraries,web,tools,spoken]",
-          "other_experience[paradisi,unimore-tutor,liferay]"
+          {
+            "section": "awards",
+            "ids": ["hackathon"]
+          },
+          {
+            "section": "skills",
+            "ids": ["languages", "research", "libraries", "web", "tools", "spoken"]
+          }
         ]
       ]
     }

@@ -8,7 +8,7 @@ const DATA_DIR = "assets/data";
 const readJSON = (...parts) => JSON.parse(fs.readFileSync(path.join(ROOT, ...parts), "utf8"));
 
 const config = readJSON(DATA_DIR, "config.json");
-const { site, person, format, footer: FOOTER, pages: PAGES } = config;
+const { site, person, format, footer: FOOTER, sections: SECTIONS, pages: PAGES } = config;
 
 const LANGS = Object.keys(site.languages);
 const HOST = new URL(site.url).host;
@@ -20,7 +20,8 @@ const fail = (message) => {
 if (LANGS.length !== 2) fail("il selettore di lingua supporta esattamente due lingue");
 if (!LANGS.includes(site.defaultLang)) fail(`defaultLang "${site.defaultLang}" non è in languages`);
 
-const INDEXED = site.indexLanguages ?? LANGS;
+if (!Array.isArray(site.indexLanguages)) fail("site.indexLanguages mancante");
+const INDEXED = site.indexLanguages;
 for (const code of INDEXED) {
   if (!LANGS.includes(code)) fail(`indexLanguages: "${code}" non è in languages`);
 }
@@ -42,12 +43,6 @@ const fileSafe = (value) =>
     .replace(/[^\w]+/g, "_")
     .replace(/^_+|_+$/g, "");
 
-const bare = (url) =>
-  url
-    .replace(/^[a-z][a-z0-9+.-]*:(\/\/)?/i, "")
-    .replace(/^www\./, "")
-    .replace(/\/$/, "");
-
 const trimSlash = (value) => value.replace(/\/$/, "");
 
 const escapeText = (value) =>
@@ -57,8 +52,40 @@ const escapeAttr = (value) => value.replaceAll("&", "&amp;").replaceAll('"', "&q
 
 const REQUIRED = {
   meta: ["headline", "description", "jobTitle"],
-  ui: ["nav", "tools", "actions", "contacts", "links", "footer"],
+  ui: ["nav", "tools", "actions", "months", "footer"],
 };
+
+const NON_SECTIONS = ["meta", "ui", "title", "contacts"];
+const SECTION_KEYS = ["title", "text", "items"];
+const ITEM_KEYS = ["id", "title", "subtitle", "detail", "bullets", "links"];
+const CONFIG_SECTION_KEYS = ["layout", "items"];
+const CONFIG_ITEM_KEYS = ["url", "date", "icons", "links"];
+const DATE_FORMAT = /^\d{4}-(0[1-9]|1[0-2])$/;
+const CONFIG_LINK_KEYS = ["type", "url"];
+const LAYOUTS = ["text", "entries", "tags"];
+const sameKeys = (object, keys) => JSON.stringify(Object.keys(object)) === JSON.stringify(keys);
+const orEmpty = (value) => (value === null ? [] : value);
+
+for (const [name, section] of Object.entries(SECTIONS)) {
+  if (!sameKeys(section, CONFIG_SECTION_KEYS)) {
+    fail(`config.sections.${name} deve avere le chiavi ${CONFIG_SECTION_KEYS.join(", ")}`);
+  }
+  if (!LAYOUTS.includes(section.layout)) fail(`config.sections.${name}.layout non valido`);
+  if (section.items === null) continue;
+  for (const [id, item] of Object.entries(section.items)) {
+    if (!sameKeys(item, CONFIG_ITEM_KEYS)) {
+      fail(`config.sections.${name}.items.${id} deve avere le chiavi ${CONFIG_ITEM_KEYS.join(", ")}`);
+    }
+    for (const date of orEmpty(item.date)) {
+      if (!DATE_FORMAT.test(date)) fail(`config.sections.${name}.items.${id}: data "${date}" non valida (AAAA-MM)`);
+    }
+    for (const link of orEmpty(item.links)) {
+      if (!sameKeys(link, CONFIG_LINK_KEYS)) {
+        fail(`config.sections.${name}.items.${id}: ogni link deve avere ${CONFIG_LINK_KEYS.join(", ")}`);
+      }
+    }
+  }
+}
 
 const loadData = (lang) => {
   const data = readJSON(DATA_DIR, `${lang}.json`);
@@ -68,8 +95,49 @@ const loadData = (lang) => {
     }
   }
   if (!Array.isArray(data.title)) fail(`${lang}.json: "title" deve essere un array di righe`);
+  if (!Array.isArray(data.ui.months) || data.ui.months.length !== 12) {
+    fail(`${lang}.json: "ui.months" deve avere 12 mesi`);
+  }
+  for (const key of ["meta", "ui", "title", "contacts"]) {
+    if (data[key] === undefined) fail(`${lang}.json: manca "${key}"`);
+  }
+  const names = Object.keys(data).filter((name) => !NON_SECTIONS.includes(name));
+  if (JSON.stringify(names) !== JSON.stringify(Object.keys(SECTIONS))) {
+    fail(`${lang}.json: le sezioni devono essere quelle di config.sections, nello stesso ordine`);
+  }
+  for (const name of names) {
+    const section = data[name];
+    const fixed = SECTIONS[name];
+    if (!sameKeys(section, SECTION_KEYS)) {
+      fail(`${lang}.json: "${name}" deve avere le chiavi ${SECTION_KEYS.join(", ")}`);
+    }
+    if ((section.items === null) !== (fixed.items === null)) {
+      fail(`${lang}.json: "${name}": items deve essere null solo dove lo è in config.sections`);
+    }
+    if (section.items === null) continue;
+    if (JSON.stringify(section.items.map((item) => item.id)) !== JSON.stringify(Object.keys(fixed.items))) {
+      fail(`${lang}.json: "${name}": gli id devono essere quelli di config.sections, nello stesso ordine`);
+    }
+    for (const item of section.items) {
+      const { icons, links } = fixed.items[item.id];
+      if (!sameKeys(item, ITEM_KEYS)) {
+        fail(`${lang}.json: "${name}/${item.id}" deve avere le chiavi ${ITEM_KEYS.join(", ")}`);
+      }
+      if (icons !== null && (item.subtitle === null || icons.length !== item.subtitle.length)) {
+        fail(`${lang}.json: "${name}/${item.id}": subtitle deve avere una riga per ogni icona in config`);
+      }
+      if ((item.links === null) !== (links === null)) {
+        fail(`${lang}.json: "${name}/${item.id}": links deve essere null solo dove lo è in config`);
+      }
+      if (links !== null && JSON.stringify(Object.keys(item.links)) !== JSON.stringify(links.map((link) => link.type))) {
+        fail(`${lang}.json: "${name}/${item.id}": links deve avere i tipi di config, nello stesso ordine`);
+      }
+    }
+  }
   return data;
 };
+
+const present = (entry) => Object.fromEntries(Object.entries(entry).filter(([, v]) => v != null));
 
 const resolveContacts = (lang, data) => {
   const contacts = {};
@@ -78,7 +146,7 @@ const resolveContacts = (lang, data) => {
     contacts[key] = {
       label: entry.label,
       url: entry.url,
-      text: entry.text ?? (entry.url ? bare(entry.url) : undefined),
+      text: entry.text,
     };
   }
 
@@ -100,11 +168,9 @@ const resolveContacts = (lang, data) => {
     hreflang: other,
   };
 
-  for (const [key, entry] of Object.entries(data.contacts ?? {})) {
-    contacts[key] = { ...contacts[key], ...entry };
-  }
-  for (const [key, label] of Object.entries(data.ui.contacts)) {
-    contacts[key] = { ...contacts[key], label };
+  for (const [key, entry] of Object.entries(data.contacts)) {
+    if (!(key in contacts)) fail(`${lang}.json: contatto "${key}" non definito in config.contacts`);
+    contacts[key] = { ...contacts[key], ...present(entry) };
   }
   return contacts;
 };
@@ -126,15 +192,13 @@ const toHTML = (node) => {
   return `<${node.tag}${attrs}>${node.children.map(toHTML).join("")}</${node.tag}>`;
 };
 
-const slug = (key) => key.replaceAll("_", "-");
-
 const icon = (ctx, dir, name, alt = "") =>
   name && ctx.cfg.icons.includes(dir)
     ? h("img", { src: `${site.assets}/icons/${ctx.page}/${dir}/${name}.svg`, alt })
     : null;
 
 const link = (url, attrs, ...children) => {
-  const external = /^https?:/.test(url ?? "");
+  const external = /^https?:/.test(url);
   return h(
     "a",
     {
@@ -206,7 +270,7 @@ const renderNav = (ctx) => {
         return h(
           "a",
           {
-            href: key === "summary" ? "#" : `#${slug(key)}`,
+            href: key === "summary" ? "#" : `#${key}`,
             "aria-current": i === 0 && "true",
           },
           section.title.toUpperCase(),
@@ -254,7 +318,7 @@ const entityText = (name, bold) => {
 };
 
 const renderEntities = (ctx, subtitle, icons) => {
-  const names = [].concat(subtitle ?? []);
+  const names = orEmpty(subtitle);
   return h(
     "span",
     { "data-entities": "" },
@@ -270,22 +334,15 @@ const renderEntities = (ctx, subtitle, icons) => {
   );
 };
 
-const linkRank = (type) => {
-  const index = format.linkOrder.indexOf(type);
-  return index === -1 ? format.linkOrder.length : index;
-};
-
 const renderLink = (ctx, item, title) => {
-  const { links } = ctx.data.ui;
-  const label = links[item.type] ?? item.type;
-  const unavailable = `${links.unavailableLabel[item.type] ?? item.type} ${links.unavailableSuffix}`;
+  if (!item.text) fail(`link "${item.type}" senza testo in "${title}" (${ctx.lang})`);
   return h(
     "li",
     {},
     link(
       item.url,
-      { "data-type": item.type, "aria-label": item.url && `${label} - ${title}` },
-      item.url ? label : unavailable,
+      { "data-type": item.type, "aria-label": item.url && `${item.text} - ${title}` },
+      item.text,
     ),
   );
 };
@@ -293,28 +350,23 @@ const renderLink = (ctx, item, title) => {
 const renderBullet = (bullet) =>
   h("li", {}, h("span", { "data-bullet": "", "aria-hidden": "true" }, format.bullet), bullet);
 
-const renderSkills = ({ label, text: value }) =>
+const renderTags = ({ title, subtitle }) =>
   h(
     "article",
     { "data-skills": "" },
-    h("h3", {}, label, separator(format.labelSeparator)),
+    h("h3", {}, title, separator(format.labelSeparator)),
     h(
       "p",
       {},
       ...joinWith(
-        value
-          .split(/,\s*/)
-          .filter(Boolean)
-          .map((tag) => h("span", {}, tag)),
+        subtitle.map((tag) => h("span", {}, tag)),
         format.listSeparator,
       ),
     ),
   );
 
-const renderEntry = (ctx, { id, title, url, date, subtitle, detail, bullets = [], links = [] }) => {
-  const icons = [].concat(config.entityIcons[id] ?? []);
-  const sortedLinks = [...links].sort((a, b) => linkRank(a.type) - linkRank(b.type));
-  const dates = [].concat(date ?? []).map((value) => h("span", {}, value));
+const renderEntry = (ctx, { title, url, date, subtitle, icons, detail, bullets, links }) => {
+  const dates = orEmpty(date).map((value) => h("span", {}, value));
 
   return h(
     "article",
@@ -333,43 +385,44 @@ const renderEntry = (ctx, { id, title, url, date, subtitle, detail, bullets = []
     h(
       "p",
       {},
-      renderEntities(ctx, subtitle, icons),
+      renderEntities(ctx, subtitle, orEmpty(icons)),
       ...(detail ? [separator(format.separator), h("span", {}, detail)] : []),
     ),
     h(
       "ul",
       {},
-      ...sortedLinks.map((item) => renderLink(ctx, item, title)),
-      ...bullets.map(renderBullet),
+      ...orEmpty(links).map((item) => renderLink(ctx, item, title)),
+      ...orEmpty(bullets).map(renderBullet),
     ),
   );
 };
 
-const renderArticle = (ctx, item) => (item.label ? renderSkills(item) : renderEntry(ctx, item));
+const renderArticle = (ctx, layout, item) =>
+  layout === "tags" ? renderTags(item) : renderEntry(ctx, item);
 
-const renderSection = (ctx, spec) => {
-  const [, key, filter] = spec.match(/^([^[]+)(?:\[(.*)\])?$/);
+const renderSection = (ctx, { section: key, ids: filter }) => {
   const section = ctx.data[key] ?? fail(`${ctx.lang}.json: manca la sezione "${key}"`);
 
-  const { title, text: paragraphs = [], items = [] } = section;
-  const allowed = filter ? filter.split(",").map((token) => token.trim()) : [];
-  const idOf = (item) => item.id ?? item.label;
+  const { title } = section;
+  const paragraphs = orEmpty(section.text);
+  const items = orEmpty(section.items);
+  const idOf = (item) => item.id;
 
-  for (const id of allowed) {
+  for (const id of orEmpty(filter)) {
     if (!items.some((item) => idOf(item) === id)) {
       fail(`${ctx.lang}.json: "${key}" non contiene l'elemento "${id}"`);
     }
   }
 
   const isUntitled = ctx.cfg.untitled.includes(key);
-  const visibleItems = filter ? items.filter((item) => allowed.includes(idOf(item))) : items;
+  const visibleItems = filter === null ? items : items.filter((item) => filter.includes(idOf(item)));
 
   return h(
     "section",
-    { id: slug(key), "aria-label": isUntitled ? title : undefined },
+    { id: key, "aria-label": isUntitled ? title : undefined },
     !isUntitled && h("h2", {}, icon(ctx, "sections", key), title),
     ...paragraphs.map((paragraph) => h("p", {}, paragraph)),
-    ...visibleItems.map((item) => renderArticle(ctx, item)),
+    ...visibleItems.map((item) => renderArticle(ctx, section.layout, item)),
   );
 };
 
@@ -425,10 +478,11 @@ const renderPage = (ctx) => {
 
 const metaFor = (data, lang) => {
   const vars = { name: site.name, lang, ...data.meta };
+  const title = fill(site.titleTemplate, vars);
   return {
-    title: fill(site.titleTemplate, vars),
+    title,
     description: fill(site.descriptionTemplate, vars),
-    vars: { ...vars, nameFile: fileSafe(site.name) },
+    vars: { ...vars, title, nameFile: fileSafe(site.name) },
   };
 };
 
@@ -436,15 +490,13 @@ const personSchema = (ctx) => {
   const { data, contacts, lang } = ctx;
 
   const sameAs = person.sameAs.map((key) => {
-    const url = contacts[key]?.url;
-    if (!/^https?:/.test(url ?? "")) fail(`person.sameAs: "${key}" non ha un URL assoluto`);
+    const url = (contacts[key] ?? fail(`person.sameAs: contatto "${key}" non definito`)).url;
+    if (!/^https?:/.test(url)) fail(`person.sameAs: "${key}" non ha un URL assoluto`);
     return url;
   });
 
-  const skill = person.knowsAboutSkill
-    ? data.skills?.items.find((item) => item.id === person.knowsAboutSkill)
-    : null;
-  if (person.knowsAboutSkill && !skill) {
+  const skill = data.skills.items.find((item) => item.id === person.knowsAboutSkill);
+  if (!skill) {
     fail(`${lang}.json: skills non contiene "${person.knowsAboutSkill}" (person.knowsAboutSkill)`);
   }
 
@@ -456,9 +508,9 @@ const personSchema = (ctx) => {
     name: site.name,
     url: `${site.url}${PAGES.site.url[lang]}`,
     jobTitle: data.meta.jobTitle,
-    affiliation: person.affiliation && university(person.affiliation),
-    alumniOf: person.alumniOf?.map(university),
-    knowsAbout: skill?.text.split(/,\s*/).filter(Boolean),
+    affiliation: university(person.affiliation),
+    alumniOf: person.alumniOf.map(university),
+    knowsAbout: skill.subtitle,
     sameAs,
   };
 };
@@ -492,7 +544,7 @@ const renderDocument = (ctx, main) => {
   const { page, lang, cfg } = ctx;
   const meta = metaFor(ctx.data, lang);
   const canonical = `${site.url}${cfg.url[lang]}`;
-  const pageTitle = cfg.title ? fill(cfg.title, meta.vars) : meta.title;
+  const pageTitle = fill(cfg.title, meta.vars);
   const favicon = `${site.assets}/icons/favicon`;
 
   const alternates =
@@ -598,7 +650,70 @@ ${schema}
 `;
 };
 
-const dataByLang = Object.fromEntries(LANGS.map((lang) => [lang, loadData(lang)]));
+const rawByLang = Object.fromEntries(LANGS.map((lang) => [lang, loadData(lang)]));
+
+const sameShape = (a, b, where) => {
+  if (Array.isArray(a) && Array.isArray(b)) {
+    if (a.length !== b.length) fail(`${where}: lunghezza diversa tra le lingue`);
+    a.forEach((value, i) => sameShape(value, b[i], `${where}[${i}]`));
+  } else if (a && b && typeof a === "object" && typeof b === "object") {
+    if (JSON.stringify(Object.keys(a)) !== JSON.stringify(Object.keys(b))) {
+      fail(`${where}: chiavi diverse o in ordine diverso tra le lingue`);
+    }
+    for (const key of Object.keys(a)) sameShape(a[key], b[key], `${where}.${key}`);
+  } else if ((a == null) !== (b == null)) {
+    fail(`${where}: null in una sola lingua`);
+  }
+};
+
+{
+  const [first, ...rest] = LANGS.map((lang) => rawByLang[lang]);
+  for (const other of rest) sameShape(first, other, "en/it");
+}
+
+const formatDate = (months, date) => {
+  const [year, month] = date.split("-");
+  return `${months[Number(month) - 1]} ${year}`;
+};
+
+const compose = (data) => {
+  const composed = {};
+  for (const [name, value] of Object.entries(data)) {
+    if (NON_SECTIONS.includes(name)) {
+      composed[name] = value;
+      continue;
+    }
+    const fixed = SECTIONS[name];
+    composed[name] = {
+      title: value.title,
+      layout: fixed.layout,
+      text: value.text,
+      items:
+        value.items === null
+          ? null
+          : value.items.map((item) => {
+              const { url, date, icons, links } = fixed.items[item.id];
+              return {
+                id: item.id,
+                title: item.title,
+                url,
+                date: date === null ? null : date.map((value) => formatDate(data.ui.months, value)),
+                subtitle: item.subtitle,
+                icons,
+                detail: item.detail,
+                bullets: item.bullets,
+                links:
+                  links === null
+                    ? null
+                    : links.map((link) => ({ ...link, text: item.links[link.type] })),
+              };
+            }),
+    };
+  }
+  return composed;
+};
+
+const dataByLang = Object.fromEntries(LANGS.map((lang) => [lang, compose(rawByLang[lang])]));
 
 for (const [page, cfg] of Object.entries(PAGES)) {
   for (const lang of LANGS) {

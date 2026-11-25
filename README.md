@@ -36,14 +36,16 @@ Everything the build uses lives in three JSON files in `assets/data/`. After any
 
 - `config.json`: everything that does not depend on the language.
   - `site`: name, URL, app title, repository, Search Console token, languages, `indexLanguages` (languages search engines may index; the others get `noindex` and no hreflang), assets path, fonts, title and description templates.
-  - `contacts`: email, phone, profile links. Website, CV and language-switch links are derived from the page URLs.
-  - `person`: data for the JSON-LD (profiles, affiliation, alma mater, skill used for `knowsAbout`).
-  - `format`, `footer`, `entityIcons`: separators, footer credits, icons per entry id.
+  - `person`: data for the JSON-LD (affiliation, alma mater, skill used for `knowsAbout`, contacts used for `sameAs`). It is English-only.
+  - `contacts`: every contact is `{ label, url, text }`, with `null` for what is missing. `text` is always written explicitly, except for website, CV and language-switch, whose URL and text the build derives from the page URLs (leave them `null`). Every key in `en.json`/`it.json` `contacts` must exist here; their non-null values (`label`, `text`) override these.
+  - `sections`: everything about a section that does not depend on the language, in display order. `layout` is `text`, `entries` or `tags`. Each item, by `id`, has `url`, `date` (`["YYYY-MM"]` or `["YYYY-MM", "YYYY-MM"]`, printed with the month names of `ui.months`), `icons` (logo names in `assets/icons/<page>/articles/`, one per `subtitle` line) and `links` (`[{ type, url }]`, shown in this order; `type` picks the icon). `null` when unused.
+  - `format`, `footer`: separators, footer credits.
   - `pages`: for the site and the CV, URLs, viewport, toolbar actions, nav, icon sets, contact rows and the sections shown in each column. The CV `<title>`, which is also the PDF filename when printing, is `pages.cv.title`.
 - `en.json`, `it.json`: translated content and UI labels.
   - `meta`: `headline`, `description` and `jobTitle`, combined with the name by the title and description templates in `config.json`.
-  - `ui`: labels for navigation, toolbar, links and footer.
-  - Sections: `summary`, `education`, `experience`, `publications`, `projects`, `awards`, `skills`, and so on. Entry ids must exist in both languages: the build stops with an error naming the missing one.
+  - `ui`: labels for navigation, toolbar and footer, and the 12 month names (`months`) used to print dates.
+  - `contacts`: translatable `label`/`text` of contacts such as `location` and `phone`.
+  - Sections, in the order of `config.sections` (`summary`, `education`, `experience`, `publications`, `projects`, `awards`, `skills`, `other-experience`, `other-projects`): each has `title`, `text` and `items`, `null` when unused. Each entry has `id`, `title`, `subtitle`, `detail`, `bullets` and `links`, `null` when empty. `links` maps each link `type` of that entry in `config.sections` to its text (`{ "repository": "View repository" }`): with a `url` in the config it is a link showing the text, without it the text is shown unlinked. In `tags` sections (skills) `title` is the label and `subtitle` the list of tags. Ids, link types and key order must match `config.sections`, and `en.json` and `it.json` must have the same shape: the build stops with an error otherwise.
 
 Do not edit the generated `.html` files. Style lives in `base.css` (shared rules), with `site.css` and `cv.css` setting the variables.
 
@@ -53,7 +55,7 @@ After editing the three JSON files and running `make build`, update the files th
 
 - `assets/icons/favicon/`: favicon images and `site.webmanifest` (name, short name and theme colors).
 - `404.html`: name, title, description, app title, fonts and favicon.
-- `assets/icons/site/articles/`: logos of the institutions used in `entityIcons`.
+- `assets/icons/site/articles/`: logos of the institutions used in `sections.*.items.*.icons`.
 - `sitemap.xml`, `humans.txt`, `robots.txt`: URLs, name and contacts.
 - The repository must be named `<username>.github.io`, and `site.url` in `config.json` must match.
 - `site.verification` in `config.json`: use your own Search Console token or remove it.

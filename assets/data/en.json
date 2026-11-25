@@ -7,31 +7,8 @@
   "ui": {
     "nav": "Navigation",
     "tools": "Tools",
-    "actions": {
-      "back": "Go back",
-      "outline": "Outline",
-      "print": "Print",
-      "translate": "Traduci"
-    },
-    "contacts": {
-      "location": "Location",
-      "phone": "Phone"
-    },
-    "links": {
-      "model": "View model",
-      "repository": "View repository",
-      "paper": "Read paper",
-      "thesis": "Read thesis",
-      "website": "Visit website",
-      "unavailableSuffix": "not yet available",
-      "unavailableLabel": {
-        "model": "Model",
-        "repository": "Repository",
-        "paper": "Paper",
-        "thesis": "Thesis",
-        "website": "Website"
-      }
-    },
+    "actions": {"back": "Go back", "outline": "Outline", "print": "Print", "translate": "Traduci"},
+    "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     "footer": {
       "builtWith": "Built with",
       "typography": "Typography:",
@@ -40,221 +17,106 @@
       "copyright": "© {name}. All rights reserved."
     }
   },
-  "title": [
-    "PhD student in Computer Science",
-    "and Mathematics of Computation"
-  ],
+  "title": ["PhD student in Computer Science", "and Mathematics of Computation"],
   "contacts": {
-    "location": {
-      "text": "Modena, Italy"
-    }
+    "location": {"label": "Location", "url": null, "text": "Modena, Italy"},
+    "phone": {"label": "Phone", "url": null, "text": null}
   },
   "summary": {
     "title": "Summary",
     "text": [
       "Research focused on Differential Privacy and parameter-efficient fine-tuning of LLMs, with papers on tabular data synthesis, memorization risks, and explainable governance of synthetic health data.",
       "Engineering experience in Python and C, covering ML pipelines, evaluation frameworks, and high-throughput data platforms."
-    ]
-  },
-  "experience": {
-    "title": "Experience",
-    "items": [
-      {
-        "id": "ibm",
-        "title": "Visiting Researcher",
-        "url": null,
-        "date": [
-          "Sep 2026",
-          "Mar 2027"
-        ],
-        "subtitle": [
-          "IBM Research (Dublin, Ireland)"
-        ],
-        "detail": "",
-        "bullets": [
-          "Conducted joint research on differentially private fine-tuning of foundation models for structured data synthesis in enterprise environments."
-        ],
-        "links": []
-      },
-      {
-        "id": "randompower",
-        "title": "Software Developer (Part-time)",
-        "url": null,
-        "date": [
-          "May 2024",
-          "Nov 2025"
-        ],
-        "subtitle": [
-          "Random Power (Remote)"
-        ],
-        "detail": "",
-        "bullets": [
-          "Built a C Entropy-as-a-Service platform compliant with the Palo Alto Networks QRNG API, streaming quantum random bits at 1 Gbit/s.",
-          "Developed a full-stack Django management interface for the 64x Multi-Generator Board, implementing hardware-software communication protocols and session authentication."
-        ],
-        "links": []
-      }
-    ]
-  },
-  "other_experience": {
-    "title": "Other Experience",
-    "items": [
-      {
-        "id": "paradisi",
-        "title": "Computer Science High School Teacher (Part-time)",
-        "url": null,
-        "date": [
-          "Sep 2024",
-          "Jul 2025"
-        ],
-        "subtitle": [
-          "A. Paradisi High School (Vignola, Italy)"
-        ],
-        "detail": "",
-        "bullets": [
-          "Taught programming principles, data structures, and algorithms to 75+ secondary school students."
-        ],
-        "links": []
-      },
-      {
-        "id": "unimore-tutor",
-        "title": "Computer Science University Tutor (Part-time)",
-        "url": null,
-        "date": [
-          "Sep 2024",
-          "Dec 2024"
-        ],
-        "subtitle": [
-          "University of Modena and Reggio Emilia (Modena, Italy)"
-        ],
-        "detail": "",
-        "bullets": [
-          "Mentored 50+ undergraduate students in laboratory sessions on programming and data structures."
-        ],
-        "links": []
-      },
-      {
-        "id": "liferay",
-        "title": "Junior Software Developer (Internship)",
-        "url": null,
-        "date": [
-          "Mar 2021",
-          "Jul 2021"
-        ],
-        "subtitle": [
-          "Liferay Inc. (Remote)"
-        ],
-        "detail": "",
-        "bullets": [
-          "Implemented Stripe payment integration modules for the open-source enterprise portal in Java."
-        ],
-        "links": [
-          {
-            "type": "repository",
-            "url": "https://github.com/antoniopelusi/liferay-portal-stripe"
-          }
-        ]
-      }
-    ]
+    ],
+    "items": null
   },
   "education": {
     "title": "Education",
+    "text": null,
     "items": [
       {
         "id": "uninsubria",
         "title": "PhD in Computer Science and Mathematics of Computation",
-        "url": null,
-        "date": [
-          "Nov 2024",
-          "Oct 2027"
-        ],
         "subtitle": [
           "University of Insubria (Varese, Italy)",
-          "Random Power (Remote)",
-          "IBM Research (Dublin, Ireland)"
+          "IBM Research (Dublin, Ireland)",
+          "Random Power (Remote)"
         ],
-        "detail": "",
+        "detail": null,
         "bullets": [
           "Researched privacy-preserving fine-tuning of locally deployable Large Language Models (LLMs) for synthetic tabular data generation.",
           "Investigated quantum entropy noise sources in Differential Privacy mechanisms, characterizing theoretical privacy budgets and empirical protection."
         ],
-        "links": [
-          {
-            "type": "thesis"
-          }
-        ]
+        "links": {"thesis": "Thesis not yet available"}
       },
       {
         "id": "unimore-master",
         "title": "Master's Degree in Computer Science",
-        "url": null,
-        "date": [
-          "Sep 2022",
-          "Apr 2024"
-        ],
-        "subtitle": [
-          "University of Modena and Reggio Emilia (Modena, Italy)"
-        ],
+        "subtitle": ["University of Modena and Reggio Emilia (Modena, Italy)"],
         "detail": "Grade: 110/110",
         "bullets": [
           "Curriculum in Machine Learning, Cryptography, and Distributed Systems. Master's thesis on Differential Privacy for tabular data sharing."
         ],
-        "links": [
-          {
-            "type": "thesis",
-            "url": "https://morethesis.unimore.it/theses/available/etd-02202024-141019/"
-          }
-        ]
+        "links": {"thesis": "Read thesis"}
       },
       {
         "id": "cbi-attract",
         "title": "Postgraduate Course CBI.Attract",
-        "url": null,
-        "date": [
-          "Feb 2023",
-          "Jun 2023"
-        ],
         "subtitle": [
           "University of Bologna (Bologna, Italy)",
-          "CERN (Geneva, Switzerland)",
-          "AGH University (Kraków, Poland)"
+          "AGH University (Kraków, Poland)",
+          "CERN (Geneva, Switzerland)"
         ],
         "detail": "Grade: 30/30 with Honors",
         "bullets": [
           "Prototyped emerging technology solutions via Design Thinking within the EU ATTRACT research framework (Horizon 2020-funded)."
         ],
-        "links": []
+        "links": null
       },
       {
         "id": "unimore-bachelor",
         "title": "Bachelor's Degree in Computer Science",
-        "url": null,
-        "date": [
-          "Sep 2018",
-          "Apr 2022"
-        ],
-        "subtitle": [
-          "University of Modena and Reggio Emilia (Modena, Italy)",
-          "Liferay Inc. (Remote)"
-        ],
-        "detail": "",
+        "subtitle": ["University of Modena and Reggio Emilia (Modena, Italy)", "Liferay Inc. (Remote)"],
+        "detail": null,
+        "bullets": ["Foundations in algorithms, complexity, software engineering, and mathematics."],
+        "links": null
+      }
+    ]
+  },
+  "experience": {
+    "title": "Experience",
+    "text": null,
+    "items": [
+      {
+        "id": "ibm",
+        "title": "Visiting Researcher",
+        "subtitle": ["IBM Research (Dublin, Ireland)"],
+        "detail": null,
         "bullets": [
-          "Foundations in algorithms, complexity, software engineering, and mathematics."
+          "Conducted joint research on differentially private fine-tuning of foundation models for structured data synthesis in enterprise environments."
         ],
-        "links": []
+        "links": null
+      },
+      {
+        "id": "randompower",
+        "title": "Software Developer (Part-time)",
+        "subtitle": ["Random Power (Remote)"],
+        "detail": null,
+        "bullets": [
+          "Built a C Entropy-as-a-Service platform compliant with the Palo Alto Networks QRNG API, streaming quantum random bits at 1 Gbit/s.",
+          "Developed a full-stack Django management interface for the 64x Multi-Generator Board, implementing hardware-software communication protocols and session authentication."
+        ],
+        "links": null
       }
     ]
   },
   "publications": {
     "title": "Publications",
+    "text": null,
     "items": [
       {
         "id": "explainable-governance",
         "title": "Towards Explainable Governance of Synthetic Health Data in Collaborative Healthcare Ecosystems",
-        "url": "https://doi.org/10.1007/978-3-032-41230-0_34",
-        "date": [
-          "Oct 2026"
-        ],
         "subtitle": [
           "A. Pelusi (University of Insubria, Varese, Italy)",
           "A. Trombetta (University of Insubria, Varese, Italy)",
@@ -265,298 +127,200 @@
         "bullets": [
           "Proposed a role-aware Explainable AI framework for the governance of synthetic health data, mapping privacy and fidelity metrics to stakeholder-specific requirements under GDPR and the EU AI Act."
         ],
-        "links": [
-          {
-            "type": "paper",
-            "url": "https://doi.org/10.1007/978-3-032-41230-0_34"
-          }
-        ]
-      },
-      {
-        "id": "privacy-fidelity",
-        "title": "Privacy-Fidelity Trade-offs in Differentially Private Synthetic Tabular Data Generation",
-        "url": null,
-        "date": [
-          "Jul 2026"
-        ],
-        "subtitle": [
-          "A. Pelusi (University of Insubria, Varese, Italy)",
-          "S. Braghin (IBM Research, Dublin, Ireland)",
-          "A. Trombetta (University of Insubria, Varese, Italy)"
-        ],
-        "detail": "Under review",
-        "bullets": [
-          "Evaluated Low-Rank Adaptation (LoRA) fine-tuning of LLMs with DP-SGD via Opacus for tabular synthesis, identifying privacy-induced degradation on high-cardinality categorical distributions."
-        ],
-        "links": [
-          {
-            "type": "repository",
-            "url": "https://github.com/antoniopelusi/LLM-synthetic-data-generation"
-          },
-          {
-            "type": "paper"
-          }
-        ]
-      },
-      {
-        "id": "categorical-prior-lock-in",
-        "title": "Categorical Prior Lock-in: Why In-Context Learning Fails for Structured Data",
-        "url": null,
-        "date": [
-          "Apr 2026"
-        ],
-        "subtitle": [
-          "A. Pelusi (University of Insubria, Varese, Italy)",
-          "S. Braghin (IBM Research, Dublin, Ireland)",
-          "A. Trombetta (University of Insubria, Varese, Italy)"
-        ],
-        "detail": "Under review",
-        "bullets": [
-          "Compared in-context learning against parameter-efficient fine-tuning for tabular data synthesis, characterizing the fidelity-memorization trade-off in foundation models."
-        ],
-        "links": [
-          {
-            "type": "repository",
-            "url": "https://github.com/antoniopelusi/LLM-synthetic-data-generation"
-          },
-          {
-            "type": "paper"
-          }
-        ]
+        "links": {"paper": "Read paper"}
       }
     ]
   },
   "projects": {
     "title": "Projects",
+    "text": null,
     "items": [
-      {
-        "id": "pipeline",
-        "title": "synth-pipeline",
-        "url": null,
-        "date": [
-          "Oct 2026"
-        ],
-        "subtitle": [
-          "Privacy-Preserving Tabular Data Synthesis Pipeline"
-        ],
-        "detail": "",
-        "bullets": [
-          "Built a configurable pipeline for synthetic tabular data generation with LoRA-fine-tuned LLMs, with optional Differential Privacy (DP-SGD via Opacus) and schema-validated outputs.",
-          "Implemented an automated benchmark suite assessing statistical fidelity (TVD, correlation error), machine learning utility (TSTR), and privacy protection (distance to closest record, membership inference)."
-        ],
-        "links": [
-          {
-            "type": "repository"
-          }
-        ]
-      },
       {
         "id": "chesslm",
         "title": "chesSLM",
-        "url": "https://github.com/antoniopelusi/chesSLM",
-        "date": [
-          "Jun 2026"
-        ],
-        "subtitle": [
-          "Decoder-only Language Model Trained on Chess Games"
-        ],
-        "detail": "",
+        "subtitle": ["Decoder-only Language Model Trained on Chess Games"],
+        "detail": null,
         "bullets": [
           "Engineered a ~100M-parameter Transformer from scratch in PyTorch featuring Pre-LN blocks, Rotary Positional Embeddings (RoPE), and FlashAttention kernels.",
           "Trained via a two-stage curriculum (mixed precision, gradient accumulation, cosine decay) and packaged as a standalone UCI chess engine rated ~1650 Elo."
         ],
-        "links": [
-          {
-            "type": "repository",
-            "url": "https://github.com/antoniopelusi/chesSLM"
-          },
-          {
-            "type": "model",
-            "url": "https://huggingface.co/antoniopelusi/chesSLM"
-          }
-        ]
+        "links": {"model": "View model", "repository": "View repository"}
       },
       {
         "id": "epsiloc",
         "title": "epsiloc",
-        "url": "https://github.com/antoniopelusi/epsiloc",
-        "date": [
-          "Oct 2025"
-        ],
-        "subtitle": [
-          "Local Differential Privacy Library for Tabular Data"
-        ],
-        "detail": "",
+        "subtitle": ["Local Differential Privacy Library for Tabular Data"],
+        "detail": null,
         "bullets": [
           "Implemented vectorized Laplace and randomized response perturbation algorithms in Python for local differential privacy enforcement on structured datasets."
         ],
-        "links": [
-          {
-            "type": "repository",
-            "url": "https://github.com/antoniopelusi/epsiloc"
-          }
-        ]
-      }
-    ]
-  },
-  "other_projects": {
-    "title": "Other Projects",
-    "items": [
-      {
-        "id": "recoilisland",
-        "title": "Recoil Island",
-        "url": "https://github.com/antoniopelusi/recoilisland",
-        "date": [
-          "Mar 2026"
-        ],
-        "subtitle": [
-          "Fast-paced 2D retro shooter"
-        ],
-        "detail": "",
-        "bullets": [
-          "Engineered a 2D web arcade shooter with weapon-recoil physics acting as the primary navigation mechanic, built natively with HTML5 Canvas and JavaScript without external runtime dependencies."
-        ],
-        "links": [
-          {
-            "type": "repository",
-            "url": "https://github.com/antoniopelusi/recoilisland"
-          },
-          {
-            "type": "website",
-            "url": "/recoilisland/"
-          }
-        ]
-      },
-      {
-        "id": "txturl",
-        "title": "TxtUrl",
-        "url": "https://github.com/antoniopelusi/txturl",
-        "date": [
-          "Feb 2026"
-        ],
-        "subtitle": [
-          "Serverless text editor embedded in the URL"
-        ],
-        "detail": "",
-        "bullets": [
-          "Built a zero-backend text editor compressing and encoding Markdown notes directly into the URL hash fragment for serverless document sharing."
-        ],
-        "links": [
-          {
-            "type": "repository",
-            "url": "https://github.com/antoniopelusi/txturl"
-          },
-          {
-            "type": "website",
-            "url": "/txturl/"
-          }
-        ]
-      },
-      {
-        "id": "scoretracker",
-        "title": "Score Tracker",
-        "url": "https://github.com/antoniopelusi/scoretracker",
-        "date": [
-          "Feb 2025"
-        ],
-        "subtitle": [
-          "Score tracking web app"
-        ],
-        "detail": "",
-        "bullets": [
-          "Developed an offline-first Progressive Web App with responsive score sheets, turn logs, and persistent local storage for multiplayer games."
-        ],
-        "links": [
-          {
-            "type": "repository",
-            "url": "https://github.com/antoniopelusi/scoretracker"
-          },
-          {
-            "type": "website",
-            "url": "/scoretracker/"
-          }
-        ]
-      },
-      {
-        "id": "toolstab",
-        "title": "ToolsTab",
-        "url": "https://github.com/antoniopelusi/toolstab",
-        "date": [
-          "Jan 2025"
-        ],
-        "subtitle": [
-          "Startpage browser extension"
-        ],
-        "detail": "",
-        "bullets": [
-          "Published a lightweight, privacy-focused browser extension providing an offline startpage with productivity tools such as a notepad, clipboard, bookmarks and a to-do list."
-        ],
-        "links": [
-          {
-            "type": "repository",
-            "url": "https://github.com/antoniopelusi/toolstab"
-          },
-          {
-            "type": "website",
-            "url": "/toolstab/"
-          }
-        ]
+        "links": {"repository": "View repository"}
       }
     ]
   },
   "awards": {
     "title": "Awards",
+    "text": null,
     "items": [
       {
         "id": "hackathon",
         "title": "Winner of Green & Digital Transformation Hackathon",
-        "url": null,
-        "date": [
-          "Sep 2023"
-        ],
-        "subtitle": [
-          "University of Modena and Reggio Emilia (Mantua, Italy)"
-        ],
-        "detail": "",
+        "subtitle": ["University of Modena and Reggio Emilia (Mantua, Italy)"],
+        "detail": null,
         "bullets": [
           "Developed an XGBoost predictive model for the optimization of municipal water distribution networks, winning first place among 15 competing teams."
         ],
-        "links": []
+        "links": null
       }
     ]
   },
   "skills": {
     "title": "Skills",
+    "text": null,
     "items": [
       {
         "id": "languages",
-        "label": "Programming languages",
-        "text": "Python, C, C++, Java"
+        "title": "Programming languages",
+        "subtitle": ["Python", "C", "C++", "Java"],
+        "detail": null,
+        "bullets": null,
+        "links": null
       },
       {
         "id": "research",
-        "label": "Research areas",
-        "text": "Differential Privacy, Synthetic Data Generation, LLM Fine-Tuning, Membership Inference, Explainable AI"
+        "title": "Research areas",
+        "subtitle": [
+          "Differential Privacy",
+          "Synthetic Data Generation",
+          "LLM Fine-Tuning",
+          "Membership Inference",
+          "Explainable AI"
+        ],
+        "detail": null,
+        "bullets": null,
+        "links": null
       },
       {
         "id": "libraries",
-        "label": "ML/AI libraries",
-        "text": "PyTorch, Hugging Face Transformers, PEFT, Opacus, scikit-learn, NumPy, pandas"
+        "title": "ML/AI libraries",
+        "subtitle": [
+          "PyTorch",
+          "Hugging Face Transformers",
+          "PEFT",
+          "Opacus",
+          "scikit-learn",
+          "NumPy",
+          "pandas"
+        ],
+        "detail": null,
+        "bullets": null,
+        "links": null
       },
       {
         "id": "web",
-        "label": "Web",
-        "text": "HTML, CSS, JavaScript, Django"
+        "title": "Web",
+        "subtitle": ["HTML", "CSS", "JavaScript", "Django"],
+        "detail": null,
+        "bullets": null,
+        "links": null
       },
       {
         "id": "tools",
-        "label": "Tools",
-        "text": "Linux, Bash, Git, Docker, LaTeX"
+        "title": "Tools",
+        "subtitle": ["Linux", "Bash", "Git", "Docker", "LaTeX"],
+        "detail": null,
+        "bullets": null,
+        "links": null
       },
       {
         "id": "spoken",
-        "label": "Spoken languages",
-        "text": "Italian (native), English (B2)"
+        "title": "Spoken languages",
+        "subtitle": ["Italian (native)", "English (B2)"],
+        "detail": null,
+        "bullets": null,
+        "links": null
+      }
+    ]
+  },
+  "other-experience": {
+    "title": "Other Experience",
+    "text": null,
+    "items": [
+      {
+        "id": "paradisi",
+        "title": "Computer Science High School Teacher (Part-time)",
+        "subtitle": ["A. Paradisi High School (Vignola, Italy)"],
+        "detail": null,
+        "bullets": [
+          "Taught programming principles, data structures, and algorithms to 75+ secondary school students."
+        ],
+        "links": null
+      },
+      {
+        "id": "unimore-tutor",
+        "title": "Computer Science University Tutor (Part-time)",
+        "subtitle": ["University of Modena and Reggio Emilia (Modena, Italy)"],
+        "detail": null,
+        "bullets": [
+          "Mentored 50+ undergraduate students in laboratory sessions on programming and data structures."
+        ],
+        "links": null
+      },
+      {
+        "id": "liferay",
+        "title": "Junior Software Developer (Internship)",
+        "subtitle": ["Liferay Inc. (Remote)"],
+        "detail": null,
+        "bullets": [
+          "Implemented Stripe payment integration modules for the open-source enterprise portal in Java."
+        ],
+        "links": {"repository": "View repository"}
+      }
+    ]
+  },
+  "other-projects": {
+    "title": "Other Projects",
+    "text": null,
+    "items": [
+      {
+        "id": "recoilisland",
+        "title": "Recoil Island",
+        "subtitle": ["Fast-paced 2D retro shooter"],
+        "detail": null,
+        "bullets": [
+          "Engineered a 2D web arcade shooter with weapon-recoil physics acting as the primary navigation mechanic, built natively with HTML5 Canvas and JavaScript without external runtime dependencies."
+        ],
+        "links": {"repository": "View repository", "website": "Visit website"}
+      },
+      {
+        "id": "txturl",
+        "title": "TxtUrl",
+        "subtitle": ["Serverless text editor embedded in the URL"],
+        "detail": null,
+        "bullets": [
+          "Built a zero-backend text editor compressing and encoding Markdown notes directly into the URL hash fragment for serverless document sharing."
+        ],
+        "links": {"repository": "View repository", "website": "Visit website"}
+      },
+      {
+        "id": "scoretracker",
+        "title": "Score Tracker",
+        "subtitle": ["Score tracking web app"],
+        "detail": null,
+        "bullets": [
+          "Developed an offline-first Progressive Web App with responsive score sheets, turn logs, and persistent local storage for multiplayer games."
+        ],
+        "links": {"repository": "View repository", "website": "Visit website"}
+      },
+      {
+        "id": "toolstab",
+        "title": "ToolsTab",
+        "subtitle": ["Startpage browser extension"],
+        "detail": null,
+        "bullets": [
+          "Published a lightweight, privacy-focused browser extension providing an offline startpage with productivity tools such as a notepad, clipboard, bookmarks and a to-do list."
+        ],
+        "links": {"repository": "View repository", "website": "Visit website"}
       }
     ]
   }
