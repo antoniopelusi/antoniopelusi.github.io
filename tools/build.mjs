@@ -59,7 +59,7 @@ const NON_SECTIONS = ["meta", "ui", "title", "contacts"];
 const SECTION_KEYS = ["title", "text", "items"];
 const ITEM_KEYS = ["id", "title", "subtitle", "detail", "bullets", "links"];
 const CONFIG_SECTION_KEYS = ["layout", "items"];
-const CONFIG_ITEM_KEYS = ["url", "date", "icons", "links"];
+const CONFIG_ITEM_KEYS = ["url", "date", "icons", "links", "cvBody"];
 const DATE_FORMAT = /^\d{4}-(0[1-9]|1[0-2])$/;
 const CONFIG_LINK_KEYS = ["type", "url"];
 const LAYOUTS = ["text", "entries", "tags"];
@@ -75,6 +75,9 @@ for (const [name, section] of Object.entries(SECTIONS)) {
   for (const [id, item] of Object.entries(section.items)) {
     if (!sameKeys(item, CONFIG_ITEM_KEYS)) {
       fail(`config.sections.${name}.items.${id} deve avere le chiavi ${CONFIG_ITEM_KEYS.join(", ")}`);
+    }
+    if (typeof item.cvBody !== "boolean") {
+      fail(`config.sections.${name}.items.${id}: cvBody deve essere true o false`);
     }
     for (const date of orEmpty(item.date)) {
       if (!DATE_FORMAT.test(date)) fail(`config.sections.${name}.items.${id}: data "${date}" non valida (AAAA-MM)`);
@@ -365,7 +368,7 @@ const renderTags = ({ title, subtitle }) =>
     ),
   );
 
-const renderEntry = (ctx, { title, url, date, subtitle, icons, detail, bullets, links }) => {
+const renderEntry = (ctx, { title, url, date, subtitle, icons, detail, bullets, links, cvBody }) => {
   const dates = orEmpty(date).map((value) => h("span", {}, value));
 
   return h(
@@ -388,12 +391,13 @@ const renderEntry = (ctx, { title, url, date, subtitle, icons, detail, bullets, 
       renderEntities(ctx, subtitle, orEmpty(icons)),
       ...(detail ? [separator(format.separator), h("span", {}, detail)] : []),
     ),
-    h(
-      "ul",
-      {},
-      ...orEmpty(links).map((item) => renderLink(ctx, item, title)),
-      ...orEmpty(bullets).map(renderBullet),
-    ),
+    (ctx.page !== "cv" || cvBody) &&
+      h(
+        "ul",
+        {},
+        ...orEmpty(links).map((item) => renderLink(ctx, item, title)),
+        ...orEmpty(bullets).map(renderBullet),
+      ),
   );
 };
 
@@ -692,7 +696,7 @@ const compose = (data) => {
         value.items === null
           ? null
           : value.items.map((item) => {
-              const { url, date, icons, links } = fixed.items[item.id];
+              const { url, date, icons, links, cvBody } = fixed.items[item.id];
               return {
                 id: item.id,
                 title: item.title,
@@ -702,6 +706,7 @@ const compose = (data) => {
                 icons,
                 detail: item.detail,
                 bullets: item.bullets,
+                cvBody,
                 links:
                   links === null
                     ? null
