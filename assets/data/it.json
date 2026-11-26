@@ -146,7 +146,7 @@
           "Realizzazione da zero in PyTorch di un Transformer da ~100M di parametri con blocchi Pre-LN, Rotary Positional Embeddings (RoPE) e kernel FlashAttention.",
           "Addestramento con curriculum a due stadi (mixed precision, gradient accumulation, cosine decay) e rilascio come motore scacchistico UCI con rating ~1650 Elo."
         ],
-        "links": {"model": "Vedi modello", "repository": "Vedi repository"}
+        "links": {"repository": "Vedi repository", "dataset": "Vedi dataset", "model": "Vedi modello"}
       },
       {
         "id": "epsiloc",

@@ -17,21 +17,21 @@ const fail = (message) => {
   throw new Error(`build: ${message}`);
 };
 
-if (LANGS.length !== 2) fail("il selettore di lingua supporta esattamente due lingue");
-if (!LANGS.includes(site.defaultLang)) fail(`defaultLang "${site.defaultLang}" non è in languages`);
+if (LANGS.length !== 2) fail("the language selector supports exactly two languages");
+if (!LANGS.includes(site.defaultLang)) fail(`defaultLang "${site.defaultLang}" is not in languages`);
 
-if (!Array.isArray(site.indexLanguages)) fail("site.indexLanguages mancante");
+if (!Array.isArray(site.indexLanguages)) fail("site.indexLanguages is missing");
 const INDEXED = site.indexLanguages;
 for (const code of INDEXED) {
-  if (!LANGS.includes(code)) fail(`indexLanguages: "${code}" non è in languages`);
+  if (!LANGS.includes(code)) fail(`indexLanguages: "${code}" is not in languages`);
 }
-if (!INDEXED.includes(site.defaultLang)) fail("indexLanguages deve includere defaultLang");
+if (!INDEXED.includes(site.defaultLang)) fail("indexLanguages must include defaultLang");
 
 const otherLang = (lang) => LANGS.find((code) => code !== lang);
 
 const fill = (template, vars) =>
   template.replace(/\{(\w+)\}/g, (_, key) => {
-    if (!(key in vars)) fail(`segnaposto {${key}} sconosciuto in "${template}"`);
+    if (!(key in vars)) fail(`unknown placeholder {${key}} in "${template}"`);
     return vars[key];
   });
 
@@ -68,23 +68,23 @@ const orEmpty = (value) => (value === null ? [] : value);
 
 for (const [name, section] of Object.entries(SECTIONS)) {
   if (!sameKeys(section, CONFIG_SECTION_KEYS)) {
-    fail(`config.sections.${name} deve avere le chiavi ${CONFIG_SECTION_KEYS.join(", ")}`);
+    fail(`config.sections.${name} must have keys ${CONFIG_SECTION_KEYS.join(", ")}`);
   }
-  if (!LAYOUTS.includes(section.layout)) fail(`config.sections.${name}.layout non valido`);
+  if (!LAYOUTS.includes(section.layout)) fail(`config.sections.${name}.layout is invalid`);
   if (section.items === null) continue;
   for (const [id, item] of Object.entries(section.items)) {
     if (!sameKeys(item, CONFIG_ITEM_KEYS)) {
-      fail(`config.sections.${name}.items.${id} deve avere le chiavi ${CONFIG_ITEM_KEYS.join(", ")}`);
+      fail(`config.sections.${name}.items.${id} must have keys ${CONFIG_ITEM_KEYS.join(", ")}`);
     }
     if (typeof item.cvBody !== "boolean") {
-      fail(`config.sections.${name}.items.${id}: cvBody deve essere true o false`);
+      fail(`config.sections.${name}.items.${id}: cvBody must be true or false`);
     }
     for (const date of orEmpty(item.date)) {
-      if (!DATE_FORMAT.test(date)) fail(`config.sections.${name}.items.${id}: data "${date}" non valida (AAAA-MM)`);
+      if (!DATE_FORMAT.test(date)) fail(`config.sections.${name}.items.${id}: date "${date}" is invalid (YYYY-MM)`);
     }
     for (const link of orEmpty(item.links)) {
       if (!sameKeys(link, CONFIG_LINK_KEYS)) {
-        fail(`config.sections.${name}.items.${id}: ogni link deve avere ${CONFIG_LINK_KEYS.join(", ")}`);
+        fail(`config.sections.${name}.items.${id}: each link must have ${CONFIG_LINK_KEYS.join(", ")}`);
       }
     }
   }
@@ -94,46 +94,46 @@ const loadData = (lang) => {
   const data = readJSON(DATA_DIR, `${lang}.json`);
   for (const [group, keys] of Object.entries(REQUIRED)) {
     for (const key of keys) {
-      if (data[group]?.[key] === undefined) fail(`${lang}.json: manca "${group}.${key}"`);
+      if (data[group]?.[key] === undefined) fail(`${lang}.json: missing "${group}.${key}"`);
     }
   }
-  if (!Array.isArray(data.title)) fail(`${lang}.json: "title" deve essere un array di righe`);
+  if (!Array.isArray(data.title)) fail(`${lang}.json: "title" must be an array of lines`);
   if (!Array.isArray(data.ui.months) || data.ui.months.length !== 12) {
-    fail(`${lang}.json: "ui.months" deve avere 12 mesi`);
+    fail(`${lang}.json: "ui.months" must have 12 months`);
   }
   for (const key of ["meta", "ui", "title", "contacts"]) {
-    if (data[key] === undefined) fail(`${lang}.json: manca "${key}"`);
+    if (data[key] === undefined) fail(`${lang}.json: missing "${key}"`);
   }
   const names = Object.keys(data).filter((name) => !NON_SECTIONS.includes(name));
   if (JSON.stringify(names) !== JSON.stringify(Object.keys(SECTIONS))) {
-    fail(`${lang}.json: le sezioni devono essere quelle di config.sections, nello stesso ordine`);
+    fail(`${lang}.json: sections must match config.sections, in the same order`);
   }
   for (const name of names) {
     const section = data[name];
     const fixed = SECTIONS[name];
     if (!sameKeys(section, SECTION_KEYS)) {
-      fail(`${lang}.json: "${name}" deve avere le chiavi ${SECTION_KEYS.join(", ")}`);
+      fail(`${lang}.json: "${name}" must have keys ${SECTION_KEYS.join(", ")}`);
     }
     if ((section.items === null) !== (fixed.items === null)) {
-      fail(`${lang}.json: "${name}": items deve essere null solo dove lo è in config.sections`);
+      fail(`${lang}.json: "${name}": items must be null only where it is in config.sections`);
     }
     if (section.items === null) continue;
     if (JSON.stringify(section.items.map((item) => item.id)) !== JSON.stringify(Object.keys(fixed.items))) {
-      fail(`${lang}.json: "${name}": gli id devono essere quelli di config.sections, nello stesso ordine`);
+      fail(`${lang}.json: "${name}": ids must match config.sections, in the same order`);
     }
     for (const item of section.items) {
       const { icons, links } = fixed.items[item.id];
       if (!sameKeys(item, ITEM_KEYS)) {
-        fail(`${lang}.json: "${name}/${item.id}" deve avere le chiavi ${ITEM_KEYS.join(", ")}`);
+        fail(`${lang}.json: "${name}/${item.id}" must have keys ${ITEM_KEYS.join(", ")}`);
       }
       if (icons !== null && (item.subtitle === null || icons.length !== item.subtitle.length)) {
-        fail(`${lang}.json: "${name}/${item.id}": subtitle deve avere una riga per ogni icona in config`);
+        fail(`${lang}.json: "${name}/${item.id}": subtitle must have one line per icon in config`);
       }
       if ((item.links === null) !== (links === null)) {
-        fail(`${lang}.json: "${name}/${item.id}": links deve essere null solo dove lo è in config`);
+        fail(`${lang}.json: "${name}/${item.id}": links must be null only where it is in config`);
       }
       if (links !== null && JSON.stringify(Object.keys(item.links)) !== JSON.stringify(links.map((link) => link.type))) {
-        fail(`${lang}.json: "${name}/${item.id}": links deve avere i tipi di config, nello stesso ordine`);
+        fail(`${lang}.json: "${name}/${item.id}": links must have the types from config, in the same order`);
       }
     }
   }
@@ -172,7 +172,7 @@ const resolveContacts = (lang, data) => {
   };
 
   for (const [key, entry] of Object.entries(data.contacts)) {
-    if (!(key in contacts)) fail(`${lang}.json: contatto "${key}" non definito in config.contacts`);
+    if (!(key in contacts)) fail(`${lang}.json: contact "${key}" not defined in config.contacts`);
     contacts[key] = { ...contacts[key], ...present(entry) };
   }
   return contacts;
@@ -235,9 +235,9 @@ const ACTIONS = {
 };
 
 const renderAction = (ctx, action) => {
-  const build = ACTIONS[action] ?? fail(`azione "${action}" sconosciuta`);
+  const build = ACTIONS[action] ?? fail(`unknown action "${action}"`);
   const { tag = "a", icon: name, href, hreflang, active, disabled } = build(ctx);
-  const label = ctx.data.ui.actions[action] ?? fail(`${ctx.lang}.json: manca ui.actions.${action}`);
+  const label = ctx.data.ui.actions[action] ?? fail(`${ctx.lang}.json: missing ui.actions.${action}`);
   return h(
     tag,
     {
@@ -269,7 +269,7 @@ const renderNav = (ctx) => {
       "nav",
       { "aria-label": ctx.data.ui.nav },
       ...nav.map((key, i) => {
-        const section = ctx.data[key] ?? fail(`${ctx.lang}.json: manca la sezione "${key}" (nav)`);
+        const section = ctx.data[key] ?? fail(`${ctx.lang}.json: missing section "${key}" (nav)`);
         return h(
           "a",
           {
@@ -284,10 +284,10 @@ const renderNav = (ctx) => {
 };
 
 const renderContact = (ctx, key) => {
-  const entry = ctx.contacts[key] ?? fail(`contatto "${key}" non definito (${ctx.page}/${ctx.lang})`);
+  const entry = ctx.contacts[key] ?? fail(`contact "${key}" not defined (${ctx.page}/${ctx.lang})`);
   const { url, text: value, hreflang, label } = entry;
-  if (!label) fail(`contatto "${key}" senza etichetta (${ctx.lang})`);
-  if (!value) fail(`contatto "${key}" senza testo (${ctx.lang})`);
+  if (!label) fail(`contact "${key}" has no label (${ctx.lang})`);
+  if (!value) fail(`contact "${key}" has no text (${ctx.lang})`);
   return link(
     url,
     { "data-label": label, hreflang },
@@ -338,7 +338,7 @@ const renderEntities = (ctx, subtitle, icons) => {
 };
 
 const renderLink = (ctx, item, title) => {
-  if (!item.text) fail(`link "${item.type}" senza testo in "${title}" (${ctx.lang})`);
+  if (!item.text) fail(`link "${item.type}" has no text in "${title}" (${ctx.lang})`);
   return h(
     "li",
     {},
@@ -405,7 +405,7 @@ const renderArticle = (ctx, layout, item) =>
   layout === "tags" ? renderTags(item) : renderEntry(ctx, item);
 
 const renderSection = (ctx, { section: key, ids: filter }) => {
-  const section = ctx.data[key] ?? fail(`${ctx.lang}.json: manca la sezione "${key}"`);
+  const section = ctx.data[key] ?? fail(`${ctx.lang}.json: missing section "${key}"`);
 
   const { title } = section;
   const paragraphs = orEmpty(section.text);
@@ -494,8 +494,8 @@ const personSchema = (ctx) => {
   const { data, contacts, lang } = ctx;
 
   const sameAs = person.sameAs.map((key) => {
-    const url = (contacts[key] ?? fail(`person.sameAs: contatto "${key}" non definito`)).url;
-    if (!/^https?:/.test(url)) fail(`person.sameAs: "${key}" non ha un URL assoluto`);
+    const url = (contacts[key] ?? fail(`person.sameAs: contact "${key}" not defined`)).url;
+    if (!/^https?:/.test(url)) fail(`person.sameAs: "${key}" does not have an absolute URL`);
     return url;
   });
 
@@ -658,15 +658,15 @@ const rawByLang = Object.fromEntries(LANGS.map((lang) => [lang, loadData(lang)])
 
 const sameShape = (a, b, where) => {
   if (Array.isArray(a) && Array.isArray(b)) {
-    if (a.length !== b.length) fail(`${where}: lunghezza diversa tra le lingue`);
+    if (a.length !== b.length) fail(`${where}: different length across languages`);
     a.forEach((value, i) => sameShape(value, b[i], `${where}[${i}]`));
   } else if (a && b && typeof a === "object" && typeof b === "object") {
     if (JSON.stringify(Object.keys(a)) !== JSON.stringify(Object.keys(b))) {
-      fail(`${where}: chiavi diverse o in ordine diverso tra le lingue`);
+      fail(`${where}: different keys or key order across languages`);
     }
     for (const key of Object.keys(a)) sameShape(a[key], b[key], `${where}.${key}`);
   } else if ((a == null) !== (b == null)) {
-    fail(`${where}: null in una sola lingua`);
+    fail(`${where}: null in only one language`);
   }
 };
 
@@ -722,7 +722,7 @@ const dataByLang = Object.fromEntries(LANGS.map((lang) => [lang, compose(rawByLa
 
 for (const [page, cfg] of Object.entries(PAGES)) {
   for (const lang of LANGS) {
-    const url = cfg.url[lang] ?? fail(`pages.${page}.url.${lang} mancante`);
+    const url = cfg.url[lang] ?? fail(`pages.${page}.url.${lang} is missing`);
     const data = dataByLang[lang];
     const ctx = { page, lang, cfg, data, contacts: resolveContacts(lang, data) };
 

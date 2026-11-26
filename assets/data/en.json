@@ -144,7 +144,7 @@
           "Engineered a ~100M-parameter Transformer from scratch in PyTorch featuring Pre-LN blocks, Rotary Positional Embeddings (RoPE), and FlashAttention kernels.",
           "Trained via a two-stage curriculum (mixed precision, gradient accumulation, cosine decay) and packaged as a standalone UCI chess engine rated ~1650 Elo."
         ],
-        "links": {"model": "View model", "repository": "View repository"}
+        "links": {"repository": "View repository", "dataset": "View dataset", "model": "View model"}
       },
       {
         "id": "epsiloc",

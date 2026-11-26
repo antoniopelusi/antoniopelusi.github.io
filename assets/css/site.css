@@ -336,6 +336,7 @@ article li:has([data-type="paper"])      { --li-icon: url("../icons/site/article
 article li:has([data-type="thesis"])     { --li-icon: url("../icons/site/articles/bullets/thesis.svg"); }
 article li:has([data-type="model"])      { --li-icon: url("../icons/site/articles/bullets/model.svg"); }
 article li:has([data-type="website"])    { --li-icon: url("../icons/site/articles/bullets/website.svg"); }
+article li:has([data-type="dataset"])    { --li-icon: url("../icons/site/articles/bullets/dataset.svg"); }
 
 article li::after {
     content: "";

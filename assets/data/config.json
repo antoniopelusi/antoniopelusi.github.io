@@ -139,12 +139,13 @@
       "layout": "entries",
       "items": {
         "chesslm": {
-          "url": "https://github.com/antoniopelusi/chesSLM",
+          "url": "https://github.com/antoniopelusi/chesslm",
           "date": ["2026-06"],
           "icons": null,
           "links": [
-            {"type": "model", "url": "https://huggingface.co/antoniopelusi/chesSLM"},
-            {"type": "repository", "url": "https://github.com/antoniopelusi/chesSLM"}
+            {"type": "repository", "url": "https://github.com/antoniopelusi/chesslm"},
+            {"type": "dataset", "url": "https://huggingface.co/datasets/antoniopelusi/chesslm-dataset"},
+            {"type": "model", "url": "https://huggingface.co/antoniopelusi/chesslm"}
           ],
           "cvBody": true
         },
